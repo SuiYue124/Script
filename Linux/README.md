@@ -5,7 +5,9 @@
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ClientAliveInterval.sh)"
 ```
 
+
 - FRPS
+
 GitHub
 ```yaml
 wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh
@@ -20,6 +22,7 @@ chmod 700 ./install-frps.sh
 ```yaml
 ./install-frps.sh install
 ```
+
 
 - VPS密钥账户改成ROOT登陆
 获取root全选
