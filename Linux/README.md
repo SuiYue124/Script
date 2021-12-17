@@ -1,10 +1,28 @@
 # 说明
 
+### VPS密钥账户改成ROOT登陆
+- 获取root权限，更改密码。
+```yaml
+sudo -i
+passwd							# 默认密码为123456（或者更改脚本内默认密码）
+```
+- 执行脚本
+```yaml
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)"
+```
+- 更改自己的密码。
+
+
 ### 解决Ubuntu超时掉线的问题 
 ```yaml
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ClientAliveInterval.sh)"
 ```
 
+
+### VPS时间修改
+```yaml
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Time.sh)"
+```
 
 ### FRPS
 - GitHub
@@ -20,14 +38,3 @@ chmod 700 ./install-frps.sh&&./install-frps.sh install
 ```
 
 
-### VPS密钥账户改成ROOT登陆
-- 获取root权限，更改密码。
-```yaml
-sudo -i
-passwd							# 默认密码为123456（或者更改脚本内默认密码）
-```
-- 执行脚本
-```yaml
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)"
-```
-- 更改自己的密码。
