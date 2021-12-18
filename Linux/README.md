@@ -24,7 +24,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Li
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Time.sh)"
 ```
 
-### FRPS
+### FRPS（GitHub、阿里云二选一）
 - GitHub
 ```yaml
 sudo -i
