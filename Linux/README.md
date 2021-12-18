@@ -4,7 +4,7 @@
 - 获取root权限，更改密码。
 ```yaml
 sudo -i
-passwd							# 默认密码为123456（或者更改脚本内默认密码）
+passwd							# 默认密码为password（或者更改脚本内默认密码）
 ```
 - 执行脚本
 ```yaml
@@ -26,6 +26,9 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Li
 
 ### FRPS
 - GitHub
+```yaml
+sudo -i
+```
 ```yaml
 wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh
 ```
