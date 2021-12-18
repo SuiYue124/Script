@@ -28,6 +28,11 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Li
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Time.sh)"
 ```
 
+### 测试回程Ping值
+```yaml
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/mping.sh)"
+```
+
 ### FRPS（GitHub、阿里云二选一）
 - GitHub
 ```yaml
