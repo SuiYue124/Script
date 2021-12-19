@@ -49,4 +49,13 @@ wget https://code.aliyun.com/MvsCode/frps-onekey/raw/master/install-frps.sh -O .
 chmod 700 ./install-frps.sh&&./install-frps.sh install
 ```
 
+### 宝塔面板
+- 安装宝塔面板
+```yaml
+wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh && bash install.sh
+```
+- 宝塔面板无需手机登陆
+```yaml
+echo "{\"uid\":1000,\"username\":\"admin\",\"serverid\":1}" > /www/server/panel/data/userInfo.json
+```
 
