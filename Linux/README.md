@@ -73,3 +73,7 @@ sed -i "s|bind_user == 'True'|bind_user == 'XXXX'|" /www/server/panel/BTPanel/st
 bash <(wget -qO- https://git.io/mtg.sh)
 ```
 
+### [X-UI面板](https://github.com/vaxilu/x-ui)建议搭配宝塔面板使用
+```yaml
+bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+```
