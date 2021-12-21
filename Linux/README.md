@@ -62,7 +62,7 @@ wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh && bash i
 ```
 - 宝塔面板无需手机登陆
 ```yaml
-echo "{\"uid\":1000,\"username\":\"admin\",\"serverid\":1}" > /www/server/panel/data/userInfo.json
+sed -i "s|bind_user == 'True'|bind_user == 'XXXX'|" /www/server/panel/BTPanel/static/js/index.js
 ```
 
 ### [TG代理一键搭建](https://github.com/cutelua/mtg-dist)
