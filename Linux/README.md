@@ -51,6 +51,7 @@ wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.s
 ```yaml
 wget https://code.aliyun.com/MvsCode/frps-onekey/raw/master/install-frps.sh -O ./install-frps.sh
 ```
+- 安装
 ```yaml
 chmod 700 ./install-frps.sh&&./install-frps.sh install
 ```
