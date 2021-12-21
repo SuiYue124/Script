@@ -40,10 +40,10 @@ bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionChec
 
 ### [FRPS](https://github.com/MvsCode/frps-onekey)
 - GitHub、阿里云二选一
-- GitHub
 ```yaml
 sudo -i
 ```
+- GitHub
 ```yaml
 wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh
 ```
