@@ -199,7 +199,7 @@ async function sendNotify(
   text,
   desp,
   params = {},
-  author = '\n\n本通知 By：https://github.com/whyour/qinglong',
+  author = '\n\n本通知 By：Home JD-Script',
 ) {
   if (text.includes('cookie已失效')) {
     const fs = require('fs');
