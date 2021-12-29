@@ -28,11 +28,6 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Li
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Time.sh)"
 ```
 
-## [测试回程Ping值](https://github.com/helloxz/mping)
-```shell
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/mping.sh)"
-```
-
 ## [测试解锁流媒体情况](https://github.com/lmc999/RegionRestrictionCheck)
 ```shell
 bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
@@ -96,4 +91,35 @@ wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.
 ### [DisneyPlus](https://github.com/sjlleo/VerifyDisneyPlus)
 ```shell
   wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_amd64 && chmod +x dp && clear && ./dp
+```
+
+## BBR+锐速一键脚本2021 BBR+锐速一键脚本
+### 分为两个版本：
+- **不卸载内核**:
+```shell
+wget -N --no-check-certificate "https://github.000060000.xyz/tcpx.sh"; chmod +x tcpx.sh
+```
+- **不卸载内核**:
+```shell
+wget -N --no-check-certificate "https://github.000060000.xyz/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+```
+
+## 各种测试脚本
+### [bench.sh](https://github.com/teddysun/across)
+- **查看Linux 系统信息，测试网络带宽（到世界主要机房）及硬盘读写速率**
+```shell
+wget -qO- bench.sh | bash
+```
+**或**
+```shell
+curl -Lso- bench.sh | bash
+```
+###[Superspeed.sh](https://github.com/ernisn/superspeed)
+- **使用全国各地三大运营商的 speedtest 测速节点进行全面测速，主要是对国内的测速。**
+```shell
+bash <(curl -Lso- https://git.io/superspeed)
+```
+### [测试回程Ping值](https://github.com/helloxz/mping)
+```shell
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/mping.sh)"
 ```
