@@ -114,7 +114,7 @@ wget -qO- bench.sh | bash
 ```shell
 curl -Lso- bench.sh | bash
 ```
-- [Superspeed.sh](https://github.com/ernisn/superspeed)
+### [Superspeed.sh](https://github.com/ernisn/superspeed)
 - **使用全国各地三大运营商的 speedtest 测速节点进行全面测速，主要是对国内的测速。**
 ```shell
 bash <(curl -Lso- https://git.io/superspeed)
