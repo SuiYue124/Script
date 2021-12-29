@@ -1,6 +1,6 @@
 # 说明
 
-### VPS密钥账户改成ROOT登陆
+## VPS密钥账户改成ROOT登陆
 - **获取root权限，更改密码**。
 ```yaml
 sudo -i
@@ -13,32 +13,32 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Li
 - **更改自己的密码**。
 
 
-### VPS端口开放 
+## VPS端口开放 
 ```yaml
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/openport.sh)"
 ```
 
-### 解决Ubuntu超时掉线的问题 
+## 解决Ubuntu超时掉线的问题 
 ```yaml
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ClientAliveInterval.sh)"
 ```
 
-### VPS时间修改
+## VPS时间修改
 ```yaml
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Time.sh)"
 ```
 
-### [测试回程Ping值](https://github.com/helloxz/mping)
+## [测试回程Ping值](https://github.com/helloxz/mping)
 ```yaml
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/mping.sh)"
 ```
 
-### [测试解锁流媒体情况](https://github.com/lmc999/RegionRestrictionCheck)
+## [测试解锁流媒体情况](https://github.com/lmc999/RegionRestrictionCheck)
 ```yaml
 bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 ```
 
-### [FRPS](https://github.com/MvsCode/frps-onekey)
+## [FRPS](https://github.com/MvsCode/frps-onekey)
 - **GitHub、阿里云二选一**
 ```yaml
 sudo -i
@@ -56,7 +56,7 @@ wget https://code.aliyun.com/MvsCode/frps-onekey/raw/master/install-frps.sh -O .
 chmod 700 ./install-frps.sh&&./install-frps.sh install
 ```
 
-### [宝塔面板](https://github.com/aaPanel/BaoTa)
+## [宝塔面板](https://github.com/aaPanel/BaoTa)
 - **安装宝塔面板**
 ```yaml
 wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh && bash install.sh
@@ -66,7 +66,7 @@ wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh && bash i
 echo "{\"uid\":1000,\"username\":\"admin\",\"serverid\":1}" > /www/server/panel/data/userInfo.json
 ```
 
-### [TG代理一键搭建](https://github.com/cutelua/mtg-dist)
+## [TG代理一键搭建](https://github.com/cutelua/mtg-dist)
 - **输入命令后显示**：`> Input service PORT, or press Enter to use a random port` **这个是输入您要设置端口，不设置的话回车默认端口**
 - **然后显示**：`> Input a domain for FakeTLS, or press Enter to use "hostupdate.vmware.com"` **回车默认hostupdate.vmware.com，可以输入 FakeTLS 改协议**
 - **搭建好以后要查看TG代理链接，输入**：mtg access /etc/mtg.toml
@@ -74,13 +74,13 @@ echo "{\"uid\":1000,\"username\":\"admin\",\"serverid\":1}" > /www/server/panel/
 bash <(wget -qO- https://git.io/mtg.sh)
 ```
 
-### [X-UI面板](https://github.com/vaxilu/x-ui)（建议搭配宝塔面板使用）
+## [X-UI面板](https://github.com/vaxilu/x-ui)（建议搭配宝塔面板使用）
 ```yaml
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 ```
 
-### 一个检查NetFlix和DisneyPlus的脚本
-#### [NetFlix](https://github.com/sjlleo/netflix-verify)
+## 一个检查NetFlix和DisneyPlus的脚本
+### [NetFlix](https://github.com/sjlleo/netflix-verify)
 - **X86_64**：
 ```shell
 wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_amd64 && chmod +x nf && clear && ./nf
@@ -93,7 +93,7 @@ wget -O nf https://cdn.jsdelivr.net/gh/sjlleo/netflix-verify/CDNRelease/nf_2.61_
 ```shell
 wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_arm64 && chmod +x nf && clear && ./nf
 ```
-#### [DisneyPlus](https://github.com/sjlleo/VerifyDisneyPlus)
+### [DisneyPlus](https://github.com/sjlleo/VerifyDisneyPlus)
 ```shell
   wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_amd64 && chmod +x dp && clear && ./dp
 ```
