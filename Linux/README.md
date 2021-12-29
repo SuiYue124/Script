@@ -78,3 +78,18 @@ bash <(wget -qO- https://git.io/mtg.sh)
 ```yaml
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 ```
+
+### 一个检查NetFlix和DisneyPlus的脚本
+#### [NetFlix](https://github.com/sjlleo/netflix-verify)
+- **X86_64**：
+```shell
+wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_amd64 && chmod +x nf && clear && ./nf
+```
+- **CDN Mirror (For IPv6)**:
+```shell
+wget -O nf https://cdn.jsdelivr.net/gh/sjlleo/netflix-verify/CDNRelease/nf_2.61_linux_amd64 && chmod +x nf && clear && ./nf
+```
+- **ARM64**：
+```shell
+wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_arm64 && chmod +x nf && clear && ./nf
+```
