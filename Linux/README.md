@@ -119,7 +119,7 @@ curl -Lso- bench.sh | bash
 ```shell
 bash <(curl -Lso- https://git.io/superspeed)
 ```
-### [mping](https://github.com/helloxz/mping)
+### [MPing](https://github.com/helloxz/mping)
 - **可以从本机对国内服务器发起ping、路由跟踪测试**
 ```shell
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/mping.sh)"
