@@ -1,16 +1,16 @@
 # 说明
 
 ### VPS密钥账户改成ROOT登陆
-- 获取root权限，更改密码。
+- **获取root权限，更改密码**。
 ```yaml
 sudo -i
 passwd							# 默认密码为password（或者更改脚本内默认密码）
 ```
-- 执行脚本
+- **执行脚本**
 ```yaml
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)"
 ```
-- 更改自己的密码。
+- **更改自己的密码**。
 
 
 ### VPS端口开放 
@@ -39,37 +39,37 @@ bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionChec
 ```
 
 ### [FRPS](https://github.com/MvsCode/frps-onekey)
-- GitHub、阿里云二选一
+- **GitHub、阿里云二选一**
 ```yaml
 sudo -i
 ```
-- GitHub
+- **GitHub**
 ```yaml
 wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh
 ```
-- 阿里云
+- **阿里云**
 ```yaml
 wget https://code.aliyun.com/MvsCode/frps-onekey/raw/master/install-frps.sh -O ./install-frps.sh
 ```
-- 安装
+- **安装**
 ```yaml
 chmod 700 ./install-frps.sh&&./install-frps.sh install
 ```
 
 ### [宝塔面板](https://github.com/aaPanel/BaoTa)
-- 安装宝塔面板
+- **安装宝塔面板**
 ```yaml
 wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh && bash install.sh
 ```
-- 宝塔面板无需手机登陆
+- **宝塔面板无需手机登陆**
 ```yaml
 echo "{\"uid\":1000,\"username\":\"admin\",\"serverid\":1}" > /www/server/panel/data/userInfo.json
 ```
 
 ### [TG代理一键搭建](https://github.com/cutelua/mtg-dist)
-- 输入命令后显示：`> Input service PORT, or press Enter to use a random port` 这个是输入您要设置端口，不设置的话回车默认端口
-- 然后显示：`> Input a domain for FakeTLS, or press Enter to use "hostupdate.vmware.com"` 回车默认hostupdate.vmware.com，可以输入 FakeTLS 改协议
-- 搭建好以后要查看TG代理链接，输入：mtg access /etc/mtg.toml
+- **输入命令后显示**：`> Input service PORT, or press Enter to use a random port` **这个是输入您要设置端口，不设置的话回车默认端口**
+- **然后显示**：`> Input a domain for FakeTLS, or press Enter to use "hostupdate.vmware.com"` **回车默认hostupdate.vmware.com，可以输入 FakeTLS 改协议**
+- **搭建好以后要查看TG代理链接，输入**：mtg access /etc/mtg.toml
 ```yaml
 bash <(wget -qO- https://git.io/mtg.sh)
 ```
@@ -92,4 +92,8 @@ wget -O nf https://cdn.jsdelivr.net/gh/sjlleo/netflix-verify/CDNRelease/nf_2.61_
 - **ARM64**：
 ```shell
 wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_arm64 && chmod +x nf && clear && ./nf
+```
+#### [DisneyPlus](https://github.com/sjlleo/VerifyDisneyPlus)
+```shell
+  wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_amd64 && chmod +x dp && clear && ./dp
 ```
