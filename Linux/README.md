@@ -73,6 +73,10 @@ bash <(wget -qO- https://git.io/mtg.sh)
 ```shell
 bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 ```
+## Xray一键脚本
+```shell
+bash <(curl -sL https://s.hijk.art/xray.sh)
+```
 
 ## 一个检查NetFlix和DisneyPlus的脚本
 ### [NetFlix](https://github.com/sjlleo/netflix-verify)
