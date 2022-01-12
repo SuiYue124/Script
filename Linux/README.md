@@ -13,7 +13,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Li
 - **更改自己的密码**。
 
 
-## VPS端口开放 
+## Ubuntu端口开放 
 ```shell
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/iptables.sh)"
 ```
@@ -59,6 +59,19 @@ wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh && bash i
 - **宝塔面板无需手机登陆**
 ```shell
 echo "{\"uid\":1000,\"username\":\"admin\",\"serverid\":1}" > /www/server/panel/data/userInfo.json
+```
+-**宝塔面板更新v7.8.0绕过手机登录失效，降级到v7.70
+```shell
+wget http://download.bt.cn/install/update/LinuxPanel-7.7.0.zip
+```
+```shell
+unzip LinuxPanel-7.7.0.zip
+```
+```shell
+cd /root/panel
+```
+```shell
+bash update.sh
 ```
 
 ## [TG代理一键搭建](https://github.com/cutelua/mtg-dist)
