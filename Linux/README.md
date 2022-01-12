@@ -15,7 +15,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Li
 
 ## VPS端口开放 
 ```shell
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/iptables-clear.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/iptables.sh)"
 ```
 
 ## 解决Ubuntu超时掉线的问题 
