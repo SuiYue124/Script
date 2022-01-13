@@ -107,7 +107,11 @@ wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.
 ```
 ### [DisneyPlus](https://github.com/sjlleo/VerifyDisneyPlus)
 ```shell
-  wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_amd64 && chmod +x dp && clear && ./dp
+ wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_amd64 && chmod +x dp && clear && ./dp
+```
+- **ARM64**：
+```shell
+wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_arm64 && chmod +x dp && clear && ./dp
 ```
 
 ## BBR+锐速一键脚本2021 BBR+锐速一键脚本
