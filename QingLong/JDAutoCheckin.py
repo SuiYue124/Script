@@ -1,3 +1,11 @@
+# !/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Telegram自动签到
+
+'''
+new Env('京东助力Telegram提交');
+cron=0 12 * * * python3 JDAutoCheckin.py
+'''
 
 import os
 import time

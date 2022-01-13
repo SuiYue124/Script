@@ -1,3 +1,11 @@
+# !/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# Telegram自动签到
+
+'''
+new Env('Telegram自动签到');
+cron=0 12 * * * python3 AutoCheckin.py
+'''
 
 import os
 import time
