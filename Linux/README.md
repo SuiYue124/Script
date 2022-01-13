@@ -62,7 +62,7 @@ echo "{\"uid\":1000,\"username\":\"admin\",\"serverid\":1}" > /www/server/panel/
 ```
 - **宝塔面板更新v7.8.0绕过手机登录失效，降级到v7.70**
 ```shell
-wget https://github.com/GWen124/Script/blob/master/Linux/LinuxPanel-7.7.0.zip
+wget wget http://download.bt.cn/install/update/LinuxPanel-7.7.0.zip
 ```
 ```shell
 unzip LinuxPanel-7.7.0.zip
