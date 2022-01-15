@@ -1,8 +1,4 @@
 # 说明
-## 自用一键脚本
-```shell
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
-```
 
 ## 允许root认证登录及允许密码认证
 - **获取root权限，更改密码**。
