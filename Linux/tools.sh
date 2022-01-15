@@ -129,14 +129,6 @@ ssh_port(){
   bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ssh_port.sh)
 }
 
-omz(){
-  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/omz.sh)
-}
-
-agnoster-u(){
-  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/agnoster.sh)
-}
-
 start_menu(){
     clear
 	green "========================================================================="
@@ -173,10 +165,6 @@ start_menu(){
 	 yellow " 19. frp内网穿透一键安装 "
 	 yellow " 20. 查看本机IP "
 	 yellow " 21. 更改SSH端口 "
-	 green "==============================个性化===================================="
-	 yellow " 99. 安装ohmyzsh "
-	 yellow " 100. 更换agnoster主题 "
-	 yellow " 卸载主题：uninstall_oh_my_zsh"
 
      red " 0. 退出脚本 "
     echo
@@ -244,12 +232,6 @@ start_menu(){
 		;;
 		21)
 		ssh_port
-		;;
-		99)
-		omz
-		;;
-		100)
-		agnoster
 		;;
 		0)
 		exit 0
