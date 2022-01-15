@@ -110,6 +110,9 @@ liumeiti(){
   bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 }
 vpsroot(){
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)
+}
+vpsroot1(){
   bash <(curl -sSL https://raw.githubusercontent.com/wxfyes/Oracle/main/root.sh)
 }
 iptables(){
