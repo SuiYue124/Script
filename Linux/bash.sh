@@ -119,7 +119,7 @@ chaoshi(){
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ClientAliveInterval.sh)"
 }
 vpstime(){
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Time.sh)"
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/time.sh)"
 }
 frps(){
   wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh && chmod 700 ./install-frps.sh && ./install-frps.sh install
