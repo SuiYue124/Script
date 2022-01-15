@@ -42,8 +42,8 @@ elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
     systemPackage="yum"
     systempwd="/usr/lib/systemd/system/"
 fi
-$systemPackage update 
-$systemPackage -y upgrade
+$systemPackage update -y
+$systemPackage upgrade -y
 $systemPackage -y install wget curl htop
 
 bench(){
