@@ -97,36 +97,31 @@ vps_openvz(){
 nf86(){
   wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_amd64 && chmod +x nf && clear && ./nf
 }
+
 nfarm(){
   wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_arm64 && chmod +x nf && clear && ./nf
 }
+
 dp86(){
    wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_amd64 && chmod +x dp && clear && ./dp
 }
+
 dparm(){
   wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_arm64 && chmod +x dp && clear && ./dp
 }
+
 liumeiti(){
   bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 }
+
 vpsroot(){
   bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)
 }
-vpsroot1(){
-  bash <(curl -sSL https://raw.githubusercontent.com/wxfyes/Oracle/main/root.sh)
-}
-iptables(){
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/iptables.sh)"
-}
-chaoshi(){
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ClientAliveInterval.sh)"
-}
-vpstime(){
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/time.sh)"
-}
+
 frps(){
   wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh && chmod 700 ./install-frps.sh && ./install-frps.sh install
 }
+
 vpsip(){
   curl ip.p3terx.com
 }
