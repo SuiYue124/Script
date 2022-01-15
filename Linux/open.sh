@@ -24,7 +24,7 @@ lsattr /etc/passwd /etc/shadow >/dev/null 2>&1
 prl=`grep PermitRootLogin /etc/ssh/sshd_config`
 pa=`grep PasswordAuthentication /etc/ssh/sshd_config`
 if [[ -n $prl && -n $pa ]]; then
-read -p "自定义root密码:" mima
+read -p "设置的root密码:" mima
 echo root:$mima | $su chpasswd root
 $su sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
 $su sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
