@@ -134,7 +134,7 @@ start_menu(){
 	green "========================================================================="
      blue " 本脚本支持：CentOS7+ / Debian9+ / Ubuntu16.04+"
 	 blue " 我的仓库：https://github.com/GWen124 "
-	 blue " 本脚本仓库：https://github.com/GWen124/Script/tree/master/Linux"
+	 blue " 本脚本仓库：https://github.com/GWen124/Script"
      blue " 此脚本源于网络，仅仅只是汇聚脚本功能，方便大家使用而已！"
 	green "========================================================================="
       red " 脚本测速会大量消耗 VPS 流量，请悉知！"
