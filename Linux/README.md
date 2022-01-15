@@ -1,10 +1,10 @@
 # 说明
 ## 自用一键脚本
 ```shell
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/bash.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
 ```
 
-## VPS密钥账户改成ROOT登陆
+## 允许root认证登录及允许密码认证
 - **获取root权限，更改密码**。
 ```shell
 sudo -i

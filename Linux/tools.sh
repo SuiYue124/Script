@@ -113,8 +113,8 @@ liumeiti(){
   bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 }
 
-vpsroot(){
-  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)
+vpsopen(){
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/open.sh)
 }
 
 frps(){
@@ -221,7 +221,7 @@ start_menu(){
 		liumeiti
 		;;
 		18)
-		vpsroot
+		vpsopen
 		;;
 		19)
 		frps
