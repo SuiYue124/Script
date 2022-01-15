@@ -12,7 +12,7 @@ passwd							# 默认密码为password（或者更改脚本内默认密码）
 ```
 - **执行脚本**
 ```shell
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Root.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)"
 ```
 - **更改自己的密码**。
 
@@ -29,7 +29,7 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Li
 
 ## VPS时间修改
 ```shell
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Time.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/time.sh)"
 ```
 
 ## [测试解锁流媒体情况](https://github.com/lmc999/RegionRestrictionCheck)
