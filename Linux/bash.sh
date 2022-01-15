@@ -126,6 +126,10 @@ vpsip(){
   curl ip.p3terx.com
 }
 
+ssh_port(){
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ssh_port.sh)
+}
+
 start_menu(){
     clear
 	green "======================================================================="
@@ -158,12 +162,10 @@ start_menu(){
 	 yellow " 16. 启动DisneyPlus检测脚本（ARM） "
 	 yellow " 17. 流媒体一键检测脚本 "
 	green "==============================其他工具===================================="
-	 yellow " 18. VPS一键设置root密码 "
-	 yellow " 19. Ubuntu端口开放 "
-	 yellow " 20. Ubuntu超时掉线解决 "
-	 yellow " 21. Ubuntu修改时间 "
-	 yellow " 22. frp内网穿透一键安装 "
-	 yellow " 23. 查看本机IP "
+	 yellow " 18. VPS开机大礼包（请设置好ROOT密码后运行） "
+	 yellow " 19. frp内网穿透一键安装 "
+	 yellow " 20. 查看本机IP "
+	 yellow " 21. 更改SSH端口 "
      red " 0. 退出脚本 "
     echo
     read -p "请输入数字:" num
@@ -223,19 +225,13 @@ start_menu(){
 		vpsroot
 		;;
 		19)
-		iptables
-		;;
-		20)
-		chaoshi
-		;;
-		21)
-		vpstime
-		;;
-		22)
 		frps
 		;;
-		23)
+		20)
 		vpsip
+		;;
+		21
+		ssh_port
 		;;
 		0)
 		exit 0
