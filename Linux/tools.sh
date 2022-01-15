@@ -43,7 +43,7 @@ elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
 fi
 $systemPackage update -y
 $systemPackage upgrade -y
-$systemPackage -y install wget curl htop
+$systemPackage -y install wget curl htop nano zsh
 
 bench(){
 	wget -qO- bench.sh | bash
@@ -129,6 +129,14 @@ ssh_port(){
   bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ssh_port.sh)
 }
 
+agnoster(){
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/agnoster.sh)
+}
+
+agnoster-u(){
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/agnoster-u.sh)
+}
+
 start_menu(){
     clear
 	green "========================================================================="
@@ -165,6 +173,10 @@ start_menu(){
 	 yellow " 19. frp内网穿透一键安装 "
 	 yellow " 20. 查看本机IP "
 	 yellow " 21. 更改SSH端口 "
+	 green "==============================个性化===================================="
+	 yellow " 99. 安装agnoster主题 "
+	 yellow " 100. 卸载主题 "
+
      red " 0. 退出脚本 "
     echo
     read -p "请输入数字:" num
@@ -231,6 +243,12 @@ start_menu(){
 		;;
 		21)
 		ssh_port
+		;;
+		99)
+		agnoster
+		;;
+		100)
+		agnoster-u
 		;;
 		0)
 		exit 0
