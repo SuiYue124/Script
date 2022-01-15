@@ -8,7 +8,7 @@ passwd							# 默认密码为password（或者更改脚本内默认密码）
 ```
 - **执行脚本**
 ```shell
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)"
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Root.sh)"
 ```
 - **更改自己的密码**。
 
