@@ -160,7 +160,7 @@ start_menu(){
 	 yellow " 16. 启动DisneyPlus检测脚本（ARM） "
 	 yellow " 17. 流媒体一键检测脚本 "
 	green "========================其他工具========================"
-	 yellow " 18 VPS一键设置root密码 "
+	 yellow " 18. VPS一键设置root密码 "
 	 yellow " 19. Ubuntu端口开放 "
 	 yellow " 20. Ubuntu超时掉线解决 "
 	 yellow " 21. Ubuntu修改时间 "
