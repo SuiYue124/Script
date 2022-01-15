@@ -230,7 +230,7 @@ start_menu(){
 		20)
 		vpsip
 		;;
-		21
+		21)
 		ssh_port
 		;;
 		0)
