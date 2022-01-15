@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo -if
+sudo -i
 
 blue(){
     echo -e "\033[34m\033[01m$1\033[0m"
