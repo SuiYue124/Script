@@ -117,7 +117,7 @@ iptables(){
 chaoshi(){
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ClientAliveInterval.sh)"
 }
-time(){
+vpstime(){
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Time.sh)"
 }
 frps(){
@@ -230,7 +230,7 @@ start_menu(){
 		chaoshi
 		;;
 		21)
-		time
+		vpstime
 		;;
 		22)
 		frps
