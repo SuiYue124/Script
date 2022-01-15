@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo uninstall_oh_my_zsh -y
+echo uninstall_oh_my_zsh
