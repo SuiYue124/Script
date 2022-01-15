@@ -44,7 +44,7 @@ elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
 fi
 $systemPackage update 
 $systemPackage -y upgrade
-$systemPackage -y install wget curl
+$systemPackage -y install wget curl htop
 
 bench(){
 	wget -qO- bench.sh | bash
