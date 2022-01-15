@@ -28,27 +28,30 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Li
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/time.sh)"
 ```
 
+## SSH端口修改
+```shell
+bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ssh_port.sh)
+```
+
 ## [测试解锁流媒体情况](https://github.com/lmc999/RegionRestrictionCheck)
 ```shell
 bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 ```
 
 ## [FRPS](https://github.com/MvsCode/frps-onekey)
-- **GitHub、阿里云二选一**
-```shell
-sudo -i
-```
-- **GitHub**
-```shell
-wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh
-```
-- **阿里云**
-```shell
-wget https://code.aliyun.com/MvsCode/frps-onekey/raw/master/install-frps.sh -O ./install-frps.sh
-```
 - **安装**
 ```shell
-chmod 700 ./install-frps.sh&&./install-frps.sh install
+wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh && chmod 700 ./install-frps.sh && ./install-frps.sh install
+```
+
+- **服务管理器**：
+```
+Usage: /etc/init.d/frps {start|stop|restart|status|config|version}
+```
+
+- **卸载**
+```shell
+./install-frps.sh uninstall
 ```
 
 ## [宝塔面板](https://github.com/aaPanel/BaoTa)
@@ -140,4 +143,10 @@ curl -Lso- bench.sh | bash
 - **可以从本机对国内服务器发起ping、路由跟踪测试**
 ```shell
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/mping.sh)"
+```
+
+### 查看本机IP
+- **可以可以查看本机ip与网络提供商**
+```shell
+curl ip.p3terx.com
 ```
