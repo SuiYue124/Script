@@ -1,2 +1,2 @@
 #!/bin/bash
-echo uninstall_oh_my_zsh
+cd && uninstall_oh_my_zsh
