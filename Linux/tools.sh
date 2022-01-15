@@ -43,7 +43,7 @@ elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
 fi
 $systemPackage update -y
 $systemPackage upgrade -y
-$systemPackage -y install wget curl htop nano zsh
+$systemPackage -y install wget curl htop nano 
 
 bench(){
 	wget -qO- bench.sh | bash
