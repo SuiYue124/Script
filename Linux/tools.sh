@@ -192,7 +192,7 @@ start_menu(){
 		mping
 		;;
 		3)
-		huichong
+		server-test
 		;;
 		4)
 		xui
