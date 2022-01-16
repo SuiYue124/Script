@@ -50,11 +50,11 @@ bench(){
 }
 
 mping(){
-	bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/mping.sh)"
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/mping.sh)"
 }
 
 server-test(){
-	bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/server-test.sh)"
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/server-test.sh)"
 }
 
 xui(){
