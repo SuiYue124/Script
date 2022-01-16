@@ -54,7 +54,7 @@ mping(){
 }
 
 server-test(){
-	bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/server-testsh)"
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/server-test.sh)"
 }
 
 xui(){
