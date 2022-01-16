@@ -66,7 +66,7 @@ xray(){
 }
 
 v2ray(){
-    bash <(curl -sL https://raw.githubusercontent.com/GWen124/Script/master/Linux/v2ray.sh)
+    bash <(curl -s -L https://git.io/v2ray.sh)
 }
 
 telegram(){
