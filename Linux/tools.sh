@@ -201,51 +201,60 @@ start_menu(){
 		xray
 		;;
 		6)
-		telegram
+		v2ray
 		;;
 		7)
-		baota
+		telegram
 		;;
 		8)
-		baotap
+		baota
 		;;
 		9)
-		baota7
+		baotap
 		;;
 		10)
-		vps_bbr1
+		baota7
 		;;
 		11)
-		vps_bbr2
+		vps_bbr1
 		;;
 		12)
-		vps_openvz
+		vps_bbr2
 		;;
 		13)
-		nf86
+		vps_openvz
 		;;
 		14)
-		nfarm
+		nf86
 		;;
 		15)
-	    dp86
+		nfarm
 		;;
 		16)
-		dparm
+	    dp86
 		;;
 		17)
-		liumeiti
+		dparm
 		;;
 		18)
-		vpsopen
+	    youtube86
 		;;
 		19)
-		frps
+	    youtubearm
 		;;
 		20)
-		vpsip
+		liumeiti
 		;;
 		21)
+		vpsopen
+		;;
+		22)
+		frps
+		;;
+		23)
+		vpsip
+		;;
+		24)
 		ssh_port
 		;;
 		0)
