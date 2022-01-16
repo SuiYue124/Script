@@ -118,7 +118,7 @@ youtube86(){
 }
 
 youtubearm(){
-  wget -O tubecheck https://cdn.jsdelivr.net/gh/sjlleo/TubeCheck/CDN/tubecheck_1.0beta_linux_arm64 && chmod +x tubecheck && clear && ./tubecheck
+  wget -O tubecheck https://github.com/sjlleo/TubeCheck/releases/download/1.0Beta/tubecheck_1.0beta_linux_arm64 && chmod +x tubecheck && clear && ./tubecheck
 }
 
 liumeiti(){
