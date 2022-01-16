@@ -53,8 +53,8 @@ mping(){
 	bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/mping.sh)"
 }
 
-huichong(){
-	wget -O huichong.sh https://raw.githubusercontent.com/wxfyes/bt/master/huichong.sh && bash huichong.sh
+server-test(){
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/helloxz/mping/master/server-testsh)"
 }
 
 xui(){
@@ -63,6 +63,10 @@ xui(){
 
 xray(){
     bash <(curl -sL https://raw.githubusercontent.com/GWen124/Script/master/Linux/xray.sh)
+}
+
+v2ray(){
+    bash <(curl -sL https://raw.githubusercontent.com/GWen124/Script/master/Linux/v2ray.sh)
 }
 
 telegram(){
@@ -109,6 +113,14 @@ dparm(){
   wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_arm64 && chmod +x dp && clear && ./dp
 }
 
+youtube86(){
+  wget -O tubecheck https://cdn.jsdelivr.net/gh/sjlleo/TubeCheck/CDN/tubecheck_1.0beta_linux_amd64 && chmod +x tubecheck && clear && ./tubecheck
+}
+
+youtubearm(){
+  wget -O tubecheck https://cdn.jsdelivr.net/gh/sjlleo/TubeCheck/CDN/tubecheck_1.0beta_linux_arm64 && chmod +x tubecheck && clear && ./tubecheck
+}
+
 liumeiti(){
   bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 }
@@ -144,27 +156,30 @@ start_menu(){
 	 yellow " 3. VPS 回程路由     （四网测试 - 英文显示）"
 	green "==============================科学上网一键脚本==========================="
 	 yellow " 4. X-UI面板（建议搭配宝塔面板使用） "
-	 yellow " 5. Xray一键脚本 "
-	 yellow " 6. TG代理一键搭建 "
+	 yellow " 5. XRay一键脚本 "
+	 yellow " 6. V2Ray一键脚本 "
+	 yellow " 7. TG代理一键搭建 "
 	green "==============================宝塔面板==================================="
-	 yellow " 7. Ubuntu系统一键官方脚本 "
-	 yellow " 8. 宝塔面板无需手机登陆 "
-	 yellow " 9. 宝塔面板降级到v7.7 "
+	 yellow " 8. Ubuntu系统一键官方脚本 "
+	 yellow " 9. 宝塔面板无需手机登陆 "
+	 yellow " 10. 宝塔面板降级到v7.7 "
 	green "==============================BBR加速===================================="
-	 yellow " 10. BBR一键加速（稳定版）"
-	 yellow " 11. BBR一键加速（最新版）"
-	 yellow " 12. openvz BBR一键加速 "
+	 yellow " 11. BBR一键加速（稳定版）"
+	 yellow " 12. BBR一键加速（最新版）"
+	 yellow " 13. openvz BBR一键加速 "
 	green "==============================流媒体解锁检测============================="
-	 yellow " 13. 启动Netflix检测脚本（X86） "
-	 yellow " 14. 启动Netflix检测脚本（ARM） "
-	 yellow " 15. 启动DisneyPlus检测脚本（X86） "
-	 yellow " 16. 启动DisneyPlus检测脚本（ARM） "
-	 yellow " 17. 流媒体一键检测脚本 "
+	 yellow " 14. 启动Netflix检测脚本（X86） "
+	 yellow " 15. 启动Netflix检测脚本（ARM） "
+	 yellow " 16. 启动DisneyPlus检测脚本（X86） "
+	 yellow " 17. 启动DisneyPlus检测脚本（ARM） "
+	 yellow " 18. Youtube 缓存节点、地域信息检测（X86） "
+	 yellow " 19. Youtube 缓存节点、地域信息检测（ARM） "
+	 yellow " 20. 流媒体一键检测脚本 "
 	green "==============================其他工具==================================="
-	 yellow " 18. VPS开机大礼包（请设置好ROOT密码后运行） "
-	 yellow " 19. frp内网穿透一键安装 "
-	 yellow " 20. 查看本机IP "
-	 yellow " 21. 更改SSH端口 "
+	 yellow " 21. VPS开机大礼包（请设置好ROOT密码后运行） "
+	 yellow " 22. frp内网穿透一键安装 "
+	 yellow " 23. 查看本机IP "
+	 yellow " 24. 更改SSH端口 "
 
      red " 0. 退出脚本 "
     echo
