@@ -142,6 +142,18 @@ ssh_port(){
   bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ssh_port.sh)
 }
 
+omz(){
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/omz.sh)
+}
+
+agnoster(){
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/agnoster.sh)
+}
+
+agnoster-u(){
+  uninstall_oh_my_zsh
+}
+
 start_menu(){
     clear
 	green "========================================================================="
@@ -181,6 +193,10 @@ start_menu(){
 	 yellow " 22. frp内网穿透一键安装 "
 	 yellow " 23.虚拟内存SWAP一键脚本 "
 	 yellow " 24. 更改SSH端口 "
+	green "==============================个性化主===================================="
+	 yellow " 98. 安装OMZ主题 "
+	 yellow " 99. 更换agnoster主题 "
+	 yellow " 100.卸载主题 "
 
      red " 0. 退出脚本 "
     echo
@@ -257,6 +273,15 @@ start_menu(){
 		;;
 		24)
 		ssh_port
+		;;
+		98)
+		omz
+		;;
+		99)
+		agnoster
+		;;
+		100)
+		agnoster-u
 		;;
 		0)
 		exit 0
