@@ -196,7 +196,7 @@ start_menu(){
 	green "==============================个性化主===================================="
 	 yellow " 98. 安装OMZ主题 "
 	 yellow " 99. 更换agnoster主题 "
-	 yellow " 100.卸载主题 "
+	 yellow " 100.卸载主题 ：uninstall_oh_my_zsh "
 
      red " 0. 退出脚本 "
     echo
