@@ -50,12 +50,12 @@ bench(){
 	wget -qO- bench.sh | bash
 }
 
-mping(){
-	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/mping.sh)"
-}
-
 server-test(){
 	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/server-test.sh)"
+}
+
+vpsip(){
+  curl ip.p3terx.com
 }
 
 xui(){
@@ -134,8 +134,8 @@ frps(){
   wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh && chmod 700 ./install-frps.sh && ./install-frps.sh install
 }
 
-vpsip(){
-  curl ip.p3terx.com
+swap(){
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/swap.sh)
 }
 
 ssh_port(){
@@ -151,10 +151,10 @@ start_menu(){
      blue " 此脚本源于网络，仅仅只是汇聚脚本功能，方便大家使用而已！"
 	green "========================================================================="
       red " 脚本测速会大量消耗 VPS 流量，请悉知！"
-	green "==============================VPS测速===================================="
+	green "==============================VPS检测===================================="
      yellow " 1. Bench：查看系统信息，测试本地到世界主要机房速度及硬盘读写速率"
-     yellow " 2. MPing：本机对国内服务器发起ping、路由跟踪测试）"
-	 yellow " 3. VPS 回程路由 "
+	 yellow " 3. VPS 回程路由、路由跟踪测试 "
+	 yellow " 23. 查看本机IP和服务商 "
 	green "==============================科学上网一键脚本==========================="
 	 yellow " 4. X-UI面板（建议搭配宝塔面板使用） "
 	 yellow " 5. XRay一键脚本 "
@@ -179,7 +179,7 @@ start_menu(){
 	green "==============================其他工具==================================="
 	 yellow " 21. VPS开机大礼包（请设置好ROOT密码后运行） "
 	 yellow " 22. frp内网穿透一键安装 "
-	 yellow " 23. 查看本机IP "
+	 yellow " 23.虚拟内存SWAP一键脚本 "
 	 yellow " 24. 更改SSH端口 "
 
      red " 0. 退出脚本 "
@@ -190,10 +190,10 @@ start_menu(){
 		bench
 		;;
 		2)
-		mping
+		server-test
 		;;
 		3)
-		server-test
+		swap
 		;;
 		4)
 		xui
@@ -253,7 +253,7 @@ start_menu(){
 		frps
 		;;
 		23)
-		vpsip
+		swap
 		;;
 		24)
 		ssh_port
