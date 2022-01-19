@@ -47,15 +47,19 @@ $systemPackage upgrade -y
 $systemPackage -y install wget curl htop nano
 
 bench(){
-	wget -qO- bench.sh | bash
+  wget -qO- bench.sh | bash
 }
 
 server-test(){
-	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/server-test.sh)"
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/server-test.sh)"
 }
 
 vpsip(){
   curl ip.p3terx.com
+}
+
+gfw_push(){
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/gfw_push.sh)"
 }
 
 xui(){
@@ -73,6 +77,7 @@ v2ray(){
 telegram(){
     bash <(wget -qO- https://git.io/mtg.sh)
 }
+
 
 baota(){
     wget -O install.sh http://download.bt.cn/install/install-ubuntu_6.0.sh && sudo bash install.sh
@@ -156,6 +161,7 @@ start_menu(){
      yellow " 1. Bench：查看系统信息，测试本地到世界主要机房速度及硬盘读写速率"
 	 yellow " 2. VPS 回程路由、路由跟踪测试 "
 	 yellow " 3. 查看本机IP和服务商 "
+	 yellow " 4. 监测IP是否被墙并推送消息至Telegram "
 	green "==============================科学上网一键脚本==========================="
 	 yellow " 4. X-UI面板（建议搭配宝塔面板使用） "
 	 yellow " 5. XRay一键脚本 "
@@ -197,66 +203,69 @@ start_menu(){
 		vpsip
 		;;
 		4)
-		xui
+		gfw_push
 		;;
 		5)
-		xray
+		xui
 		;;
 		6)
-		v2ray
+		xray
 		;;
 		7)
-		telegram
+		v2ray
 		;;
 		8)
-		baota
+		telegram
 		;;
 		9)
-		baotap
+		baota
 		;;
 		10)
-		baota7
+		baotap
 		;;
 		11)
-		vps_bbr1
+		baota7
 		;;
 		12)
-		vps_bbr2
+		vps_bbr1
 		;;
 		13)
-		vps_openvz
+		vps_bbr2
 		;;
 		14)
-		nf86
+		vps_openvz
 		;;
 		15)
-		nfarm
+		nf86
 		;;
 		16)
-	    dp86
+		nfarm
 		;;
 		17)
-		dparm
+	    dp86
 		;;
 		18)
-	    youtube86
+		dparm
 		;;
 		19)
-	    youtubearm
+	    youtube86
 		;;
 		20)
-		liumeiti
+	    youtubearm
 		;;
 		21)
-		vpsopen
+		liumeiti
 		;;
 		22)
-		frps
+		vpsopen
 		;;
 		23)
-		swap
+		frps
 		;;
 		24)
+		swap
+		;;
+		25)
 		ssh_port
 		;;
 		0)
