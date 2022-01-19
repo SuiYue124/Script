@@ -147,6 +147,14 @@ ssh_port(){
   bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ssh_port.sh)
 }
 
+nezha(){
+  curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh  -o nezha.sh && chmod +x nezha.sh
+sudo ./nezha.sh
+}
+
+rclone(){
+  curl https://rclone.org/install.sh | sudo bash
+}
 
 start_menu(){
     clear
@@ -188,6 +196,8 @@ start_menu(){
 	 yellow " 23. frp内网穿透一键安装 "
 	 yellow " 24. 虚拟内存SWAP一键脚本 "
 	 yellow " 25. 更改SSH端口 "
+	 yellow " 26. 哪吒面板 "
+	 yellow " 27. Rclone官方一键安装脚本 "
 
      red " 0. 退出脚本 "
     echo
@@ -267,6 +277,12 @@ start_menu(){
 		;;
 		25)
 		ssh_port
+		;;
+		26)
+		nezha
+		;;
+		27)
+		rclone
 		;;
 		0)
 		exit 0
