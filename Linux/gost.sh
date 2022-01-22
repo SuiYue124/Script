@@ -899,25 +899,25 @@ echo && echo -e "                 gost 一键安装配置脚本"${Red_font_prefi
 ————————————" && echo
 read -e -p " 请输入数字 [1-9]:" num
 case "$num" in
-1)
+  1)
   Install_ct
   ;;
-2)
+  2)
   checknew
   ;;
-3)
+  3)
   Uninstall_ct
   ;;
-4)
+  4)
   Start_ct
   ;;
-5)
+  5)
   Stop_ct
   ;;
-6)
+  6)
   Restart_ct
   ;;
-7)
+  7)
   rawconf
   rm -rf /etc/gost/config.json
   confstart
@@ -928,10 +928,10 @@ case "$num" in
   echo -e "--------------------------------------------------------"
   show_all_conf
   ;;
-8)
+  8)
   show_all_conf
   ;;
-9)
+  9)
   show_all_conf
   read -p "请输入你要删除的配置编号：" numdelete
   if echo $numdelete | grep -q '[0-9]'; then
@@ -946,13 +946,13 @@ case "$num" in
     echo "请输入正确数字"
   fi
   ;;
-10)
+  10)
   cron_restart
   ;;
-11)
+  11)
   cert
   ;;
-*)
+  *)
   echo "请输入正确数字 [1-9]"
   ;;
 esac
