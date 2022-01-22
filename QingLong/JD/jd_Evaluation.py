@@ -5,7 +5,7 @@
 # 新增可选账号评价、更换图片、自动下载sendNotify
 '''
 new Env('京东自动评价');
-cron=0 0 8 ? * WED  python3 jd_Evaluation.py
+cron=30 0 8 * * *  python3 jd_Evaluation.py
 '''
 import os
 import random

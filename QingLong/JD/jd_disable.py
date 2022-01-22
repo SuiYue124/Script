@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 """
-cron: 20 */8 * * *
+cron: 50 * * * *
 new Env('禁用重复任务');
 """
 
@@ -28,7 +28,7 @@ if not ipport:
     ipport = "localhost:5700"
 else:
     ipport = ipport.lstrip("http://").rstrip("/")
-sub_str = os.getenv("RES_SUB", "zero205_JD_tencent_scf_main")
+sub_str = os.getenv("RES_SUB", "raw_JD&")
 sub_list = sub_str.split("&")
 res_only = os.getenv("RES_ONLY", True)
 headers = {
