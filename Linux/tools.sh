@@ -307,7 +307,7 @@ start_menu(){
 		29)
 		alist
 		;;
-		29)
+		30)
 		openwrt
 		;;
 		0)
