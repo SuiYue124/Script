@@ -66,6 +66,10 @@ xui(){
     bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 }
 
+trojanui(){
+    bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/trojan-install.sh)
+}
+
 xray(){
     bash <(curl -sL https://raw.githubusercontent.com/GWen124/Script/master/Linux/xray.sh)
 }
@@ -157,7 +161,7 @@ rclone(){
 }
 
 alist(){
-  bash -c "$(curl -sS https://raw.githubusercontent.com/GWen124/Script/master/Linux/alist.sh)"
+  curl -fsSL "https://raw.githubusercontent.com/GWen124/Script/master/Linux/alist.sh" | bash -s install
 }
 
 
@@ -177,33 +181,34 @@ start_menu(){
 	 yellow " 4. 监测IP是否被墙并推送消息至Telegram "
 	green "==================================科学上网一键脚本==============================="
 	 yellow " 5. X-UI面板（建议搭配宝塔面板使用） "
-	 yellow " 6. XRay一键脚本 "
-	 yellow " 7. V2Ray一键脚本 "
-	 yellow " 8. TG代理一键搭建 "
+	 yellow " 6. Trojan-UI一键脚本 "
+	 yellow " 7. XRay一键脚本 "
+	 yellow " 8. V2Ray一键脚本 "
+	 yellow " 9. TG代理一键搭建 "
 	green "==================================宝塔面板======================================="
-	 yellow " 9. Ubuntu系统一键官方脚本 "
-	 yellow " 10. 宝塔面板无需手机登陆 "
-	 yellow " 11. 宝塔面板降级到v7.7 "
+	 yellow " 10. Ubuntu系统一键官方脚本 "
+	 yellow " 11. 宝塔面板无需手机登陆 "
+	 yellow " 12. 宝塔面板降级到v7.7 "
 	green "==================================BBR加速========================================"
-	 yellow " 12. BBR一键加速（稳定版）"
-	 yellow " 13. BBR一键加速（最新版）"
-	 yellow " 14. openvz BBR一键加速 "
+	 yellow " 13. BBR一键加速（稳定版）"
+	 yellow " 14. BBR一键加速（最新版）"
+	 yellow " 15. openvz BBR一键加速 "
 	green "==================================流媒体解锁检测================================="
-	 yellow " 15. 启动Netflix检测脚本（X86） "
-	 yellow " 16. 启动Netflix检测脚本（ARM） "
-	 yellow " 17. 启动DisneyPlus检测脚本（X86） "
-	 yellow " 18. 启动DisneyPlus检测脚本（ARM） "
-	 yellow " 19. Youtube 缓存节点、地域信息检测（X86） "
-	 yellow " 20. Youtube 缓存节点、地域信息检测（ARM） "
-	 yellow " 21. 流媒体一键检测脚本 "
+	 yellow " 16. 启动Netflix检测脚本（X86） "
+	 yellow " 17. 启动Netflix检测脚本（ARM） "
+	 yellow " 18. 启动DisneyPlus检测脚本（X86） "
+	 yellow " 19. 启动DisneyPlus检测脚本（ARM） "
+	 yellow " 20. Youtube 缓存节点、地域信息检测（X86） "
+	 yellow " 21. Youtube 缓存节点、地域信息检测（ARM） "
+	 yellow " 22. 流媒体一键检测脚本 "
 	green "==================================其他工具======================================="
-	 yellow " 22. VPS开机大礼包（请设置好ROOT密码后运行） "
-	 yellow " 23. frp内网穿透一键安装 "
-	 yellow " 24. 虚拟内存SWAP一键脚本 "
-	 yellow " 25. 更改SSH端口 "
-	 yellow " 26. 哪吒面板 "
-	 yellow " 27. Rclone官方一键安装脚本 "
-	 yellow " 28. Alist一键安装脚本 "
+	 yellow " 23. VPS开机大礼包（请设置好ROOT密码后运行） "
+	 yellow " 24. frp内网穿透一键安装 "
+	 yellow " 25. 虚拟内存SWAP一键脚本 "
+	 yellow " 26. 更改SSH端口 "
+	 yellow " 27. 哪吒面板 "
+	 yellow " 28. Rclone官方一键安装脚本 "
+	 yellow " 29. Alist一键安装脚本 "
 	 green "================================================================================="
      red " 0. 退出脚本 "
 	 green "================================================================================="
@@ -226,72 +231,75 @@ start_menu(){
 		xui
 		;;
 		6)
-		xray
+		trojanui
 		;;
 		7)
-		v2ray
+		xray
 		;;
 		8)
-		telegram
+		v2ray
 		;;
 		9)
-		baota
+		telegram
 		;;
 		10)
-		baotap
+		baota
 		;;
 		11)
-		baota7
+		baotap
 		;;
 		12)
-		vps_bbr1
+		baota7
 		;;
 		13)
-		vps_bbr2
+		vps_bbr1
 		;;
 		14)
-		vps_openvz
+		vps_bbr2
 		;;
 		15)
-		nf86
+		vps_openvz
 		;;
 		16)
-		nfarm
+		nf86
 		;;
 		17)
-	    dp86
+		nfarm
 		;;
 		18)
-		dparm
+	    dp86
 		;;
 		19)
-	    youtube86
+		dparm
 		;;
 		20)
-	    youtubearm
+	    youtube86
 		;;
 		21)
-		liumeiti
+	    youtubearm
 		;;
 		22)
-		vpsopen
+		liumeiti
 		;;
 		23)
-		frps
+		vpsopen
 		;;
 		24)
-		swap
+		frps
 		;;
 		25)
-		ssh_port
+		swap
 		;;
 		26)
-		nezha
+		ssh_port
 		;;
 		27)
-		rclone
+		nezha
 		;;
 		28)
+		rclone
+		;;
+		29)
 		alist
 		;;
 		0)
