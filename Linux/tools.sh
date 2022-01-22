@@ -63,7 +63,7 @@ gfw_push(){
 }
 
 unlock(){
-  bash -c "$(curl -fsSL bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/unlock.sh)")"
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/unlock.sh)"
 }
 
 xui(){
