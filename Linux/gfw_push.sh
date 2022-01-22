@@ -358,6 +358,9 @@ View_Log(){
 	echo && echo -e "${Tip} 按 ${Red_font_prefix}Ctrl+C${Font_color_suffix} 终止查看日志(正常情况是没有使用日志记录的)" && echo -e "如果需要查看完整日志内容，请用 ${Red_font_prefix}cat ${LOG_file}${Font_color_suffix} 命令。" && echo
 	tail -f ${LOG_file}
 }
+fanhui(){
+  bash <(curl -L -s https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)
+}
 Update_Shell(){
 	sh_new_ver=$(wget --no-check-certificate -qO- -t1 -T3 "https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/gfw_push.sh"|grep 'sh_ver="'|awk -F "=" '{print $NF}'|sed 's/\"//g'|head -1)
 	[[ -z ${sh_new_ver} ]] && echo -e "${Error} 无法链接到 Github !" && exit 0
@@ -387,6 +390,9 @@ else
  ${Green_font_prefix} 6.${Font_color_suffix} 设置 配置信息
  ${Green_font_prefix} 7.${Font_color_suffix} 查看 配置信息
  ${Green_font_prefix} 8.${Font_color_suffix} 查看 日志信息
+ ————————————
+ ${Green_font_prefix} 9.${Font_color_suffix} 返回上级脚本
+ ${Green_font_prefix} 0.${Font_color_suffix} 退出
 ————————————" && echo
 	if [[ -e "${Crontab_file}" ]]; then
 		check_crontab_monitor_status
@@ -429,6 +435,12 @@ else
 		;;
 		8)
 		View_Log
+		;;
+		9)
+		fanhui
+		;;
+		0)
+		exit 0
 		;;
 		*)
 		echo "请输入正确数字 [0-8]"
