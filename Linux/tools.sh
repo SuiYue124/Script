@@ -156,6 +156,11 @@ rclone(){
   curl https://rclone.org/install.sh | sudo bash
 }
 
+alist(){
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/alis.sh)
+}
+
+
 start_menu(){
     clear
 	green "================================================================================="
@@ -198,6 +203,7 @@ start_menu(){
 	 yellow " 25. 更改SSH端口 "
 	 yellow " 26. 哪吒面板 "
 	 yellow " 27. Rclone官方一键安装脚本 "
+	 yellow " 28. Alist一键安装脚本 "
 	 green "================================================================================="
      red " 0. 退出脚本 "
 	 green "================================================================================="
@@ -284,6 +290,9 @@ start_menu(){
 		;;
 		27)
 		rclone
+		;;
+		28)
+		alist
 		;;
 		0)
 		exit 0
