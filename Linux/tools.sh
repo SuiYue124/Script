@@ -67,7 +67,7 @@ xui(){
 }
 
 trojanui(){
-    bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/trojan-install.sh)
+    bash <(curl -Ls https://raw.githubusercontent.com/GWen124/Script/master/Linux/trojan-install.sh)
 }
 
 xray(){
