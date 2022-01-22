@@ -62,6 +62,10 @@ gfw_push(){
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/gfw_push.sh)"
 }
 
+unlock(){
+  bash -c "$(curl -fsSL bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/unlock.sh)")"
+}
+
 xui(){
     bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 }
@@ -105,34 +109,6 @@ vps_bbr2(){
 
 vps_openvz(){
   wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh
-}
-
-nf86(){
-  wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_amd64 && chmod +x nf && clear && ./nf
-}
-
-nfarm(){
-  wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_arm64 && chmod +x nf && clear && ./nf
-}
-
-dp86(){
-   wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_amd64 && chmod +x dp && clear && ./dp
-}
-
-dparm(){
-  wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_arm64 && chmod +x dp && clear && ./dp
-}
-
-youtube86(){
-  wget -O tubecheck https://cdn.jsdelivr.net/gh/sjlleo/TubeCheck/CDN/tubecheck_1.0beta_linux_amd64 && chmod +x tubecheck && clear && ./tubecheck
-}
-
-youtubearm(){
-  wget -O tubecheck https://github.com/sjlleo/TubeCheck/releases/download/1.0Beta/tubecheck_1.0beta_linux_arm64 && chmod +x tubecheck && clear && ./tubecheck
-}
-
-liumeiti(){
-  bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 }
 
 vpsopen(){
@@ -183,37 +159,30 @@ start_menu(){
 	 yellow " 2. VPS 回程路由、路由跟踪测试 "
 	 yellow " 3. 查看本机IP和服务商 "
 	 yellow " 4. 监测IP是否被墙并推送消息至Telegram "
+	 yellow " 5. 流媒体解锁检测 "
 	green "==================================科学上网一键脚本==============================="
-	 yellow " 5. X-UI面板（建议搭配宝塔面板使用） "
-	 yellow " 6. Trojan-UI一键脚本 "
-	 yellow " 7. XRay一键脚本 "
-	 yellow " 8. V2Ray一键脚本 "
-	 yellow " 9. TG代理一键搭建 "
+	 yellow " 6. X-UI面板（建议搭配宝塔面板使用） "
+	 yellow " 7. Trojan-UI一键脚本 "
+	 yellow " 8. XRay一键脚本 "
+	 yellow " 9. V2Ray一键脚本 "
+	 yellow " 10. TG代理一键搭建 "
 	green "==================================宝塔面板======================================="
-	 yellow " 10. Ubuntu系统一键官方脚本 "
-	 yellow " 11. 宝塔面板无需手机登陆 "
-	 yellow " 12. 宝塔面板降级到v7.7 "
+	 yellow " 11. Ubuntu系统一键官方脚本 "
+	 yellow " 12. 宝塔面板无需手机登陆 "
+	 yellow " 13. 宝塔面板降级到v7.7 "
 	green "==================================BBR加速========================================"
-	 yellow " 13. BBR一键加速（稳定版）"
-	 yellow " 14. BBR一键加速（最新版）"
-	 yellow " 15. openvz BBR一键加速 "
-	green "==================================流媒体解锁检测================================="
-	 yellow " 16. 启动Netflix检测脚本（X86） "
-	 yellow " 17. 启动Netflix检测脚本（ARM） "
-	 yellow " 18. 启动DisneyPlus检测脚本（X86） "
-	 yellow " 19. 启动DisneyPlus检测脚本（ARM） "
-	 yellow " 20. Youtube 缓存节点、地域信息检测（X86） "
-	 yellow " 21. Youtube 缓存节点、地域信息检测（ARM） "
-	 yellow " 22. 流媒体一键检测脚本 "
+	 yellow " 14. BBR一键加速（稳定版）"
+	 yellow " 15. BBR一键加速（最新版）"
+	 yellow " 16. openvz BBR一键加速 "
 	green "==================================其他工具======================================="
-	 yellow " 23. VPS开机大礼包（请设置好ROOT密码后运行） "
-	 yellow " 24. frp内网穿透一键安装 "
-	 yellow " 25. 虚拟内存SWAP一键脚本 "
-	 yellow " 26. 更改SSH端口 "
-	 yellow " 27. 哪吒面板 "
-	 yellow " 28. Rclone官方一键安装脚本 "
-	 yellow " 29. Alist一键安装脚本 "
-	 yellow " 30. OpenWrt本地一键编译脚本 "
+	 yellow " 17. VPS开机大礼包（请设置好ROOT密码后运行） "
+	 yellow " 18. frp内网穿透一键安装 "
+	 yellow " 19. 虚拟内存SWAP一键脚本 "
+	 yellow " 20. 更改SSH端口 "
+	 yellow " 21. 哪吒面板 "
+	 yellow " 22. Rclone官方一键安装脚本 "
+	 yellow " 23. Alist一键安装脚本 "
+	 yellow " 24. OpenWrt本地一键编译脚本 "
 	 green "================================================================================="
      red " 0. 退出脚本 "
 	 green "================================================================================="
@@ -233,81 +202,63 @@ start_menu(){
 		gfw_push
 		;;
 		5)
-		xui
+		unlock
 		;;
 		6)
-		trojanui
+		xui
 		;;
 		7)
-		xray
+		trojanui
 		;;
 		8)
-		v2ray
+		xray
 		;;
 		9)
-		telegram
+		v2ray
 		;;
 		10)
-		baota
+		telegram
 		;;
 		11)
-		baotap
+		baota
 		;;
 		12)
-		baota7
+		baotap
 		;;
 		13)
-		vps_bbr1
+		baota7
 		;;
 		14)
-		vps_bbr2
+		vps_bbr1
 		;;
 		15)
-		vps_openvz
+		vps_bbr2
 		;;
 		16)
-		nf86
+		vps_openvz
 		;;
 		17)
-		nfarm
-		;;
-		18)
-	    dp86
-		;;
-		19)
-		dparm
-		;;
-		20)
-	    youtube86
-		;;
-		21)
-	    youtubearm
-		;;
-		22)
-		liumeiti
-		;;
-		23)
 		vpsopen
 		;;
-		24)
+		18)
 		frps
 		;;
-		25)
+		19)
 		swap
 		;;
-		26)
+		20)
 		ssh_port
 		;;
-		27)
+		21)
 		nezha
 		;;
-		28)
+		22)
 		rclone
 		;;
-		29)
+		23)
 		alist
 		;;
-		30)
+		24)
 		openwrt
 		;;
 		0)

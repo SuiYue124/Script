@@ -42,6 +42,10 @@ liumeiti(){
   bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 }
 
+fanhui(){
+  bash <(curl -L -s https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)
+}
+
 
 
 start_menu(){
@@ -55,6 +59,7 @@ start_menu(){
 	 yellow " 6. Youtube 缓存节点、地域信息检测（ARM） "
 	 yellow " 7. 流媒体一键检测脚本 "
 	 green "================================================================================="
+	 red " 8. 返回上级脚本 "
      red " 0. 退出脚本 "
 	 green "================================================================================="
     echo
@@ -80,6 +85,9 @@ start_menu(){
 		;;
 		7)
 		liumeiti
+		;;
+		8)
+		fanhui
 		;;
 		0)
 		exit 0
