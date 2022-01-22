@@ -392,7 +392,7 @@ else
  ${Green_font_prefix} 8.${Font_color_suffix} 查看 日志信息
  ————————————
  ${Green_font_prefix} 9.${Font_color_suffix} 返回上级脚本
- ${Green_font_prefix} 0.${Font_color_suffix} 退出
+ ${Green_font_prefix} 10.${Font_color_suffix} 退出
 ————————————" && echo
 	if [[ -e "${Crontab_file}" ]]; then
 		check_crontab_monitor_status
@@ -407,7 +407,7 @@ else
 		echo -e " 当前状态: ${Red_font_prefix}Crontab 未安装${Font_color_suffix}"
 	fi
 	echo
-	read -e -p " 请输入数字 [0-8]:" num
+	read -e -p " 请输入数字 [0-10]:" num
 	case "$num" in
 		0)
 		Update_Shell
@@ -439,11 +439,11 @@ else
 		9)
 		fanhui
 		;;
-		0)
-		exit 0
+		10)
+		exit 10
 		;;
 		*)
-		echo "请输入正确数字 [0-8]"
+		echo "请输入正确数字 [0-10]"
 		;;
 	esac
 fi
