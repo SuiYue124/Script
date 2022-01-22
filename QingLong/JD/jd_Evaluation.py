@@ -19,7 +19,7 @@ import jieba.analyse
 # 检查是否下载sendNotify.py
 if os.path.exists('sendNotify.py') == False:
     pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
-    req = requests.get("https://raw.githubusercontent.com/GWen124/Script/master/QingLong/JD/sendNotify.py")
+    req = requests.get("https://raw.githubusercontent.com/GWen124/Script/master/QingLong/JD/jd_Evaluation/sendNotify.py")
     with open(pwd + 'sendNotify.py', "wb") as f:
         f.write(req.content)
 from sendNotify import send
