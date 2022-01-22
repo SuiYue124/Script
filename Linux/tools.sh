@@ -141,7 +141,7 @@ alist(){
 }
 
 gost(){
-  curl -fsSL "https://raw.githubusercontent.com/KANIKIG/Multi-EasyGost/master/gost.sh" | bash -s install
+  curl -fsSL "https://raw.githubusercontent.com/GWen124/Script/master/Linux/gost.sh" | bash -s install
 }
 
 openwrt(){
