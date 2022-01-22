@@ -139,6 +139,8 @@ SUCCESS() {
     echo -e "启动服务：${GREEN_COLOR}systemctl start alist${RES}"
     echo -e "重启服务：${GREEN_COLOR}systemctl restart alist${RES}"
     echo -e "停止服务：${GREEN_COLOR}systemctl stop alist${RES}"
+    echo -e "更新：${GREEN_COLOR}curl -fsSL "https://nn.ci/alist.sh" | bash -s update${RES}"
+	echo -e "停止服务：${GREEN_COLOR}curl -fsSL "https://nn.ci/alist.sh" | bash -s uninstall${RES}"
     echo -e "\r\n温馨提示：如果端口无法正常访问，请检查 \033[36m服务器安全组、本机防火墙、Alist状态\033[0m"
     echo
 }

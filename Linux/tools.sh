@@ -157,7 +157,7 @@ rclone(){
 }
 
 alist(){
-  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/alis.sh)
+  bash -c "$(curl -sS https://raw.githubusercontent.com/GWen124/Script/master/Linux/alist.sh)"
 }
 
 
