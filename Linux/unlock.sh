@@ -80,6 +80,7 @@ start_menu(){
 		;;
 		7)
 		liumeiti
+		;;
 		0)
 		exit 0
 		;;
