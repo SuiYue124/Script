@@ -140,6 +140,10 @@ alist(){
   curl -fsSL "https://raw.githubusercontent.com/GWen124/Script/master/Linux/alist.sh" | bash -s install
 }
 
+gost(){
+  curl -fsSL "https://raw.githubusercontent.com/GWen124/Script/master/Linux/gost.sh" | bash -s install
+}
+
 openwrt(){
   bash <(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/openwrt-local.sh)
 }
@@ -182,7 +186,8 @@ start_menu(){
 	 yellow " 21. 哪吒面板 "
 	 yellow " 22. Rclone官方一键安装脚本 "
 	 yellow " 23. Alist一键安装脚本 "
-	 yellow " 24. OpenWrt本地一键编译脚本 "
+	 yellow " 24. 隧道gost一键安装脚本 "
+	 yellow " 25. OpenWrt本地一键编译脚本 "
 	 green "================================================================================="
      red " 0. 退出脚本 "
 	 green "================================================================================="
@@ -259,6 +264,9 @@ start_menu(){
 		alist
 		;;
 		24)
+		gost
+		;;
+		25)
 		openwrt
 		;;
 		0)
