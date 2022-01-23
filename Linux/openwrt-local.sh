@@ -145,7 +145,10 @@ function buildwenjian() {
   cd ${GITHUB_WORKSPACE}
   if [[ ! -d ${GITHUB_WORKSPACE}/build ]]; then
     rm -rf AutoBuild-OpenWrt && git clone https://github.com/GWen124/AutoBuild-OpenWrt ${GITHUB_WORKSPACE}/AutoBuild-OpenWrt
-    judge "AutoBuild文件下载"
+    judge "build文件下载"
+    cp -Rf ${GITHUB_WORKSPACE}/AutoBuild-OpenWrt/build ${GITHUB_WORKSPACE}/build
+    [[ -f ${Builb} ]] && cp -Rf ${GITHUB_WORKSPACE}/build/* ${Builb}/
+    rm -rf ${GITHUB_WORKSPACE}/AutoBuild-OpenWrt
   fi
 }
 
@@ -259,9 +262,12 @@ function amlogic_s9xxx() {
 
 function op_jiaoben() {
   cd ${GITHUB_WORKSPACE}
-  [[ -f ${Builb} ]] && cp -Rf ${GITHUB_WORKSPACE}/AutoBuild-OpenWrt/build/* ${Builb}/
-  cp -Rf ${GITHUB_WORKSPACE}/AutoBuild-OpenWrt/build ${GITHUB_WORKSPACE}/build
+  rm -rf AutoBuild-OpenWrt && git clone https://github.com/GWen124/AutoBuild-OpenWrt
+  judge "编译脚本下载"
+  cp -Rf ${GITHUB_WORKSPACE}/build/* AutoBuild-OpenWrt/build
+  chmod -R +x AutoBuild-OpenWrt/build && cp -Rf AutoBuild-OpenWrt/build ${Home}
   rm -rf AutoBuild-OpenWrt
+  cp -Rf ${Builb}/common/*.sh ${Builb}/${firmware}
   cp -rf ${ZZZ} ${Home}/zdefault-settings
 }
 
