@@ -1,5 +1,2 @@
 # 说明
-** ql repo <repourl> <path> <blacklist> <dependence> <branch> **
-
-** ql raw <repourl> **
-
+** 一些京东功能性脚本 ***
