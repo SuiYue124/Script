@@ -1,0 +1,30 @@
+name: 最后一天执行
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+#  schedule:
+#    - cron: 0 8 * * 5
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+      
+    - name: lastday
+      id: lastday
+      run:
+        echo "::set-output name=islastday::$(if [[ $(date -d "+1 day" +%m) != $(date +%m) ]];then  echo "1"; else  echo "2"; fi)"
+
+    - name: printresult
+      if: steps.lastday.outputs.islastday == '1' && !cancelled()
+      run:
+        echo "执行"
