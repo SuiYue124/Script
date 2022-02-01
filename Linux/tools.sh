@@ -44,7 +44,7 @@ elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
 fi
 $systemPackage update -y
 $systemPackage upgrade -y
-$systemPackage -y install wget curl htop nano
+$systemPackage -y install wget curl htop nano python3 python3-pip
 
 bench(){
   wget -qO- bench.sh | bash
