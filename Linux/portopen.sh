@@ -1,5 +1,9 @@
 #!/bin/bash
 
+yellow(){
+    echo -e "\033[33m\033[01m$1\033[0m"
+}
+
 iptables -P INPUT ACCEPT
 iptables -P FORWARD ACCEPT
 iptables -P OUTPUT ACCEPT
