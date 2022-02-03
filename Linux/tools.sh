@@ -103,7 +103,7 @@ TODAY=$(expr "$COUNT" : '.*\s\([0-9]\{1,\}\)\s/.*') && TOTAL=$(expr "$COUNT" : '
 
 #page1
 function vpsroot(){
-  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/vpsroo.sh)
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/vpsroot.sh)
 }
 
 function portopen(){
