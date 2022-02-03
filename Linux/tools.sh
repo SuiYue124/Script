@@ -347,8 +347,8 @@ function page5(){
     echo "                            "
     echo "1. OpenWrt本地一键编译脚本（请在非Root账户下执行）"
     echo "2. frp内网穿透一键安装"
-	echo "1. Rclone官方一键安装脚本"
-	echo "1. 隧道gost一键安装脚本"
+	echo "3. Rclone官方一键安装脚本"
+	echo "4. 隧道gost一键安装脚本"
     echo "                            "
     echo "0. 返回主菜单"
     read -p "请输入选项:" page5NumberInput
