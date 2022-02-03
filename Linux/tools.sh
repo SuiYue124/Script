@@ -1,5 +1,6 @@
 #!/bin/bash
 # By GWen124
+# https://github.com/GWen124/Script/tree/master/Linux
 
 ver="202202"
 changeLog=""
@@ -25,7 +26,7 @@ red(){
     echo -e "\033[31m\033[01m$1\033[0m"
 }
 
-[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
+# [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
 
 
 for i in "${CMD[@]}"; do
@@ -124,10 +125,6 @@ function server-test(){
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/server-test.sh)"
 }
 
-function vpsip(){
-  curl ip.p3terx.com
-}
-
 function gfw_push(){
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/gfw_push.sh)"
 }
@@ -198,36 +195,36 @@ function gost(){
 
  function menu(){
     clear
-	green "================================================================================="
-      red " 当前工具箱版本：v$ver "
-	 echo "                           "
-     blue " 更新日志：$changeLog"
-	 echo "                           "
-	 green "================================================================================="
-
-      red "检测到VPS信息如下："
-      yellow "处理器架构：$arch"
-      yellow "虚拟化架构：$virt"
-      yellow "操作系统：$CMD"
-      yellow "内核版本：$kernelVer"
-      yellow "IPv4地址：$IP4"
-      yellow "IPv6地址：$IP6"
-	 green "================================================================================="
+	green "=============================================================="
+    echo "                           "
+    blue " 当前工具箱版本：v$ver "
+    yellow " 更新日志：$changeLog"
+    echo "                           "
+    green "=============================================================="
+    red "检测到VPS信息如下："
+    yellow "处理器架构：$arch"
+    yellow "虚拟化架构：$virt"
+    yellow "操作系统：$CMD"
+    yellow "内核版本：$kernelVer"
+    yellow "IPv4地址：$IP4"
+    yellow "IPv6地址：$IP6"
+    green "=============================================================="
+    echo "                            "
+    red "请选择你接下来的操作"
+    echo "                            "
     echo "1. 系统相关"
     echo "2. VPS检测"
     echo "3. 面板相关"
     echo "4. 科学上网"
     echo "5. 其他工具"
-	 green "================================================================================="
     echo "                            "
     echo "0. 退出脚本"
     echo "                            "
-	 green "================================================================================="
-     blue " 本脚本理论支持：CentOS7+ / Debian9+ / Ubuntu16.04+"
-     blue " 此脚本源于网络，仅仅只是汇聚脚本功能，方便大家使用而已！"
-	 blue " 我的仓库：https://github.com/GWen124 "
-	 blue " 本脚本仓库：https://github.com/GWen124/Script"
-	 green "================================================================================="
+    green "=============================================================="
+    blue " 本脚本理论支持：CentOS7+ / Debian9+ / Ubuntu16.04+"
+    blue " 此脚本源于网络，仅仅只是汇聚脚本功能，方便大家使用而已！"
+	blue " 我的仓库：https://github.com/GWen124 "
+	green "=============================================================="
     read -p "请输入选项:" menuNumberInput
     case "$menuNumberInput" in
         1 ) page1 ;;
@@ -240,7 +237,7 @@ function gost(){
 }
 
 function page1(){
-    echo "                            "
+	echo "                            "
     green "请选择你接下来的操作"
     echo "                            "
     echo "1. VPS开机大礼包（请设置好ROOT密码后运行）"
@@ -269,18 +266,16 @@ function page2(){
     echo "                            "
     echo "1. Bench：查看系统信息，测试本地到世界主要机房速度及硬盘读写速率"
     echo "2. VPS 回程路由、路由跟踪测试"
-    echo "3. 查看本机IP和服务商"
-    echo "4. 监测IP是否被墙并推送消息至Telegram "
-    echo "5. 流媒体解锁检测"
+    echo "3. 监测IP是否被墙并推送消息至Telegram "
+    echo "4. 流媒体解锁检测"
     echo "                            "
     echo "0. 返回主菜单"
     read -p "请输入选项:" page2NumberInput
     case "$page2NumberInput" in
         1 ) bench ;;
         2 ) server-test ;;
-        3 ) vpsip ;;
-        4 ) gfw_push ;;
-        5 ) unlock ;;
+        3 ) gfw_push ;;
+        4 ) unlock ;;
         0 ) menu
     esac
 }
