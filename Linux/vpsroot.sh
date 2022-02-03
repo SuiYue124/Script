@@ -10,13 +10,13 @@ lsattr /etc/passwd /etc/shadow >/dev/null 2>&1
 prl=`grep PermitRootLogin /etc/ssh/sshd_config`
 pa=`grep PasswordAuthentication /etc/ssh/sshd_config`
 if [[ -n $prl && -n $pa ]]; then
-read -p "自定义root密码:" mima
-echo root:$mima | $su chpasswd root
+read -p "设置的root密码:" password
+echo root:$password | $su chpasswd root
 $su sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
 $su sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
 $su service sshd restart
 green "VPS当前用户名：root"
-green "vps当前root密码：$mima"
+green "vps当前root密码：$password"
 else
 red "当前vps不支持root账户或无法自定义root密码" && exit 1
 fi

@@ -26,8 +26,15 @@ red(){
     echo -e "\033[31m\033[01m$1\033[0m"
 }
 
-# [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
+[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
 
+sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+sudo timedatectl set-timezone Asia/Shanghai
+sudo timedatectl set-local-rtc 0
+sudo timedatectl set-ntp yes
+
+egrep -q "^\s*.*ClientAliveInterval\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveInterval\s\w+.*$/ClientAliveInterval 60/" /etc/ssh/sshd_config || echo "ClientAliveInterval 60" >> /etc/ssh/sshd_config
+egrep -q "^\s*.*ClientAliveCountMax\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveCountMax\s\w+.*$/ClientAliveCountMax 30/" /etc/ssh/sshd_config || echo "ClientAliveCountMax 30" >> /etc/ssh/sshd_config
 
 for i in "${CMD[@]}"; do
     SYS="$i" && [[ -n $SYS ]] && break
@@ -95,8 +102,12 @@ COUNT=$(curl -sm2 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http
 TODAY=$(expr "$COUNT" : '.*\s\([0-9]\{1,\}\)\s/.*') && TOTAL=$(expr "$COUNT" : '.*/\s\([0-9]\{1,\}\)\s.*')
 
 #page1
-function vpsopen(){
-  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/open.sh)
+function vpsroot(){
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/vpsroo.sh)
+}
+
+function portopen(){
+  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/portopen.sh)
 }
 
 function swap(){
@@ -199,8 +210,9 @@ function gost(){
  function menu(){
     clear
     echo "                           "
-    blue " 当前工具箱版本：v$ver "
+    blue " 当前工具箱版本：$ver "
 	blue " 我的仓库：https://github.com/GWen124 "
+	echo "                            "
     yellow " 更新日志：$changeLog"
     echo "                           "
     green "=============================================================="
@@ -225,7 +237,7 @@ function gost(){
     echo "                            "
     green "=============================================================="
     blue " 本脚本理论支持：CentOS7+ / Debian9+ / Ubuntu16.04+"
-    blue " 内置脚本源于网络，仅仅只是汇聚脚本功能，自用！"
+    blue " 内置脚本均来源于网络，仅仅只是汇聚脚本功能，自用！"
 	blue " 今日运行次数：$TODAY 总共运行次数：$TOTAL"
 	green "=============================================================="
     read -p "请输入选项:" menuNumberInput
@@ -243,22 +255,24 @@ function page1(){
 	echo "                            "
     green "请选择你接下来的操作："
     echo "                            "
-    echo "1. VPS开机大礼包（请设置好ROOT密码后运行）"
-    echo "2. 虚拟内存SWAP一键脚本 "
-    echo "3. 更改SSH端口"
-    echo "4. BBR一键加速（稳定版）"
-    echo "5. BBR一键加速（最新版）"
-    echo "6. openvz BBR一键加速"
+    echo "1. 修改登录方式为 root + 密码 登录"
+	echo "2. 关闭原系统防火墙"
+    echo "3. 虚拟内存SWAP一键脚本 "
+    echo "4. 更改SSH端口"
+    echo "5. BBR一键加速（稳定版）"
+    echo "6. BBR一键加速（最新版）"
+    echo "7. openvz BBR一键加速"
     echo "                            "
     echo "0. 返回主菜单"
     read -p "请输入选项:" page1NumberInput
     case "$page1NumberInput" in
-        1 ) vpsopen ;;
-        2 ) swap ;;
-        3 ) ssh_port ;;
-        4 ) vps_bbr1 ;;
-        5 ) vps_bbr2 ;;
-        6 ) vps_openvz ;;
+        1 ) vpsroot ;;
+		2) portopen ;;
+        3 ) swap ;;
+        4 ) ssh_port ;;
+        5 ) vps_bbr1 ;;
+        6 ) vps_bbr2 ;;
+        7 ) vps_openvz ;;
         0 ) menu
     esac
 }
@@ -331,7 +345,7 @@ function page5(){
     echo "                            "
     green "请选择你需要的工具："
     echo "                            "
-    echo "1. OpenWrt本地一键编译脚本"
+    echo "1. OpenWrt本地一键编译脚本（请在非Root账户下执行）"
     echo "2. frp内网穿透一键安装"
 	echo "1. Rclone官方一键安装脚本"
 	echo "1. 隧道gost一键安装脚本"
