@@ -210,7 +210,7 @@ function gost(){
  function menu(){
     clear
     echo "                           "
-    blue " 当前工具箱版本：$ver "
+    blue " 当前脚本版本：$ver "
 	blue " 我的仓库：https://github.com/GWen124 "
 	echo "                            "
     yellow " 更新日志：$changeLog"
