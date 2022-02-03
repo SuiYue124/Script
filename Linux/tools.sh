@@ -91,6 +91,9 @@ if [ -z $WAN6 ]; then
     IP6="当前VPS未检测到IPv6地址"
 fi
 
+COUNT=$(curl -sm2 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FMisaka-blog%2FMisakaLinuxToolbox%40master%2FMisakaToolbox.sh&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" 2>&1) &&
+TODAY=$(expr "$COUNT" : '.*\s\([0-9]\{1,\}\)\s/.*') && TOTAL=$(expr "$COUNT" : '.*/\s\([0-9]\{1,\}\)\s.*')
+
 #page1
 function vpsopen(){
   bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/open.sh)
@@ -195,9 +198,9 @@ function gost(){
 
  function menu(){
     clear
-	green "=============================================================="
     echo "                           "
     blue " 当前工具箱版本：v$ver "
+	blue " 我的仓库：https://github.com/GWen124 "
     yellow " 更新日志：$changeLog"
     echo "                           "
     green "=============================================================="
@@ -222,8 +225,8 @@ function gost(){
     echo "                            "
     green "=============================================================="
     blue " 本脚本理论支持：CentOS7+ / Debian9+ / Ubuntu16.04+"
-    blue " 此脚本源于网络，仅仅只是汇聚脚本功能，方便大家使用而已！"
-	blue " 我的仓库：https://github.com/GWen124 "
+    blue " 内置脚本源于网络，仅仅只是汇聚脚本功能，自用！"
+	blue " 今日运行次数：$TODAY 总共运行次数：$TOTAL"
 	green "=============================================================="
     read -p "请输入选项:" menuNumberInput
     case "$menuNumberInput" in
