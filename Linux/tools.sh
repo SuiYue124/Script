@@ -91,7 +91,7 @@ if [ -z $WAN6 ]; then
     IP6="当前VPS未检测到IPv6地址"
 fi
 
-COUNT=$(curl -sm2 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2FMisaka-blog%2FMisakaLinuxToolbox%40master%2FMisakaToolbox.sh&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" 2>&1) &&
+COUNT=$(curl -sm2 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FGWen124%2FScript%2Fmaster%2FLinux%2Ftools.sh&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" 2>&1) &&
 TODAY=$(expr "$COUNT" : '.*\s\([0-9]\{1,\}\)\s/.*') && TOTAL=$(expr "$COUNT" : '.*/\s\([0-9]\{1,\}\)\s.*')
 
 #page1
@@ -241,7 +241,7 @@ function gost(){
 
 function page1(){
 	echo "                            "
-    green "请选择你接下来的操作"
+    green "请选择你接下来的操作："
     echo "                            "
     echo "1. VPS开机大礼包（请设置好ROOT密码后运行）"
     echo "2. 虚拟内存SWAP一键脚本 "
@@ -265,7 +265,7 @@ function page1(){
 
 function page2(){
     echo "                            "
-    green "请选择你准备安装的面板"
+    green "请选择你接下来使用的脚本："
     echo "                            "
     echo "1. Bench：查看系统信息，测试本地到世界主要机房速度及硬盘读写速率"
     echo "2. VPS 回程路由、路由跟踪测试"
@@ -285,7 +285,7 @@ function page2(){
 
 function page3(){
     echo "                            "
-    green "请选择你接下来使用的脚本"
+    green "请选择你接下来使用的脚本："
     echo "                            "
     echo "1. 宝塔面板一键官方脚本"
     echo "2. 宝塔面板降级到v7.7"
@@ -307,7 +307,7 @@ function page3(){
 
 function page4(){
     echo "                            "
-    green "请选择你接下来的操作"
+    green "请选择你接下来的操作："
     echo "                            "
     echo "1. X-UI面板（建议搭配宝塔面板使用）"
     echo "2. Trojan-UI一键脚本 "
@@ -329,7 +329,7 @@ function page4(){
 
 function page5(){
     echo "                            "
-    green "请选择你需要的探针"
+    green "请选择你需要的工具："
     echo "                            "
     echo "1. OpenWrt本地一键编译脚本"
     echo "2. frp内网穿透一键安装"
