@@ -26,7 +26,7 @@ red(){
     echo -e "\033[31m\033[01m$1\033[0m"
 }
 
-[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
+[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && 
 
 sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 sudo timedatectl set-timezone Asia/Shanghai
@@ -210,10 +210,10 @@ function gost(){
  function menu(){
     clear
     echo "                           "
-    blue " 当前脚本版本：$ver "
-	blue " 我的仓库：https://github.com/GWen124 "
+    blue "当前脚本版本：$ver "
+	blue "我的仓库：https://github.com/GWen124 "
 	echo "                            "
-    yellow " 更新日志：$changeLog"
+    yellow "更新日志：$changeLog"
     echo "                           "
     green "=============================================================="
     red "检测到VPS信息如下："
@@ -236,9 +236,9 @@ function gost(){
     echo "0. 退出脚本"
     echo "                            "
     green "=============================================================="
-    blue " 本脚本理论支持：CentOS7+ / Debian9+ / Ubuntu16.04+"
-    blue " 内置脚本均来源于网络，仅仅只是汇聚脚本功能，自用！"
-	blue " 今日运行次数：$TODAY 总共运行次数：$TOTAL"
+    blue "本脚本理论支持：CentOS7+ / Debian9+ / Ubuntu16.04+"
+    blue "内置脚本均来源于网络，仅仅只是汇聚脚本功能，自用！"
+	blue "今日运行次数：$TODAY 总共运行次数：$TOTAL"
 	green "=============================================================="
     read -p "请输入选项:" menuNumberInput
     case "$menuNumberInput" in
