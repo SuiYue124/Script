@@ -28,20 +28,19 @@ red(){
 
 #[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
 
-    clear
-	green "=============================================================="
-	echo "                            "
-    yellow "1.我已使用Root账户登录"
-	yellow "2.我决定使用非Root账户登录"
-	red "注意：非Root账户可能导致一些脚本不能运行！"
-    echo "                           "
-    green "=============================================================="
-	read -p "请输入选项:" login
-    case "$login" in
-        1 ) [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 ;;
-        2 ) && ;;
-    esac
-
+clear
+green "=============================================================="
+echo "                            "
+yellow "1.我已使用Root账户登录"
+yellow "2.我决定使用非Root账户登录"
+red "注意：非Root账户可能导致一些脚本不能运行！"
+echo "                           "
+green "=============================================================="
+read -p "请输入选项:" login
+case "$login" in
+    1 ) [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 ;;
+    2 ) menu ;;
+esac
 
 sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 sudo timedatectl set-timezone Asia/Shanghai
