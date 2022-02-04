@@ -230,7 +230,7 @@ function gost(){
 	echo "                            "
     yellow "更新日志：$changeLog"
     echo "                           "
-    green "=============================================================="
+    green "========================================="
     red "检测到VPS信息如下："
     yellow "处理器架构：$arch"
     yellow "虚拟化架构：$virt"
@@ -238,7 +238,7 @@ function gost(){
     yellow "内核版本：$kernelVer"
     yellow "IPv4地址：$IP4"
     yellow "IPv6地址：$IP6"
-    green "=============================================================="
+    green "========================================="
     echo "                            "
     red "请选择你接下来的操作："
     echo "                            "
@@ -250,11 +250,11 @@ function gost(){
     echo "                            "
     echo "0. 退出脚本"
     echo "                            "
-    green "=============================================================="
+    green "========================================="
     blue "本脚本理论支持：CentOS7+ / Debian9+ / Ubuntu16.04+"
     blue "内置脚本均来源于网络，仅仅只是汇聚脚本功能，自用！"
 	blue "今日运行次数：$TODAY 总共运行次数：$TOTAL"
-	green "=============================================================="
+	green "========================================="
     read -p "请输入选项:" menuNumberInput
     case "$menuNumberInput" in
         1 ) page1 ;;
@@ -279,6 +279,7 @@ function page1(){
     echo "7. openvz BBR一键加速"
     echo "                            "
     echo "0. 返回主菜单"
+	green "========================================="
     read -p "请输入选项:" page1NumberInput
     case "$page1NumberInput" in
         1 ) vpsroot ;;
@@ -302,6 +303,7 @@ function page2(){
     echo "4. 流媒体解锁检测"
     echo "                            "
     echo "0. 返回主菜单"
+	green "========================================="
     read -p "请输入选项:" page2NumberInput
     case "$page2NumberInput" in
         1 ) bench ;;
@@ -323,6 +325,7 @@ function page3(){
     echo "5. Alist一键安装脚本"
     echo "                            "
     echo "0. 返回主菜单"
+	green "========================================="
     read -p "请输入选项:" page3NumberInput
     case "$page3NumberInput" in
         1 ) baota ;;
@@ -345,6 +348,7 @@ function page4(){
 	echo "5. TG代理一键搭建 "
     echo "                            "
     echo "0. 返回主菜单"
+	green "========================================="
     read -p "请输入选项:" page4NumberInput
     case "$page4NumberInput" in
         1 ) xui ;;
@@ -366,6 +370,7 @@ function page5(){
 	echo "4. 隧道gost一键安装脚本"
     echo "                            "
     echo "0. 返回主菜单"
+	green "========================================="
     read -p "请输入选项:" page5NumberInput
     case "$page5NumberInput" in
         1 ) openwrt ;;
