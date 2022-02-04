@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="202202"
+ver="20220205"
 changeLog=""
 arch=`uname -m`
 virt=`systemd-detect-virt`
@@ -46,8 +46,8 @@ echo "                           "
 yellow "0.退出脚本"
 echo "                           "
 green "==============================================================================="
-read -p "请输入选项:" login
-case "$login" in
+read -p "请输入选项:" loginNumberInput
+case "$loginNumberInput" in
     1 ) [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 ;;
     2 ) [[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1 ;;
 	0 ) exit 1 ;;
@@ -116,12 +116,45 @@ COUNT=$(curl -sm2 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http
 TODAY=$(expr "$COUNT" : '.*\s\([0-9]\{1,\}\)\s/.*') && TOTAL=$(expr "$COUNT" : '.*/\s\([0-9]\{1,\}\)\s.*')
 
 #page1
-function vpsroot(){
-  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/vpsroot.sh)
+function rootlogin(){
+[[ $EUID -ne 0 ]] && su='sudo' 
+lsattr /etc/passwd /etc/shadow >/dev/null 2>&1
+chattr -i /etc/passwd /etc/shadow >/dev/null 2>&1
+chattr -a /etc/passwd /etc/shadow >/dev/null 2>&1
+lsattr /etc/passwd /etc/shadow >/dev/null 2>&1
+prl=`grep PermitRootLogin /etc/ssh/sshd_config`
+pa=`grep PasswordAuthentication /etc/ssh/sshd_config`
+if [[ -n $prl && -n $pa ]]; then
+read -p "设置的root密码:" password
+echo root:$password | $su chpasswd root
+$su sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
+$su sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
+$su service sshd restart
+green "VPS当前用户名：root"
+green "vps当前root密码：$password"
+yellow "请妥善保管好登录信息！然后重启VPS确保设置已保存！"
+else
+red "当前vps不支持root账户或无法自定义root密码" && exit 1
+fi
 }
 
-function portopen(){
-  bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/portopen.sh)
+function vpsfirewall(){
+    if [ $SYSTEM = "CentOS" ]; then
+        systemctl stop oracle-cloud-agent
+        systemctl disable oracle-cloud-agent
+        systemctl stop oracle-cloud-agent-updater
+        systemctl disable oracle-cloud-agent-updater
+        systemctl stop firewalld.service
+        systemctl disable firewalld.service
+        yellow "原生系统防火墙禁用成功"
+    else
+        iptables -P INPUT ACCEPT
+        iptables -P FORWARD ACCEPT
+        iptables -P OUTPUT ACCEPT
+        iptables -F
+        apt-get purge netfilter-persistent -y
+        yellow "原生系统防火墙禁用成功"
+    fi
 }
 
 function swap(){
@@ -132,16 +165,32 @@ function ssh_port(){
   bash <(curl -sSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/ssh_port.sh)
 }
 
-function vps_bbr1(){
-   wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+function bbr(){
+    echo "                            "
+    green "请选择你接下来使用的脚本"
+    echo "                            "
+    echo "1. BBR一键加速（稳定版）"
+    echo "2. BBR一键加速（最新版）"
+    echo "3. openvz BBR一键加速"
+    echo "                            "
+    echo "0. 返回主菜单"
+    read -p "请输入选项:" bbrNumberInput
+    case "$bbrNumberInput" in
+        1 ) 
+		wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+		;;
+        2 ) 
+		wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+		;;
+        3 ) 
+		wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh
+		;;
+        0 ) menu
+    esac
 }
-
-function vps_bbr2(){
-  wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
-}
-
-function vps_openvz(){
-  wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh
+	
+function acmesh(){
+    wget -N https://cdn.jsdelivr.net/gh/Misaka-blog/acme-1key@master/acme1key.sh && chmod -R 777 acme1key.sh && bash acme1key.sh
 }
 
 #page2
@@ -158,7 +207,43 @@ function gfw_push(){
 }
 
 function unlock(){
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/unlock.sh)"
+	green "==============================================================================="
+	yellow " 1. 启动Netflix检测脚本（X86） "
+	yellow " 2. 启动Netflix检测脚本（ARM） "
+	yellow " 3. 启动DisneyPlus检测脚本（X86） "
+	yellow " 4. 启动DisneyPlus检测脚本（ARM） "
+	yellow " 5. Youtube 缓存节点、地域信息检测（X86） "
+	yellow " 6. Youtube 缓存节点、地域信息检测（ARM） "
+	yellow " 7. 流媒体一键检测脚本 "
+	green "==============================================================================="
+    red " 0. 退出脚本 "
+	green "==============================================================================="
+    echo
+    read -p "请输入选项:" unlockNumberInput
+    case "$unlockNumberInput" in
+		1)
+		wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_amd64 && chmod +x nf && clear && ./nf
+		;;
+		2)
+		wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_arm64 && chmod +x nf && clear && ./nf
+		;;
+		3)
+	    wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_amd64 && chmod +x dp && clear && ./dp
+		;;
+		4)
+		wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_arm64 && chmod +x dp && clear && ./dp
+		;;
+		5)
+	    wget -O tubecheck https://cdn.jsdelivr.net/gh/sjlleo/TubeCheck/CDN/tubecheck_1.0beta_linux_amd64 && chmod +x tubecheck && clear && ./tubecheck
+		;;
+		6)
+	    wget -O tubecheck https://github.com/sjlleo/TubeCheck/releases/download/1.0Beta/tubecheck_1.0beta_linux_arm64 && chmod +x tubecheck && clear && ./tubecheck
+		;;
+		7)
+		bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
+		;;
+        0 ) menu
+    esac
 }
 
 #page3
@@ -273,21 +358,19 @@ function page1(){
 	echo "2. 关闭原系统防火墙"
     echo "3. 虚拟内存SWAP一键脚本 "
     echo "4. 更改SSH端口"
-    echo "5. BBR一键加速（稳定版）"
-    echo "6. BBR一键加速（最新版）"
-    echo "7. openvz BBR一键加速"
+    echo "5. 开启BBR一键加速"
+	echo "6. Acme.sh 证书申请脚本"
     echo "                            "
     echo "0. 返回主菜单"
 	green "==============================================================================="
     read -p "请输入选项:" page1NumberInput
     case "$page1NumberInput" in
-        1 ) vpsroot ;;
-		2) portopen ;;
+        1 ) rootlogin ;;
+		2) vpsfirewall ;;
         3 ) swap ;;
         4 ) ssh_port ;;
-        5 ) vps_bbr1 ;;
-        6 ) vps_bbr2 ;;
-        7 ) vps_openvz ;;
+        5 ) bbr ;;
+		6 ) acmesh ;;
         0 ) menu
     esac
 }
@@ -363,10 +446,10 @@ function page5(){
     echo "                            "
     green "请选择你需要的工具："
     echo "                            "
-    echo "1. OpenWrt本地一键编译脚本（请在非Root账户下执行）"
+    echo "1. OpenWrt本地一键编译脚本"
     echo "2. frp内网穿透一键安装"
 	echo "3. Rclone官方一键安装脚本"
-	echo "4. 隧道gost一键安装脚本"
+	echo "4. 隧道中转gost一键安装脚本"
     echo "                            "
     echo "0. 返回主菜单"
 	green "==============================================================================="
