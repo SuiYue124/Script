@@ -132,7 +132,9 @@ $su sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ss
 $su service sshd restart
 green "VPS当前用户名：root"
 green "vps当前root密码：$password"
+echo "                            "
 yellow "请妥善保管好登录信息！然后重启VPS确保设置已保存！"
+echo "                            "
 else
 red "当前vps不支持root账户或无法自定义root密码" && exit 1
 fi
@@ -285,6 +287,12 @@ function v2ray(){
     bash <(curl -s -L https://git.io/v2ray.sh)
 }
 
+function shadowsocks(){
+    wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontents.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
+    chmod +x shadowsocks-all.sh
+    ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
+}
+
 function telegram(){
     bash <(wget -qO- https://git.io/mtg.sh)
 }
@@ -304,6 +312,10 @@ function rclone(){
 
 function gost(){
   curl -fsSL "https://raw.githubusercontent.com/KANIKIG/Multi-EasyGost/master/gost.sh" | bash -s install
+}
+
+function ddsystem(){
+  wget --no-check-certificate -qO ~/Network-Reinstall-System-Modify.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/Network-Reinstall-System-Modify.sh' && chmod a+x ~/Network-Reinstall-System-Modify.sh && bash ~/Network-Reinstall-System-Modify.sh -UI_Options
 }
 
  function menu(){
@@ -427,7 +439,8 @@ function page4(){
     echo "2. Trojan-UI一键脚本 "
     echo "3. XRay一键脚本 "
 	echo "4. V2Ray一键脚本"
-	echo "5. TG代理一键搭建 "
+	echo "5. SS、SSR一键脚本"
+	echo "6. TG代理一键搭建 "
     echo "                            "
     echo "0. 返回主菜单"
 	green "==============================================================================="
@@ -437,7 +450,8 @@ function page4(){
         2 ) trojanui ;;
         3 ) xray ;;
 		4 ) v2ray ;;
-		5 ) telegram ;;
+		5 ) shadowsocks ;;
+		6 ) telegram ;;
         0 ) menu
     esac
 }
@@ -450,6 +464,7 @@ function page5(){
     echo "2. frp内网穿透一键安装"
 	echo "3. Rclone官方一键安装脚本"
 	echo "4. 隧道中转gost一键安装脚本"
+	echo "5. VPS DD系统"
     echo "                            "
     echo "0. 返回主菜单"
 	green "==============================================================================="
@@ -459,6 +474,7 @@ function page5(){
         2 ) frps ;;
 		3 ) rclone ;;
 		4 ) gost ;;
+		5 ) ddsystem ;;
         0 ) menu
     esac
 }
