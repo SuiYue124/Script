@@ -26,9 +26,6 @@ red(){
     echo -e "\033[31m\033[01m$1\033[0m"
 }
 
-#[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
-
-
 clear
 green "=============================================================="
 echo "                            "
@@ -36,20 +33,15 @@ yellow "1.我已使用Root账户登录"
 yellow "2.继续使用非Root账户登录"
 red "注意：非Root账户可能导致一些脚本不能运行！"
 echo "                           "
+yellow "0.退出脚本"
+echo "                           "
 green "=============================================================="
 read -p "请输入选项:" login
 case "$login" in
     1 ) [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 ;;
     2 ) [[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1 ;;
+	0 ) exit 1 ;;
 esac
-
-sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-sudo timedatectl set-timezone Asia/Shanghai
-sudo timedatectl set-local-rtc 0
-sudo timedatectl set-ntp yes
-
-egrep -q "^\s*.*ClientAliveInterval\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveInterval\s\w+.*$/ClientAliveInterval 60/" /etc/ssh/sshd_config || echo "ClientAliveInterval 60" >> /etc/ssh/sshd_config
-egrep -q "^\s*.*ClientAliveCountMax\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveCountMax\s\w+.*$/ClientAliveCountMax 30/" /etc/ssh/sshd_config || echo "ClientAliveCountMax 30" >> /etc/ssh/sshd_config
 
 for i in "${CMD[@]}"; do
     SYS="$i" && [[ -n $SYS ]] && break
@@ -94,6 +86,14 @@ fi
 $systemPackage update -y
 $systemPackage upgrade -y
 $systemPackage -y install wget curl htop nano python3 python3-pip
+
+sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+sudo timedatectl set-timezone Asia/Shanghai
+sudo timedatectl set-local-rtc 0
+sudo timedatectl set-ntp yes
+
+egrep -q "^\s*.*ClientAliveInterval\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveInterval\s\w+.*$/ClientAliveInterval 60/" /etc/ssh/sshd_config || echo "ClientAliveInterval 60" >> /etc/ssh/sshd_config
+egrep -q "^\s*.*ClientAliveCountMax\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveCountMax\s\w+.*$/ClientAliveCountMax 30/" /etc/ssh/sshd_config || echo "ClientAliveCountMax 30" >> /etc/ssh/sshd_config
 
 IP4=$(curl -s4m2 https://ip.gs/json)
 IP6=$(curl -s6m2 https://ip.gs/json)
