@@ -28,7 +28,6 @@ red(){
 
 #[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
 
-function login(){
     clear
 	green "=============================================================="
 	echo "                            "
@@ -42,7 +41,7 @@ function login(){
         1 ) [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 ;;
         2 ) menu ;;
     esac
-}
+
 
 sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 sudo timedatectl set-timezone Asia/Shanghai
