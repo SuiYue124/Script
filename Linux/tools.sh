@@ -28,6 +28,50 @@ red(){
 
 #[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
 
+ function login1(){
+    clear
+    echo "                           "
+    blue "当前脚本版本：$ver "
+	blue "我的仓库：https://github.com/GWen124 "
+	echo "                            "
+    yellow "更新日志：$changeLog"
+    echo "                           "
+    green "=============================================================="
+    red "检测到VPS信息如下："
+    yellow "处理器架构：$arch"
+    yellow "虚拟化架构：$virt"
+    yellow "操作系统：$CMD"
+    yellow "内核版本：$kernelVer"
+    yellow "IPv4地址：$IP4"
+    yellow "IPv6地址：$IP6"
+    green "=============================================================="
+    echo "                            "
+    red "请选择你接下来的操作"
+    echo "                            "
+    echo "1. 系统相关"
+    echo "2. VPS检测"
+    echo "3. 面板相关"
+    echo "4. 科学上网"
+    echo "5. 其他工具"
+    echo "                            "
+    echo "0. 退出脚本"
+    echo "                            "
+    green "=============================================================="
+    blue "本脚本理论支持：CentOS7+ / Debian9+ / Ubuntu16.04+"
+    blue "内置脚本均来源于网络，仅仅只是汇聚脚本功能，自用！"
+	blue "今日运行次数：$TODAY 总共运行次数：$TOTAL"
+	green "=============================================================="
+    read -p "请输入选项:" menuNumberInput
+    case "$menuNumberInput" in
+        1 ) page1 ;;
+        2 ) page2 ;;
+        3 ) page3 ;;
+        4 ) page4 ;;
+        5 ) page5 ;;
+        0 ) exit 0
+    esac
+}
+
 clear
 green "=============================================================="
 echo "                            "
@@ -39,7 +83,7 @@ green "=============================================================="
 read -p "请输入选项:" login
 case "$login" in
     1 ) [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 ;;
-    2 ) menu ;;
+    2 ) login1 ;;
 esac
 
 sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
