@@ -339,7 +339,7 @@ function ddsystem(){
     echo "                            "
     red "请选择你接下来的操作："
     echo "                            "
-    echo "1. 系统相关"
+    yellow "1. 系统相关"
     echo "2. VPS检测"
     echo "3. 面板相关"
     echo "4. 科学上网"
