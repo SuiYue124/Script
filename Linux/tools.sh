@@ -36,8 +36,8 @@ red(){
 	red "注意：非Root账户可能导致一些脚本不能运行！"
     echo "                           "
     green "=============================================================="
-	read -p "请输入选项:" menuNumberInput
-    case "$menuNumberInput" in
+	read -p "请输入选项:" login
+    case "$login" in
         1 ) [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 ;;
         2 ) menu ;;
     esac
