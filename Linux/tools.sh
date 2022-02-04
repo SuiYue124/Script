@@ -40,7 +40,7 @@ green "=============================================================="
 read -p "请输入选项:" login
 case "$login" in
     1 ) [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 ;;
-    2 ) [[ "$USER" == "root" ]] && red "请登录非root用户后执行本脚本！！！" && exit 1 ;;
+    2 ) [[ $(id -u) != 1000 ]] && red "请登录非root用户后执行本脚本！！！" && exit 1 ;;
 esac
 
 sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
