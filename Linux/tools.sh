@@ -176,6 +176,7 @@ function bbr(){
     echo "3. openvz BBR一键加速"
     echo "                            "
     echo "0. 返回主菜单"
+	green "==============================================================================="
     read -p "请输入选项:" bbrNumberInput
     case "$bbrNumberInput" in
         1 ) 
@@ -209,7 +210,7 @@ function gfw_push(){
 }
 
 function unlock(){
-	green "==============================================================================="
+    echo "                            "
 	yellow " 1. 启动Netflix检测脚本（X86） "
 	yellow " 2. 启动Netflix检测脚本（ARM） "
 	yellow " 3. 启动DisneyPlus检测脚本（X86） "
@@ -217,8 +218,8 @@ function unlock(){
 	yellow " 5. Youtube 缓存节点、地域信息检测（X86） "
 	yellow " 6. Youtube 缓存节点、地域信息检测（ARM） "
 	yellow " 7. 流媒体一键检测脚本 "
-	green "==============================================================================="
-    red " 0. 退出脚本 "
+	echo "                            "
+    red " 0. 返回主菜单 "
 	green "==============================================================================="
     echo
     read -p "请输入选项:" unlockNumberInput
