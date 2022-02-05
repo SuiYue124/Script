@@ -198,6 +198,47 @@ function acmesh(){
     wget -N https://cdn.jsdelivr.net/gh/Misaka-blog/acme-1key@master/acme1key.sh && chmod -R 777 acme1key.sh && bash acme1key.sh
 }
 
+
+function cssh(){
+wget -O "/root/changesource.sh" "https://raw.githubusercontent.com/Netflixxp/jcnf-box/master/sh/changesource.sh" --no-check-certificate -T 30 -t 5 -d
+chmod +x "/root/changesource.sh"
+chmod 777 "/root/changesource.sh"
+yellow "下载完成"
+    echo "                            "
+	yellow " 1. 切换推荐源"
+	yellow " 2. 切换中科大源 "
+	yellow " 3. 切换阿里源 "
+	yellow " 4. 切换网易源 "
+	yellow " 5. 切换AWS亚马逊云源 "
+	yellow " 6. 还原默认源 "
+	echo "                            "
+    red " 0. 返回主菜单 "
+	green "=================================================================================="
+    echo
+    read -p "请自行选择切换对应源:" csshNumberInput
+    case "$csshNumberInput" in
+		1)
+		bash changesource.sh
+		;;
+		2)
+		bash changesource.sh cn
+		;;
+		3)
+	    bash changesource.sh aliyun
+		;;
+		4)
+		bash changesource.sh 163
+		;;
+		5)
+	   bash changesource.sh aws
+		;;
+		6)
+	    bash changesource.sh restore
+		;;
+        0 ) menu
+    esac
+}
+
 #page2
 function bench(){
   wget -qO- bench.sh | bash
@@ -209,6 +250,14 @@ function server-test(){
 
 function gfw_push(){
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/gfw_push.sh)"
+}
+
+function speedtest(){
+  wget -O "/root/speedtest" "https://raw.githubusercontent.com/Netflixxp/jcnf-box/master/sh/speedtest" --no-check-certificate -T 30 -t 5 -d
+  chmod +x "/root/speedtest"
+  chmod 777 "/root/speedtest"
+  yellow "再次使用，可执行 bash /root/speedtest 再次运行"
+  ./speedtest
 }
 
 function unlock(){
@@ -262,6 +311,14 @@ function baota7(){
 
 function baotap(){
     echo "{\"uid\":1000,\"username\":\"admin\",\"serverid\":1}" > /www/server/panel/data/userInfo.json
+}
+
+function aaPanel(){
+wget -O "/root/aaPanel.sh" "http://www.aapanel.com/script/install_6.0_en.sh" --no-check-certificate -T 30 -t 5 -d
+chmod +x "/root/aaPanel.sh"
+chmod 777 "/root/aaPanel.sh"
+blue "下载完成"
+bash "/root/aaPanel.sh"
 }
 
 function nezha(){
@@ -375,6 +432,7 @@ function page1(){
     yellow "4. 更改SSH端口"
     yellow "5. 开启BBR一键加速"
 	yellow "6. Acme.sh 证书申请脚本"
+	yellow "7. Linux换源脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -386,6 +444,7 @@ function page1(){
         4 ) ssh_port ;;
         5 ) bbr ;;
 		6 ) acmesh ;;
+		7 ) cssh ;;
         0 ) menu
     esac
 }
@@ -398,6 +457,7 @@ function page2(){
     yellow "2. VPS 回程路由、路由跟踪测试"
     yellow "3. 监测IP是否被墙并推送消息至Telegram "
     yellow "4. 流媒体解锁检测"
+	yellow "5. Speedtest"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -407,6 +467,7 @@ function page2(){
         2 ) server-test ;;
         3 ) gfw_push ;;
         4 ) unlock ;;
+		5 ) speedtest ;;
         0 ) menu
     esac
 }
@@ -418,8 +479,9 @@ function page3(){
     yellow "1. 宝塔面板一键官方脚本"
     yellow "2. 宝塔面板降级到v7.7"
     yellow "3. 宝塔面板无需手机登陆"
-    yellow "4. 哪吒面板"
-    yellow "5. Alist一键安装脚本"
+	yellow "4. 宝塔面板英文官方版"
+    yellow "5. 哪吒面板"
+    yellow "6. Alist一键安装脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -428,8 +490,9 @@ function page3(){
         1 ) baota ;;
         2 ) baota7 ;;
         3 ) baotap ;;
-        4 ) nezha ;;
-        5 ) alist ;;
+		4 ) aaPanel ;;
+        5 ) nezha ;;
+        6 ) alist ;;
         0 ) menu
     esac
 }
@@ -466,7 +529,7 @@ function page5(){
     yellow "1. OpenWrt本地一键编译脚本"
     yellow "2. frp内网穿透一键安装"
 	yellow "3. Rclone官方一键安装脚本"
-	yellow "4. 隧道中转gost一键安装脚本"
+	yellow "4. gost一键中转"
 	yellow "5. VPS DD系统"
     echo "                            "
     red "0. 返回主菜单"
