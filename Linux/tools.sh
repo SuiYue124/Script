@@ -253,11 +253,7 @@ function gfw_push(){
 }
 
 function speedtest(){
-  wget -O "/root/speedtest" "https://raw.githubusercontent.com/Netflixxp/jcnf-box/master/sh/speedtest" --no-check-certificate -T 30 -t 5 -d
-  chmod +x "/root/speedtest"
-  chmod 777 "/root/speedtest"
-  yellow "再次使用，可执行 bash /root/speedtest 再次运行"
-  ./speedtest
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/speedtest.sh)"
 }
 
 function unlock(){
