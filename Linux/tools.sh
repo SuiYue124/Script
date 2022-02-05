@@ -371,7 +371,7 @@ function rclone(){
 }
 
 function dnat(){
-  wget --no-check-certificate -qO dnat.sh https://raw.githubusercontent.com/GWen124/Script/master/Linux/dnat.sh && bash dnat.sh
+  bash <(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/dnat.sh)
 }
 
 function gost(){

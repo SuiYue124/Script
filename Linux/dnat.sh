@@ -285,30 +285,44 @@ uninstall(){
 
 
 
-echo  -e "${red}你要做什么呢（请输入数字）？Ctrl+C 退出本脚本${black}"
-select todo in 增加转发规则 删除转发规则 列出所有转发规则 查看当前iptables配置
-do
-    case $todo in
-    增加转发规则)
-        addDnat
-        ;;
-    删除转发规则)
-        rmDnat
-        ;;
-    列出所有转发规则)
-        lsDnat
-        ;;
-    查看当前iptables配置)
-        echo "###########################################################"
+ function menu(){
+    clear
+    echo "                           "
+    green "=================================================================================="
+    echo "                            "
+    red "请选择你接下来的操作："
+    echo "                            "
+    yellow "1. 增加转发规则"
+    yellow "2. 删除转发规则"
+    yellow "3. 列出所有转发规则"
+    yellow "4. 查看当前iptables配置"
+    yellow "5. 卸载dnat"
+    echo "                            "
+    red "0. 退出脚本"
+    echo "                            "
+	green "=================================================================================="
+    read -p "请输入选项:" menuNumberInput
+    case "$menuNumberInput" in
+        1 ) 
+		addDnat
+		;;
+        2 ) 
+		rmDnat
+		;;
+        3 ) 
+		lsDnat
+		;;
+        4 ) 
+		echo "###########################################################"
         iptables -L PREROUTING -n -t nat --line-number
         iptables -L POSTROUTING -n -t nat --line-number
         echo "###########################################################"
-        ;;
-    卸载)
-	    uninstall
-        ;;
-    *)
-        echo "如果要退出，请按Ctrl+C"
-        ;;
+		;;
+        5 ) 
+		uninstall
+		;;
+        0 ) exit 0
     esac
-done
+}
+
+menu
