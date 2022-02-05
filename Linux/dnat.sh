@@ -304,7 +304,7 @@ do
         iptables -L POSTROUTING -n -t nat --line-number
         echo "###########################################################"
         ;;
-    卸载iptables)
+    卸载)
 	    uninstall
         ;;
     *)
