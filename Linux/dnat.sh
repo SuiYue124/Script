@@ -278,6 +278,10 @@ do
 done
 }
 
+uninstall(){
+        wget --no-check-certificate -qO uninstall.sh https://raw.githubusercontent.com/GWen124/Script/master/Linux/dnat-uninstall.sh && bash uninstall.sh
+}
+
 
 
 
@@ -301,7 +305,7 @@ do
         echo "###########################################################"
         ;;
     卸载iptables)
-        wget --no-check-certificate -qO uninstall.sh https://raw.githubusercontent.com/GWen124/Script/master/Linux/dnat-uninstall.sh && bash uninstall.sh
+	    uninstall
         ;;
     *)
         echo "如果要退出，请按Ctrl+C"
