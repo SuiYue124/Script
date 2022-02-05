@@ -370,6 +370,10 @@ function rclone(){
   curl https://rclone.org/install.sh | sudo bash
 }
 
+function dnat(){
+  wget --no-check-certificate -qO natcfg.sh http://www.arloor.com/sh/iptablesUtils/natcfg.sh && bash natcfg.sh
+}
+
 function gost(){
   curl -fsSL "https://raw.githubusercontent.com/KANIKIG/Multi-EasyGost/master/gost.sh" | bash -s install
 }
@@ -529,8 +533,9 @@ function page5(){
     yellow "1. OpenWrt本地一键编译脚本"
     yellow "2. frp内网穿透一键安装"
 	yellow "3. Rclone官方一键安装脚本"
-	yellow "4. gost一键中转"
-	yellow "5. VPS DD系统"
+	yellow "4. iptables一键中转"
+	yellow "5. gost一键中转"
+	yellow "6. VPS DD系统"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -539,8 +544,9 @@ function page5(){
         1 ) openwrt ;;
         2 ) frps ;;
 		3 ) rclone ;;
-		4 ) gost ;;
-		5 ) ddsystem ;;
+		4 ) dnat ;;
+		5 ) gost ;;
+		6 ) ddsystem ;;
         0 ) menu
     esac
 }
