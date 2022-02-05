@@ -46,6 +46,7 @@ yellow "2.继续使用非Root账户登录"
 red "注意：非Root账户可能导致一些脚本不能运行！"
 echo "                           "
 red "0.退出脚本"
+echo "                            "
 green "=================================================================================="
 read -p "请输入选项:" loginNumberInput
 case "$loginNumberInput" in
