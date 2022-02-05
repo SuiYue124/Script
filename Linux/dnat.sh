@@ -287,20 +287,10 @@ do
     case $todo in
     增加转发规则)
         addDnat
-        #break
         ;;
     删除转发规则)
         rmDnat
-        #break
         ;;
-    # 增加到IP的转发)
-    #     addSnat
-    #     #break
-    #     ;;
-    # 删除到IP的转发)
-    #     rmSnat
-    #     #break
-    #     ;;
     列出所有转发规则)
         lsDnat
         ;;

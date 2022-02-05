@@ -371,7 +371,7 @@ function rclone(){
 }
 
 function dnat(){
-  wget --no-check-certificate -qO natcfg.sh http://www.arloor.com/sh/iptablesUtils/natcfg.sh && bash natcfg.sh
+  wget --no-check-certificate -qO dnat.sh https://raw.githubusercontent.com/GWen124/Script/master/Linux/dnat.sh && bash dnat.sh
 }
 
 function gost(){
