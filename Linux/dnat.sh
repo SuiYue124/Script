@@ -284,7 +284,6 @@ uninstall(){
 
 
 
-
  function menu(){
     clear
     echo "                           "
