@@ -56,8 +56,9 @@ case "$loginNumberInput" in
 	0 ) exit 1 ;;
 esac
 }
-
 login
+
+exit
 
 if [[ -f /etc/redhat-release ]]; then
     release="centos"
