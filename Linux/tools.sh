@@ -37,7 +37,6 @@ done
 
 [[ -z $SYSTEM ]] && red "不支持VPS的当前系统，请使用主流操作系统" && exit 1
 
-
 clear
 echo "                            "
 green "=================================================================================="
@@ -52,17 +51,14 @@ green "=========================================================================
 read -p "请输入选项:" loginNumberInput
 case "$loginNumberInput" in
     1 ) 
-	[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 && login
+	[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
+	ping youtube.com
 	;;
     2 ) 
-	[[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1  && login
+	[[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1
 	;;
 	0 ) exit 1 ;;
 esac
-exit
-function login(){
-    login
-}
 
 if [[ -f /etc/redhat-release ]]; then
     release="centos"
