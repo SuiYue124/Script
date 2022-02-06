@@ -1,7 +1,6 @@
 #!/bin/bash
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
-
 blue(){
     echo -e "\033[34m\033[01m$1\033[0m"
 }
@@ -16,7 +15,17 @@ red(){
 }
 
 
-function login(){
+vpsroot(){
+	[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
+}
+
+vpsuser(){
+	[[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1
+	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
+}
+
+start_menu(){
 clear
 echo "                            "
 green "=================================================================================="
@@ -30,16 +39,10 @@ echo "                            "
 green "=================================================================================="
 read -p "请输入选项:" loginNumberInput
 case "$loginNumberInput" in
-    1 ) 
-	[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
-	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
-	;;
-    2 ) 
-	[[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1
-	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
-	;;
+    1 ) vpsroot ;;
+    2 ) vpsuser ;;
 	0 ) exit 1 ;;
 esac
 }
 
-login
+start_menu
