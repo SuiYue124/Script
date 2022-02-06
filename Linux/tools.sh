@@ -494,7 +494,7 @@ function page4(){
     yellow "3. XRay一键脚本 "
 	yellow "4. V2Ray一键脚本"
 	yellow "5. SS、SSR一键脚本"
-	yellow "6. TG代理一键搭建 "
+	yellow "6. Telegram代理一键搭建 "
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
