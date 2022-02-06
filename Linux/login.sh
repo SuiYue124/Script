@@ -1,6 +1,7 @@
 #!/bin/bash
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
+
 blue(){
     echo -e "\033[34m\033[01m$1\033[0m"
 }
@@ -25,7 +26,7 @@ vpsuser(){
 	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
 }
 
-start_menu(){
+login(){
 clear
 echo "                            "
 green "=================================================================================="
@@ -45,4 +46,4 @@ case "$loginNumberInput" in
 esac
 }
 
-start_menu
+login
