@@ -37,26 +37,7 @@ done
 
 [[ -z $SYSTEM ]] && red "不支持VPS的当前系统，请使用主流操作系统" && exit 1
 
-function login(){
-clear
-echo "                            "
-green "=================================================================================="
-echo "                            "
-yellow "1.我已使用Root账户登录"
-yellow "2.继续使用非Root账户登录"
-red "注意：非Root账户可能导致某些脚本不能运行！"
-echo "                           "
-red "0.退出脚本"
-echo "                            "
-green "=================================================================================="
-read -p "请输入选项:" loginNumberInput
-case "$loginNumberInput" in
-    1 ) [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 ;;
-    2 ) [[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1 ;;
-	0 ) exit 1 ;;
-esac
-}
-login
+
 
 if [[ -f /etc/redhat-release ]]; then
     release="centos"
@@ -551,3 +532,26 @@ function page5(){
 }
 
 menu
+
+
+function login(){
+clear
+echo "                            "
+green "=================================================================================="
+echo "                            "
+yellow "1.我已使用Root账户登录"
+yellow "2.继续使用非Root账户登录"
+red "注意：非Root账户可能导致某些脚本不能运行！"
+echo "                           "
+red "0.退出脚本"
+echo "                            "
+green "=================================================================================="
+read -p "请输入选项:" loginNumberInput
+case "$loginNumberInput" in
+    1 ) [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 ;;
+    2 ) [[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1 ;;
+	0 ) exit 1 ;;
+esac
+}
+
+login
