@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20220205"
+ver="20220206"
 github="https://github.com/GWen124"
 changeLog=""
 arch=`uname -m`
@@ -37,6 +37,7 @@ done
 
 [[ -z $SYSTEM ]] && red "不支持VPS的当前系统，请使用主流操作系统" && exit 1
 
+function login(){
 clear
 echo "                            "
 green "=================================================================================="
@@ -54,6 +55,8 @@ case "$loginNumberInput" in
     2 ) [[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1 ;;
 	0 ) exit 1 ;;
 esac
+}
+login
 
 if [[ -f /etc/redhat-release ]]; then
     release="centos"
