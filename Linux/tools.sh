@@ -366,6 +366,10 @@ function ddsystem(){
   wget --no-check-certificate -qO ~/Network-Reinstall-System-Modify.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/Network-Reinstall-System-Modify.sh' && chmod a+x ~/Network-Reinstall-System-Modify.sh && bash ~/Network-Reinstall-System-Modify.sh -UI_Options
 }
 
+function QuickBox(){
+  bash <(curl -sLo- https://git.io/qbox-lite) COMMAND
+}
+
  function menu(){
     clear
     echo "                           "
@@ -520,6 +524,7 @@ function page5(){
 	yellow "4. iptables一键中转"
 	yellow "5. gost一键中转"
 	yellow "6. VPS DD系统"
+	yellow "7. QuickBox-Lite(仅支持 amd64)"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -531,6 +536,7 @@ function page5(){
 		4 ) dnat ;;
 		5 ) gost ;;
 		6 ) ddsystem ;;
+		6 ) QuickBox ;;
         0 ) menu
     esac
 }
