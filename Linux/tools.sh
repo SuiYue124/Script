@@ -179,7 +179,8 @@ function bbr(){
 		wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh
 		;;
         0 ) menu
-		* ) echo yellow " ${Error} 请输入正确的数字" ;;
+		* ) echo "                            "
+			 yellow "请输入正确的数字" ;;
     esac
 }
 	
@@ -226,9 +227,8 @@ yellow "下载完成"
 		;;
         0 ) menu
 		* ) 
-		echo
-		yellow " ${Error} 请输入正确的数字" 
-		;;
+		* ) echo "                            "
+			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -286,8 +286,8 @@ function unlock(){
 		bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 		;;
         0 ) menu
-		* ) echo yellow " ${Error} 请输入正确的数字" 
-		;;
+		* ) echo "                            "
+			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -422,7 +422,8 @@ function aria2(){
         4 ) page4 ;;
         5 ) page5 ;;
         0 ) exit 0
-		* ) echo yellow " ${Error} 请输入正确的数字" ;;
+		* ) echo "                            "
+			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -450,7 +451,8 @@ function page1(){
 		6 ) acmesh ;;
 		7 ) cssh ;;
         0 ) menu
-		* ) echo yellow " ${Error} 请输入正确的数字" ;;
+		* ) echo "                            "
+			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -474,7 +476,8 @@ function page2(){
         4 ) unlock ;;
 		5 ) speedtest ;;
         0 ) menu
-		* ) echo yellow " ${Error} 请输入正确的数字" ;;
+		* ) echo "                            "
+			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -500,7 +503,8 @@ function page3(){
         5 ) nezha ;;
         6 ) alist ;;
         0 ) menu
-		* ) echo yellow " ${Error} 请输入正确的数字" ;;
+		* ) echo "                            "
+			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -526,7 +530,8 @@ function page4(){
 		5 ) shadowsocks ;;
 		6 ) telegram ;;
         0 ) menu
-		* ) echo yellow " ${Error} 请输入正确的数字" ;;
+		* ) echo "                            "
+			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -556,7 +561,8 @@ function page5(){
 		7 ) QuickBox ;;
 		8 ) aria2 ;;
         0 ) menu
-		* ) echo yellow " ${Error} 请输入正确的数字" ;;
+		* ) echo "                            "
+			 yellow "请输入正确的数字" ;;
     esac
 }
 

@@ -47,7 +47,8 @@ case "$loginNumberInput" in
 		vpsuser
 		;;
 	0 ) exit 1 ;;
-	* ) echo yellow " ${Error} 请输入正确的数字" ;;
+	* ) echo "                            "
+		yellow "请输入正确的数字" ;;
 esac
 }
 
