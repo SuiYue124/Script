@@ -37,6 +37,31 @@ done
 
 [[ -z $SYSTEM ]] && red "不支持VPS的当前系统，请使用主流操作系统" && exit 1
 
+clear
+echo "                            "
+green "=================================================================================="
+echo "                            "
+yellow "1.我已使用Root账户登录"
+yellow "2.继续使用非Root账户登录"
+red "注意：非Root账户可能导致某些脚本不能运行！"
+echo "                           "
+red "0.退出脚本"
+echo "                            "
+green "=================================================================================="
+read -p "请输入选项:" loginNumberInput
+case "$loginNumberInput" in
+    1 ) 
+	    [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 
+	    bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
+	    ;;
+    2 ) 
+		[[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
+		;;
+	0 ) exit 1 ;;
+	*)echo && echo -e " ${Error} 请输入正确的数字" ;;
+esac
+
 green "=================================================================================="
 echo "                           "
 yellow "第一次运行可能会时间过长，请耐心等待！"
