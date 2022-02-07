@@ -37,32 +37,6 @@ done
 
 [[ -z $SYSTEM ]] && red "不支持VPS的当前系统，请使用主流操作系统" && exit 1
 
-clear
-echo "                            "
-green "=================================================================================="
-echo "                            "
-yellow "1.我已使用Root账户登录"
-yellow "2.继续使用非Root账户登录"
-red "注意：非Root账户可能导致某些脚本不能运行！"
-echo "                           "
-red "0.退出脚本"
-echo "                            "
-green "=================================================================================="
-read -p "请输入选项:" loginNumberInput
-case "$loginNumberInput" in
-    1 ) 
-	    [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 
-	    bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
-	    ;;
-    2 ) 
-		[[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
-		;;
-	0 ) exit 1 ;;
-	* ) echo
-		echo -e " ${Error} 请输入正确的数字" ;;
-esac
-
 green "=================================================================================="
 echo "                           "
 yellow "第一次运行可能会时间过长，请耐心等待！"
@@ -205,6 +179,7 @@ function bbr(){
 		wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh
 		;;
         0 ) menu
+		* ) echo yellow " ${Error} 请输入正确的数字" ;;
     esac
 }
 	
@@ -250,6 +225,10 @@ yellow "下载完成"
 	    bash changesource.sh restore
 		;;
         0 ) menu
+		* ) 
+		echo
+		yellow " ${Error} 请输入正确的数字" 
+		;;
     esac
 }
 
@@ -307,6 +286,8 @@ function unlock(){
 		bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 		;;
         0 ) menu
+		* ) echo yellow " ${Error} 请输入正确的数字" 
+		;;
     esac
 }
 
@@ -441,6 +422,7 @@ function aria2(){
         4 ) page4 ;;
         5 ) page5 ;;
         0 ) exit 0
+		* ) echo yellow " ${Error} 请输入正确的数字" ;;
     esac
 }
 
@@ -468,6 +450,7 @@ function page1(){
 		6 ) acmesh ;;
 		7 ) cssh ;;
         0 ) menu
+		* ) echo yellow " ${Error} 请输入正确的数字" ;;
     esac
 }
 
@@ -491,6 +474,7 @@ function page2(){
         4 ) unlock ;;
 		5 ) speedtest ;;
         0 ) menu
+		* ) echo yellow " ${Error} 请输入正确的数字" ;;
     esac
 }
 
@@ -516,6 +500,7 @@ function page3(){
         5 ) nezha ;;
         6 ) alist ;;
         0 ) menu
+		* ) echo yellow " ${Error} 请输入正确的数字" ;;
     esac
 }
 
@@ -541,6 +526,7 @@ function page4(){
 		5 ) shadowsocks ;;
 		6 ) telegram ;;
         0 ) menu
+		* ) echo yellow " ${Error} 请输入正确的数字" ;;
     esac
 }
 
@@ -570,6 +556,7 @@ function page5(){
 		7 ) QuickBox ;;
 		8 ) aria2 ;;
         0 ) menu
+		* ) echo yellow " ${Error} 请输入正确的数字" ;;
     esac
 }
 
