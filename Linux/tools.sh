@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20220206"
+ver="20220207"
 github="https://github.com/GWen124"
 changeLog=""
 arch=`uname -m`
@@ -74,7 +74,7 @@ elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
 fi
 $systemPackage update -y
 $systemPackage upgrade -y
-$systemPackage -y install wget curl htop nano python3 python3-pip
+$systemPackage -y install wget curl htop nano python3 python3-pip ca-certificates
 
 sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 sudo timedatectl set-timezone Asia/Shanghai
@@ -370,6 +370,11 @@ function QuickBox(){
   bash <(curl -sLo- https://git.io/qbox-lite) COMMAND
 }
 
+function aria2(){
+    ${PACKAGE_INSTALL[int]} ca-certificates
+    wget -N git.io/aria2.sh && chmod +x aria2.sh && bash aria2.sh
+}
+
  function menu(){
     clear
     echo "                           "
@@ -525,6 +530,7 @@ function page5(){
 	yellow "5. gost一键中转"
 	yellow "6. VPS DD系统"
 	yellow "7. QuickBox-Lite(仅支持 amd64)"
+	yellow "6. Aria2一键安装脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -536,7 +542,8 @@ function page5(){
 		4 ) dnat ;;
 		5 ) gost ;;
 		6 ) ddsystem ;;
-		6 ) QuickBox ;;
+		7 ) QuickBox ;;
+		8 ) aria2 ;;
         0 ) menu
     esac
 }
