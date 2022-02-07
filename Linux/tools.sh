@@ -547,7 +547,7 @@ function page5(){
     esac
 }
 echo "                            "
-yellow "请输入正确的数字" ;;
+yellow "请输入正确的数字" 
 menu
 
 
