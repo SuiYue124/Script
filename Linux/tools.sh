@@ -544,9 +544,9 @@ function page5(){
 		7 ) QuickBox ;;
 		8 ) aria2 ;;
         0 ) menu
+		* ) echo "                            "
+		yellow "请输入正确的数字" 
     esac
-	echo "                            "
-	yellow "请输入正确的数字" 
 }
 menu
 
