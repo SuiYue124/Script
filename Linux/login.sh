@@ -41,12 +41,10 @@ green "=========================================================================
 read -p "请输入选项:" loginNumberInput
 case "$loginNumberInput" in
     1 ) 
-	    [[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1 
-	    bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
+	    vpsroot
 	    ;;
     2 ) 
-		[[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
+		vpsuser
 		;;
 	0 ) exit 1 ;;
 	*)echo && echo -e " ${Error} 请输入正确的数字" ;;
