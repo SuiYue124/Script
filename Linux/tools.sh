@@ -548,9 +548,9 @@ function page5(){
 }
 menu
 
- vpsexit(){
-	echo "                            "
-	yellow "请输入正确的数字" ;;
-}
+
+echo "                            "
+yellow "请输入正确的数字" ;;
+
 
 
