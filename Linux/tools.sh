@@ -4,7 +4,7 @@
 
 ver="20220207"
 github="https://github.com/GWen124"
-changeLog=""
+changeLog="随缘更新！"
 arch=`uname -m`
 virt=`systemd-detect-virt`
 kernelVer=`uname -r`
@@ -371,8 +371,7 @@ function QuickBox(){
 }
 
 function aria2(){
-    ${PACKAGE_INSTALL[int]} ca-certificates
-    wget -N git.io/aria2.sh && chmod +x aria2.sh && bash aria2.sh
+  bash <(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/aria2.sh)
 }
 
  function menu(){
