@@ -246,12 +246,12 @@ function speedtest(){
 
 function unlock(){
     echo "                            "
-	yellow " 1. 启动Netflix检测脚本（X86） "
-	yellow " 2. 启动Netflix检测脚本（ARM） "
-	yellow " 3. 启动DisneyPlus检测脚本（X86） "
-	yellow " 4. 启动DisneyPlus检测脚本（ARM） "
-	yellow " 5. Youtube 缓存节点、地域信息检测（X86） "
-	yellow " 6. Youtube 缓存节点、地域信息检测（ARM） "
+	yellow " 1. 启动Netflix检测脚本(X86)"
+	yellow " 2. 启动Netflix检测脚本(ARM)"
+	yellow " 3. 启动DisneyPlus检测脚本(X86)"
+	yellow " 4. 启动DisneyPlus检测脚本(ARM)"
+	yellow " 5. Youtube 缓存节点、地域信息检测(X86)"
+	yellow " 6. Youtube 缓存节点、地域信息检测(ARM)"
 	yellow " 7. 流媒体一键检测脚本 "
 	echo "                            "
     red " 0. 返回主菜单 "
@@ -547,5 +547,10 @@ function page5(){
     esac
 }
 menu
+
+ vpsexit(){
+	echo "                            "
+	yellow "请输入正确的数字" ;;
+}
 
 
