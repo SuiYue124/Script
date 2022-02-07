@@ -529,7 +529,7 @@ function page5(){
 	yellow "5. gost一键中转"
 	yellow "6. VPS DD系统"
 	yellow "7. QuickBox-Lite(仅支持 amd64)"
-	yellow "6. Aria2一键安装脚本"
+	yellow "8. Aria2一键安装脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
