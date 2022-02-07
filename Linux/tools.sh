@@ -475,7 +475,7 @@ function page3(){
     yellow "1. 宝塔面板一键官方脚本"
     yellow "2. 宝塔面板降级到v7.7"
     yellow "3. 宝塔面板无需手机登陆"
-	yellow "4. 宝塔面板英文官方版"
+	yellow "4. 宝塔面板国际版"
     yellow "5. 哪吒面板"
     yellow "6. Alist一键安装脚本"
     echo "                            "
