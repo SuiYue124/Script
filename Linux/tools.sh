@@ -178,9 +178,7 @@ function bbr(){
         3 ) 
 		wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh
 		;;
-        0 ) menu ;;
-		* ) echo "                            "
-			 yellow "请输入正确的数字" ;;
+        0 ) menu
     esac
 }
 	
@@ -226,9 +224,6 @@ yellow "下载完成"
 	    bash changesource.sh restore
 		;;
         0 ) menu
-		* ) 
-		* ) echo "                            "
-			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -286,8 +281,6 @@ function unlock(){
 		bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 		;;
         0 ) menu
-		* ) echo "                            "
-			 yellow "请输入正确的数字" ;;
     esac
 }
 
