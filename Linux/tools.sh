@@ -59,7 +59,8 @@ case "$loginNumberInput" in
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
 		;;
 	0 ) exit 1 ;;
-	*)echo && echo -e " ${Error} 请输入正确的数字" ;;
+	* ) echo
+		echo -e " ${Error} 请输入正确的数字" ;;
 esac
 
 green "=================================================================================="
