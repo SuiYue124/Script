@@ -415,8 +415,6 @@ function aria2(){
         4 ) page4 ;;
         5 ) page5 ;;
         0 ) exit 0
-		* ) echo "                            "
-			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -444,8 +442,6 @@ function page1(){
 		6 ) acmesh ;;
 		7 ) cssh ;;
         0 ) menu
-		* ) echo "                            "
-			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -469,8 +465,6 @@ function page2(){
         4 ) unlock ;;
 		5 ) speedtest ;;
         0 ) menu
-		* ) echo "                            "
-			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -496,8 +490,6 @@ function page3(){
         5 ) nezha ;;
         6 ) alist ;;
         0 ) menu
-		* ) echo "                            "
-			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -523,8 +515,6 @@ function page4(){
 		5 ) shadowsocks ;;
 		6 ) telegram ;;
         0 ) menu
-		* ) echo "                            "
-			 yellow "请输入正确的数字" ;;
     esac
 }
 
@@ -554,9 +544,10 @@ function page5(){
 		7 ) QuickBox ;;
 		8 ) aria2 ;;
         0 ) menu
-		* ) echo "                            "
-			 yellow "请输入正确的数字" ;;
     esac
 }
 
 menu
+
+echo "                            "
+yellow "请输入正确的数字" ;;
