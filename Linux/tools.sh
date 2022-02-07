@@ -178,7 +178,7 @@ function bbr(){
         3 ) 
 		wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh
 		;;
-        0 ) menu
+        0 ) menu ;;
 		* ) echo "                            "
 			 yellow "请输入正确的数字" ;;
     esac
