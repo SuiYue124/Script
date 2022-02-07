@@ -43,6 +43,7 @@ case "$loginNumberInput" in
     1 ) vpsroot ;;
     2 ) vpsuser ;;
 	0 ) exit 1 ;;
+	*)echo && echo -e " ${Error} 请输入正确的数字" ;;
 esac
 }
 
