@@ -545,12 +545,13 @@ function page5(){
 		8 ) aria2 ;;
         0 ) menu
     esac
+	echo "                            "
+	yellow "请输入正确的数字" ;;
 }
 menu
 
 
-echo "                            "
-yellow "请输入正确的数字" ;;
+
 
 
 
