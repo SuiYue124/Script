@@ -55,9 +55,9 @@ export BARK_GROUP="QingLong"
 
 ## 3. Telegram
 ## 下方填写自己申请@BotFather的Token，如10xxx4:AAFcqxxxxgER5uw
-export TG_BOT_TOKEN=""
+export TG_BOT_TOKEN="1546107344:AAHoKObCCRxa4txBjZw5jXWDz2GFrZTCBVA"
 ## 下方填写 @getuseridbot 中获取到的纯数字ID
-export TG_USER_ID=""
+export TG_USER_ID="964709543"
 ## Telegram 代理IP（选填）
 ## 下方填写代理IP地址，代理类型为 http，比如您代理是 http://127.0.0.1:1080，则填写 "127.0.0.1"
 ## 如需使用，请自行解除下一行的注释
@@ -701,10 +701,32 @@ export JOY_COIN_MAXIMIZE="1"   # 最大化硬币收益，如果合成后全部�
 # ddo
 export JD_CITY_HELPPOOL="true"
 
-# XXOO自动互助池
-export XXOO_HOST ="https://sharec.siber.cn:889 "
-export XXOO_TOKEN="dev_token"
-export XXOO_CLOSE_SELF"false"
+# ddo
+export JD_CITY_HELPPOOL="true"
+
+#shufflewzc_faker2
+##京豆兑换为喜豆
+export exjxbeans="true"
+##京东自动评价
+export JD_Evaluation="true"
+##2022-1-24 超级直播间半点雨ID url cron 30 21,22 * * *
+export jd_redrain_half_url="https://gitee.com/msewb/update/raw/master/m_redrain_half_5232420221612.json"
+
+
+#KingRan_JDJB
+## 组队瓜分jd_zdjr.js
+jd_zdjr_activityId="7ea90d12de8f4240b289e9d9537a835d"
+export jd_zdjr_activityUrl="https://lzkjdz-isv.isvjcloud.com"
+
+#xxoo_share_pool
+#export XXOO_HOST="https://sharec.siber.cn:889"
+#export XXOO_TOKEN="dev_token"
+#export XXOO_CLOSE_SELF="false"
+
+#Zy143L_wskey
+export WSKEY_UPDATE_HOUR="1" 
+export WSKEY_TRY_COUNT="1"
+
 
 # Aaron-lv
 ## 1、京东金融签到
