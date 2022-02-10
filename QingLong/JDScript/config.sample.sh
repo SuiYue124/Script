@@ -727,6 +727,8 @@ export jd_zdjr_activityUrl="https://lzkjdz-isv.isvjcloud.com"
 export WSKEY_UPDATE_HOUR="1" 
 export WSKEY_TRY_COUNT="1"
 
+#财富岛珍珠兑换
+export ddwVirHb='100'
 
 # Aaron-lv
 ## 1、京东金融签到
