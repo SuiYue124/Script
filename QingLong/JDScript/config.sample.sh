@@ -12,7 +12,7 @@ AutoDelCron="true"
 AutoAddCron="true"
 
 ## 拉取脚本时默认的定时规则，当匹配不到定时规则时使用，例如: 0 9 * * *
-DefaultCronRule="37 0 * * *"
+DefaultCronRule=""
 
 ## ql repo命令拉取脚本时需要拉取的文件后缀，直接写文件后缀名即可
 RepoFileExtensions="js py sh ts"
