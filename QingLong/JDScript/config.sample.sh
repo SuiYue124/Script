@@ -730,6 +730,10 @@ export WSKEY_TRY_COUNT="1"
 #财富岛珍珠兑换
 export ddwVirHb='100'
 
+#京喜自动化
+export COMMODITY_NAME='厨邦料酒'
+export COMMODITY_NAME='湿厕纸2包'
+
 # Aaron-lv
 ## 1、京东金融签到
 ### 添加京东签到 金融签到body兼容，body抓包获取 不同账号不通用
