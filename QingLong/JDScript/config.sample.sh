@@ -724,8 +724,14 @@ export jd_zdjr_activityUrl="https://lzkjdz-isv.isvjcloud.com"
 #export XXOO_CLOSE_SELF="false"
 
 #Zy143L_wskey
+##支持按间隔更新CK
 export WSKEY_UPDATE_HOUR="1" 
+##增加自动重试
 export WSKEY_TRY_COUNT="1"
+##设置后不会自动禁用Cookie
+#export WSKEY_AUTO_DISABLE="ture"
+##设置后不检查账号有效性
+#export QL_WSCK="true"
 
 #财富岛珍珠兑换
 export ddwVirHb='100'
