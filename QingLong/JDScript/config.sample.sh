@@ -747,6 +747,10 @@ export ec_fix_dep="true"
 #开启脚本依赖文件更新
 export ec_re_dep="true" 
 
+#快手果园任务
+##内置助力码环境变量
+export KS_SHARECODE="true" 
+
 #京东健康社区-种植园自动任务
 export plant_cookie="1&2&3"
 export charge_targe_id="1&2&3"
