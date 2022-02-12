@@ -1,0 +1,20 @@
+name: Auto sync action JDScript
+
+on:
+  workflow_dispatch:
+    schedule:
+    - cron: 0 17 */1 * *
+jobs:
+  Repo-Sync:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+    - name: AutoBuild-OpenWrt
+      uses: repo-sync/github-sync@v2
+      with:
+        source_repo: "https://github.com/GWen124/AutoBuild-OpenWrt.git"
+        source_branch: "master"
+        destination_branch: "AutoBuild-OpenWrt"
+        github_token: ${{ secrets.REPO_TOKEN }}
