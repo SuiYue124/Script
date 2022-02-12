@@ -6,7 +6,9 @@
 如需关闭膨胀，环境变量 sjpz 值：false
 本次更新：增加推送，可设置膨胀。
 推送依赖 https://gitee.com/xiecoll/radish-script/raw/master/MT/sendNotify.js
-cron "5 11 * * *",=美团天天神卷+赚米粒
+
+cron "5 11 * * *",tag=美团天天神卷+赚米粒
+
 TG群组：https://t.me/Luobook666 公众号：Luobook科技社
 */
 
