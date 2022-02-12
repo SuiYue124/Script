@@ -6,7 +6,8 @@
 抓包 h5.ele.me 域名下的任何url 请求头中的Cookie
 获取数据 饿了么App->我的-> 赚吃货豆
 多账户 @
-cron  5 12,18 * * *  
+
+cron "5 12,18 * * * " 
 
 ql repo https://gitee.com/xiecoll/radish-script.git "lb_" "README" "sendNotify"
 
