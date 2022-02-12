@@ -740,6 +740,13 @@ export ddwVirHb='100'
 export COMMODITY_NAME='厨邦料酒'
 export COMMODITY_NAME='湿厕纸2包'
 
+
+#修复脚本依赖文件
+##开启脚本依赖文件缺失修复
+export ec_fix_dep="true" 
+#开启脚本依赖文件更新
+export ec_re_dep="true" 
+
 # Aaron-lv
 ## 1、京东金融签到
 ### 添加京东签到 金融签到body兼容，body抓包获取 不同账号不通用
