@@ -747,6 +747,10 @@ export ec_fix_dep="true"
 #开启脚本依赖文件更新
 export ec_re_dep="true" 
 
+#京东健康社区-种植园自动任务
+export plant_cookie="1&2&3"
+export charge_targe_id="1&2&3"
+
 # Aaron-lv
 ## 1、京东金融签到
 ### 添加京东签到 金融签到body兼容，body抓包获取 不同账号不通用
