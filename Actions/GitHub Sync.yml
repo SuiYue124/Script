@@ -1,0 +1,21 @@
+name: Clone
+
+on:
+  workflow_dispatch:
+#  schedule:
+#    - cron: 0 */12 * * *
+
+jobs:
+  Clone:
+    runs-on: Ubuntu-20.04
+    steps:
+    - name: Clone
+      uses: TobKed/github-forks-sync-action@master
+      with:
+        github_token: ${{ secrets.REPO_TOKEN }}
+        upstream_repository: jerrykuku/luci-theme-argon
+        upstream_branch: 18.06
+        target_repository: GWen124/luci-theme-argon
+        target_branch: 18.06
+        force: true
+        tags: false
