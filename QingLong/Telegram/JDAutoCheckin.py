@@ -4,7 +4,7 @@
 
 '''
 new Env('京东助力Telegram提交');
-cron=30 0 * * * 1 python3 JDAutoCheckin.py
+cron=30 0 0 * * 1 python3 JDAutoCheckin.py
 '''
 
 import os
