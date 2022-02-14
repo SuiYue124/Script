@@ -6,7 +6,7 @@ ql repo https://github.com/GWen124/Script.git "jd_|jx_|gua_|jddj_|AutoCheckin|JD
 ```
 
 ```
-ql repo https://github.com/GWen124/JDTest.git "jd_|jx_|gua_|jddj_" "activity|backUp" "^jd[^_]|USER|function|utils|sendNotify|ZooFaker_Necklace.js|JDJRValidator_|sign_graphics_validate|ql|JDSignValidator""master"
+ql repo https://github.com/GWen124/JDTest.git "jd_|jx_|gua_|jddj_" "activity|backUp" "^jd[^_]|USER|function|sign|utils|sendNotify|ZooFaker_Necklace.js|JDJRValidator_|sign_graphics_validate|ql|JDSignValidator""master"
 ```
 
 ```
