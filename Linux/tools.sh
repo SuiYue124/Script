@@ -227,6 +227,10 @@ yellow "下载完成"
     esac
 }
 
+function screen(){
+  bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/Misaka-blog/screenManager@master/screen.sh)"
+}
+
 #page2
 function bench(){
   wget -qO- bench.sh | bash
@@ -429,6 +433,7 @@ function page1(){
     yellow "5. 开启BBR一键加速"
 	yellow "6. Acme.sh 证书申请脚本"
 	yellow "7. Linux换源脚本"
+	yellow "8. Screen 后台任务管理"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -441,6 +446,7 @@ function page1(){
         5 ) bbr ;;
 		6 ) acmesh ;;
 		7 ) cssh ;;
+		8 ) screen ;;
         0 ) menu
     esac
 }
