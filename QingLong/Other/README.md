@@ -1,6 +1,6 @@
 # 说明
 ```
-ql repo https://github.com/GWen124/Script.git "Other" "Actions|IOS|Linux|QianDao-Templates|Telegram|JDScript" 
+ql repo https://github.com/GWen124/Script.git "Other" "Actions|IOS|Linux|QianDao-Templates|Telegram|JDScript|"sendNotify"" 
 ```
 - **饿了么吃货豆**
 ```

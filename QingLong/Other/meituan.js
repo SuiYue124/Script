@@ -7,7 +7,8 @@
 本次更新：增加推送，可设置膨胀。
 推送依赖 https://gitee.com/xiecoll/radish-script/raw/master/MT/sendNotify.js
 
-cron "5 11 * * *",tag=美团天天神卷+赚米粒
+cron: 5 11 * * * meituan.js
+new Env('美团天天神卷+赚米粒');
 
 
 */

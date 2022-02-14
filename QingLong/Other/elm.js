@@ -7,7 +7,8 @@
 获取数据 饿了么App->我的-> 赚吃货豆
 多账户 @
 
-cron "5 12,18 * * * " 
+cron: 5 12,18 * * * elm.js
+new Env('饿了么');
 
 ql repo https://gitee.com/xiecoll/radish-script.git "lb_" "README" "sendNotify"
 
