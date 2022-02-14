@@ -2,7 +2,7 @@ name: Auto sync action JDScript
 
 on:
   workflow_dispatch:
-    schedule:
+  schedule:
     - cron: 0 17 */1 * *
 jobs:
   Repo-Sync:
