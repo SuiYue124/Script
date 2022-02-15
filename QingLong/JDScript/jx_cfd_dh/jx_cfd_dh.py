@@ -57,7 +57,7 @@ def get_cookie():
     ck_list = []
     pin = "null"
     cookie = None
-    cookies = get_envs("JD_COOKIE")
+    cookies = get_envs("CFD_COOKIE")
     for ck in cookies:
         if ck.get('status') == 0:
             ck_list.append(ck)
@@ -151,7 +151,7 @@ if __name__ == '__main__':
     UA = "jdpingou;iPhone;5.11.0;15.1.1;{};network/wifi;model/iPhone13,2;appBuild/100755;ADID/;supportApplePay/1;hasUPPay/0;pushNoticeIsOpen/1;hasOCPay/0;supportBestPay/0;session/22;pap/JA2019_3111789;brand/apple;supportJDSHWK/1;Mozilla/5.0 (iPhone; CPU iPhone OS 14_6 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148".format(
         get_random_str(45, True))
     if u_cookie is None:
-        print("未读取到JD_COOKIE,程序结束")
+        print("未读取到CFD_COOKIE,程序结束")
     else:
         headers = {
             "Host": "m.jingxi.com",
