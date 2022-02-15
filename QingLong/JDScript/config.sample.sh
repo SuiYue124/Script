@@ -737,8 +737,8 @@ export WSKEY_TRY_COUNT="1"
 export ddwVirHb='100'
 
 #京喜自动化
-export COMMODITY_NAME='厨邦料酒'
-export COMMODITY_NAME='湿厕纸2包'
+#export COMMODITY_NAME='厨邦料酒'
+
 
 
 #修复脚本依赖文件
@@ -754,6 +754,16 @@ export KS_SHARECODE="true"
 #京东健康社区-种植园自动任务
 export plant_cookie="1&2&3"
 export charge_targe_id="1&2&3"
+
+#腾讯自选股APP & 微信微证券公众号
+##提现条件设置：0代表不提现，1代表提现1元，5代表提现5元
+export TxStockCash="1"
+##新手任务设置：0代表不做新手任务，1代表做新手任务
+export TxStockNewbie="1"
+##分享任务设置：0代表不做分享互助，1代表做分享互助
+export TxStockHelp="1"
+##互助顺序设置：按顺序填入要帮助的用户，0代表不帮助其他用户，每个用户之间用@或者#隔开
+#export TxStockHelpOrder="1"
 
 #美团赚米粒
 ##关闭神券膨胀
