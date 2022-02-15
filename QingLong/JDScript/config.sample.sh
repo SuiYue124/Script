@@ -769,6 +769,12 @@ export TxStockHelp="1"
 ##关闭神券膨胀
 #export sjpz="false"
 
+#京东自动评价
+## 控制开关
+export Ev_Start='true'
+## 评价星级，评论是好评，星级默认4-5随机。只支持逗号 ENV设置： export Ev_xing='4,5'
+export Ev_xing='4,5'
+
 # Aaron-lv
 ## 1、京东金融签到
 ### 添加京东签到 金融签到body兼容，body抓包获取 不同账号不通用
