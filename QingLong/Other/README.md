@@ -23,8 +23,11 @@ export mtTk='这里填token值，不带分号'
 可关闭神券膨胀，不想关，删除变量
 export sjpz="false"
 ```
+<details>
 - <summary>**中国联通-Chinaunicom.js**</summary>
+<br />
 ```
 export ltphone="" #手机号
 export ltpwd="" #登录6位密码
 ```
+</details>
