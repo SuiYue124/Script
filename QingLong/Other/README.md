@@ -1,7 +1,7 @@
 # 说明
 ### 饿了么吃货豆-elm.js
 <details>
-<summary>说明</summary>
+<summary>说明：</summary>
 <br />
 抓包：h5.ele.me
 	
@@ -10,7 +10,7 @@
 
 ### 滴滴果园-dd_fruit.js
 <details>
-<summary>说明</summary>
+<summary>说明：</summary>
 <br />
 抓包：game.xiaojukeji.com
 	
@@ -19,7 +19,7 @@
 
 ### 快手果园ks_fruit.js
 <details>
-<summary>说明</summary>
+<summary>说明：</summary>
 <br />
 抓包：ug-fission.kuaishou.com
 	
@@ -28,7 +28,7 @@
 
 ### 美团-meituan.js，mt_fruit.js
 <details>
-<summary>说明</summary>
+<summary>说明：</summary>
 <br />
 进美团官网抓包：https://www.meituan.com
 Cookie中找到token值，复制出来
@@ -42,7 +42,7 @@ Cookie中找到token值，复制出来
 
 ### 中国联通-Chinaunicom.js
 <details>
-<summary>说明</summary>
+<summary>说明：</summary>
 <br />
 功能：签到，签到任务，多账号用 @ 分隔
 
@@ -53,7 +53,7 @@ Cookie中找到token值，复制出来
 
 ### 腾讯自选股 txstock.js
 <details>
-<summary>说明</summary>
+<summary>说明：</summary>
 <br />
 注意：APP和公众号都要抓，多账号用#隔开
 
