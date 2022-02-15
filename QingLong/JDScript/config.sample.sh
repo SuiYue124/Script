@@ -757,7 +757,7 @@ export charge_targe_id="1&2&3"
 
 #腾讯自选股APP & 微信微证券公众号
 ##提现条件设置：0代表不提现，1代表提现1元，5代表提现5元
-export TxStockCash="1"
+export TxStockCash="5"
 ##新手任务设置：0代表不做新手任务，1代表做新手任务
 export TxStockNewbie="1"
 ##分享任务设置：0代表不做分享互助，1代表做分享互助
