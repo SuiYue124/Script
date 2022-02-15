@@ -28,7 +28,7 @@ if not ipport:
     ipport = "localhost:5700"
 else:
     ipport = ipport.lstrip("http://").rstrip("/")
-sub_str = os.getenv("RES_SUB", "GWen124_Script&GWen124_JDTest&raw_Telegram")
+sub_str = os.getenv("RES_SUB", "GWen124_Script_master&GWen124_JDTest_master&raw_Telegram")
 sub_list = sub_str.split("&")
 res_only = os.getenv("RES_ONLY", True)
 headers = {
