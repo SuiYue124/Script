@@ -3,7 +3,7 @@
 <details>
 <summary>说明：</summary>
 <br />
-抓包：h5.ele.me
+MITM:h5.ele.me
 	
 	export elmck='SID=***'
 </details>
@@ -12,7 +12,7 @@
 <details>
 <summary>说明：</summary>
 <br />
-抓包：game.xiaojukeji.com
+MITM:game.xiaojukeji.com
 	
 	export DD_TOKEN='token1,token2'
 </details>
@@ -21,7 +21,7 @@
 <details>
 <summary>说明：</summary>
 <br />
-抓包：ug-fission.kuaishou.com
+MITM:ug-fission.kuaishou.com
 	
 	export KS_COOKIE='client_key=***;did=***;kuaishou.api_st=***;ud=***;ver=***;'
 </details>
@@ -30,7 +30,7 @@
 <details>
 <summary>说明：</summary>
 <br />
-进美团官网抓包：https://www.meituan.com
+进美团官网MITM:https://www.meituan.com
 Cookie中找到token值，复制出来
 
 	export mtTk='这里填token值，不带分号'
@@ -57,6 +57,7 @@ Cookie中找到token值，复制出来
 <br />
 注意：APP和公众号都要抓，多账号用#隔开
 
+MITM:wzq.tenpay.com
 
 APP-头像-右上角金币-获取金币，抓get包
 

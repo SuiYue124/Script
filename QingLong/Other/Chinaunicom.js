@@ -7,7 +7,9 @@
 
 ql raw https://gitee.com/xiecoll/radish-script/raw/master/Chinaunicom.js
 
-cron 5 9,11,18 * * *
+cron: 5 9,11,18 * * * Chinaunicom.js
+new Env('中国联通 ');
+
 */
 
 const $ = new Env('中国联通');//Chinaunicom

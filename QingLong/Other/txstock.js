@@ -45,6 +45,9 @@ https://wzq.tenpay.com/cgi-bin/activity_task_daily.fcgi? url script-request-head
 [MITM]
 hostname = wzq.tenpay.com
 
+cron: 35 11,16 * * * txstock.js
+new Env('腾讯自选股');
+
 */
 
 const jsname = '腾讯自选股'
