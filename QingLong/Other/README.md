@@ -3,7 +3,7 @@
 <details>
 <summary>说明</summary>
 <br />
-- h5.ele.me
+抓包：h5.ele.me
 	
 	export elmck='SID=***'
 </details>
@@ -12,8 +12,7 @@
 <details>
 <summary>说明</summary>
 <br />
-
-- game.xiaojukeji.com
+抓包：game.xiaojukeji.com
 	
 	export DD_TOKEN='token1,token2'
 </details>
@@ -22,7 +21,7 @@
 <details>
 <summary>说明</summary>
 <br />
-- ug-fission.kuaishou.com
+抓包：ug-fission.kuaishou.com
 	
 	export KS_COOKIE='client_key=***;did=***;kuaishou.api_st=***;ud=***;ver=***;'
 </details>
