@@ -30,11 +30,13 @@
 <details>
 <summary>说明</summary>
 <br />
-浏览器抓包
-进美团官网：https://www.meituan.com
-F12审查元素-登录账号-工作台选 网络，找到www.meituan.com的封包，Cookie中找到token值，复制出来
+进美团官网抓包：https://www.meituan.com
+Cookie中找到token值，复制出来
+
 	export mtTk='这里填token值，不带分号'
+	
 可关闭神券膨胀，不想关，删除变量
+
 	export sjpz="false"
 </details>
 
