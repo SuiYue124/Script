@@ -25,11 +25,10 @@ export sjpz="false"
 ```
 - **中国联通-Chinaunicom.js**
 <details>
-<summary>**说明**</summary>
+<summary>说明</summary>
 <br />
-```
 export ltphone="" #手机号
 
 export ltpwd="" #登录6位密码
-```
+
 </details>
