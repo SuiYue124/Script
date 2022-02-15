@@ -26,7 +26,7 @@ export sjpz="false"
 ### 中国联通-Chinaunicom.js
 <details>
 <summary>说明</summary>
-<br />
+
 功能：签到，签到任务，多账号用 @ 分隔
 
 	export ltphone="" #手机号
