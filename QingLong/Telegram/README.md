@@ -1,13 +1,16 @@
-# 说明
+# Telegram
+<details>
+<summary>拉取脚本：</summary>
+<br />
 
-```shell
 python3 AutoCheckin.py
-```
 
-```shell
+<br />
+
 ql raw https://raw.githubusercontent.com/GWen124/Script/master/QingLong/Telegram/AutoCheckin.py
-```
 
-```shell
+<br />
+
 ql raw https://raw.githubusercontent.com/GWen124/Script/master/QingLong/Telegram/JDAutoCheckin.py
-```
+
+</details>
