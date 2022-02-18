@@ -717,6 +717,10 @@ export jd_redrain_half_url="https://gitee.com/msewb/update/raw/master/m_redrain_
 ## 组队瓜分jd_zdjr.js
 jd_zdjr_activityId="7ea90d12de8f4240b289e9d9537a835d"
 export jd_zdjr_activityUrl="https://lzkjdz-isv.isvjcloud.com"
+## CJ组队瓜分jd_cjzdgf.js
+export let jd_cjhy_activityId="066b34fdd6514e2f99a7d08c046d50ed"
+export let jd_cjhy_activityUrl="https://cjhydz-isv.isvjcloud.com
+
 
 #xxoo_share_pool
 #export XXOO_HOST="https://sharec.siber.cn:889"
