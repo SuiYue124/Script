@@ -36,7 +36,7 @@ jobs:
           echo "::set-output name=matrix::$( echo "$JSON" )"
 
         env:
-          INPUT_GITHUB_TOKEN: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          INPUT_GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
           INPUT_UPSTREAM_REPOSITORY: apache/airflow
 
   update_external_airflow_fork:
@@ -48,7 +48,7 @@ jobs:
     steps:
       - uses: TobKed/github-forks-sync-action@master
         with:
-          github_token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          github_token: ${{ secrets.REPO_TOKEN }}
           upstream_repository: apache/airflow
           target_repository: TobKed/airflow
           upstream_branch: ${{ matrix.branch }}
