@@ -53,5 +53,5 @@ jobs:
           target_repository: TobKed/airflow
           upstream_branch: ${{ matrix.branch }}
           target_branch: ${{ matrix.branch }}
-          force: true
-          tags: true
+          force: false
+          tags: false
