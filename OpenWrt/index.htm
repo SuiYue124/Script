@@ -845,6 +845,13 @@
 
 <% if has_wifi then %>
 <fieldset class="cbi-section">
+	<legend><%:Wireless%></legend>
+
+	<table id="wifi_status_table" width="100%" cellspacing="10">
+		<tr><td><em><%:Collecting data...%></em></td></tr>
+	</table>
+</fieldset>
+<fieldset class="cbi-section">
 	<legend><%:Associated Stations%></legend>
 
 	<table class="cbi-section-table valign-middle" id="wifi_assoc_table">
@@ -862,7 +869,7 @@
 	</table>
 </fieldset>
 <% end %>
-
+	
 <%-
 	local incdir = util.libpath() .. "/view/admin_status/index/"
 	if fs.access(incdir) then
