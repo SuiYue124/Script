@@ -1,0 +1,2 @@
+# 说明
+此文件夹为jd_get_share_code.js配套，直接下载复制到青龙scripts文件夹

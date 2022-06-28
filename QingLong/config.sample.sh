@@ -717,9 +717,9 @@ export jd_redrain_half_url="https://gitee.com/msewb/update/raw/master/m_redrain_
 ## 组队瓜分jd_zdjr.js
 jd_zdjr_activityId="7ea90d12de8f4240b289e9d9537a835d"
 export jd_zdjr_activityUrl="https://lzkjdz-isv.isvjcloud.com"
-## CJ组队瓜分jd_cjzdgf.js
-export let jd_cjhy_activityId="066b34fdd6514e2f99a7d08c046d50ed"
-export let jd_cjhy_activityUrl="https://cjhydz-isv.isvjcloud.com
+## CJ组队瓜分-jd_cjzdgf.js
+export jd_cjhy_activityId="46d9913001cf4e23b047f33ac27140c9"
+export jd_cjhy_activityUrl="https://cjhydz-isv.isvjcloud.com"
 
 
 #xxoo_share_pool
@@ -763,11 +763,46 @@ export charge_targe_id="1&2&3"
 ##提现条件设置：0代表不提现，1代表提现1元，5代表提现5元
 export TxStockCash="5"
 ##新手任务设置：0代表不做新手任务，1代表做新手任务
-export TxStockNewbie="1"
+export TxStockNewbie="0"
 ##分享任务设置：0代表不做分享互助，1代表做分享互助
 export TxStockHelp="1"
 ##互助顺序设置：按顺序填入要帮助的用户，0代表不帮助其他用户，每个用户之间用@或者#隔开
 #export TxStockHelpOrder="1"
+
+#饿了么
+##兑换优惠券，参与瓜分吃货豆
+###变量：elmdh 兑换设置，默认为false,开启兑换，如需开启兑换，请设置为true
+export elmdh="true"
+###变量：SM_STARTTIME 值:默认为60，当为60时，9点59分运行脚本，10点准时开枪，如果网络慢可以设置为59，则9点59分59秒开抢。
+#export SM_STARTTIME="59"
+###变量：elmtz 值：默认正常通知，1 为抢到卷通知，2 为ck过期通知
+#export elmtz="2"
+###抢不到卷的可以尝试在青龙的配置文件里修改脚本运行延迟 RandomDelay="1"
+export RandomDelay="1"
+###变量：select 值：ture 开启搜索任务功能
+export select="true"
+
+
+#快手
+##ksWithdrawTime -- 选填，提现时间，默认为9，即9点提现
+export ksWithdrawTime="8"
+##ksNotify -- 选填，默认为1。 0：不通知，1：提现时间通知，2：每次运行通知
+export ksNotify="1"
+##ksCash -- 选填，默认为空。填了就按这个数字固定额度填写，例如固定提2块就填2
+#export sksCash=""
+##ksAggressive -- 选填，最大化提现，默认开启，要关闭就填0
+#export ksAggressive="0"
+
+
+#快手极速版
+##ksjsbWithdrawTime -- 选填，提现时间，默认为8，即8点提现
+export ksjsbWithdrawTim="7"
+##ksjsbNotify -- 选填，默认为1。 0：不通知，1：提现时间通知，2：每次运行通知
+export ksjsbNotify="1"
+##ksjsbCash -- 选填，默认为空。填了就按这个数字固定额度填写，例如固定提2块就填2
+#export ksjsbCash=""
+
+
 
 #美团赚米粒
 ##关闭神券膨胀
