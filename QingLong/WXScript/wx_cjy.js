@@ -5,7 +5,6 @@
 mall.jieyuegou.cn 抓包域名
 变量 cjyapp  抓取账号请求头Authorization的值就可以
 格式Bearer 0fd58111-e0a2-4637-845f-4d16467e0e32
-变量 cdkey    脚本通用卡密
 多账号@分割
 分别在每天的 4-12点，12-20，20-23各运行一次
 定时如：10 5,13,21 * * *
