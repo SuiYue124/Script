@@ -650,10 +650,12 @@
 				for (var i in ports)
 				{
 					tmp = tmp + String.format(
-							'<td style="text-align:center"><span style="line-height:25px">%s</span><br /><small><img src="<%=resource%>/icons/%s" /><br />%s<br />%s</small></td>',							ports[i].name,
+							'<td style="text-align:center"><span style="line-height:25px">%s</span><br /><small><img src="<%=resource%>/icons/%s" /><br />%s<br />%s<br />%s<br />%s</small></td>',							ports[i].face,
 							ports[i].status ? 'port_up.png' : 'port_down.png',
+							ports[i].name,
+						    ports[i].duplex ? '<%:full-duplex%>' : '<%:half-duplex%>',
 							ports[i].speed,
-							ports[i].duplex ? '<%:full-duplex%>' : '<%:half-duplex%>');
+							ports[i].mac);
 				};
 				e.innerHTML = "<tr>" + tmp + "</tr>";
 			}
@@ -733,8 +735,7 @@
 		<tr><td width="33%"><%:CPU Info%></td><td id="cpuinfo">-</td></tr>
         <tr><td width="33%"><%:内存大小%></td><td id="ramsize">-</td></tr>
 		<tr><td width="33%"><%:Firmware Version%></td><td>
-			<%=pcdata(ver.distname)%> <%=pcdata(ver.distversion)%> /
-			<%=pcdata(ver.luciname)%> (<%=pcdata(ver.luciversion)%>)
+			<%=pcdata(ver.distname)%> <%=pcdata(ver.distversion)%>
 		</td></tr>
 		<tr><td width="33%"><%:Kernel Version%></td><td><%=unameinfo.release or "?"%></td></tr>
 		<tr><td width="33%"><%:Local Time%></td><td id="localtime">-</td></tr>
@@ -869,17 +870,5 @@
 	</table>
 </fieldset>
 <% end %>
-	
-<%-
-	local incdir = util.libpath() .. "/view/admin_status/index/"
-	if fs.access(incdir) then
-		local inc
-		for inc in fs.dir(incdir) do
-			if inc:match("%.htm$") then
-				include("admin_status/index/" .. inc:gsub("%.htm$", ""))
-			end
-		end
-	end
--%>
 
 <%+footer%>
