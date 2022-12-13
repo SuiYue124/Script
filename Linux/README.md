@@ -12,7 +12,6 @@
 		
 ---
 #
----
 
 <details>
 <summary>🔻ZeroTier🔻</summary>
@@ -30,6 +29,5 @@ sudo systemctl enable zerotier-one.service
 <br />
 </details>
 
----
 #
 ---
