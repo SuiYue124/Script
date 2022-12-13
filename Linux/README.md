@@ -8,7 +8,30 @@
 		
 
 
+---
 
+<details>
+<summary>🔻FRPS搭建🔻</summary>
+<br>
+
+- 脚本下载完成后安装
+```sh
+chmod 700 ./install-frps.sh
+./install-frps.sh install
+```
+
+- Update
+```sh
+./install-frps.sh update
+```
+
+- Uninstall
+```sh
+../install-frps.sh uninstall
+```
+
+<br />
+</details>
 
 ---
 
