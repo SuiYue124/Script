@@ -10,7 +10,7 @@
 
 <br />
 		
----
+
 #
 
 <details>
@@ -30,4 +30,3 @@ sudo systemctl enable zerotier-one.service
 </details>
 
 #
----
