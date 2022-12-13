@@ -73,6 +73,16 @@ zerotier-cli orbit xxxxxxxxxx xxxxxxxxxx
 zerotier-cli listpeers
 ```
 
+- OpenWrt设置
+- 网络接口添加zt开头适配器，填写ZeroTier对应IP地址
+- 创建/分配防火墙区域选择Lan
+- 进入防火墙自定义规则中添加如下规则（替换掉ztxxxxxx）
+```sh
+iptables -I FORWARD -i ztxxxxxx -j ACCEPT
+iptables -I FORWARD -o ztxxxxxx -j ACCEPT
+iptables -t nat -I POSTROUTING -o ztxxxxxx -j MASQUERADE
+```
+
 <br />
 </details>
 
