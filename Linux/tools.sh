@@ -378,6 +378,10 @@ function aria2(){
   bash <(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/aria2.sh)
 }
 
+function zerotier(){
+  curl -s https://install.zerotier.com | sudo bash
+}
+
  function menu(){
     clear
     echo "                           "
@@ -536,6 +540,7 @@ function page5(){
 	yellow "6. VPS DD系统"
 	yellow "7. QuickBox-Lite(仅支持 amd64)"
 	yellow "8. Aria2一键安装脚本"
+	yellow "9. ZeroTier一键安装脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -549,6 +554,7 @@ function page5(){
 		6 ) ddsystem ;;
 		7 ) QuickBox ;;
 		8 ) aria2 ;;
+		9 ) zerotier ;;
         0 ) menu
     esac
 }
