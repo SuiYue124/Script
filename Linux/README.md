@@ -62,15 +62,15 @@ sudo mv ./*.moon ./moons.d/
 sudo systemctl restart zerotier-one
 ```
 
-- 使用 Moon
+- 客户端加入 Moon
 - 将命令中的两组 xxxxxxxxxx 都替换成 moon 的节点ID（本机ZeroTier地址）。
 ```sh
-sudo zerotier-cli orbit xxxxxxxxxx xxxxxxxxxx
+zerotier-cli orbit xxxxxxxxxx xxxxxxxxxx
 ```
 
 - 检查是否添加成功
 ```sh
-sudo zerotier-cli listpeers
+zerotier-cli listpeers
 ```
 
 <br />
