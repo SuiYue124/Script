@@ -4,14 +4,13 @@
 
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
 
-
-
-
-
 <br />
 		
-
 #
+
+
+
+---
 
 <details>
 <summary>🔻ZeroTier🔻</summary>
@@ -29,4 +28,4 @@ sudo systemctl enable zerotier-one.service
 <br />
 </details>
 
-#
+---
