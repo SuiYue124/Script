@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20220207"
+ver="20221214"
 github="https://github.com/GWen124"
 changeLog="随缘更新！"
 arch=`uname -m`
@@ -227,9 +227,6 @@ yellow "下载完成"
     esac
 }
 
-function screen(){
-  bash -c "$(curl -fsSL https://cdn.jsdelivr.net/gh/Misaka-blog/screenManager@master/screen.sh)"
-}
 
 #page2
 function bench(){
@@ -351,7 +348,23 @@ function openwrt(){
 }
 
 function frps(){
-  wget https://raw.githubusercontent.com/MvsCode/frps-onekey/master/install-frps.sh -O ./install-frps.sh && chmod 700 ./install-frps.sh && ./install-frps.sh install
+    echo "                            "
+	yellow " 1. X86版"
+	yellow " 2. ARM版"
+	echo "                            "
+    red " 0. 返回主菜单 "
+	green "=================================================================================="
+    echo
+    read -p "请输入选项:" unlockNumberInput
+    case "$unlockNumberInput" in
+		1)
+		wget https://raw.githubusercontent.com/GWen124/Script/master/FRPS/AMD-install-frps.sh -O ./install-frps.sh && chmod 700 ./install-frps.sh && /install-frps.sh install
+		;;
+		2)
+		wget https://raw.githubusercontent.com/GWen124/Script/master/FRPS/ARM-install-frps.sh -O ./install-frps.sh && chmod 700 ./install-frps.sh && /install-frps.sh install
+		;;
+        0 ) menu
+    esac
 }
 
 function rclone(){
@@ -437,7 +450,6 @@ function page1(){
     yellow "5. 开启BBR一键加速"
 	yellow "6. Acme.sh 证书申请脚本"
 	yellow "7. Linux换源脚本"
-	yellow "8. Screen 后台任务管理"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -450,7 +462,6 @@ function page1(){
         5 ) bbr ;;
 		6 ) acmesh ;;
 		7 ) cssh ;;
-		8 ) screen ;;
         0 ) menu
     esac
 }
@@ -540,7 +551,7 @@ function page5(){
 	yellow "6. VPS DD系统"
 	yellow "7. QuickBox-Lite(仅支持 amd64)"
 	yellow "8. Aria2一键安装脚本"
-	yellow "9. ZeroTier一键安装脚本"
+	yellow "9. ZeroTier内网穿透一键安装脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
