@@ -358,10 +358,10 @@ function frps(){
     read -p "请输入选项:" unlockNumberInput
     case "$unlockNumberInput" in
 		1)
-		wget https://raw.githubusercontent.com/GWen124/Script/master/FRPS/AMD-install-frps.sh -O ./install-frps.sh
+		wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/FRPS/AMD-install-frps.sh -O ./install-frps.sh
 		;;
 		2)
-		wget https://raw.githubusercontent.com/GWen124/Script/master/FRPS/ARM-install-frps.sh -O ./install-frps.sh
+		wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/FRPS/ARM-install-frps.sh -O ./install-frps.sh
 		;;
         0 ) menu
     esac
