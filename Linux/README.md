@@ -85,7 +85,8 @@ sudo mv ./*.moon ./moons.d/
 sudo systemctl restart zerotier-one
 ```
 
-- 客户端加入 Moon
+- OpenWrt设置
+- 加入 Moon
 - 将命令中的两组 xxxxxxxxxx 都替换成 moon 的节点ID（本机ZeroTier地址）。
 ```sh
 zerotier-cli orbit xxxxxxxxxx xxxxxxxxxx
@@ -95,8 +96,7 @@ zerotier-cli orbit xxxxxxxxxx xxxxxxxxxx
 ```sh
 zerotier-cli listpeers
 ```
-
-- OpenWrt设置
+- ZeroTier插件设置
 - 网络接口添加zt开头适配器，填写ZeroTier对应IP地址
 - 创建/分配防火墙区域选择Lan
 - 进入防火墙自定义规则中添加如下规则（替换掉ztxxxxxx）
