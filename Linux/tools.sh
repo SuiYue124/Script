@@ -74,7 +74,7 @@ elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
 fi
 $systemPackage update -y
 $systemPackage upgrade -y
-$systemPackage -y install wget curl htop nano python3 python3-pip ca-certificates
+$systemPackage -y install wget curl htop nano python3 python3-pip ca-certificates redboot-tools
 
 sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 sudo timedatectl set-timezone Asia/Shanghai
