@@ -434,7 +434,7 @@ function zerotier(){
     blue "本脚本理论支持：CentOS7+ / Debian9+ / Ubuntu16.04+"
     blue "内置脚本均来源于网络，仅仅只是汇聚脚本功能，仅供自用！"
 	blue "如有需要增加的脚本，请联系：https://t.me/WenGe124_Bot"
-	blue "今日运行次数：$TODAY 总共运行次数：$TOTAL"
+	yellow "今日运行次数：$TODAY 总共运行次数：$TOTAL"
 	green "=================================================================================="
     read -p "请输入选项:" menuNumberInput
     case "$menuNumberInput" in
