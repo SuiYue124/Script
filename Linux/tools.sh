@@ -3,6 +3,7 @@
 # https://github.com/GWen124/Script/tree/master/Linux
 
 ver="20230106"
+blog="https://blog.gwen.ink/"
 github="https://github.com/GWen124"
 changeLog="随缘更新！"
 arch=`uname -m`
@@ -404,6 +405,7 @@ function zerotier(){
     clear
     echo "                           "
     blue "当前脚本版本：$ver "
+	blue "我的Blog：$blog "
 	blue "我的仓库：$github "
 	echo "                            "
     yellow "更新日志：$changeLog"
