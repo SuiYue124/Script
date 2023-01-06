@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20230106"
+ver="20230107"
 blog="https://blog.gwen.ink/"
 github="https://github.com/GWen124"
 changeLog="随缘更新！"
