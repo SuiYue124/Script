@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20221214"
+ver="20230106"
 github="https://github.com/GWen124"
 changeLog="随缘更新！"
 arch=`uname -m`
@@ -241,10 +241,6 @@ function gfw_push(){
   bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/gfw_push.sh)"
 }
 
-function speedtest(){
-  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/speedtest.sh)"
-}
-
 function unlock(){
     echo "                            "
 	yellow " 1. 启动Netflix检测脚本(X86)"
@@ -284,6 +280,15 @@ function unlock(){
         0 ) menu
     esac
 }
+
+function speedtest(){
+  bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/speedtest.sh)"
+}
+
+function lemonbench(){
+  curl -fsL https://ilemonra.in/LemonBenchIntl | bash -s fast
+}
+
 
 #page3
 function baota(){
@@ -475,6 +480,7 @@ function page2(){
     yellow "3. 监测IP是否被墙并推送消息至Telegram "
     yellow "4. 流媒体解锁检测"
 	yellow "5. Speedtest"
+	yellow "6. LemonBench"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -485,6 +491,7 @@ function page2(){
         3 ) gfw_push ;;
         4 ) unlock ;;
 		5 ) speedtest ;;
+		6 ) lemonbench ;;
         0 ) menu
     esac
 }
