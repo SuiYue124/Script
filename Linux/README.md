@@ -110,3 +110,47 @@ iptables -t nat -I POSTROUTING -o ztxxxxxx -j MASQUERADE
 </details>
 
 ---
+
+
+
+<details>
+<summary>🔻X-UI🔻</summary>
+<br>
+
+- 宝塔找到**站点设置**，找到**伪静态**，在复选框中选择网站相应源码的伪静态样式，确保站点一切正常。
+
+- 配置 Nginx 反向代理
+admin：设置的xui面板路径
+2023：设置的xui面板端口
+Date：设置的节点WS路径
+12345：设置的节点端口
+
+```sh
+location ^~ /admin {
+    proxy_pass http://127.0.0.1:2023/admin;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+}
+location /Date {
+        proxy_redirect off;
+        proxy_pass http://127.0.0.1:12345;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $http_host;
+        proxy_read_timeout 300s;
+        # Show realip in v2ray access.log
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  }
+```
+
+- 宝塔面板软件商店——
+已安装——Nginx——设置——重载配置——重启
+
+
+<br />
+</details>
+
+---
