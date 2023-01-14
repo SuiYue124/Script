@@ -141,9 +141,9 @@ function op_common_sh() {
     sudo sh -c 'echo ClientAliveCountMax 6 >> /etc/ssh/sshd_config'
     sudo service ssh restart
   fi
-  curl -L https://raw.githubusercontent.com/GWen124/AutoBuild-OpenWrt/master/build/common/common.sh > common.sh
+  curl -L https://github.com/GWen124/Script/blob/master/OpenWrt/common/common.sh > common.sh
   if [[ $? -ne 0 ]];then
-    wget -O common.sh https://raw.githubusercontent.com/GWen124/AutoBuild-OpenWrt/master/build/common/common.sh
+    wget -O common.sh https://github.com/GWen124/Script/blob/master/OpenWrt/common/common.sh
   fi
   if [[ $? -eq 0 ]];then
     chmod +x common.sh
@@ -186,7 +186,7 @@ function op_diywenjian() {
   if [[ ! -d ${GITHUB_WORKSPACE}/OP_DIY ]]; then
     ECHOG "正在下载OP_DIY文件，请稍后..."
     rm -rf bendi
-    git clone https://github.com/GWen124/AutoBuild-OpenWrt bendi
+    git clone https://github.com/GWen124/Script/tree/master/OpenWrt/build bendi
     judge "OP_DIY文件下载"
     rm -rf ${GITHUB_WORKSPACE}/bendi/build/*/start-up
     for X in $(find ./bendi -name ".config" |sed 's/\/.config//g'); do 
@@ -209,7 +209,7 @@ function op_diywenjian() {
       echo '
         EVERY_INQUIRY="false"            # 是否每次都询问您要不要去设置自定义文件（true=开启）（false=关闭）
         REGULAR_UPDATE="true"            # 把自动在线更新的插件编译进固件（在本地就是玩票性质）（true=开启）（false=关闭）
-        Github="https://github.com/GWen124/AutoBuild-OpenWrt"     # 如果开启了‘把自动在线更新的插件编译进固件’，请设置好您的github地址
+        Github="https://github.com/GWen124/Script/tree/master/OpenWrt/build"     # 如果开启了‘把自动在线更新的插件编译进固件’，请设置好您的github地址
       ' >> "${X}"
       sed -i 's/^[ ]*//g' "${X}"
       sed -i '/^$/d' "${X}"
@@ -225,7 +225,7 @@ function gengxin_opdiy() {
   cd ${GITHUB_WORKSPACE}
   ECHOG "正在下载上游OP_DIY文件源码，请稍后..."
   rm -rf ${GITHUB_WORKSPACE}/bendi
-  git clone https://github.com/GWen124/AutoBuild-OpenWrt bendi
+  git clone https://github.com/GWen124/Script/tree/master/OpenWrt/build bendi
   judge "OP_DIY文件下载"
   rm -rf ${GITHUB_WORKSPACE}/bendi/build/*/start-up
   rm -rf ${GITHUB_WORKSPACE}/bendi/build/*/.config
@@ -252,7 +252,7 @@ function gengxin_opdiy() {
     echo '
       EVERY_INQUIRY="true"            # 是否每次都询问您要不要去设置自定义文件（true=开启）（false=关闭）
       REGULAR_UPDATE="false"            # 把自动在线更新的插件编译进固件（在本地就是玩票性质）（true=开启）（false=关闭）
-      Github="https://github.com/GWen124/AutoBuild-OpenWrt"     # 如果开启了‘把自动在线更新的插件编译进固件’，请设置好您的github地址
+      Github="https://github.com/GWen124/Script/tree/master/OpenWrt/build"     # 如果开启了‘把自动在线更新的插件编译进固件’，请设置好您的github地址
     ' >> "${X}"
     sed -i 's/^[ ]*//g' "${X}"
     sed -i '/^$/d' "${X}"
@@ -352,9 +352,9 @@ function bianyi_xuanxiang() {
   echo
   ECHOG "正在下载common.sh执行文件,请稍后..."
   source ${GITHUB_WORKSPACE}/OP_DIY/${matrixtarget}/settings.ini > /dev/null 2>&1
-  curl -L https://raw.githubusercontent.com/GWen124/AutoBuild-OpenWrt/master/build/common/common.sh > common.sh
+  curl -L https://github.com/GWen124/Script/blob/master/OpenWrt/common/common.sh > common.sh
   if [[ $? -ne 0 ]];then
-    wget -O common.sh https://raw.githubusercontent.com/GWen124/AutoBuild-OpenWrt/master/build/common/common.sh
+    wget -O common.sh https://github.com/GWen124/Script/blob/master/OpenWrt/common/common.sh
   fi
   if [[ $? -eq 0 ]];then
     print_ok "common.sh执行文件下载 完成"
@@ -385,11 +385,9 @@ function op_jiaoben() {
     cp -Rf ${GITHUB_WORKSPACE}/OP_DIY/* ${HOME_PATH}/build/
   fi
   [[ "${ERCI_BYGJ}" == "1" ]] && sed -i '/-rl/d' "${BUILD_PATH}/${DIY_PART_SH}"
-  rm -rf ${HOME_PATH}/build/common && git clone https://github.com/GWen124/AutoBuild-OpenWrt/tree/master/build/common ${HOME_PATH}/build/common
-  rm -rf ${HOME_PATH}/GWen124 && git clone https://github.com/GWen124/OpenWrt-Software ${HOME_PATH}/GWen124
+  rm -rf ${HOME_PATH}/build/common && git clone https://github.com/GWen124/Script/tree/master/OpenWrt/common ${HOME_PATH}/build/common
   judge "额外扩展文件下载"
   cp -Rf ${LOCAL_Build}/common/*.sh ${BUILD_PATH}/
-  cp -Rf ${LOCAL_Build}/GWen124/* ${BUILD_PATH}/
   chmod -R +x ${BUILD_PATH}
   source "${BUILD_PATH}/common.sh" && Diy_settings
   source "${BUILD_PATH}/common.sh" && Bendi_variable
