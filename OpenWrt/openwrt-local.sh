@@ -207,8 +207,8 @@ function op_diywenjian() {
       sed -i '/REGULAR_UPDATE/d' "${X}"
       sed -i '/BY_INFORMATION/d' "${X}"
       echo '
-        EVERY_INQUIRY="false"            # 是否每次都询问您要不要去设置自定义文件（true=开启）（false=关闭）
-        REGULAR_UPDATE="true"            # 把自动在线更新的插件编译进固件（在本地就是玩票性质）（true=开启）（false=关闭）
+        EVERY_INQUIRY="true"            # 是否每次都询问您要不要去设置自定义文件（true=开启）（false=关闭）
+        REGULAR_UPDATE="false"            # 把自动在线更新的插件编译进固件（在本地就是玩票性质）（true=开启）（false=关闭）
         Github="https://github.com/GWen124/Openwrt-Build"     # 如果开启了‘把自动在线更新的插件编译进固件’，请设置好您的github地址
       ' >> "${X}"
       sed -i 's/^[ ]*//g' "${X}"
