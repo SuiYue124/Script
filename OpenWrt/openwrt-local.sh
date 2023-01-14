@@ -186,7 +186,7 @@ function op_diywenjian() {
   if [[ ! -d ${GITHUB_WORKSPACE}/OP_DIY ]]; then
     ECHOG "正在下载OP_DIY文件，请稍后..."
     rm -rf bendi
-    git clone https://github.com/GWen124/Openwrt-Build bendi
+    git clone https://github.com/GWen124/Openwrt-Build.git bendi
     judge "OP_DIY文件下载"
     rm -rf ${GITHUB_WORKSPACE}/bendi/build/*/start-up
     for X in $(find ./bendi -name ".config" |sed 's/\/.config//g'); do 
@@ -225,7 +225,7 @@ function gengxin_opdiy() {
   cd ${GITHUB_WORKSPACE}
   ECHOG "正在下载上游OP_DIY文件源码，请稍后..."
   rm -rf ${GITHUB_WORKSPACE}/bendi
-  git clone https://github.com/GWen124/Openwrt-Build bendi
+  git clone https://github.com/GWen124/Openwrt-Build.git bendi
   judge "OP_DIY文件下载"
   rm -rf ${GITHUB_WORKSPACE}/bendi/build/*/start-up
   rm -rf ${GITHUB_WORKSPACE}/bendi/build/*/.config
