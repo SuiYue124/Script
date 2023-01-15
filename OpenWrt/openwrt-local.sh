@@ -141,9 +141,9 @@ function op_common_sh() {
     sudo sh -c 'echo ClientAliveCountMax 6 >> /etc/ssh/sshd_config'
     sudo service ssh restart
   fi
-  curl -L https://raw.githubusercontent.com/GWen124/OpenWrt-Common/main/common.sh > common.sh
+  curl -L https://raw.githubusercontent.com/GWen124/AutoBuild-OpenWrt/master/build/common/common.sh > common.sh
   if [[ $? -ne 0 ]];then
-    wget -O common.sh https://raw.githubusercontent.com/GWen124/OpenWrt-Common/main/common.sh
+    wget -O common.sh https://raw.githubusercontent.com/GWen124/AutoBuild-OpenWrt/master/build/common/common.sh
   fi
   if [[ $? -eq 0 ]];then
     chmod +x common.sh
@@ -352,9 +352,9 @@ function bianyi_xuanxiang() {
   echo
   ECHOG "正在下载common.sh执行文件,请稍后..."
   source ${GITHUB_WORKSPACE}/OP_DIY/${matrixtarget}/settings.ini > /dev/null 2>&1
-  curl -L https://raw.githubusercontent.com/GWen124/OpenWrt-Common/main/common.sh > common.sh
+  curl -L https://raw.githubusercontent.com/GWen124/AutoBuild-OpenWrt/master/build/common/common.sh > common.sh
   if [[ $? -ne 0 ]];then
-    wget -O common.sh https://raw.githubusercontent.com/GWen124/OpenWrt-Common/main/common.sh
+    wget -O common.sh https://raw.githubusercontent.com/GWen124/AutoBuild-OpenWrt/master/build/common/common.sh
   fi
   if [[ $? -eq 0 ]];then
     print_ok "common.sh执行文件下载 完成"
@@ -375,25 +375,6 @@ function op_repo_branch() {
   judge "${matrixtarget}源码下载"
   rm -rf ${HOME_PATH}/README.* > /dev/null 2>&1
   echo "${Mark_Core}" > "${HOME_PATH}/${Mark_Core}"
-}
-
-function op_jiaoben() {
-  ECHOG "正在下载额外扩展文件，请稍后..."
-  if [[ ! -d "${HOME_PATH}/build" ]]; then
-    cp -Rf ${GITHUB_WORKSPACE}/OP_DIY ${HOME_PATH}/build
-  else
-    cp -Rf ${GITHUB_WORKSPACE}/OP_DIY/* ${HOME_PATH}/build/
-  fi
-  [[ "${ERCI_BYGJ}" == "1" ]] && sed -i '/-rl/d' "${BUILD_PATH}/${DIY_PART_SH}"
-  rm -rf ${HOME_PATH}/build/common && git clone https://github.com/GWen124/OpenWrt-Common ${HOME_PATH}/build/common
-  judge "额外扩展文件下载"
-  cp -Rf ${LOCAL_Build}/common/*.sh ${BUILD_PATH}/
-  chmod -R +x ${BUILD_PATH}
-  source "${BUILD_PATH}/common.sh" && Diy_settings
-  source "${BUILD_PATH}/common.sh" && Bendi_variable
-  rm -rf ${LOCAL_Build}/chenggong > /dev/null 2>&1
-  rm -rf ${LOCAL_Build}/shibai > /dev/null 2>&1
-  echo "weiwan" > "${LOCAL_Build}/weiwan"
 }
 
 function op_diy_zdy() {
