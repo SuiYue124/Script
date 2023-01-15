@@ -377,6 +377,25 @@ function op_repo_branch() {
   echo "${Mark_Core}" > "${HOME_PATH}/${Mark_Core}"
 }
 
+function op_jiaoben() {
+  ECHOG "正在下载额外扩展文件，请稍后..."
+  if [[ ! -d "${HOME_PATH}/build" ]]; then
+    cp -Rf ${GITHUB_WORKSPACE}/OP_DIY ${HOME_PATH}/build
+  else
+    cp -Rf ${GITHUB_WORKSPACE}/OP_DIY/* ${HOME_PATH}/build/
+  fi
+  [[ "${ERCI_BYGJ}" == "1" ]] && sed -i '/-rl/d' "${BUILD_PATH}/${DIY_PART_SH}"
+  rm -rf ${HOME_PATH}/build/common && cp -r ${GITHUB_WORKSPACE}/OP_DIY/build/common ${HOME_PATH}/build/common
+  judge "额外扩展文件下载"
+  cp -Rf ${LOCAL_Build}/common/*.sh ${BUILD_PATH}/
+  chmod -R +x ${BUILD_PATH}
+  source "${BUILD_PATH}/common.sh" && Diy_settings
+  source "${BUILD_PATH}/common.sh" && Bendi_variable
+  rm -rf ${LOCAL_Build}/chenggong > /dev/null 2>&1
+  rm -rf ${LOCAL_Build}/shibai > /dev/null 2>&1
+  echo "weiwan" > "${LOCAL_Build}/weiwan"
+}
+
 function op_diy_zdy() {
   ECHOG "正在下载插件包和更新feeds,请耐心等候~~~"
   cd ${HOME_PATH}
