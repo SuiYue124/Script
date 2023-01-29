@@ -1,12 +1,12 @@
 # NAME: NetEaseMusic
 # AUTHOR: blackmatrix7
 # REPO: https://github.com/blackmatrix7/ios_rule_script
-# UPDATED: 2021-12-16 17:32:36
-# DOMAIN-SUFFIX: 8
-# IP-CIDR: 18
+# UPDATED: 2023-01-22 15:47:02
 # DOMAIN: 2
+# DOMAIN-SUFFIX: 8
+# IP-CIDR: 19
 # USER-AGENT: 7
-# TOTAL: 35
+# TOTAL: 36
 DOMAIN,iadmat.nosdn.127.net
 DOMAIN,netease.ugcvideoss.ourdvs.com
 DOMAIN-SUFFIX,163yun.com
@@ -34,6 +34,7 @@ IP-CIDR,39.105.63.80/32,no-resolve
 IP-CIDR,45.254.48.1/32,no-resolve
 IP-CIDR,47.100.127.239/32,no-resolve
 IP-CIDR,59.111.128.0/17,no-resolve
+IP-CIDR,59.111.19.33/32,no-resolve
 IP-CIDR,59.111.21.14/31,no-resolve
 USER-AGENT,%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90
 USER-AGENT,%E7%BD%91%E6%98%93%E4%BA%91%E9%9F%B3%E4%B9%90*
