@@ -21,8 +21,8 @@ disney_check = type=generic,timeout=5,script-path=https://gist.githubusercontent
 网络信息 = script-name=网络信息,title=网络信息,content=请刷新,style=info,update-interval=60
 #SurgePro_ReloadProfile = script-name=SurgePro_ReloadProfile, title="启动时长", content="请刷新", update-interval=1
 TrafficStatistics = script-name=TrafficStatistics, title="流量统计", content="请刷新", update-interval=1
-net-info-panel = script-name=net-info-panel, title="网络状态", content="请刷新", style=info
-flushDNS = script-name=flushDNS, title="Flush DNS", content="请刷新", update-interval=600
+#net-info-panel = script-name=net-info-panel, title="网络状态", content="请刷新", style=info
+#flushDNS = script-name=flushDNS, title="Flush DNS", content="请刷新", update-interval=600
 nf_check = script-name=nf_check, title="Netflix 解锁检测", content="请刷新", update-interval=10
 ytb_check = script-name=ytb_check, title="YouTube Premium 解锁检测", update-interval=10
 disney_check = script-name=disney_check, title=Disney+ 解锁检测, content=请刷新, update-interval=10
