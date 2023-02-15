@@ -1,0 +1,79 @@
+
+name: Auto Update
+
+on:
+  # push:
+  #   paths:
+  #     - '.github\workflows\autoupdate.yml'
+  #     - '~/openwrt-diy/update.sh'
+  # watch:
+  #   types: started
+  schedule:
+    - cron: 0 20 * * *
+  repository_dispatch:
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  build:
+    if: github.event.repository.owner.id == github.event.sender.id  || ! github.event.sender.id
+    runs-on: ubuntu-20.04
+
+    name: Update Branch Main
+    strategy:
+      fail-fast: false
+      matrix:
+        target: [main]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo -E apt-get -qq update
+        sudo -E apt-get -qq install git subversion git-core wget
+        sudo timedatectl set-timezone "$TZ"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+
+    - name: Clone packages
+      run: |
+        cd $GITHUB_WORKSPACE
+        chmod +x openwrt-diy/update.sh
+        git clone -b ${{matrix.target}} https://github.com/waynesg/OpenWrt-Software.git ${{matrix.target}}
+        cd ${{matrix.target}}
+        git rm -r --cache * >/dev/null 2>&1 &
+        rm -rf `find ./* -maxdepth 0 -type d ! -name "openwrt-diy"` >/dev/null 2>&1
+        $GITHUB_WORKSPACE/openwrt-diy/update.sh
+
+    - name: Upload
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      run: |
+        [ -e $GITHUB_WORKSPACE/README/LICENSE ] && cp $GITHUB_WORKSPACE/README/LICENSE $GITHUB_WORKSPACE/${{matrix.target}}
+        [ -e $GITHUB_WORKSPACE/README/${{matrix.target}}/README.md ] && cp $GITHUB_WORKSPACE/README/${{matrix.target}}/README.md $GITHUB_WORKSPACE/${{matrix.target}}
+        cd $GITHUB_WORKSPACE/${{matrix.target}}
+        Emoji=("🎉" "🤞" "✨" "🎁" "🎈" "🎄" "🎨" "💋" "🍓" "🍕" "🍉" "💐" "🌴" "🚀" "🛸" "🗽" "⛅" "🌈" "🔥" "⛄" "🐶" "🏅" "🦄" "🐤")
+        git add .
+        git commit -m "${Emoji[$[$RANDOM % ${#Emoji[@]}]]}同步源码于$(TZ='Asia/Shanghai' date +%Y年%m月%d号-%H点%M分)"
+        git push --quiet "https://${{ secrets.REPO_TOKEN }}@github.com/waynesg/OpenWrt-Software.git" HEAD:${{matrix.target}} || exit 0
+
+
+    - name: Delete workflow runs
+      uses: GitRML/delete-workflow-runs@main
+      with:
+        retain_days: 1
+        keep_minimum_runs: 0
+
+    - name: Remove old Releases
+      uses: dev-drprasad/delete-older-releases@v0.1.0
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        keep_latest: 1
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
