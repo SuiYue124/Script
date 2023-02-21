@@ -522,10 +522,10 @@ function page3(){
         1 ) baota ;;
         2 ) baota7 ;;
         3 ) baotap ;;
-		3 ) uninstallbaota ;;
-		4 ) aaPanel ;;
-        5 ) nezha ;;
-        6 ) alist ;;
+		4 ) uninstallbaota ;;
+		5 ) aaPanel ;;
+        6 ) nezha ;;
+        7 ) alist ;;
         0 ) menu
     esac
 }
