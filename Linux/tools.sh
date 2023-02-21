@@ -50,11 +50,11 @@ if [[ -f /etc/redhat-release ]]; then
     systempwd="/usr/lib/systemd/system/"
 elif cat /etc/issue | grep -Eqi "debian"; then
     release="debian"
-    systemPackage="sudo apt-get"
+    systemPackage="apt-get"
     systempwd="/lib/systemd/system/"
 elif cat /etc/issue | grep -Eqi "ubuntu"; then
     release="ubuntu"
-    systemPackage=sudo "sudo apt-get"
+    systemPackage=sudo "apt-get"
     systempwd="/lib/systemd/system/"
 elif cat /etc/issue | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
@@ -62,11 +62,11 @@ elif cat /etc/issue | grep -Eqi "centos|red hat|redhat"; then
     systempwd="/usr/lib/systemd/system/"
 elif cat /proc/version | grep -Eqi "debian"; then
     release="debian"
-    systemPackage="sudo apt-get"
+    systemPackage="apt-get"
     systempwd="/lib/systemd/system/"
 elif cat /proc/version | grep -Eqi "ubuntu"; then
     release="ubuntu"
-    systemPackage="sudo apt-get"
+    systemPackage="apt-get"
     systempwd="/lib/systemd/system/"
 elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
@@ -354,7 +354,7 @@ function telegram(){
 
 #page5
 function node(){
-  curl -sL https://deb.nodesource.com/setup_16.x | bash && $systemPackage -y nodejs
+  curl -sL https://deb.nodesource.com/setup_16.x | bash && sudo apt-get install-y nodejs
 }
 
 function frps(){
