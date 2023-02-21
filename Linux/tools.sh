@@ -353,8 +353,8 @@ function telegram(){
 }
 
 #page5
-function openwrt(){
-  bash <(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/openwrt-local.sh)
+function node(){
+  curl -sL https://deb.nodesource.com/setup_16.x | bash && $systemPackage -y nodejs
 }
 
 function frps(){
@@ -559,7 +559,7 @@ function page5(){
     echo "                            "
     green "请选择你需要的工具："
     echo "                            "
-    yellow "1. OpenWrt本地一键编译脚本（失效，有空在弄。）"
+    yellow "1. Node_16.x）"
     yellow "2. frp内网穿透一键安装"
 	yellow "3. Rclone官方一键安装脚本"
 	yellow "4. iptables一键中转"
@@ -573,7 +573,7 @@ function page5(){
 	green "=================================================================================="
     read -p "请输入选项:" page5NumberInput
     case "$page5NumberInput" in
-        1 ) openwrt ;;
+        1 ) node ;;
         2 ) frps ;;
 		3 ) rclone ;;
 		4 ) dnat ;;
