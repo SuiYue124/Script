@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20230107"
+ver="20230221"
 blog="https://blog.gwen.ink/"
 github="https://github.com/GWen124"
 changeLog="随缘更新！"
@@ -304,6 +304,10 @@ function baotap(){
     echo "{\"uid\":1000,\"username\":\"admin\",\"serverid\":1}" > /www/server/panel/data/userInfo.json
 }
 
+function uninstallbaota(){
+    wget http://download.bt.cn/install/bt-uninstall.sh && sh bt-uninstall.sh
+}
+
 function aaPanel(){
 wget -O "/root/aaPanel.sh" "http://www.aapanel.com/script/install_6.0_en.sh" --no-check-certificate -T 30 -t 5 -d
 chmod +x "/root/aaPanel.sh"
@@ -506,9 +510,10 @@ function page3(){
     yellow "1. 宝塔面板一键官方脚本"
     yellow "2. 宝塔面板降级到v7.7"
     yellow "3. 宝塔面板无需手机登陆"
-	yellow "4. 宝塔面板国际版"
-    yellow "5. 哪吒面板"
-    yellow "6. Alist一键安装脚本"
+	yellow "4. 卸载宝塔面板"
+	yellow "5. 宝塔面板国际版"
+    yellow "6. 哪吒面板"
+    yellow "7. Alist一键安装脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -517,6 +522,7 @@ function page3(){
         1 ) baota ;;
         2 ) baota7 ;;
         3 ) baotap ;;
+		3 ) uninstallbaota ;;
 		4 ) aaPanel ;;
         5 ) nezha ;;
         6 ) alist ;;
