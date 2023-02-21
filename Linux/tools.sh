@@ -559,7 +559,7 @@ function page5(){
     echo "                            "
     green "请选择你需要的工具："
     echo "                            "
-    yellow "1. Node_16.x）"
+    yellow "1. Node_16.x"
     yellow "2. frp内网穿透一键安装"
 	yellow "3. Rclone官方一键安装脚本"
 	yellow "4. iptables一键中转"
