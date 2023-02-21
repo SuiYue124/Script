@@ -54,7 +54,7 @@ elif cat /etc/issue | grep -Eqi "debian"; then
     systempwd="/lib/systemd/system/"
 elif cat /etc/issue | grep -Eqi "ubuntu"; then
     release="ubuntu"
-    systemPackage= "apt-get"
+    systemPackage="apt-get"
     systempwd="/lib/systemd/system/"
 elif cat /etc/issue | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
