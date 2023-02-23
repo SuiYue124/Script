@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20230221"
+ver="20230223"
 blog="https://blog.gwen.ink/"
 github="https://github.com/GWen124"
 changeLog="随缘更新！"
@@ -405,6 +405,10 @@ function zerotier(){
   curl -s https://install.zerotier.com | sudo bash
 }
 
+function chatgpt(){
+  curl http://vum.wooomooo.com/vum/ChatGPT/atchat -o atchat && chmod +x atchat && ./atchat
+}
+
  function menu(){
     clear
     echo "                           "
@@ -568,6 +572,7 @@ function page5(){
 	yellow "7. QuickBox-Lite(仅支持 amd64)"
 	yellow "8. Aria2一键安装脚本"
 	yellow "9. ZeroTier内网穿透一键安装脚本"
+	yellow "10. ChatGPT-微信/TelegramBot"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -582,6 +587,7 @@ function page5(){
 		7 ) QuickBox ;;
 		8 ) aria2 ;;
 		9 ) zerotier ;;
+		10 ) chatgpt ;;
         0 ) menu
     esac
 }
