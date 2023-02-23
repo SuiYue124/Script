@@ -13,6 +13,9 @@ flushDNS = type=generic,timeout=5,script-path=https://raw.githubusercontent.com/
 nf_check = type=generic,timeout=5,script-path=https://gist.githubusercontent.com/Hyseen/b06e911a41036ebc36acf04ddebe7b9a/raw/nf_check.js
 ytb_check = type=generic,timeout=5,script-path=https://gist.githubusercontent.com/Hyseen/5ae36a6a5cb5690b1f2bff4aa19c766f/raw/youtube_premium_check.js
 disney_check = type=generic,timeout=5,script-path=https://gist.githubusercontent.com/Hyseen/729fc4c3ac28c3f2e7c4a832d81780f3/raw/disney_check.js
+#网络速率 = type=generic,timeout=60,script-path= https://raw.githubusercontent.com/getsomecat/GetSomeCats/Surge/script/index.js,argument=icon=arrow.down.circle&icon-color=#5d84f8&mb=1
+#Connectivity_Test = type=generic,timeout=3,script-path= https://raw.githubusercontent.com/getsomecat/GetSomeCats/Surge/script/ConnectivityTest.js,argument=title=Connectivity Test&icon=icloud.and.arrow.down&color=#FF9F0A&server=false
+
 
 [Panel]
 节假日提醒 = script-name=节假日提醒,update-interval=600
@@ -26,3 +29,5 @@ TrafficStatistics = script-name=TrafficStatistics, title="流量统计", content
 nf_check = script-name=nf_check, title="Netflix 解锁检测", content="请刷新", update-interval=10
 ytb_check = script-name=ytb_check, title="YouTube Premium 解锁检测", update-interval=10
 disney_check = script-name=disney_check, title=Disney+ 解锁检测, content=请刷新, update-interval=10
+#网络速率 = script-name=网络速率,update-interval=-1
+#网络连通性测试 = script-name=Connectivity_Test,update-interval=1
