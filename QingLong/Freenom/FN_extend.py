@@ -21,7 +21,8 @@ MAIL_TO: 收件人邮箱可与发件人相同 address@vip.qq.com 或 123456@qq.c
 依赖模块说明
 pip install -r requirements.txt / pip3 install -r requirements.txt
 """
-
+import sys
+sys.path.append('/path/to/utils')
 from utils.exception import CustomException
 from utils.freenom import FreeNom
 from utils.mail import EmailPoster
