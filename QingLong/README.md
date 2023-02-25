@@ -12,7 +12,7 @@
 2. 添加定时拉取任务并运行
 
     ```sh
-    ql raw https://raw.githubusercontent.com/GWen124/Script/master/QingLong/Freenom/FN_extend.py
+    ql raw https://raw.githubusercontent.com/GWen124/Script/master/QingLong/Freenom/FNplus.py
     ```
 
 3. 安装依赖
