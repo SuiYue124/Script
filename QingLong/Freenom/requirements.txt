@@ -5,3 +5,4 @@ Jinja2==3.0.0
 MarkupSafe==2.0.0
 requests==2.25.1
 urllib3==1.26.4
+utils
