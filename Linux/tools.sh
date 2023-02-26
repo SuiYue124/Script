@@ -437,7 +437,7 @@ function zerotier(){
 }
 
 function chatgpt(){
-  cbash <(curl -sSL https://gitlab.com/rwkgyg/chatgptbot/raw/main/chatgpt.sh)
+  bash <(curl -sSL https://gitlab.com/rwkgyg/chatgptbot/raw/main/chatgpt.sh)
 }
 
  function menu(){
