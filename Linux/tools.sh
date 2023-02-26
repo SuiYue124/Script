@@ -409,6 +409,8 @@ function docker(){
     echo "                            "
 	yellow " 1. 安装 Docker"
 	yellow " 2. 设置开机自动启动Docker"
+	yellow " 3. 安装Docker Compose"
+	yellow " 4. 添加Docker Compose可执行权限"
 	echo "                            "
     red " 0. 返回主菜单 "
 	green "=================================================================================="
@@ -420,6 +422,12 @@ function docker(){
 		;;
 		2)
 		systemctl enable docker
+		;;
+		3)
+		sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		;;
+		4)
+		sudo chmod +x /usr/local/bin/docker-compose
 		;;
         0 ) menu
     esac
@@ -588,7 +596,7 @@ function page5(){
 	yellow "7. QuickBox-Lite(仅支持 amd64)"
 	yellow "8. Aria2一键安装脚本"
 	yellow "9. ZeroTier内网穿透一键安装脚本"
-	yellow "10. Docker"
+	yellow "10. 安装Docker&Docker Compose"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
