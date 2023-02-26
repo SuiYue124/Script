@@ -228,6 +228,9 @@ yellow "下载完成"
     esac
 }
 
+function warp(){
+    wget -N --no-check-certificate https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh && bash CFwarp.sh
+}
 
 #page2
 function bench(){
@@ -292,6 +295,34 @@ function lemonbench(){
 
 
 #page3
+function docker(){
+    echo "                            "
+	yellow " 1. 安装 Docker"
+	yellow " 2. 设置开机自动启动Docker"
+	yellow " 3. 安装Docker Compose"
+	yellow " 4. 添加Docker Compose可执行权限"
+	echo "                            "
+    red " 0. 返回主菜单 "
+	green "=================================================================================="
+    echo
+    read -p "请输入选项:" unlockNumberInput
+    case "$unlockNumberInput" in
+		1)
+		wget -qO- get.docker.com | bash
+		;;
+		2)
+		systemctl enable docker
+		;;
+		3)
+		sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		;;
+		4)
+		sudo chmod +x /usr/local/bin/docker-compose
+		;;
+        0 ) menu
+    esac
+}
+
 function baota(){
     curl -sSO http://download.bt.cn/install/install_panel.sh && bash install_panel.sh
 }
@@ -405,32 +436,8 @@ function zerotier(){
   curl -s https://install.zerotier.com | sudo bash
 }
 
-function docker(){
-    echo "                            "
-	yellow " 1. 安装 Docker"
-	yellow " 2. 设置开机自动启动Docker"
-	yellow " 3. 安装Docker Compose"
-	yellow " 4. 添加Docker Compose可执行权限"
-	echo "                            "
-    red " 0. 返回主菜单 "
-	green "=================================================================================="
-    echo
-    read -p "请输入选项:" unlockNumberInput
-    case "$unlockNumberInput" in
-		1)
-		wget -qO- get.docker.com | bash
-		;;
-		2)
-		systemctl enable docker
-		;;
-		3)
-		sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-		;;
-		4)
-		sudo chmod +x /usr/local/bin/docker-compose
-		;;
-        0 ) menu
-    esac
+function chatgpt(){
+  cbash <(curl -sSL https://gitlab.com/rwkgyg/chatgptbot/raw/main/chatgpt.sh)
 }
 
  function menu(){
@@ -490,6 +497,7 @@ function page1(){
     yellow "5. 开启BBR一键加速"
 	yellow "6. Acme.sh 证书申请脚本"
 	yellow "7. Linux换源脚本"
+	yellow "8. WARP多功能一键脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -502,6 +510,7 @@ function page1(){
         5 ) bbr ;;
 		6 ) acmesh ;;
 		7 ) cssh ;;
+		8 ) warp ;;
         0 ) menu
     esac
 }
@@ -535,25 +544,27 @@ function page3(){
     echo "                            "
     green "请选择你接下来使用的脚本："
     echo "                            "
-    yellow "1. 宝塔面板一键官方脚本"
-    yellow "2. 宝塔面板降级到v7.7"
-    yellow "3. 宝塔面板无需手机登陆"
-	yellow "4. 卸载宝塔面板"
-	yellow "5. 宝塔面板国际版"
-    yellow "6. 哪吒面板"
-    yellow "7. Alist一键安装脚本"
+	yellow "1. 安装Docker&Docker Compose"
+    yellow "2. 宝塔面板一键官方脚本"
+    yellow "3. 宝塔面板降级到v7.7"
+    yellow "4. 宝塔面板无需手机登陆"
+	yellow "5. 卸载宝塔面板"
+	yellow "6. 宝塔面板国际版"
+    yellow "7. 哪吒面板"
+    yellow "8. Alist一键安装脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
     read -p "请输入选项:" page3NumberInput
     case "$page3NumberInput" in
-        1 ) baota ;;
-        2 ) baota7 ;;
-        3 ) baotap ;;
-		4 ) uninstallbaota ;;
-		5 ) aaPanel ;;
-        6 ) nezha ;;
-        7 ) alist ;;
+		1 ) docker ;;
+        2 ) baota ;;
+        3 ) baota7 ;;
+        4 ) baotap ;;
+		5 ) uninstallbaota ;;
+		6 ) aaPanel ;;
+        7 ) nezha ;;
+        8 ) alist ;;
         0 ) menu
     esac
 }
@@ -596,7 +607,7 @@ function page5(){
 	yellow "7. QuickBox-Lite(仅支持 amd64)"
 	yellow "8. Aria2一键安装脚本"
 	yellow "9. ZeroTier内网穿透一键安装脚本"
-	yellow "10. 安装Docker&Docker Compose"
+	yellow "10. Telegram ChatGPT Bot"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -611,7 +622,7 @@ function page5(){
 		7 ) QuickBox ;;
 		8 ) aria2 ;;
 		9 ) zerotier ;;
-		10 ) docker ;;
+		10 ) chatgpt ;;
         0 ) menu
     esac
 }
