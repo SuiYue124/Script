@@ -137,7 +137,7 @@ red "当前vps不支持root账户或无法自定义root密码,建议先执行sud
 fi
 }
 
-function useradd(){
+function usradd(){
 red(){ echo -e "\033[31m\033[01m$1\033[0m";}
 green(){ echo -e "\033[32m\033[01m$1\033[0m";}
 yellow(){ echo -e "\033[33m\033[01m$1\033[0m";}
@@ -163,7 +163,7 @@ else
 fi
 }
 
-function userdel(){
+function usrdel(){
 RED="\033[0;31m"
 GREEN="\033[0;32m"
 YELLOW="\033[0;33m"
@@ -566,13 +566,13 @@ function page1(){
     read -p "请输入选项:" page1NumberInput
     case "$page1NumberInput" in
         1 ) rootlogin ;;
-		2) useradd ;;
-		3 ) userdel ;;
-		4) vpsfirewall ;;
+		2 ) usradd ;;
+		3 ) usrdel ;;
+		4 ) vpsfirewall ;;
         5 ) swap ;;
         6 ) ssh_port ;;
         7 ) bbr ;;
-		8) acmesh ;;
+		8 ) acmesh ;;
 		9 ) cssh ;;
 		10 ) warp ;;
         0 ) menu
