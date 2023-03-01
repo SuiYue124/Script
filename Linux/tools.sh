@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20230226"
+ver="20230301"
 blog="https://blog.gwen.ink/"
 github="https://github.com/GWen124"
 changeLog="随缘更新！"
@@ -128,12 +128,66 @@ $su sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
 $su sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
 $su service sshd restart
 green "VPS当前用户名：root"
-green "vps当前root密码：$password"
+green "VPS当前root密码：$password"
 else
 red "未输入相关字符，启用root账户或root密码更改失败" 
 fi
 else
 red "当前vps不支持root账户或无法自定义root密码,建议先执行sudo -i 进入root账户后再执行脚本" 
+fi
+}
+
+function useradd(){
+red(){ echo -e "\033[31m\033[01m$1\033[0m";}
+green(){ echo -e "\033[32m\033[01m$1\033[0m";}
+yellow(){ echo -e "\033[33m\033[01m$1\033[0m";}
+readp(){ read -p "$(yellow "$1")" $2;}
+readsp(){ read -s -p "$(yellow "$1")" $2;}
+if [ $(id -u) -eq 0 ]; then
+	readp "请输入用户名 : " username
+	readsp "请输入密码 : " password
+	egrep "^$username" /etc/passwd >/dev/null
+	if [ $? -eq 0 ]; then
+		echo "$username exists!"
+		exit 1
+	else
+		pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+		useradd -m -p $pass $username
+		[ $? -eq 0 ] && yellow "用户已添加到系统!" || red "添加用户失败,以下账户无效!"
+	fi
+green "VPS当前设置的用户名：$username"
+green "VPS当前设置的密码：$password"
+else
+	red "只有 root 可以向系统添加用户!"
+	exit 2
+fi
+}
+
+function userdel(){
+RED="\033[0;31m"
+GREEN="\033[0;32m"
+YELLOW="\033[0;33m"
+NC="\033[0m"
+if [[ $(id -u) -ne 0 ]]; then
+    echo -e "${RED}此脚本必须以root用户身份运行。${NC}"
+    exit 1
+fi
+echo -e "${YELLOW}当前用户列表：${NC}"
+cut -d: -f1 /etc/passwd
+read -p "请输入要删除的用户名：" username
+if [[ -z $username ]]; then
+    echo -e "${RED}用户名不能为空。${NC}"
+    exit 1
+fi
+if [[ -x "$(command -v userdel)" ]]; then
+    userdel -r $username
+else
+    deluser --remove-home $username
+fi
+if [[ $? -eq 0 ]]; then
+    echo -e "${GREEN}用户 $username 已成功删除。${NC}"
+else
+    echo -e "${RED}删除用户 $username 失败。${NC}"
 fi
 }
 
@@ -497,26 +551,30 @@ function page1(){
     green "请选择你接下来的操作："
     echo "                            "
     yellow "1. 修改登录方式为 root + 密码 登录"
-	yellow "2. 关闭原系统防火墙"
-    yellow "3. 虚拟内存SWAP一键脚本 "
-    yellow "4. 更改SSH端口"
-    yellow "5. 开启BBR一键加速"
-	yellow "6. Acme.sh 证书申请脚本"
-	yellow "7. Linux换源脚本"
-	yellow "8. WARP多功能一键脚本"
+	yellow "2 增加系统用户"
+	yellow "3.删除系统用户"
+	yellow "4. 关闭原系统防火墙"
+    yellow "5. 虚拟内存SWAP一键脚本 "
+    yellow "6. 更改SSH端口"
+    yellow "7. 开启BBR一键加速"
+	yellow "8. Acme.sh 证书申请脚本"
+	yellow "9. Linux换源脚本"
+	yellow "10. WARP多功能一键脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
     read -p "请输入选项:" page1NumberInput
     case "$page1NumberInput" in
         1 ) rootlogin ;;
-		2) vpsfirewall ;;
-        3 ) swap ;;
-        4 ) ssh_port ;;
-        5 ) bbr ;;
-		6 ) acmesh ;;
-		7 ) cssh ;;
-		8 ) warp ;;
+		2) useradd ;;
+		3 ) userdel ;;
+		4) vpsfirewall ;;
+        5 ) swap ;;
+        6 ) ssh_port ;;
+        7 ) bbr ;;
+		8) acmesh ;;
+		9 ) cssh ;;
+		10 ) warp ;;
         0 ) menu
     esac
 }
