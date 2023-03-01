@@ -231,20 +231,20 @@ function bbr(){
     read -p "请输入选项:" bbrNumberInput
     case "$bbrNumberInput" in
         1 ) 
-		wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+		wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh && rm tcp.sh
 		;;
         2 ) 
-		wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
+		wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh && rm tcp.sh
 		;;
         3 ) 
-		wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh
+		wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh && rm lkl-haproxy.sh
 		;;
         0 ) menu
     esac
 }
 	
 function acmesh(){
-    wget -N https://cdn.jsdelivr.net/gh/Misaka-blog/acme-1key@master/acme1key.sh && chmod -R 777 acme1key.sh && bash acme1key.sh
+    wget -N https://cdn.jsdelivr.net/gh/Misaka-blog/acme-1key@master/acme1key.sh && chmod -R 777 acme1key.sh && bash acme1key.sh && rm acme1key.sh
 }
 
 
@@ -286,15 +286,16 @@ yellow "下载完成"
 		;;
         0 ) menu
     esac
+	rm -rf "/root/changesource.sh"
 }
 
 function warp(){
-    wget -N --no-check-certificate https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh && bash CFwarp.sh
+    wget -N --no-check-certificate https://gitlab.com/rwkgyg/CFwarp/raw/main/CFwarp.sh && bash CFwarp.sh && rm CFwarp.sh
 }
 
 #page2
 function bench(){
-  wget -qO- bench.sh | bash
+  wget -qO- bench.sh | bash && rm  bench.sh
 }
 
 function server-test(){
@@ -372,11 +373,11 @@ function docker(){
 }
 
 function baota(){
-    curl -sSO http://download.bt.cn/install/install_panel.sh && bash install_panel.sh
+    curl -sSO http://download.bt.cn/install/install_panel.sh && bash install_panel.sh && rm install_panel.sh
 }
 
 function baota7(){
-   wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/LinuxPanel-7.7.0.zip && unzip LinuxPanel-7.7.0.zip && cd /root/panel && bash update.sh
+   wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/LinuxPanel-7.7.0.zip && unzip LinuxPanel-7.7.0.zip && cd /root/panel && bash update.sh && rm -rf LinuxPanel-7.7.0.zip  /root/panel
 }
 
 function baotap(){
@@ -384,7 +385,7 @@ function baotap(){
 }
 
 function uninstallbaota(){
-    wget http://download.bt.cn/install/bt-uninstall.sh && sh bt-uninstall.sh
+    wget http://download.bt.cn/install/bt-uninstall.sh && sh bt-uninstall.sh && rm bt-uninstall.sh
 }
 
 function aaPanel(){
@@ -393,15 +394,16 @@ chmod +x "/root/aaPanel.sh"
 chmod 777 "/root/aaPanel.sh"
 blue "下载完成"
 bash "/root/aaPanel.sh"
+rm -rf /root/aaPanel.sh
 }
 
 function nezha(){
   curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh  -o nezha.sh && chmod +x nezha.sh
-sudo ./nezha.sh
+sudo ./nezha.sh && rm -rf nezha.sh
 }
 
 function alist(){
-  curl -fsSL "https://raw.githubusercontent.com/GWen124/Script/master/Linux/alist.sh" | bash -s install
+  curl -fsSL "https://raw.githubusercontent.com/GWen124/Script/master/Linux/alist.sh" | bash -s install && rm alist.sh
 }
 
 #page4
@@ -424,7 +426,7 @@ function v2ray(){
 function shadowsocks(){
     wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontents.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
     chmod +x shadowsocks-all.sh
-    ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
+    ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log && rm shadowsocks-all.sh
 }
 
 function telegram(){
@@ -447,17 +449,17 @@ function frps(){
     read -p "请输入选项:" unlockNumberInput
     case "$unlockNumberInput" in
 		1)
-		wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/FRPS/AMD-install-frps.sh -O ./install-frps.sh
+		wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/FRPS/AMD-install-frps.sh -O ./install-frps.sh && rm install-frps.sh
 		;;
 		2)
-		wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/FRPS/ARM-install-frps.sh -O ./install-frps.sh
+		wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/FRPS/ARM-install-frps.sh -O ./install-frps.sh && rm install-frps.sh
 		;;
         0 ) menu
     esac
 }
 
 function rclone(){
-  curl https://rclone.org/install.sh | sudo bash
+  curl https://rclone.org/install.sh | sudo bash && rm install.sh
 }
 
 function dnat(){
@@ -465,11 +467,11 @@ function dnat(){
 }
 
 function gost(){
-  curl -fsSL "https://raw.githubusercontent.com/KANIKIG/Multi-EasyGost/master/gost.sh" | bash -s install
+  curl -fsSL "https://raw.githubusercontent.com/KANIKIG/Multi-EasyGost/master/gost.sh" | bash -s install && rm gost.sh
 }
 
 function ddsystem(){
-  wget --no-check-certificate -qO ~/Network-Reinstall-System-Modify.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/Network-Reinstall-System-Modify.sh' && chmod a+x ~/Network-Reinstall-System-Modify.sh && bash ~/Network-Reinstall-System-Modify.sh -UI_Options
+  wget --no-check-certificate -qO ~/Network-Reinstall-System-Modify.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/Network-Reinstall-System-Modify.sh' && chmod a+x ~/Network-Reinstall-System-Modify.sh && bash ~/Network-Reinstall-System-Modify.sh -UI_Options && rm Network-Reinstall-System-Modify.sh
 }
 
 function QuickBox(){
