@@ -307,13 +307,10 @@ function gfw_push(){
 
 function unlock(){
     echo "                            "
-	yellow " 1. 启动Netflix检测脚本(X86)"
-	yellow " 2. 启动Netflix检测脚本(ARM)"
-	yellow " 3. 启动DisneyPlus检测脚本(X86)"
-	yellow " 4. 启动DisneyPlus检测脚本(ARM)"
-	yellow " 5. Youtube 缓存节点、地域信息检测(X86)"
-	yellow " 6. Youtube 缓存节点、地域信息检测(ARM)"
-	yellow " 7. 流媒体一键检测脚本 "
+	yellow " 1. 启动Netflix检测脚本"
+	yellow " 2. 启动DisneyPlus检测脚本"
+	yellow " 3. Youtube 缓存节点、地域信息检测"
+	yellow " 4. 流媒体一键检测脚本 "
 	echo "                            "
     red " 0. 返回主菜单 "
 	green "=================================================================================="
@@ -321,24 +318,15 @@ function unlock(){
     read -p "请输入选项:" unlockNumberInput
     case "$unlockNumberInput" in
 		1)
-		wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_amd64 && chmod +x nf && clear && ./nf
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/netflix.sh)"
 		;;
 		2)
-		wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.61/nf_2.61_linux_arm64 && chmod +x nf && clear && ./nf
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/disney.sh)"
 		;;
 		3)
-	    wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_amd64 && chmod +x dp && clear && ./dp
+	    bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tubecheck.sh)"
 		;;
 		4)
-		wget -O dp https://github.com/sjlleo/VerifyDisneyPlus/releases/download/1.01/dp_1.01_linux_arm64 && chmod +x dp && clear && ./dp
-		;;
-		5)
-	    wget -O tubecheck https://cdn.jsdelivr.net/gh/sjlleo/TubeCheck/CDN/tubecheck_1.0beta_linux_amd64 && chmod +x tubecheck && clear && ./tubecheck
-		;;
-		6)
-	    wget -O tubecheck https://github.com/sjlleo/TubeCheck/releases/download/1.0Beta/tubecheck_1.0beta_linux_arm64 && chmod +x tubecheck && clear && ./tubecheck
-		;;
-		7)
 		bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 		;;
         0 ) menu
@@ -551,8 +539,8 @@ function page1(){
     green "请选择你接下来的操作："
     echo "                            "
     yellow "1. 修改登录方式为 root + 密码 登录"
-	yellow "2 增加系统用户"
-	yellow "3.删除系统用户"
+	yellow "2. 增加系统用户"
+	yellow "3. 删除系统用户"
 	yellow "4. 关闭原系统防火墙"
     yellow "5. 虚拟内存SWAP一键脚本 "
     yellow "6. 更改SSH端口"
