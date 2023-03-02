@@ -108,87 +108,46 @@ TODAY=$(expr "$COUNT" : '.*\s\([0-9]\{1,\}\)\s/.*') && TOTAL=$(expr "$COUNT" : '
 
 #page1
 function rootlogin(){
-red='\033[0;31m'
-red(){ echo -e "\033[31m\033[01m$1\033[0m";}
-green(){ echo -e "\033[32m\033[01m$1\033[0m";}
-yellow(){ echo -e "\033[33m\033[01m$1\033[0m";}
-readp(){ read -p "$(yellow "$1")" $2;}
-[[ $EUID -ne 0 ]] && su='sudo' 
-lsattr /etc/passwd /etc/shadow >/dev/null 2>&1
-chattr -i /etc/passwd /etc/shadow >/dev/null 2>&1
-chattr -a /etc/passwd /etc/shadow >/dev/null 2>&1
-lsattr /etc/passwd /etc/shadow >/dev/null 2>&1
-prl=`grep PermitRootLogin /etc/ssh/sshd_config`
-pa=`grep PasswordAuthentication /etc/ssh/sshd_config`
-if [[ -n $prl && -n $pa ]]; then
-readp "自定义root密码:" password
-if [[ -n $password ]]; then
-echo root:$password | $su chpasswd root
-$su sed -i 's/^#\?PermitRootLogin.*/PermitRootLogin yes/g' /etc/ssh/sshd_config;
-$su sed -i 's/^#\?PasswordAuthentication.*/PasswordAuthentication yes/g' /etc/ssh/sshd_config;
-$su service sshd restart
-green "VPS当前用户名：root"
-green "VPS当前root密码：$password"
-else
-red "未输入相关字符，启用root账户或root密码更改失败" 
-fi
-else
-red "当前vps不支持root账户或无法自定义root密码,建议先执行sudo -i 进入root账户后再执行脚本" 
-fi
+    echo "                            "
+    green "请选择你接下来使用的脚本"
+    echo "                            "
+    yellow "1. 修改登录方式为 root + 密码 登录"
+    yellow "2. 增加系统用户"
+    yellow "3. 删除系统用户"
+    echo "                            "
+    red "0. 返回主菜单"
+	green "=================================================================================="
+    read -p "请输入选项:" rootNumberInput
+    case "$rootNumberInput" in
+        1 ) 
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)"
+		;;
+        2 ) 
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/useradd.sh)"
+		;;
+        3 ) 
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/userdel.sh)"
+		;;
+        0 ) page1
+    esac
 }
 
-function usradd(){
-red(){ echo -e "\033[31m\033[01m$1\033[0m";}
-green(){ echo -e "\033[32m\033[01m$1\033[0m";}
-yellow(){ echo -e "\033[33m\033[01m$1\033[0m";}
-readp(){ read -p "$(yellow "$1")" $2;}
-readsp(){ read -s -p "$(yellow "$1")" $2;}
-if [ $(id -u) -eq 0 ]; then
-	readp "请输入用户名 : " username
-	readsp "请输入密码 : " password
-	egrep "^$username" /etc/passwd >/dev/null
-	if [ $? -eq 0 ]; then
-		echo "$username exists!"
-		exit 1
-	else
-		pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
-		useradd -m -p $pass $username
-		[ $? -eq 0 ] && yellow "用户已添加到系统!" || red "添加用户失败,以下账户无效!"
-	fi
-green "VPS当前设置的用户名：$username"
-green "VPS当前设置的密码：$password"
-else
-	red "只有 root 可以向系统添加用户!"
-	exit 2
+function dellogs(){
+if [ "$(id -u)" != "0" ]; then
+  echo "此脚本必须以root用户身份运行" 1>&2
+  exit 1
 fi
-}
+if find /var/log/ -type f -delete; then
+  echo "所有日志文件已成功删除"
+  if rm -- "$0"; then
+    echo "脚本已成功删除"
+  else
+    echo "删除脚本时发生错误"
+  fi
+else
+  echo "删除日志文件时发生错误"
+fi
 
-function usrdel(){
-RED="\033[0;31m"
-GREEN="\033[0;32m"
-YELLOW="\033[0;33m"
-NC="\033[0m"
-if [[ $(id -u) -ne 0 ]]; then
-    echo -e "${RED}此脚本必须以root用户身份运行。${NC}"
-    exit 1
-fi
-echo -e "${YELLOW}当前用户列表：${NC}"
-cut -d: -f1 /etc/passwd
-read -p "请输入要删除的用户名：" username
-if [[ -z $username ]]; then
-    echo -e "${RED}用户名不能为空。${NC}"
-    exit 1
-fi
-if [[ -x "$(command -v userdel)" ]]; then
-    userdel -r $username
-else
-    deluser --remove-home $username
-fi
-if [[ $? -eq 0 ]]; then
-    echo -e "${GREEN}用户 $username 已成功删除。${NC}"
-else
-    echo -e "${RED}删除用户 $username 失败。${NC}"
-fi
 }
 
 function vpsfirewall(){
@@ -239,7 +198,7 @@ function bbr(){
         3 ) 
 		wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh && rm lkl-haproxy.sh
 		;;
-        0 ) menu
+        0 ) page1
     esac
 }
 	
@@ -284,7 +243,7 @@ yellow "下载完成"
 		6)
 	    bash changesource.sh restore
 		;;
-        0 ) menu
+        0 ) page1
     esac
 	rm -rf "/root/changesource.sh"
 }
@@ -330,7 +289,7 @@ function unlock(){
 		4)
 		bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 		;;
-        0 ) menu
+        0 ) page2
     esac
 }
 
@@ -344,34 +303,6 @@ function lemonbench(){
 
 
 #page3
-function docker(){
-    echo "                            "
-	yellow " 1. 安装 Docker"
-	yellow " 2. 设置开机自动启动Docker"
-	yellow " 3. 安装Docker Compose"
-	yellow " 4. 添加Docker Compose可执行权限"
-	echo "                            "
-    red " 0. 返回主菜单 "
-	green "=================================================================================="
-    echo
-    read -p "请输入选项:" unlockNumberInput
-    case "$unlockNumberInput" in
-		1)
-		wget -qO- get.docker.com | bash
-		;;
-		2)
-		systemctl enable docker
-		;;
-		3)
-		sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-		;;
-		4)
-		sudo chmod +x /usr/local/bin/docker-compose
-		;;
-        0 ) menu
-    esac
-}
-
 function baota(){
     curl -sSO http://download.bt.cn/install/install_panel.sh && bash install_panel.sh && rm install_panel.sh
 }
@@ -411,8 +342,8 @@ function alist(){
     red " 0. 返回主菜单 "
 	green "=================================================================================="
     echo
-    read -p "请输入选项:" unlockNumberInput
-    case "$unlockNumberInput" in
+    read -p "请输入选项:" alistNumberInput
+    case "$alistNumberInput" in
 		1)
 		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s install /home/Software
 		;;
@@ -422,11 +353,72 @@ function alist(){
 		3)
 		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s uninstall /home/Software
 		;;
-        0 ) menu
+        0 ) page3
     esac
 }
 
 #page4
+function docker(){
+    echo "                            "
+	yellow " 1. 安装 Docker"
+	yellow " 2. 设置开机自动启动Docker"
+	yellow " 3. 安装Docker Compose"
+	yellow " 4. 添加Docker Compose可执行权限"
+	echo "                            "
+    red " 0. 返回主菜单 "
+	green "=================================================================================="
+    echo
+    read -p "请输入选项:" dockerNumberInput
+    case "$dockerNumberInput" in
+		1)
+		wget -qO- get.docker.com | bash
+		;;
+		2)
+		systemctl enable docker
+		;;
+		3)
+		sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+		;;
+		4)
+		sudo chmod +x /usr/local/bin/docker-compose
+		;;
+        0 ) page4
+    esac
+}
+
+function nginxpm(){
+wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Nginx%20Proxy%20Manager/nginx-proxy-manager.sh && chmod +x nginx-proxy-manager.sh && ./nginx-proxy-manager.sh && rm -rf nginx-proxy-manager.sh
+}
+
+function watchtower(){
+bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+}
+
+function syncthing(){
+bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+}
+
+function alistdocker(){
+bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+}
+
+function qinglong(){
+bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+}
+
+function qinglong(){
+bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+}
+
+function speedx(){
+bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+}
+
+function feiyang(){
+bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+}
+
+#page5
 function xui(){
     bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
 }
@@ -453,7 +445,7 @@ function telegram(){
     bash <(wget -qO- https://git.io/mtg.sh)
 }
 
-#page5
+#page6
 function node(){
   bash -c "$(curl -fsSL https://deb.nodesource.com/setup_16.x)" && $systemPackage install -y nodejs
 }
@@ -524,7 +516,8 @@ function chatgpt(){
     yellow "1. 系统相关"
     yellow "2. VPS检测"
     yellow "3. 面板相关"
-    yellow "4. 科学上网"
+    yellow "4. Docker"
+    yellow "5. 科学上网"
     yellow "5. 其他工具"
     echo "                            "
     red "0. 退出脚本"
@@ -542,6 +535,7 @@ function chatgpt(){
         3 ) page3 ;;
         4 ) page4 ;;
         5 ) page5 ;;
+		5 ) page6 ;;
         0 ) exit 0
     esac
 }
@@ -550,31 +544,29 @@ function page1(){
 	echo "                            "
     green "请选择你接下来的操作："
     echo "                            "
-    yellow "1. 修改登录方式为 root + 密码 登录"
-	yellow "2. 增加系统用户"
-	yellow "3. 删除系统用户"
-	yellow "4. 关闭原系统防火墙"
-    yellow "5. 虚拟内存SWAP一键脚本 "
-    yellow "6. 更改SSH端口"
-    yellow "7. 开启BBR一键加速"
-	yellow "8. Acme.sh 证书申请脚本"
-	yellow "9. Linux换源脚本"
-	yellow "10. WARP多功能一键脚本"
+    yellow "1. 系统账户相关"
+	yellow "2 删除日志文件"
+	yellow "3. 关闭原系统防火墙"
+    yellow "4. 虚拟内存SWAP一键脚本 "
+    yellow "5. 更改SSH端口"
+    yellow "6. 开启BBR一键加速"
+	yellow "7. Acme.sh 证书申请脚本"
+	yellow "8. Linux换源脚本"
+	yellow "9. WARP多功能一键脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
     read -p "请输入选项:" page1NumberInput
     case "$page1NumberInput" in
         1 ) rootlogin ;;
-		2 ) usradd ;;
-		3 ) usrdel ;;
-		4 ) vpsfirewall ;;
-        5 ) swap ;;
-        6 ) ssh_port ;;
-        7 ) bbr ;;
-		8 ) acmesh ;;
-		9 ) cssh ;;
-		10 ) warp ;;
+		2 ) dellogs ;;
+		3) vpsfirewall ;;
+        4 ) swap ;;
+        5 ) ssh_port ;;
+        6 ) bbr ;;
+		7 ) acmesh ;;
+		8 ) cssh ;;
+		9 ) warp ;;
         0 ) menu
     esac
 }
@@ -608,32 +600,63 @@ function page3(){
     echo "                            "
     green "请选择你接下来使用的脚本："
     echo "                            "
-	yellow "1. 安装Docker&Docker Compose"
-    yellow "2. 宝塔面板一键官方脚本"
-    yellow "3. 宝塔面板降级到v7.7"
-    yellow "4. 宝塔面板无需手机登陆"
-	yellow "5. 卸载宝塔面板"
-	yellow "6. 宝塔面板国际版"
-    yellow "7. 哪吒面板"
-    yellow "8. Alist一键安装脚本"
+    yellow "1. 宝塔面板一键官方脚本"
+    yellow "2. 宝塔面板降级到v7.7"
+    yellow "3. 宝塔面板无需手机登陆"
+	yellow "4. 卸载宝塔面板"
+	yellow "5. 宝塔面板国际版"
+    yellow "6. 哪吒面板"
+    yellow "7. Alist一键安装脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
     read -p "请输入选项:" page3NumberInput
     case "$page3NumberInput" in
-		1 ) docker ;;
-        2 ) baota ;;
-        3 ) baota7 ;;
-        4 ) baotap ;;
-		5 ) uninstallbaota ;;
-		6 ) aaPanel ;;
-        7 ) nezha ;;
-        8 ) alist ;;
+        1 ) baota ;;
+        2 ) baota7 ;;
+        3 ) baotap ;;
+		4 ) uninstallbaota ;;
+		5 ) aaPanel ;;
+        6 ) nezha ;;
+        7 ) alist ;;
         0 ) menu
     esac
 }
 
 function page4(){
+    echo "                            "
+	blue "说明 ：此类目为Docker容器项目文件，请安装Docker&Docker Compose后使用"
+	blue "容器目录存放于：/home/Docker文件夹内 "
+	blue "Nginx Proxy Manage默认账户：admin@example.com---changeme"
+	echo "                            "
+    green "请选择你接下来使用的脚本："
+    echo "                            "
+	yellow "1. 安装Docker&Docker Compose"
+    yellow "2. Nginx Proxy Manager-Docker Compose"
+    yellow "3. Watchtower-Docker"
+    yellow "4. Syncthing-Docker"
+	yellow "5. Alist-Docker"
+	yellow "6. QingLong-Docker"
+    yellow "7. Speedtest X-Docker"
+    yellow "8. 肥羊IPTV-Docker"
+    echo "                            "
+    red "0. 返回主菜单"
+	green "=================================================================================="
+    read -p "请输入选项:" page4NumberInput
+    case "$page4NumberInput" in
+		1 ) docker ;;
+        2 ) nginxpm ;;
+        3 ) watchtower ;;
+        4 ) syncthing ;;
+		5 ) alistdocker ;;
+		6 ) qinglong ;;
+        7 ) speedx ;;
+        8 ) feiyang ;;
+        0 ) menu
+    esac
+}
+
+function page5(){
     echo "                            "
     green "请选择你接下来的操作："
     echo "                            "
@@ -646,8 +669,8 @@ function page4(){
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
-    read -p "请输入选项:" page4NumberInput
-    case "$page4NumberInput" in
+    read -p "请输入选项:" page5NumberInput
+    case "$page5NumberInput" in
         1 ) xui ;;
         2 ) trojanui ;;
         3 ) xray ;;
@@ -658,7 +681,7 @@ function page4(){
     esac
 }
 
-function page5(){
+function page6(){
     echo "                            "
     green "请选择你需要的工具："
     echo "                            "
@@ -675,8 +698,8 @@ function page5(){
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
-    read -p "请输入选项:" page5NumberInput
-    case "$page5NumberInput" in
+    read -p "请输入选项:" page6NumberInput
+    case "$page6NumberInput" in
         1 ) node ;;
         2 ) frps ;;
 		3 ) rclone ;;
