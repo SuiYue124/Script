@@ -244,7 +244,7 @@ function bbr(){
 }
 	
 function acmesh(){
-    wget -N https://cdn.jsdelivr.net/gh/Misaka-blog/acme-1key@master/acme1key.sh && chmod -R 777 acme1key.sh && bash acme1key.sh && rm acme1key.sh
+    wget -N https://cdn.jsdelivr.net/gh/Misaka-blog/acme-1key@master/acme1key.sh && chmod -R 777 acme1key.sh && bash acme1key.sh && rm -rf acme1key.sh
 }
 
 
@@ -295,7 +295,7 @@ function warp(){
 
 #page2
 function bench(){
-  wget -qO- bench.sh | bash && rm  bench.sh
+  wget -qO- bench.sh | bash
 }
 
 function server-test(){
@@ -403,7 +403,27 @@ sudo ./nezha.sh && rm -rf nezha.sh
 }
 
 function alist(){
-  curl -fsSL "https://raw.githubusercontent.com/GWen124/Script/master/Linux/alist.sh" | bash -s install && rm alist.sh
+    echo "                            "
+	yellow " 1. 安装Alist"
+	yellow " 2. 更新Alist"
+	yellow " 3. 卸载Alist"
+	echo "                            "
+    red " 0. 返回主菜单 "
+	green "=================================================================================="
+    echo
+    read -p "请输入选项:" unlockNumberInput
+    case "$unlockNumberInput" in
+		1)
+		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s install /home/Software
+		;;
+		2)
+		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s update /home/Software
+		;;
+		3)
+		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s uninstall /home/Software
+		;;
+        0 ) menu
+    esac
 }
 
 #page4
@@ -426,7 +446,7 @@ function v2ray(){
 function shadowsocks(){
     wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontents.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
     chmod +x shadowsocks-all.sh
-    ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log && rm shadowsocks-all.sh
+    ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log &&
 }
 
 function telegram(){
@@ -439,27 +459,17 @@ function node(){
 }
 
 function frps(){
-    echo "                            "
-	yellow " 1. X86版"
-	yellow " 2. ARM版"
-	echo "                            "
-    red " 0. 返回主菜单 "
-	green "=================================================================================="
-    echo
-    read -p "请输入选项:" unlockNumberInput
-    case "$unlockNumberInput" in
-		1)
-		wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/FRPS/AMD-install-frps.sh -O ./install-frps.sh && rm install-frps.sh
-		;;
-		2)
-		wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/FRPS/ARM-install-frps.sh -O ./install-frps.sh && rm install-frps.sh
-		;;
-        0 ) menu
-    esac
+if [ "$(uname -m)" = "x86_64" ]; then
+  wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/FRPS/AMD-install-frps.sh -O ./install-frps.sh && rm -r install-frps.sh
+elif [ "$(uname -m)" = "aarch64" ]; then
+  wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/FRPS/ARM-install-frps.sh -O ./install-frps.sh && rm -r install-frps.sh
+else
+  echo "未知的系统架构"
+fi
 }
 
 function rclone(){
-  curl https://rclone.org/install.sh | sudo bash && rm install.sh
+  curl https://rclone.org/install.sh | sudo bash && rm -r install.sh
 }
 
 function dnat(){
@@ -467,11 +477,11 @@ function dnat(){
 }
 
 function gost(){
-  curl -fsSL "https://raw.githubusercontent.com/KANIKIG/Multi-EasyGost/master/gost.sh" | bash -s install && rm gost.sh
+  wget --no-check-certificate -O gost.sh https://raw.githubusercontent.com/KANIKIG/Multi-EasyGost/master/gost.sh && chmod +x gost.sh && ./gost.sh && rm -rf gost.sh
 }
 
 function ddsystem(){
-  wget --no-check-certificate -qO ~/Network-Reinstall-System-Modify.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/Network-Reinstall-System-Modify.sh' && chmod a+x ~/Network-Reinstall-System-Modify.sh && bash ~/Network-Reinstall-System-Modify.sh -UI_Options && rm Network-Reinstall-System-Modify.sh
+  wget --no-check-certificate -qO ~/Network-Reinstall-System-Modify.sh 'https://www.cxthhhhh.com/CXT-Library/Network-Reinstall-System-Modify/Network-Reinstall-System-Modify.sh' && chmod a+x ~/Network-Reinstall-System-Modify.sh && bash ~/Network-Reinstall-System-Modify.sh -UI_Options && rm -rf ~/Network-Reinstall-System-Modify.sh
 }
 
 function QuickBox(){
