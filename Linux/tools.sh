@@ -446,7 +446,7 @@ function v2ray(){
 function shadowsocks(){
     wget --no-check-certificate -O shadowsocks-all.sh https://raw.githubusercontents.com/teddysun/shadowsocks_install/master/shadowsocks-all.sh
     chmod +x shadowsocks-all.sh
-    ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log &&
+    ./shadowsocks-all.sh 2>&1 | tee shadowsocks-all.log
 }
 
 function telegram(){
