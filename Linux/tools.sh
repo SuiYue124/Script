@@ -387,35 +387,31 @@ function docker(){
 }
 
 function nginxpm(){
-wget https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Nginx%20Proxy%20Manager/nginx-proxy-manager.sh && chmod +x nginx-proxy-manager.sh && ./nginx-proxy-manager.sh && rm -rf nginx-proxy-manager.sh
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Nginx-Proxy-Manager/nginx-proxy-manager.sh)"
 }
 
 function watchtower(){
-bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/watchtowersh)"
 }
 
 function syncthing(){
-bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/syncthing.sh)"
 }
 
 function alistdocker(){
-bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/alist.sh)"
 }
 
 function qinglong(){
-bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
-}
-
-function qinglong(){
-bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/qinglong.sh)"
 }
 
 function speedx(){
-bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/speedtestx.sh)"
 }
 
 function feiyang(){
-bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/feiyangiptv.sh)"
 }
 
 #page5
@@ -625,9 +621,8 @@ function page3(){
 
 function page4(){
     echo "                            "
-	blue "说明 ：此类目为Docker容器项目文件，请安装Docker&Docker Compose后使用"
-	blue "容器目录存放于：/home/Docker文件夹内 "
-	blue "Nginx Proxy Manage默认账户：admin@example.com---changeme"
+	red "说明 ：此类目为Docker容器项目文件，请安装Docker&Docker Compose后使用"
+	blue "容器目录映射于：/home/Docker文件夹内 "
 	echo "                            "
     green "请选择你接下来使用的脚本："
     echo "                            "
