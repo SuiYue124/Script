@@ -681,7 +681,7 @@ function page4(){
 	yellow "5. Alist-Docker"
 	yellow "6. QingLong-Docker"
     yellow "7. Qiandao-Today-Docker"
-    yellow "8. 肥羊IPTV-Docker"
+    yellow "8. FeiyangIPTV-Docker"
 	yellow "9. 其他Docker项目"
     echo "                            "
     red "0. 返回主菜单"
