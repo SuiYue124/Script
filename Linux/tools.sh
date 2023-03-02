@@ -514,7 +514,7 @@ function chatgpt(){
     yellow "3. 面板相关"
     yellow "4. Docker"
     yellow "5. 科学上网"
-    yellow "5. 其他工具"
+    yellow "6. 其他工具"
     echo "                            "
     red "0. 退出脚本"
     echo "                            "
