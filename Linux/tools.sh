@@ -115,7 +115,7 @@ function rootlogin(){
     yellow "2. 增加系统用户"
     yellow "3. 删除系统用户"
     echo "                            "
-    red "0. 返回主菜单"
+    red "0. 返回上级菜单"
 	green "=================================================================================="
     read -p "请输入选项:" rootNumberInput
     case "$rootNumberInput" in
@@ -185,7 +185,7 @@ function bbr(){
     yellow "2. BBR一键加速（最新版）"
     yellow "3. openvz BBR一键加速"
     echo "                            "
-    red "0. 返回主菜单"
+    red "0. 返回上级菜单"
 	green "=================================================================================="
     read -p "请输入选项:" bbrNumberInput
     case "$bbrNumberInput" in
@@ -220,7 +220,7 @@ yellow "下载完成"
 	yellow " 5. 切换AWS亚马逊云源 "
 	yellow " 6. 还原默认源 "
 	echo "                            "
-    red " 0. 返回主菜单 "
+    red " 0. 返回上级菜单 "
 	green "=================================================================================="
     echo
     read -p "请自行选择切换对应源:" csshNumberInput
@@ -272,7 +272,7 @@ function unlock(){
 	yellow " 3. Youtube 缓存节点、地域信息检测"
 	yellow " 4. 流媒体一键检测脚本 "
 	echo "                            "
-    red " 0. 返回主菜单 "
+    red " 0. 返回上级菜单 "
 	green "=================================================================================="
     echo
     read -p "请输入选项:" unlockNumberInput
@@ -339,7 +339,7 @@ function alist(){
 	yellow " 2. 更新Alist"
 	yellow " 3. 卸载Alist"
 	echo "                            "
-    red " 0. 返回主菜单 "
+    red " 0. 返回上级菜单 "
 	green "=================================================================================="
     echo
     read -p "请输入选项:" alistNumberInput
@@ -365,7 +365,7 @@ function docker(){
 	yellow " 3. 安装Docker Compose"
 	yellow " 4. 添加Docker Compose可执行权限"
 	echo "                            "
-    red " 0. 返回主菜单 "
+    red " 0. 返回上级菜单 "
 	green "=================================================================================="
     echo
     read -p "请输入选项:" dockerNumberInput
