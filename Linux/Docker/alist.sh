@@ -14,7 +14,7 @@ function red(){
 green "================================================="
 yellow "  Alist一键Docker脚本"
 yellow "  映射端口：5255"
-yellow "  映射目录：/www/wwwroot/Docker/Alist"
+yellow "  映射目录：/opt/Docker/Alist"
 yellow "  默认账户密码：docker exec -it Alist ./alist password"
 green "================================================="
 blue " 1. 安装并启动容器"
@@ -26,11 +26,21 @@ green "================================================="
 read -p "请输入数字 [0-3]: " opt
 case $opt in
     1)
+	 green "请输入映射端口号(默认为5255)："
+    read port
+    if [ -z "$port" ]; then
+        port=5255
+    fi
+    green "请输入数据目录(默认为/opt/Docker/Alist)："
+    read path
+    if [ -z "$path" ]; then
+        path="/opt/Docker/Alist"
+    fi
         blue "开始安装并启动容器..."
         docker run -d \
             --restart=always \
-            -v /www/wwwroot/Docker/Alist:/opt/alist/data \
-            -p 5255:5244 \
+            -v $path:/opt/alist/data \
+            -p $port:5244 \
             -e PUID=0 \
             -e PGID=0 \
             -e UMASK=022 \
@@ -48,7 +58,7 @@ case $opt in
         docker rm Alist
         docker run -d \
             --restart=always \
-            -v /www/wwwroot/Docker/Alist:/opt/alist/data \
+            -v /opt/Docker/Alist:/opt/alist/data \
             -p 5255:5244 \
             -e PUID=0 \
             -e PGID=0 \
@@ -64,7 +74,7 @@ case $opt in
             blue "开始卸载容器并删除数据..."
             docker stop Alist
             docker rm -f Alist
-            rm -rf /www/wwwroot/Docker/Alist
+            rm -rf /opt/Docker/Alist
             green "容器已卸载并数据已删除。"
         else
             yellow "操作已取消。"
