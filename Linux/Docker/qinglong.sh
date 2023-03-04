@@ -16,11 +16,11 @@ red() {
     echo -e "\033[31m\033[01m$1\033[0m"
 }
 install() {
-read -r -p "$(yellow '请输入映射端口号(默认为'"$port"')：')" port_input
+read -r -p "$(yellow '请输入你的端口号(默认为'"$port"')：')" port_input
 if [ -n "$port_input" ]; then
     port="$port_input"
 fi
-read -r -p "$(yellow '请输入数据目录(默认为'"$path"')：')" path_input
+read -r -p "$(yellow '请输入你的数据目录(默认为'"$path"')：')" path_input
 if [ -n "$path_input" ]; then
     path="$path_input"
 fi
@@ -34,19 +34,21 @@ fi
 }
 update() {
     green "================================================="
-    red "注意！！！"
-    red "更新前请牢记映射的端口和目录，并严格对应输入！"
-    red "如果输入错误，将导致设置与数据丢失！"
-    red "不做任何输入则保持默认端口和路径，"
-    red "届时与原端口目录不符，同样丢失数据！"
+    red "			注意！！！"
+	red "如果是自定义设置的端口和路径："
+    red "	更新前请牢记你映射的端口和路径，并严格对应输入！"
+    red "	如果输入错误，可能将导致设置与数据丢失！"
+    red "如果是使用此脚本默认安装："
+    red "	则不做任何输入，以保持默认端口和路径，"
+    red "	如错误输入，届时与原端口和路径不符，同样丢失数据！"
     green "================================================="
     read -rp "$(yellow '确定要更新吗？(y/n):')" confirm
     if [[ "$confirm" =~ [yY](es)* ]]; then
-read -rp "$(yellow '请输入原映射端口号（默认为'"$port"'）：')" port_input
+read -rp "$(yellow '请输入你的端口号（默认为'"$port"'）：')" port_input
 if [ -n "$port_input" ]; then
     port="$port_input"
 fi
-read -rp "$(yellow '请输入原数据目录（默认为'"$path"'）：')" path_input
+read -rp "$(yellow '请输入你的数据目录路径（默认为'"$path"'）：')" path_input
 if [ -n "$path_input" ]; then
     path="$path_input"
 fi
@@ -72,10 +74,10 @@ uninstall() {
     if [ "$confirm" = "Y" -o "$confirm" = "y" -o "$confirm" = "yes" ]; then
         docker stop $name && docker rm $name
         yellow "容器已卸载"
-		read -rp "$(yellow '请再次确认是否删除数据目录 [y/n]:')" delete_dir
-        if [ "$delete_dir" = "Y" -o "$delete_dir" = "y" ]; then
-            read -p "请输入数据目录的路径 [$path]: " custom_dir
+            read -p "$(yellow '请输入你的数据目录路径（默认为'"$path"'）：')" custom_dir
             dir_to_delete=${custom_dir:-$path}
+		read -rp "$(yellow '请再次确认是否删除你的数据目录 [y/n]:')" delete_dir
+        if [ "$delete_dir" = "Y" -o "$delete_dir" = "y" ]; then
             rm -rf "$dir_to_delete"
             yellow "数据目录已删除"
         else
