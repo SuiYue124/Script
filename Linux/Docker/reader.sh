@@ -30,16 +30,16 @@ install() {
     password="$password_input"
   fi
   docker run -d --restart=always --name="$name" \
+    -e "SPRING_PROFILES_ACTIVE=prod" \
+    -e "READER_APP_SECURE=true" \
+    -e "READER_APP_SECUREKEY=$password" \
+    -e "READER_APP_INVITECODE=555555555" \
     -v "$path/logs:/logs" \
     -v "$path/storage:/storage" \
-    -p "$port:8080" "$image" \
-    java -jar /app/bin/reader.jar \
-    --spring.profiles.active=prod \
-    --reader.app.secure=true \
-    --reader.app.secureKey=$password \
-    --reader.app.inviteCode=555555555
+    -p "$port:8080" "$image"
   yellow "容器已启动，端口号为 $port，数据目录为 $path"
 }
+
 update() {
   green "================================================="
   red "			注意！！！"
@@ -60,21 +60,21 @@ update() {
     if [ -n "$path_input" ]; then
       path="$path_input"
     fi
-	read -rp "$(yellow '请修改你的密码(默认账号为admin，密码为'"$password"')：')" password_input
-  if [ -n "$password_input" ]; then
-    password="$password_input"
-  fi
+    read -rp "$(yellow '请修改你的密码(默认账号为admin，密码为'"$password"')：')" password_input
+    if [ -n "$password_input" ]; then
+      password="$password_input"
+    fi
     green "容器即将更新"
+    docker pull "$image"
+    docker stop "$name" && docker rm "$name"
     docker run -d --restart=always --name="$name" \
+      -e "SPRING_PROFILES_ACTIVE=prod" \
+      -e "READER_APP_SECURE=true" \
+      -e "READER_APP_SECUREKEY=$password" \
+      -e "READER_APP_INVITECODE=555555555" \
       -v "$path/logs:/logs" \
       -v "$path/storage:/storage" \
-      -p "$port:8080" "$image" \
-      java -jar /app/bin/reader.jar \
-      --spring.profiles.active=prod \
-      --reader.app.secure=true \
-      --reader.app.secureKey=$password \
-      --reader.app.inviteCode=555555555
-
+      -p "$port:8080" "$image"
     green "容器已更新完成"
   else
     yellow "已取消更新"
