@@ -416,7 +416,7 @@ function odocker(){
 	yellow " 2. 肥羊IPTV-Docker"
 	yellow " 3. Freenom自动续期-Docker"
 	yellow " 4. Hale Blog-Docker"
-	yellow " 5. 待定"
+	yellow " 5. Reader小说阅读站-Docker"
 	yellow " 6. 待定"
 	yellow " 7. 待定"
 	yellow " 8. 待定"
@@ -440,7 +440,7 @@ function odocker(){
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/halo.sh)"
 		;;
 		5)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/reader.sh)"
 		;;
 		6)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
@@ -462,7 +462,7 @@ function compose(){
     echo "                            "
 	yellow " 1. Easyimage图床-Docker-Compose"
 	yellow " 2. YOURLS短连接-Docker-Compose"
-	yellow " 3. 待定"
+	yellow " 3. Reader小说阅读站-Docker-Compose"
 	yellow " 4. 待定"
 	yellow " 5. 待定"
 	yellow " 6. 待定"
@@ -482,7 +482,7 @@ function compose(){
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/YOURLS/yourls.sh)"
 		;;
 		3)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/Reader/reader.sh))"
 		;;
 		4)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
