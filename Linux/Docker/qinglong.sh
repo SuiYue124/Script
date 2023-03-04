@@ -14,20 +14,14 @@ red() {
     echo -e "\033[31m\033[01m$1\033[0m"
 }
 install() {
-    green "================================================="
-    yellow "请输入映射端口号(默认为$port)："
-    green "================================================="
-    read -r port_input
-    if [ -n "$port_input" ]; then
-        port="$port_input"
-    fi
-    green "================================================="
-    yellow "请输入数据目录(默认为$path)："
-    green "================================================="
-    read -r path_input
-    if [ -n "$path_input" ]; then
-        path="$path_input"
-    fi
+read -r -p "$(yellow '请输入映射端口号(默认为'"$port"')：')" port_input
+if [ -n "$port_input" ]; then
+    port="$port_input"
+fi
+read -r -p "$(yellow '请输入数据目录(默认为'"$path"')：')" path_input
+if [ -n "$path_input" ]; then
+    path="$path_input"
+fi
     docker run -dit --name QingLong \
         -v "$path":/ql/data \
         -p "$port":5700 \
@@ -44,16 +38,16 @@ update() {
     red "不做任何输入则保持默认端口和路径，"
     red "届时与原端口目录不符，同样丢失数据！"
     green "================================================="
-    read -rp "确定要更新吗？(y/n): " confirm
+    read -rp "$(yellow '确定要更新吗？(y/n):')" confirm
     if [[ "$confirm" =~ [yY](es)* ]]; then
-        read -rp "请输入原映射端口号（默认为$port）：" port_input
-        if [ -n "$port_input" ]; then
-            port="$port_input"
-        fi
-        read -rp "请输入原数据目录（默认为$path）：" path_input
-        if [ -n "$path_input" ]; then
-            path="$path_input"
-        fi
+read -rp "$(yellow '请输入原映射端口号（默认为'"$port"'）：')" port_input
+if [ -n "$port_input" ]; then
+    port="$port_input"
+fi
+read -rp "$(yellow '请输入原数据目录（默认为'"$path"'）：')" path_input
+if [ -n "$path_input" ]; then
+    path="$path_input"
+fi
         green "容器即将更新"
         docker pull whyour/qinglong:latest
         docker stop QingLong && docker rm QingLong
@@ -72,13 +66,11 @@ uninstall() {
     green "================================================="
     red "警告：该操作将会删除容器及其数据。"
     green "================================================="
-    yellow "请再次确认是否执行该操作 [y/n]: "
-    read -r confirm
+	read -rp "$(yellow '请再次确认是否执行该操作 [y/n]:')" confirm
     if [ "$confirm" = "Y" -o "$confirm" = "y" -o "$confirm" = "yes" ]; then
         docker stop QingLong && docker rm QingLong
         yellow "容器已卸载"
-        yellow "是否删除数据目录？ [y/n]: "
-        read -r delete_dir
+		read -rp "$(yellow '请再次确认是否删除数据目录 [y/n]:')" delete_dir
         if [ "$delete_dir" = "Y" -o "$delete_dir" = "y" ]; then
             read -p "请输入数据目录的路径 [$path]: " custom_dir
             dir_to_delete=${custom_dir:-$path}
@@ -100,7 +92,7 @@ menu() {
   blue "  3. 卸载容器"
   blue "  0. 退出脚本"
   green "================================================="
-  read -p "请输入数字 [0-3]: " num
+  read -p "$(yellow '请输入数字 [0-3]:')" num
   case "$num" in
     1)
       rm -rf "$0"
@@ -122,7 +114,7 @@ menu() {
       clear
       echo "请输入正确数字 [0-3]"
       sleep 2s
-      menu
+      exit 1
       ;;
   esac
 }
