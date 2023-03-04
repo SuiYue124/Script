@@ -1,4 +1,6 @@
 #!/bin/bash
+image=whyour/qinglong:latest
+name=QingLong
 port=15700
 path="/opt/Docker/QingLong"
 blue() {
@@ -22,12 +24,12 @@ read -r -p "$(yellow '请输入数据目录(默认为'"$path"')：')" path_input
 if [ -n "$path_input" ]; then
     path="$path_input"
 fi
-    docker run -dit --name QingLong \
+    docker run -dit --name $name \
         -v "$path":/ql/data \
         -p "$port":5700 \
         --hostname qinglong \
         --restart unless-stopped \
-        whyour/qinglong:latest
+        $image
     yellow "容器已启动，端口号为 $port，数据目录为 $path"
 }
 update() {
@@ -49,14 +51,14 @@ if [ -n "$path_input" ]; then
     path="$path_input"
 fi
         green "容器即将更新"
-        docker pull whyour/qinglong:latest
-        docker stop QingLong && docker rm QingLong
-        docker run -dit --name QingLong \
+        docker pull $image
+        docker stop $name && docker rm $name
+        docker run -dit --name $name \
             -v "$path":/ql/data \
             -p "$port":5700 \
             --hostname qinglong \
             --restart unless-stopped \
-            whyour/qinglong:latest
+            $image
         green "容器已更新完成"
     else
         yellow "已取消更新"
@@ -68,7 +70,7 @@ uninstall() {
     green "================================================="
 	read -rp "$(yellow '请再次确认是否执行该操作 [y/n]:')" confirm
     if [ "$confirm" = "Y" -o "$confirm" = "y" -o "$confirm" = "yes" ]; then
-        docker stop QingLong && docker rm QingLong
+        docker stop $name && docker rm $name
         yellow "容器已卸载"
 		read -rp "$(yellow '请再次确认是否删除数据目录 [y/n]:')" delete_dir
         if [ "$delete_dir" = "Y" -o "$delete_dir" = "y" ]; then
@@ -83,7 +85,7 @@ uninstall() {
 }
 menu() {
   green "================================================="
-  yellow " 青龙一键 Docker 脚本"
+  yellow " $name一键 Docker 脚本"
   yellow " 默认端口：$port"
   yellow " 默认路径：$path"
   green "================================================="
