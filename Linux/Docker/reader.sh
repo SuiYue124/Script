@@ -60,7 +60,7 @@ update() {
     if [ -n "$path_input" ]; then
       path="$path_input"
     fi
-    read -rp "$(yellow '请修改你的密码(默认账号为admin，密码为'"$password"')：')" password_input
+    read -rp "$(yellow '请修改你的管理密码,默认密码为'"$password"')：')" password_input
     if [ -n "$password_input" ]; then
       password="$password_input"
     fi
