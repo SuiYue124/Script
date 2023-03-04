@@ -1,65 +1,115 @@
 #!/bin/bash
-function blue(){
-    echo -e "\033[34m$1\033[0m"
+image=youshandefeiyang/allinone
+name=Feiyang-IPTV
+port=35455
+blue() {
+    echo -e "\033[34m\033[01m$1\033[0m"
 }
-function green(){
-    echo -e "\033[32m$1\033[0m"
+green() {
+    echo -e "\033[32m\033[01m$1\033[0m"
 }
-function yellow(){
-    echo -e "\033[33m$1\033[0m"
+yellow() {
+    echo -e "\033[33m\033[01m$1\033[0m"
 }
-function red(){
-    echo -e "\033[31m$1\033[0m"
+red() {
+    echo -e "\033[31m\033[01m$1\033[0m"
 }
-green "================================================="
-yellow "  肥羊IPTV一键Docker脚本"
-yellow "  映射端口：35455"
-green "================================================="
-blue " 1. 安装并启动容器"
-blue " 2. 更新容器"
-blue " 3. 卸载容器并同时删除数据"
-blue " 0. 退出脚本"
-green "================================================="
-read -p "请输入数字 [0-3]: " opt
-case $opt in
-    1)
-        blue "开始安装并启动容器..."
+install() {
+read -r -p "$(yellow '请输入映射端口号(默认为'"$port"')：')" port_input
+if [ -n "$port_input" ]; then
+    port="$port_input"
+fi
         docker run -d \
             --restart=unless-stopped \
             --privileged=true \
-            -p 35455:35455 \
-            --name="Feiyang-IPTV" \
-            youshandefeiyang/allinone
-        green "容器已安装并启动。"
-        ;;
-    2)
-        blue "开始更新容器..."
-        docker pull youshandefeiyang/allinone
-        docker stop Feiyang-IPTV
-        docker rm Feiyang-IPTV
+            -p $port:35455 \
+            --name="$name" \
+            $image
+    yellow "容器已启动，端口号为 $port，数据目录为 $path"
+}
+update() {
+    green "================================================="
+    red "注意！！！"
+    red "更新前请牢记映射的端口和目录，并严格对应输入！"
+    red "如果输入错误，将导致设置与数据丢失！"
+    red "不做任何输入则保持默认端口和路径，"
+    red "届时与原端口目录不符，同样丢失数据！"
+    green "================================================="
+    read -rp "$(yellow '确定要更新吗？(y/n):')" confirm
+    if [[ "$confirm" =~ [yY](es)* ]]; then
+read -rp "$(yellow '请输入原映射端口号（默认为'"$port"'）：')" port_input
+if [ -n "$port_input" ]; then
+    port="$port_input"
+fi
+        green "容器即将更新"
+        docker pull $image
+        docker stop $name && docker rm $name
         docker run -d \
             --restart=unless-stopped \
             --privileged=true \
-            -p 35455:35455 \
-            --name="Feiyang-IPTV" \
-            youshandefeiyang/allinone
-        green "容器已更新。"
-        ;;
-    3)
-        yellow "警告：该操作将会删除容器及其数据。"
-        read -p "请再次确认是否执行该操作 [y/n]: " confirm
-        if [ "$confirm" == "y" ]; then
-            blue "开始卸载容器并删除数据..."
-            docker stop Feiyang-IPTV
-            docker rm -f Feiyang-IPTV
-            green "容器已卸载并数据已删除。"
+            -p $port:35455 \
+            --name="$name" \
+            $image
+        green "容器已更新完成"
+    else
+        yellow "已取消更新"
+    fi
+}
+uninstall() {
+    green "================================================="
+    red "警告：该操作将会删除容器及其数据。"
+    green "================================================="
+	read -rp "$(yellow '请再次确认是否执行该操作 [y/n]:')" confirm
+    if [ "$confirm" = "Y" -o "$confirm" = "y" -o "$confirm" = "yes" ]; then
+        docker stop $name && docker rm $name
+        yellow "容器已卸载"
+		read -rp "$(yellow '请再次确认是否删除数据目录 [y/n]:')" delete_dir
+        if [ "$delete_dir" = "Y" -o "$delete_dir" = "y" ]; then
+            read -p "请输入数据目录的路径 [$path]: " custom_dir
+            dir_to_delete=${custom_dir:-$path}
+            rm -rf "$dir_to_delete"
+            yellow "数据目录已删除"
         else
-            yellow "操作已取消。"
+            yellow "默认数据目录 $path 未删除"
         fi
-        ;;
+    fi
+}
+menu() {
+  green "================================================="
+  yellow " $name一键 Docker 脚本"
+  yellow " 默认端口：$port"
+  yellow " 默认路径：$path"
+  green "================================================="
+  blue "  1. 安装并启动容器"
+  blue "  2. 更新容器"
+  blue "  3. 卸载容器"
+  blue "  0. 退出脚本"
+  green "================================================="
+  read -p "$(yellow '请输入数字 [0-3]:')" num
+  case "$num" in
+    1)
+      rm -rf "$0"
+      install
+      ;;
+    2)
+      rm -rf "$0"
+      update
+      ;;
+    3)
+      rm -rf "$0"
+      uninstall
+      ;;
+    0)
+      rm -rf "$0"
+      exit 0
+      ;;
     *)
-        red "无效的操作类型。"
-        ;;
-esac
+      clear
+      echo "请输入正确数字 [0-3]"
+      sleep 2s
+      exit 1
+      ;;
+  esac
+}
 
-rm -f $0
+menu
