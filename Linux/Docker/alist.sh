@@ -1,6 +1,7 @@
 #!/bin/bash
 port=5255
 path="/opt/Docker/Alist"
+name=Alist
 blue() {
     echo -e "\033[34m\033[01m$1\033[0m"
 }
@@ -14,20 +15,14 @@ red() {
     echo -e "\033[31m\033[01m$1\033[0m"
 }
 install() {
-    green "================================================="
-    yellow "请输入映射端口号(默认为$port)："
-    green "================================================="
-    read -r port_input
-    if [ -n "$port_input" ]; then
-        port="$port_input"
-    fi
-    green "================================================="
-    yellow "请输入数据目录(默认为$path)："
-    green "================================================="
-    read -r path_input
-    if [ -n "$path_input" ]; then
-        path="$path_input"
-    fi
+read -r -p "$(yellow '请输入映射端口号(默认为'"$port"')：')" port_input
+if [ -n "$port_input" ]; then
+    port="$port_input"
+fi
+read -r -p "$(yellow '请输入数据目录(默认为'"$path"')：')" path_input
+if [ -n "$path_input" ]; then
+    path="$path_input"
+fi
         docker run -d \
             --restart=always \
             -v $path:/opt/alist/data \
@@ -35,7 +30,7 @@ install() {
             -e PUID=0 \
             -e PGID=0 \
             -e UMASK=022 \
-            --name="Alist" \
+            --name="$name" \
             xhofe/alist:latest
     yellow "容器已启动，端口号为 $port，数据目录为 $path"
 }
@@ -47,19 +42,19 @@ update() {
     red "不做任何输入则保持默认端口和路径，"
     red "届时与原端口目录不符，同样丢失数据！"
     green "================================================="
-    read -rp "确定要更新吗？(y/n): " confirm
+    read -rp "$(yellow '确定要更新吗？(y/n):')" confirm
     if [[ "$confirm" =~ [yY](es)* ]]; then
-        read -rp "请输入原映射端口号（默认为$port）：" port_input
-        if [ -n "$port_input" ]; then
-            port="$port_input"
-        fi
-        read -rp "请输入原数据目录（默认为$path）：" path_input
-        if [ -n "$path_input" ]; then
-            path="$path_input"
-        fi
+read -rp "$(yellow '请输入原映射端口号（默认为'"$port"'）：')" port_input
+if [ -n "$port_input" ]; then
+    port="$port_input"
+fi
+read -rp "$(yellow '请输入原数据目录（默认为'"$path"'）：')" path_input
+if [ -n "$path_input" ]; then
+    path="$path_input"
+fi
         green "容器即将更新"
         docker pull xhofe/alist:latest
-        docker stop Alist && docker rm Alist
+        docker stop $name && docker rm $name
         docker run -d \
             --restart=always \
             -v $path:/opt/alist/data \
@@ -67,7 +62,7 @@ update() {
             -e PUID=0 \
             -e PGID=0 \
             -e UMASK=022 \
-            --name="Alist" \
+            --name="$name" \
             xhofe/alist:latest
         green "容器已更新完成"
     else
@@ -78,13 +73,11 @@ uninstall() {
     green "================================================="
     red "警告：该操作将会删除容器及其数据。"
     green "================================================="
-    yellow "请再次确认是否执行该操作 [y/n]: "
-    read -r confirm
+	read -rp "$(yellow '请再次确认是否执行该操作 [y/n]:')" confirm
     if [ "$confirm" = "Y" -o "$confirm" = "y" -o "$confirm" = "yes" ]; then
-        docker stop Alist && docker rm Alist
+        docker stop $name && docker rm $name
         yellow "容器已卸载"
-        yellow "是否删除数据目录？ [y/n]: "
-        read -r delete_dir
+		read -rp "$(yellow '请再次确认是否删除数据目录 [y/n]:')" delete_dir
         if [ "$delete_dir" = "Y" -o "$delete_dir" = "y" ]; then
             read -p "请输入数据目录的路径 [$path]: " custom_dir
             dir_to_delete=${custom_dir:-$path}
@@ -97,10 +90,9 @@ uninstall() {
 }
 menu() {
 green "================================================="
-yellow "  Alist一键Docker脚本"
+yellow "  $name一键Docker脚本"
 yellow "  映射端口：$path"
 yellow "  映射目录：$port"
-yellow "  默认账户密码：docker exec -it Alist ./alist password"
 green "================================================="
 blue " 1. 安装并启动容器"
 blue " 2. 查看默认账户密码"
