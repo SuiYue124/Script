@@ -3,6 +3,7 @@ image=hectorqin/reader
 name=Reader
 port=8018
 path="/opt/Docker/Reader"
+password=password
 blue() {
     echo -e "\033[34m\033[01m$1\033[0m"
 }
@@ -24,6 +25,10 @@ install() {
   if [ -n "$path_input" ]; then
     path="$path_input"
   fi
+  read -r -p "$(yellow '请输入你的密码(默认账号为admin，密码为'"$password"')：')" password_input
+  if [ -n "$password_input" ]; then
+    password="$password_input"
+  fi
   docker run -d --restart=always --name="$name" \
     -v "$path/logs:/logs" \
     -v "$path/storage:/storage" \
@@ -31,7 +36,7 @@ install() {
     java -jar /app/bin/reader.jar \
     --spring.profiles.active=prod \
     --reader.app.secure=true \
-    --reader.app.secureKey=password \
+    --reader.app.secureKey=$password \
     --reader.app.inviteCode=555555555
   yellow "容器已启动，端口号为 $port，数据目录为 $path"
 }
@@ -55,6 +60,10 @@ update() {
     if [ -n "$path_input" ]; then
       path="$path_input"
     fi
+	read -rp "$(yellow '请修改你的密码(默认账号为admin，密码为'"$password"')：')" password_input
+  if [ -n "$password_input" ]; then
+    password="$password_input"
+  fi
     green "容器即将更新"
     docker run -d --restart=always --name="$name" \
       -v "$path/logs:/logs" \
@@ -63,7 +72,7 @@ update() {
       java -jar /app/bin/reader.jar \
       --spring.profiles.active=prod \
       --reader.app.secure=true \
-      --reader.app.secureKey=password \
+      --reader.app.secureKey=$password \
       --reader.app.inviteCode=555555555
 
     green "容器已更新完成"
