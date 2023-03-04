@@ -410,14 +410,10 @@ function qiandao(){
 bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/qiandao.sh)"
 }
 
-function feiyang(){
-bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/feiyangiptv.sh)"
-}
-
 function odocker(){
     echo "                            "
 	yellow " 1. Freenom自动续期-Docker"
-	yellow " 2. 待定"
+	yellow " 2. 肥羊IPTV-Docker"
 	yellow " 3. 待定"
 	yellow " 4. 待定"
 	yellow " 5. 待定"
@@ -430,12 +426,60 @@ function odocker(){
 	green "=================================================================================="
     echo
     read -p "请输入选项:" odockerNumberInput
-    case "$0dockerNumberInput" in
+    case "$odockerNumberInput" in
 		1)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/freenom.sh)"
 		;;
 		2)
-		sbash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/feiyangiptv.sh)"
+		;;
+		3)
+		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		;;
+		4)
+		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		;;
+		5)
+		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		;;
+		6)
+		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		;;
+		7)
+		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		;;
+		8)
+		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		;;
+		9)
+		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		;;		
+        0 ) page4
+    esac
+}
+
+function compose(){
+    echo "                            "
+	yellow " 1. 待定"
+	yellow " 2. 待定"
+	yellow " 3. 待定"
+	yellow " 4. 待定"
+	yellow " 5. 待定"
+	yellow " 6. 待定"
+	yellow " 7. 待定"
+	yellow " 8. 待定"
+	yellow " 9. 待定"
+	echo "                            "
+    red " 0. 返回上级菜单 "
+	green "=================================================================================="
+    echo
+    read -p "请输入选项:" composeNumberInput
+    case "$composeNumberInput" in
+		1)
+		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		;;
+		2)
+		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
 		;;
 		3)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
@@ -681,8 +725,8 @@ function page4(){
 	yellow "5. Alist-Docker"
 	yellow "6. QingLong-Docker"
     yellow "7. Qiandao-Today-Docker"
-    yellow "8. FeiyangIPTV-Docker"
-	yellow "9. 其他Docker项目"
+    yellow "8. 其他Docker项目r"
+	yellow "9. 其他Docker Compose项目"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -695,8 +739,8 @@ function page4(){
 		5 ) alistdocker ;;
 		6 ) qinglong ;;
         7 ) qiandao ;;
-        8 ) feiyang ;;
-		9 ) odocker ;;
+        8 ) odocker ;;
+		9 ) compose ;;
         0 ) menu
     esac
 }
