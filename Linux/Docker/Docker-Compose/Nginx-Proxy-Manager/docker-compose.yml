@@ -8,5 +8,5 @@ services:
       - '81:81'
       - '443:443'
     volumes:
-      - /home/Docker/Nginx-Proxy-Manager:/data
-      - /home/Docker/Nginx-Proxy-Manager:/etc/letsencrypt
+      - /opt/Docker/Nginx-Proxy-Manager:/data
+      - /opt/Docker/Nginx-Proxy-Manager:/etc/letsencrypt

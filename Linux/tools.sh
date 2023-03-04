@@ -406,15 +406,15 @@ function qinglong(){
 bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/qinglong.sh)"
 }
 
-function qiandao(){
-bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/qiandao.sh)"
+function easyimage(){
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/easyimage.sh)"
 }
 
 function odocker(){
     echo "                            "
-	yellow " 1. Freenom自动续期-Docker"
+	yellow " 1. Qiandao-Today-Docker"
 	yellow " 2. 肥羊IPTV-Docker"
-	yellow " 3. 待定"
+	yellow " 3. Freenom自动续期-Docker"
 	yellow " 4. 待定"
 	yellow " 5. 待定"
 	yellow " 6. 待定"
@@ -428,13 +428,13 @@ function odocker(){
     read -p "请输入选项:" odockerNumberInput
     case "$odockerNumberInput" in
 		1)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/freenom.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/qiandao.sh)"
 		;;
 		2)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/feiyangiptv.sh)"
 		;;
 		3)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/freenom.sh)"
 		;;
 		4)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
@@ -460,8 +460,8 @@ function odocker(){
 
 function compose(){
     echo "                            "
-	yellow " 1. 待定"
-	yellow " 2. 待定"
+	yellow " 1. Easyimage图床-Docker-Compose"
+	yellow " 2. YOURLS短连接-Docker-Compose"
 	yellow " 3. 待定"
 	yellow " 4. 待定"
 	yellow " 5. 待定"
@@ -476,10 +476,10 @@ function compose(){
     read -p "请输入选项:" composeNumberInput
     case "$composeNumberInput" in
 		1)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/Easyimage/easyimage.sh)"
 		;;
 		2)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/YOURLS/yourls.sh)"
 		;;
 		3)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
@@ -714,7 +714,7 @@ function page3(){
 function page4(){
     echo "                            "
 	red "说明 ：此类目为Docker容器项目文件，请安装Docker&Docker Compose后使用"
-	blue "容器目录映射于：/home/Docker文件夹内 "
+	blue "所有容器路径都映射于：/opt/Docker文件夹内 "
 	echo "                            "
     green "请选择你接下来使用的脚本："
     echo "                            "
@@ -724,8 +724,8 @@ function page4(){
     yellow "4. Syncthing-Docker"
 	yellow "5. Alist-Docker"
 	yellow "6. QingLong-Docker"
-    yellow "7. Qiandao-Today-Docker"
-    yellow "8. 其他Docker项目r"
+    yellow "7. Easyimage-Docker"
+    yellow "8. 其他Docker项目"
 	yellow "9. 其他Docker Compose项目"
     echo "                            "
     red "0. 返回主菜单"
@@ -738,7 +738,7 @@ function page4(){
         4 ) syncthing ;;
 		5 ) alistdocker ;;
 		6 ) qinglong ;;
-        7 ) qiandao ;;
+        7 ) easyimage ;;
         8 ) odocker ;;
 		9 ) compose ;;
         0 ) menu

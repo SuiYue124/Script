@@ -1,0 +1,35 @@
+version: "3.5"
+services:
+
+  mysql:
+    image: mysql:5.7.22              # 如果遇到不正确的数据库配置，或无法连接到数据库PDOException: SQLSTATE[HY000] [1045] 用户'yourls'@'yourls_service.yourls_default'的访问被拒绝（使用密码：是）   可以把5.7.22 改为 5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=my-secret-pw
+      - MYSQL_DATABASE=yourls
+      - MYSQL_USER=yourls
+      - MYSQL_PASSWORD=yourls
+    volumes:
+      - /opt/Docker/Mysql/db/:/var/lib/mysql
+      - /opt/Docker/Mysql/conf/:/etc/mysql/conf.d
+    restart: always
+    container_name: Mysql
+  
+  yourls:
+    image: yourls
+    restart: always
+    ports:
+      - "8200:80"
+    environment:
+      YOURLS_DB_HOST: mysql
+      YOURLS_DB_USER: yourls
+      YOURLS_DB_PASS: yourls
+      YOURLS_DB_NAME: yourls
+      YOURLS_USER: admin      # 自己起一个名字
+      YOURLS_PASS: admin      # 自己换一个登陆密码
+      YOURLS_SITE: https://gwen.ink  # 换成你自己的域名
+      YOURLS_HOURS_OFFSET: 8
+    volumes:
+      - /opt/Docker/YOURLS/:/var/www/html   
+    container_name: YOURLS
+    links:
+      - Mysql:mysql
