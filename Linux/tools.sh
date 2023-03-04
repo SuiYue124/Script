@@ -415,7 +415,7 @@ function odocker(){
 	yellow " 1. Qiandao-Today-Docker"
 	yellow " 2. 肥羊IPTV-Docker"
 	yellow " 3. Freenom自动续期-Docker"
-	yellow " 4. 待定"
+	yellow " 4. Hale Blog-Docker"
 	yellow " 5. 待定"
 	yellow " 6. 待定"
 	yellow " 7. 待定"
@@ -437,7 +437,7 @@ function odocker(){
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/freenom.sh)"
 		;;
 		4)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/halo.sh)"
 		;;
 		5)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
