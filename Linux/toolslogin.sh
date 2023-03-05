@@ -15,15 +15,24 @@ red(){
     echo -e "\033[31m\033[01m$1\033[0m"
 }
 
-
-vpsroot(){
+vroot(){
 	[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
 	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
 }
 
-vpsuser(){
+vrootcdn(){
+	[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
+	bash -c "$(curl -fsSL https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
+}
+
+vuser(){
 	[[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1
 	bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
+}
+
+vusercdn(){
+	[[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1
+	bash -c "$(curl -fsSL https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
 }
 
 login(){
@@ -45,6 +54,56 @@ case "$loginNumberInput" in
 	    ;;
     2 ) 
 		vpsuser
+		;;
+	0 ) exit 1 ;;
+	* ) echo "                            "
+		yellow "请输入正确的数字" ;;
+esac
+}
+
+vpsroot(){
+clear
+echo "                            "
+green "=================================================================================="
+echo "                            "
+yellow "1. 直接连接"
+yellow "2. CDN连接"
+echo "                           "
+red "0. 退出脚本"
+echo "                            "
+green "=================================================================================="
+read -p "请输入选项:" vpsrootNumberInput
+case "$vpsrootNumberInput" in
+    1 ) 
+	    vroot
+	    ;;
+    2 ) 
+		vrootcdn
+		;;
+	0 ) exit 1 ;;
+	* ) echo "                            "
+		yellow "请输入正确的数字" ;;
+esac
+}
+
+vpsuser(){
+clear
+echo "                            "
+green "=================================================================================="
+echo "                            "
+yellow "1. 直接连接"
+yellow "2. CDN连接"
+echo "                           "
+red "0. 退出脚本"
+echo "                            "
+green "=================================================================================="
+read -p "请输入选项:" vpsrootNumberInput
+case "$vpsrootNumberInput" in
+    1 ) 
+	    vuser
+	    ;;
+    2 ) 
+		vusercdn
 		;;
 	0 ) exit 1 ;;
 	* ) echo "                            "
