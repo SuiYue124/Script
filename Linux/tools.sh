@@ -85,22 +85,20 @@ sudo timedatectl set-ntp yes
 egrep -q "^\s*.*ClientAliveInterval\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveInterval\s\w+.*$/ClientAliveInterval 60/" /etc/ssh/sshd_config || echo "ClientAliveInterval 60" >> /etc/ssh/sshd_config
 egrep -q "^\s*.*ClientAliveCountMax\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveCountMax\s\w+.*$/ClientAliveCountMax 30/" /etc/ssh/sshd_config || echo "ClientAliveCountMax 30" >> /etc/ssh/sshd_config
 
-IP4=$(curl -s https://api.ip.sb/ip -A Mozilla)
-IP6=$(curl -s https://api.ip.sb/ip -A Mozilla)
-WAN4=$(expr "$IP4" : '.*ip\":\"\([^"]*\).*')
-WAN6=$(expr "$IP6" : '.*ip\":\"\([^"]*\).*')
+IP4=$(curl -s ipv4.ip.sb)
+IP6=$(curl -s ipv6.ip.sb)
+WAN4=$(echo "$IP4" | sed 's/{.*"ip":"\([^\"]*\)".*}/\1/')
+WAN6=$(echo "$IP6" | sed 's/{.*"ip":"\([^\"]*\)".*}/\1/')
 COUNTRY4=$(expr "$IP4" : '.*country\":\"\([^"]*\).*')
 COUNTRY6=$(expr "$IP6" : '.*country\":\"\([^"]*\).*')
 ASNORG4=$(expr "$IP4" : '.*asn_org\":\"\([^"]*\).*')
 ASNORG6=$(expr "$IP6" : '.*asn_org\":\"\([^"]*\).*')
-
-IP4="$WAN4 （$COUNTRY4 $ASNORG4）"
-IP6="$WAN6 （$COUNTRY6 $ASNORG6）"
-if [ -z $WAN4 ]; then
-    IP4="当前VPS未检测到IPv4地址"
+if [ -z "$WAN4" ]; then
+    WAN4="未检测到公网IPv4地址"
 fi
-if [ -z $WAN6 ]; then
-    IP6="当前VPS未检测到IPv6地址"
+
+if [ -z "$WAN6" ]; then
+    WAN6="未检测到公网IPv6地址"
 fi
 
 COUNT=$(curl -sm2 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FGWen124%2FScript%2Fmaster%2FLinux%2Ftools.sh&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false" 2>&1) &&
@@ -595,8 +593,8 @@ function chatgpt(){
     yellow "虚拟化架构：$virt"
     yellow "操作系统：$CMD"
     yellow "内核版本：$kernelVer"
-    yellow "IPv4地址：$IP4"
-    yellow "IPv6地址：$IP6"
+    yellow "IPv4地址：$WAN4"
+    yellow "IPv6地址：$WAN6"
     green "=================================================================================="
     echo "                            "
     red "请选择你接下来的操作："
