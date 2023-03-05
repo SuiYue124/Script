@@ -1,0 +1,16 @@
+---
+version: "2.1"
+services:
+  wikijs:
+    image: lscr.io/linuxserver/wikijs
+    container_name: WikiJS
+    environment:
+      - PUID=1000        # 如何查看当前用户的PUID和PGID，直接命令行输入id就行
+      - PGID=1000
+      - TZ=Asia/Shanghai
+    volumes:
+      - /opt/Docker/WikiJS/config:/config  # 配置文件映射到本地，数据不会因为Docker停止而丢失
+      - /opt/Docker/WikiJS/data:/data  # 数据映射到本地，数据不会因为Docker停止而丢失
+    ports:
+      - 8088:3000   # 左边的8080可以自己调整端口号，右边的3000不要改
+    restart: unless-stopped

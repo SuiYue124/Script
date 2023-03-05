@@ -461,7 +461,7 @@ function compose(){
 	yellow " 1. Easyimage图床-Docker-Compose"
 	yellow " 2. YOURLS短连接-Docker-Compose"
 	yellow " 3. Reader小说阅读站-Docker-Compose"
-	yellow " 4. 待定"
+	yellow " 4. Wiki.js-Docker-Compose"
 	yellow " 5. 待定"
 	yellow " 6. 待定"
 	yellow " 7. 待定"
@@ -480,10 +480,10 @@ function compose(){
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/YOURLS/yourls.sh)"
 		;;
 		3)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/Reader/reader.sh))"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/Reader/reader.sh)"
 		;;
 		4)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/WikiJS/wikijs.sh)"
 		;;
 		5)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
