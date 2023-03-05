@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20230303"
+ver="20230305"
 blog="https://blog.gwen.ink/"
 github="https://github.com/GWen124"
 changeLog="随缘更新！"
@@ -75,7 +75,7 @@ elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
 fi
 $systemPackage update -y
 $systemPackage upgrade -y
-$systemPackage -y install wget curl htop nano python3 python3-pip ca-certificates redboot-tools
+$systemPackage -y install wget curl htop nano python3 python3-pip ca-certificates redboot-tools lsof
 
 sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 sudo timedatectl set-timezone Asia/Shanghai
@@ -85,8 +85,8 @@ sudo timedatectl set-ntp yes
 egrep -q "^\s*.*ClientAliveInterval\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveInterval\s\w+.*$/ClientAliveInterval 60/" /etc/ssh/sshd_config || echo "ClientAliveInterval 60" >> /etc/ssh/sshd_config
 egrep -q "^\s*.*ClientAliveCountMax\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveCountMax\s\w+.*$/ClientAliveCountMax 30/" /etc/ssh/sshd_config || echo "ClientAliveCountMax 30" >> /etc/ssh/sshd_config
 
-IP4=$(curl -s4m2 https://ip.gs/json)
-IP6=$(curl -s6m2 https://ip.gs/json)
+IP4=$(curl ipv4.ip.sb)
+IP6=$(curl ipv6.ip.sb)
 WAN4=$(expr "$IP4" : '.*ip\":\"\([^"]*\).*')
 WAN6=$(expr "$IP6" : '.*ip\":\"\([^"]*\).*')
 COUNTRY4=$(expr "$IP4" : '.*country\":\"\([^"]*\).*')
@@ -417,7 +417,7 @@ function odocker(){
 	yellow " 3. Freenom自动续期-Docker"
 	yellow " 4. Hale Blog-Docker"
 	yellow " 5. Reader小说阅读站-Docker"
-	yellow " 6. 待定"
+	yellow " 6. Calibre-Web电子书-Docker"
 	yellow " 7. 待定"
 	yellow " 8. 待定"
 	yellow " 9. 待定"
@@ -443,7 +443,7 @@ function odocker(){
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/reader.sh)"
 		;;
 		6)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/calibre-web.sh)"
 		;;
 		7)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
@@ -633,7 +633,7 @@ function page1(){
     green "请选择你接下来的操作："
     echo "                            "
     yellow "1. 系统账户相关"
-	yellow "2 删除日志文件"
+	yellow "2. 删除日志文件"
 	yellow "3. 关闭原系统防火墙"
     yellow "4. 虚拟内存SWAP一键脚本 "
     yellow "5. 更改SSH端口"
