@@ -85,8 +85,8 @@ sudo timedatectl set-ntp yes
 egrep -q "^\s*.*ClientAliveInterval\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveInterval\s\w+.*$/ClientAliveInterval 60/" /etc/ssh/sshd_config || echo "ClientAliveInterval 60" >> /etc/ssh/sshd_config
 egrep -q "^\s*.*ClientAliveCountMax\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveCountMax\s\w+.*$/ClientAliveCountMax 30/" /etc/ssh/sshd_config || echo "ClientAliveCountMax 30" >> /etc/ssh/sshd_config
 
-IP4=$(curl -s4 https://ip.sb/api/whois --data-raw "$(curl -s4 https://ip.sb)")
-IP6=$(curl -s6 https://ip.sb/api/whois --data-raw "$(curl -s6 https://ip.sb)")
+IP4=$(curl -s https://api.ip.sb/ip -A Mozilla)
+IP6=$(curl -s https://api.ip.sb/ip -A Mozilla)
 WAN4=$(expr "$IP4" : '.*ip\":\"\([^"]*\).*')
 WAN6=$(expr "$IP6" : '.*ip\":\"\([^"]*\).*')
 COUNTRY4=$(expr "$IP4" : '.*country\":\"\([^"]*\).*')
