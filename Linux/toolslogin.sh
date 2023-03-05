@@ -22,7 +22,7 @@ vroot(){
 
 vrootcdn(){
 	[[ $(id -u) != 0 ]] && red "请使用“sudo -i”登录root用户后执行本脚本！！！" && exit 1
-	bash -c "$(curl -fsSL https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
+	bash -c "$(curl -fsSL https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/toolscdn.sh)"
 }
 
 vuser(){
@@ -32,7 +32,7 @@ vuser(){
 
 vusercdn(){
 	[[ "$USER" == "root" ]] && red "请使用“su xxx”登录非root用户后执行本脚本！！！" && exit 1
-	bash -c "$(curl -fsSL https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/tools.sh)"
+	bash -c "$(curl -fsSL https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/toolscdn.sh)"
 }
 
 login(){
@@ -67,7 +67,7 @@ echo "                            "
 green "=================================================================================="
 echo "                            "
 yellow "1. 直接连接"
-yellow "2. CDN连接"
+yellow "2. CDN加速"
 echo "                           "
 red "0. 退出脚本"
 echo "                            "
@@ -92,7 +92,7 @@ echo "                            "
 green "=================================================================================="
 echo "                            "
 yellow "1. 直接连接"
-yellow "2. CDN连接"
+yellow "2. CDN加速"
 echo "                           "
 red "0. 退出脚本"
 echo "                            "
