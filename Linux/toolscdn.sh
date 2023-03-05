@@ -416,7 +416,7 @@ function odocker(){
 	yellow " 4. Hale Blog-Docker"
 	yellow " 5. Reader小说阅读站-Docker"
 	yellow " 6. Calibre-Web电子书-Docker"
-	yellow " 7. 待定"
+	yellow " 7. OneNav导航-Docker"
 	yellow " 8. 待定"
 	yellow " 9. 待定"
 	echo "                            "
@@ -444,7 +444,7 @@ function odocker(){
 		bash -c "$(curl -fsSL https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/calibre-web.sh)"
 		;;
 		7)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/onenav.sh)"
 		;;
 		8)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
