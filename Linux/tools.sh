@@ -29,11 +29,11 @@ red(){
 }
 
 for i in "${CMD[@]}"; do
-    SYS="$i" && [[ -n $SYS ]] && 
+    SYS="$i" && [[ -n $SYS ]] && break
 done
 
 for ((int=0; int<${#REGEX[@]}; int++)); do
-    [[ $(echo "$SYS" | tr '[:upper:]' '[:lower:]') =~ ${REGEX[int]} ]] && SYSTEM="${RELEASE[int]}" && [[ -n $SYSTEM ]] && 
+    [[ $(echo "$SYS" | tr '[:upper:]' '[:lower:]') =~ ${REGEX[int]} ]] && SYSTEM="${RELEASE[int]}" && [[ -n $SYSTEM ]] && break
 done
 
 [[ -z $SYSTEM ]] && red "不支持VPS的当前系统，请使用主流操作系统" && exit 1
@@ -106,7 +106,6 @@ TODAY=$(expr "$COUNT" : '.*\s\([0-9]\{1,\}\)\s/.*') && TOTAL=$(expr "$COUNT" : '
 
 #page1
 function rootlogin(){
-  while true; do
     echo "                            "
     green "请选择你接下来使用的脚本"
     echo "                            "
@@ -128,12 +127,7 @@ function rootlogin(){
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/userdel.sh)"
 		;;
         0 ) page1
-		;;
-		*)
-        continue
-        ;;
     esac
-  done
 }
 
 function dellogs(){
@@ -151,6 +145,7 @@ if find /var/log/ -type f -delete; then
 else
   echo "删除日志文件时发生错误"
 fi
+
 }
 
 function vpsfirewall(){
@@ -202,13 +197,13 @@ function bbr(){
 		wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh && rm lkl-haproxy.sh
 		;;
         0 ) page1
-        ;;
     esac
 }
 	
 function acmesh(){
     wget -N https://cdn.jsdelivr.net/gh/Misaka-blog/acme-1key@master/acme1key.sh && chmod -R 777 acme1key.sh && bash acme1key.sh && rm -rf acme1key.sh
 }
+
 
 function cssh(){
 wget -O "/root/changesource.sh" "https://raw.githubusercontent.com/Netflixxp/jcnf-box/master/sh/changesource.sh" --no-check-certificate -T 30 -t 5 -d
@@ -246,9 +241,7 @@ yellow "下载完成"
 		6)
 	    bash changesource.sh restore
 		;;
-        0 ) 
-		page1
-		;;
+        0 ) page1
     esac
 	rm -rf "/root/changesource.sh"
 }
@@ -292,10 +285,9 @@ function unlock(){
 	    bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tubecheck.sh)"
 		;;
 		4)
-		bash <"(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)"
+		bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 		;;
         0 ) page2
-        ;;
     esac
 }
 
@@ -351,16 +343,15 @@ function alist(){
     read -p "请输入选项:" alistNumberInput
     case "$alistNumberInput" in
 		1)
-		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s install /opt/Software
+		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s install /home/Software
 		;;
 		2)
-		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s update /opt/Software
+		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s update /home/Software
 		;;
 		3)
-		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s uninstall /opt/Software
+		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s uninstall /home/Software
 		;;
         0 ) page3
-        ;;
     esac
 }
 
@@ -390,7 +381,6 @@ function docker(){
 		sudo chmod +x /usr/local/bin/docker-compose
 		;;
         0 ) page4
-        ;;
     esac
 }
 
@@ -463,7 +453,6 @@ function odocker(){
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
 		;;		
         0 ) page4
-        ;;
     esac
 }
 
@@ -512,7 +501,6 @@ function compose(){
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
 		;;		
         0 ) page4
-        ;;
     esac
 }
 
@@ -628,20 +616,13 @@ function chatgpt(){
 	green "=================================================================================="
     read -p "请输入选项:" menuNumberInput
     case "$menuNumberInput" in
-        1 ) 
-		page1 ;;
-        2 )
-		page2 ;;
-        3 ) 
-		page3 ;;
-        4 )
-		page4 ;;
-        5 ) 
-		page5 ;;
-		6 ) 
-		page6 ;;
-        0 )
-		exit 0 ;;
+        1 ) page1 ;;
+        2 ) page2 ;;
+        3 ) page3 ;;
+        4 ) page4 ;;
+        5 ) page5 ;;
+		5 ) page6 ;;
+        0 ) exit 0
     esac
 }
 
@@ -663,26 +644,16 @@ function page1(){
 	green "=================================================================================="
     read -p "请输入选项:" page1NumberInput
     case "$page1NumberInput" in
-        1 )
-		rootlogin ;;
-		2 )
-		dellogs ;;
-		3) 
-		vpsfirewall ;;
-        4 )
-		swap ;;
-        5 )
-		ssh_port ;;
-        6 ) 
-		bbr ;;
-		7 ) 
-		acmesh ;;
-		8 ) 
-		cssh ;;
-		9 ) 
-		warp ;;
-        0 ) 
-		menu ;;
+        1 ) rootlogin ;;
+		2 ) dellogs ;;
+		3) vpsfirewall ;;
+        4 ) swap ;;
+        5 ) ssh_port ;;
+        6 ) bbr ;;
+		7 ) acmesh ;;
+		8 ) cssh ;;
+		9 ) warp ;;
+        0 ) menu
     esac
 }
 
@@ -701,20 +672,13 @@ function page2(){
 	green "=================================================================================="
     read -p "请输入选项:" page2NumberInput
     case "$page2NumberInput" in
-        1 ) 
-		bench ;;
-        2 )
-		server-test ;;
-        3 ) 
-		gfw_push ;;
-        4 )
-		unlock ;;
-		5 )
-		speedtest ;;
-		6 )
-		lemonbench ;;
-        0 ) 
-		menu ;;
+        1 ) bench ;;
+        2 ) server-test ;;
+        3 ) gfw_push ;;
+        4 ) unlock ;;
+		5 ) speedtest ;;
+		6 ) lemonbench ;;
+        0 ) menu
     esac
 }
 
@@ -734,22 +698,14 @@ function page3(){
 	green "=================================================================================="
     read -p "请输入选项:" page3NumberInput
     case "$page3NumberInput" in
-        1 )
-		baota ;;
-        2 )
-		baota7 ;;
-        3 ) 
-		baotap ;;
-		4 )
-		uninstallbaota ;;
-		5 )
-		aaPanel ;;
-        6 ) 
-		nezha ;;
-        7 ) 
-		alist ;;
-        0 )
-		menu ;;
+        1 ) baota ;;
+        2 ) baota7 ;;
+        3 ) baotap ;;
+		4 ) uninstallbaota ;;
+		5 ) aaPanel ;;
+        6 ) nezha ;;
+        7 ) alist ;;
+        0 ) menu
     esac
 }
 
@@ -774,26 +730,16 @@ function page4(){
 	green "=================================================================================="
     read -p "请输入选项:" page4NumberInput
     case "$page4NumberInput" in
-		1 ) 
-		docker ;;
-        2 )
-		nginxpm ;;
-        3 ) 
-		watchtower ;;
-        4 ) 
-		syncthing ;;
-		5 ) 
-		alistdocker ;;
-		6 ) 
-		qinglong ;;
-        7 ) 
-		easyimage ;;
-        8 ) 
-		odocker ;;
-		9 ) 
-		compose ;;
-        0 )
-		menu ;;
+		1 ) docker ;;
+        2 ) nginxpm ;;
+        3 ) watchtower ;;
+        4 ) syncthing ;;
+		5 ) alistdocker ;;
+		6 ) qinglong ;;
+        7 ) easyimage ;;
+        8 ) odocker ;;
+		9 ) compose ;;
+        0 ) menu
     esac
 }
 
@@ -812,20 +758,13 @@ function page5(){
 	green "=================================================================================="
     read -p "请输入选项:" page5NumberInput
     case "$page5NumberInput" in
-        1 )
-		xui ;;
-        2 )
-		trojanui ;;
-        3 ) 
-		xray ;;
-		4 ) 
-		v2ray ;;
-		5 )
-		shadowsocks ;;
-		6 ) 
-		telegram ;;
-        0 ) 
-		menu ;;
+        1 ) xui ;;
+        2 ) trojanui ;;
+        3 ) xray ;;
+		4 ) v2ray ;;
+		5 ) shadowsocks ;;
+		6 ) telegram ;;
+        0 ) menu
     esac
 }
 
@@ -848,28 +787,17 @@ function page6(){
 	green "=================================================================================="
     read -p "请输入选项:" page6NumberInput
     case "$page6NumberInput" in
-        1 )
-		node ;;
-        2 )
-		frps ;;
-		3 ) 
-		rclone ;;
-		4 )
-		dnat ;;
-		5 )
-		gost ;;
-		6 ) 
-		ddsystem ;;
-		7 ) 
-		QuickBox ;;
-		8 ) 
-		aria2 ;;
-		9 ) 
-		zerotier ;;
-		10 ) 
-		chatgpt ;;
-        0 )
-		menu ;;
+        1 ) node ;;
+        2 ) frps ;;
+		3 ) rclone ;;
+		4 ) dnat ;;
+		5 ) gost ;;
+		6 ) ddsystem ;;
+		7 ) QuickBox ;;
+		8 ) aria2 ;;
+		9 ) zerotier ;;
+		10 ) chatgpt ;;
+        0 ) menu
     esac
 }
 
