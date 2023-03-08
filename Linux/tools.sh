@@ -181,7 +181,6 @@ function ssh_port(){
 }
 
 function bbr(){
-  while true; do
     echo "                            "
     green "请选择你接下来使用的脚本"
     echo "                            "
@@ -204,11 +203,7 @@ function bbr(){
 		;;
         0 ) page1
         ;;
-		*)
-        continue
-        ;;
     esac
-  done
 }
 	
 function acmesh(){
@@ -216,7 +211,6 @@ function acmesh(){
 }
 
 function cssh(){
-while true; do
 wget -O "/root/changesource.sh" "https://raw.githubusercontent.com/Netflixxp/jcnf-box/master/sh/changesource.sh" --no-check-certificate -T 30 -t 5 -d
 chmod +x "/root/changesource.sh"
 chmod 777 "/root/changesource.sh"
@@ -255,11 +249,7 @@ yellow "下载完成"
         0 ) 
 		page1
 		;;
-		*)
-		continue
-		;;
-		esac
-	done
+    esac
 	rm -rf "/root/changesource.sh"
 }
 
@@ -281,7 +271,6 @@ function gfw_push(){
 }
 
 function unlock(){
-  while true; do
     echo "                            "
 	yellow " 1. 启动Netflix检测脚本"
 	yellow " 2. 启动DisneyPlus检测脚本"
@@ -307,11 +296,7 @@ function unlock(){
 		;;
         0 ) page2
         ;;
-		*)
-        continue
-        ;;
     esac
-  done
 }
 
 function speedtest(){
@@ -355,7 +340,6 @@ sudo ./nezha.sh && rm -rf nezha.sh
 }
 
 function alist(){
-  while true; do
     echo "                            "
 	yellow " 1. 安装Alist"
 	yellow " 2. 更新Alist"
@@ -377,16 +361,11 @@ function alist(){
 		;;
         0 ) page3
         ;;
-		*)
-        continue
-        ;;
     esac
-  done
 }
 
 #page4
 function docker(){
-  while true; do
     echo "                            "
 	yellow " 1. 安装 Docker"
 	yellow " 2. 设置开机自动启动Docker"
@@ -412,11 +391,7 @@ function docker(){
 		;;
         0 ) page4
         ;;
-		*)
-        continue
-        ;;
     esac
-  done
 }
 
 function nginxpm(){
@@ -444,7 +419,6 @@ bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/L
 }
 
 function odocker(){
-  while true; do
     echo "                            "
 	yellow " 1. Qiandao-Today-Docker"
 	yellow " 2. 肥羊IPTV-Docker"
@@ -490,15 +464,10 @@ function odocker(){
 		;;		
         0 ) page4
         ;;
-		*)
-        continue
-        ;;
     esac
-  done
 }
 
 function compose(){
-  while true; do
     echo "                            "
 	yellow " 1. Easyimage图床-Docker-Compose"
 	yellow " 2. YOURLS短连接-Docker-Compose"
@@ -544,11 +513,7 @@ function compose(){
 		;;		
         0 ) page4
         ;;
-		*)
-        continue
-        ;;
     esac
-  done
 }
 
 #page5
@@ -626,7 +591,6 @@ function chatgpt(){
 }
 
  function menu(){
-   while true; do
     clear
     echo "                           "
     blue "当前脚本版本：$ver "
@@ -678,14 +642,10 @@ function chatgpt(){
 		page6 ;;
         0 )
 		exit 0 ;;
-		*)
-        continue ;;
     esac
-  done
 }
 
 function page1(){
-  while true; do
 	echo "                            "
     green "请选择你接下来的操作："
     echo "                            "
@@ -723,14 +683,10 @@ function page1(){
 		warp ;;
         0 ) 
 		menu ;;
-		*)
-        continue ;;
     esac
-  done
 }
 
 function page2(){
-  while true; do
     echo "                            "
     green "请选择你接下来使用的脚本："
     echo "                            "
@@ -759,14 +715,10 @@ function page2(){
 		lemonbench ;;
         0 ) 
 		menu ;;
-		*)
-        continue ;;
     esac
-  done
 }
 
 function page3(){
-  while true; do
     echo "                            "
     green "请选择你接下来使用的脚本："
     echo "                            "
@@ -798,14 +750,10 @@ function page3(){
 		alist ;;
         0 )
 		menu ;;
-		*)
-        continue ;;
     esac
-  done
 }
 
 function page4(){
-  while true; do
     echo "                            "
 	red "说明 ：此类目为Docker容器项目文件，请安装Docker&Docker Compose后使用"
 	blue "所有容器路径都映射于：/opt/Docker文件夹内 "
@@ -846,14 +794,10 @@ function page4(){
 		compose ;;
         0 )
 		menu ;;
-		*)
-        continue ;;
     esac
-  done
 }
 
 function page5(){
-  while true; do
     echo "                            "
     green "请选择你接下来的操作："
     echo "                            "
@@ -882,14 +826,10 @@ function page5(){
 		telegram ;;
         0 ) 
 		menu ;;
-		*)
-        continue ;;
     esac
-  done
 }
 
 function page6(){
-  while true; do
     echo "                            "
     green "请选择你需要的工具："
     echo "                            "
@@ -930,10 +870,7 @@ function page6(){
 		chatgpt ;;
         0 )
 		menu ;;
-		*)
-        continue ;;
     esac
-  done
 }
 
 menu
