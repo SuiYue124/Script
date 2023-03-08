@@ -29,11 +29,11 @@ red(){
 }
 
 for i in "${CMD[@]}"; do
-    SYS="$i" && [[ -n $SYS ]] && break
+    SYS="$i" && [[ -n $SYS ]] && 
 done
 
 for ((int=0; int<${#REGEX[@]}; int++)); do
-    [[ $(echo "$SYS" | tr '[:upper:]' '[:lower:]') =~ ${REGEX[int]} ]] && SYSTEM="${RELEASE[int]}" && [[ -n $SYSTEM ]] && break
+    [[ $(echo "$SYS" | tr '[:upper:]' '[:lower:]') =~ ${REGEX[int]} ]] && SYSTEM="${RELEASE[int]}" && [[ -n $SYSTEM ]] && 
 done
 
 [[ -z $SYSTEM ]] && red "不支持VPS的当前系统，请使用主流操作系统" && exit 1
@@ -120,15 +120,12 @@ function rootlogin(){
     case "$rootNumberInput" in
         1 ) 
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)"
-		break
 		;;
         2 ) 
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/useradd.sh)"
-		break
 		;;
         3 ) 
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/userdel.sh)"
-		break
 		;;
         0 ) page1
 		;;
@@ -154,7 +151,6 @@ if find /var/log/ -type f -delete; then
 else
   echo "删除日志文件时发生错误"
 fi
-
 }
 
 function vpsfirewall(){
@@ -199,15 +195,12 @@ function bbr(){
     case "$bbrNumberInput" in
         1 ) 
 		wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh && rm tcp.sh
-		break
 		;;
         2 ) 
 		wget -N --no-check-certificate "https://raw.githubusercontent.com/ylx2016/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh && rm tcp.sh
-		break
 		;;
         3 ) 
 		wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh && rm lkl-haproxy.sh
-		break
 		;;
         0 ) page1
         ;;
@@ -221,7 +214,6 @@ function bbr(){
 function acmesh(){
     wget -N https://cdn.jsdelivr.net/gh/Misaka-blog/acme-1key@master/acme1key.sh && chmod -R 777 acme1key.sh && bash acme1key.sh && rm -rf acme1key.sh
 }
-
 
 function cssh(){
 while true; do
@@ -244,27 +236,21 @@ yellow "下载完成"
     case "$csshNumberInput" in
 		1)
 		bash changesource.sh
-		break
 		;;
 		2)
 		bash changesource.sh cn
-		break
 		;;
 		3)
 	    bash changesource.sh aliyun
-		break
 		;;
 		4)
 		bash changesource.sh 163
-		break
 		;;
 		5)
 	   bash changesource.sh aws
-	   break
 		;;
 		6)
 	    bash changesource.sh restore
-		break
 		;;
         0 ) 
 		page1
@@ -309,19 +295,15 @@ function unlock(){
     case "$unlockNumberInput" in
 		1)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/netflix.sh)"
-		break
 		;;
 		2)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/disney.sh)"
-		break
 		;;
 		3)
 	    bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/tubecheck.sh)"
-		break
 		;;
 		4)
-		bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
-		break
+		bash <"(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)"
 		;;
         0 ) page2
         ;;
@@ -386,15 +368,12 @@ function alist(){
     case "$alistNumberInput" in
 		1)
 		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s install /opt/Software
-		break
 		;;
 		2)
 		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s update /opt/Software
-		break
 		;;
 		3)
 		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s uninstall /opt/Software
-		break
 		;;
         0 ) page3
         ;;
@@ -421,19 +400,15 @@ function docker(){
     case "$dockerNumberInput" in
 		1)
 		wget -qO- get.docker.com | bash
-		break
 		;;
 		2)
 		systemctl enable docker
-		break
 		;;
 		3)
 		sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-		break
 		;;
 		4)
 		sudo chmod +x /usr/local/bin/docker-compose
-		break
 		;;
         0 ) page4
         ;;
@@ -488,39 +463,30 @@ function odocker(){
     case "$odockerNumberInput" in
 		1)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/qiandao.sh)"
-		break
 		;;
 		2)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/feiyangiptv.sh)"
-		break
 		;;
 		3)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/freenom.sh)"
-		break
 		;;
 		4)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/halo.sh)"
-		break
 		;;
 		5)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/reader.sh)"
-		break
 		;;
 		6)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/calibre-web.sh)"
-		break
 		;;
 		7)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/onenav.sh)"
-		break
 		;;
 		8)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
-		break
 		;;
 		9)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
-		break
 		;;		
         0 ) page4
         ;;
@@ -551,39 +517,30 @@ function compose(){
     case "$composeNumberInput" in
 		1)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/Easyimage/easyimage.sh)"
-		break
 		;;
 		2)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/YOURLS/yourls.sh)"
-		break
 		;;
 		3)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/Reader/reader.sh)"
-		break
 		;;
 		4)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/WikiJS/wikijs.sh)"
-		break
 		;;
 		5)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
-		break
 		;;
 		6)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
-		break
 		;;
 		7)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
-		break
 		;;
 		8)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
-		break
 		;;
 		9)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
-		break
 		;;		
         0 ) page4
         ;;
@@ -709,26 +666,20 @@ function chatgpt(){
     case "$menuNumberInput" in
         1 ) 
 		page1 ;;
-		break
         2 )
 		page2 ;;
-		break
         3 ) 
 		page3 ;;
-		break
         4 )
 		page4 ;;
-		break
         5 ) 
 		page5 ;;
-		break
 		6 ) 
 		page6 ;;
-		break
         0 )
 		exit 0 ;;
 		*)
-        continue;;
+        continue ;;
     esac
   done
 }
@@ -754,35 +705,26 @@ function page1(){
     case "$page1NumberInput" in
         1 )
 		rootlogin ;;
-		break
 		2 )
 		dellogs ;;
-		break
 		3) 
 		vpsfirewall ;;
-		break
         4 )
 		swap ;;
-		break
         5 )
 		ssh_port ;;
-		break
         6 ) 
 		bbr ;;
-		break
 		7 ) 
 		acmesh ;;
-		break
 		8 ) 
 		cssh ;;
-		break
 		9 ) 
 		warp ;;
-		break
         0 ) 
 		menu ;;
 		*)
-        continue;;
+        continue ;;
     esac
   done
 }
@@ -805,26 +747,20 @@ function page2(){
     case "$page2NumberInput" in
         1 ) 
 		bench ;;
-		break
         2 )
 		server-test ;;
-		break
         3 ) 
 		gfw_push ;;
-		break
         4 )
 		unlock ;;
-		break
 		5 )
 		speedtest ;;
-		break
 		6 )
 		lemonbench ;;
-		break
         0 ) 
 		menu ;;
 		*)
-        continue;;
+        continue ;;
     esac
   done
 }
@@ -848,29 +784,22 @@ function page3(){
     case "$page3NumberInput" in
         1 )
 		baota ;;
-		break
         2 )
 		baota7 ;;
-		break
         3 ) 
 		baotap ;;
-		break
 		4 )
 		uninstallbaota ;;
-		break
 		5 )
 		aaPanel ;;
-		break
         6 ) 
 		nezha ;;
-		break
         7 ) 
 		alist ;;
-		break
         0 )
 		menu ;;
 		*)
-        continue;;
+        continue ;;
     esac
   done
 }
@@ -899,35 +828,26 @@ function page4(){
     case "$page4NumberInput" in
 		1 ) 
 		docker ;;
-		break
         2 )
 		nginxpm ;;
-		break
         3 ) 
 		watchtower ;;
-		break
         4 ) 
 		syncthing ;;
-		break
 		5 ) 
 		alistdocker ;;
-		break
 		6 ) 
 		qinglong ;;
-		break
         7 ) 
 		easyimage ;;
-		break
         8 ) 
 		odocker ;;
-		break
 		9 ) 
 		compose ;;
-		break
         0 )
 		menu ;;
 		*)
-        continue;;
+        continue ;;
     esac
   done
 }
@@ -950,26 +870,20 @@ function page5(){
     case "$page5NumberInput" in
         1 )
 		xui ;;
-		break
         2 )
 		trojanui ;;
-		break
         3 ) 
 		xray ;;
-		break
 		4 ) 
 		v2ray ;;
-		break
 		5 )
 		shadowsocks ;;
-		break
 		6 ) 
 		telegram ;;
-		break
         0 ) 
 		menu ;;
 		*)
-        continue;;
+        continue ;;
     esac
   done
 }
@@ -996,38 +910,28 @@ function page6(){
     case "$page6NumberInput" in
         1 )
 		node ;;
-		break
         2 )
 		frps ;;
-		break
 		3 ) 
 		rclone ;;
-		break
 		4 )
 		dnat ;;
-		break
 		5 )
 		gost ;;
-		break
 		6 ) 
 		ddsystem ;;
-		break
 		7 ) 
 		QuickBox ;;
-		break
 		8 ) 
 		aria2 ;;
-		break
 		9 ) 
 		zerotier ;;
-		break
 		10 ) 
 		chatgpt ;;
-		break
         0 )
 		menu ;;
 		*)
-        continue;;
+        continue ;;
     esac
   done
 }
