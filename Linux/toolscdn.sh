@@ -535,25 +535,35 @@ ipsec() {
     clear
     green "================================================="
     yellow " IPsec VPN Server一键脚本"
+	yellow " 手动添加/删除IPsec账户：nano /etc/ppp/chap-secrets"
+	yellow " 查看或更改 IPsec PSK：nano /etc/ipsec.secrets"
     green "================================================="
     blue "  1. 安装IPsec(使用脚本随机生成的 VPN 登录凭证)"
     blue "  2. 安装IPsec(提供你自己的 VPN 登录凭证)"
-    blue "  3. 更新IPsec"
-	blue "  4. 卸载IPsec"
+	blue "  3. 添加IPsec账户"
+	blue "  4. 删除IPsec账户"
+    blue "  5. 更新IPsec"
+	blue "  6. 卸载IPsec"
     blue "  0. 退出脚本"
     green "================================================="
     read -p "$(yellow '请输入数字 [0-3]:')" num
     case "$num" in
       1)
-        curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/vpnsetup.sh -o vpnsetup.sh && sudo sh vpnsetup.sh && mkdir -p /opt/Software/IPsec && mv vpnclient.mobileconfig vpnclient.p12 vpnclient.sswan /opt/SoftwareIPsec && rm -rf vpnsetup.sh
+        curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/vpnsetup.sh -o vpnsetup.sh && sudo sh vpnsetup.sh && mkdir -p /opt/Software/IPsec && mv vpnclient.mobileconfig vpnclient.p12 vpnclient.sswan /opt/Software/IPsec && rm -rf vpnsetup.sh
         ;;
       2)
-        curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/ipsec.sh -o ipsec.sh && sudo sh ipsec.sh && mkdir -p /opt/Software/IPsec && mv vpnclient.mobileconfig vpnclient.p12 vpnclient.sswan /opt/SoftwareIPsec && rm -rf ipsec.sh
+        curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/ipsec.sh -o ipsec.sh && sudo sh ipsec.sh && mkdir -p /opt/Software/IPsec && mv vpnclient.mobileconfig vpnclient.p12 vpnclient.sswan /opt/Software/IPsec && rm -rf ipsec.sh
         ;;
       3)
+        curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/ipsecadduser.sh -o ipsecadduser.sh && sudo sh ipsecadduser.sh && rm -rf ipsecadduser.sh
+        ;;
+	  4)
+        curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/ipsecdeluser.sh -o ipsecdeluser.sh && sudo sh ipsecdeluser.sh && rm -rf ipsecdeluser.sh
+        ;;
+	  5)
         curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/extras/vpnupgrade.sh -o vpnupgrade.sh && sudo sh vpnupgrade.sh && rm -rf vpnupgrade.sh
         ;;
-      4)
+      6)
         curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/extras/vpnuninstall.sh -o vpnuninstall.sh && sudo sh vpnuninstall.sh && rm -rf vpnuninstall.sh /opt/Software/IPsec
         ;;
       0)
