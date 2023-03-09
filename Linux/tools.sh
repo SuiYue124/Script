@@ -127,6 +127,10 @@ function rootlogin(){
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/userdel.sh)"
 		;;
         0 ) page1
+		;;
+		*)
+		echo "请输入正确数字。 "
+		;;
     esac
 }
 
@@ -197,6 +201,10 @@ function bbr(){
 		wget --no-cache -O lkl-haproxy.sh https://github.com/mzz2017/lkl-haproxy/raw/master/lkl-haproxy.sh && bash lkl-haproxy.sh && rm lkl-haproxy.sh
 		;;
         0 ) page1
+		;;
+		*)
+		echo "请输入正确数字。 "
+		;;
     esac
 }
 	
@@ -242,6 +250,10 @@ yellow "下载完成"
 	    bash changesource.sh restore
 		;;
         0 ) page1
+		;;
+		*)
+		echo "请输入正确数字。 "
+		;;
     esac
 	rm -rf "/root/changesource.sh"
 }
@@ -288,6 +300,9 @@ function unlock(){
 		bash <(curl -L -s https://raw.githubusercontent.com/lmc999/RegionRestrictionCheck/main/check.sh)
 		;;
         0 ) page2
+		;;
+		*)
+		echo "请输入正确数字。 "
     esac
 }
 
@@ -352,6 +367,9 @@ function alist(){
 		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s uninstall /opt/Software
 		;;
         0 ) page3
+		;;
+		*)
+		echo "请输入正确数字。 "
     esac
 }
 
@@ -381,6 +399,9 @@ function docker(){
 		sudo chmod +x /usr/local/bin/docker-compose
 		;;
         0 ) page4
+		;;
+		*)
+		echo "请输入正确数字。 "
     esac
 }
 
@@ -453,6 +474,9 @@ function odocker(){
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
 		;;		
         0 ) page4
+		;;
+		*)
+		echo "请输入正确数字。 "
     esac
 }
 
@@ -501,6 +525,9 @@ function compose(){
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
 		;;		
         0 ) page4
+		;;
+		*)
+		echo "请输入正确数字。 "
     esac
 }
 
@@ -569,6 +596,8 @@ ipsec() {
       0)
         page5
         ;;
+		*)
+		echo "请输入正确数字。 "
     esac
 }
 
@@ -663,7 +692,8 @@ function chatgpt(){
         4 ) page4 ;;
         5 ) page5 ;;
 		5 ) page6 ;;
-        0 ) exit 0
+        0 ) exit 0;;
+		 *) echo "请输入正确数字。 "
     esac
 }
 
@@ -694,7 +724,8 @@ function page1(){
 		7 ) acmesh ;;
 		8 ) cssh ;;
 		9 ) warp ;;
-        0 ) menu
+        0 ) menu ;;
+		 *) echo "请输入正确数字。 "
     esac
 }
 
@@ -719,7 +750,8 @@ function page2(){
         4 ) unlock ;;
 		5 ) speedtest ;;
 		6 ) lemonbench ;;
-        0 ) menu
+        0 ) menu;;
+		 *) echo "请输入正确数字。 "
     esac
 }
 
@@ -746,7 +778,8 @@ function page3(){
 		5 ) aaPanel ;;
         6 ) nezha ;;
         7 ) alist ;;
-        0 ) menu
+        0 ) menu;;
+		 *) echo "请输入正确数字。 "
     esac
 }
 
@@ -780,7 +813,8 @@ function page4(){
         7 ) easyimage ;;
         8 ) odocker ;;
 		9 ) compose ;;
-        0 ) menu
+        0 ) menu;;
+		 *) echo "请输入正确数字。 "
     esac
 }
 
@@ -807,7 +841,8 @@ function page5(){
 		5 ) shadowsocks ;;
 		6 ) telegram ;;
 		7 ) ipsec ;;
-        0 ) menu
+        0 ) menu;;
+		 *) echo "请输入正确数字。 "
     esac
 }
 
@@ -840,7 +875,8 @@ function page6(){
 		8 ) aria2 ;;
 		9 ) zerotier ;;
 		10 ) chatgpt ;;
-        0 ) menu
+        0 ) menu;;
+		 *) echo "请输入正确数字。 "
     esac
 }
 
