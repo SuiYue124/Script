@@ -115,7 +115,7 @@ function rootlogin(){
     echo "                            "
     red "0. 返回上级菜单"
 	green "=================================================================================="
-    read -p "请输入选项:" rootNumberInput
+    read -e -p "请输入选项:" rootNumberInput
     case "$rootNumberInput" in
         1 ) 
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)"
@@ -189,7 +189,7 @@ function bbr(){
     echo "                            "
     red "0. 返回上级菜单"
 	green "=================================================================================="
-    read -p "请输入选项:" bbrNumberInput
+    read -e -p "请输入选项:" bbrNumberInput
     case "$bbrNumberInput" in
         1 ) 
 		wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh && rm tcp.sh
@@ -229,7 +229,7 @@ yellow "下载完成"
     red " 0. 返回上级菜单 "
 	green "=================================================================================="
     echo
-    read -p "请自行选择切换对应源:" csshNumberInput
+    read -e -p "请自行选择切换对应源:" csshNumberInput
     case "$csshNumberInput" in
 		1)
 		bash changesource.sh
@@ -285,7 +285,7 @@ function unlock(){
     red " 0. 返回上级菜单 "
 	green "=================================================================================="
     echo
-    read -p "请输入选项:" unlockNumberInput
+    read -e -p "请输入选项:" unlockNumberInput
     case "$unlockNumberInput" in
 		1)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/netflix.sh)"
@@ -355,7 +355,7 @@ function alist(){
     red " 0. 返回上级菜单 "
 	green "=================================================================================="
     echo
-    read -p "请输入选项:" alistNumberInput
+    read -e -p "请输入选项:" alistNumberInput
     case "$alistNumberInput" in
 		1)
 		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s install /opt/Software
@@ -384,7 +384,7 @@ function docker(){
     red " 0. 返回上级菜单 "
 	green "=================================================================================="
     echo
-    read -p "请输入选项:" dockerNumberInput
+    read -e -p "请输入选项:" dockerNumberInput
     case "$dockerNumberInput" in
 		1)
 		wget -qO- get.docker.com | bash
@@ -444,7 +444,7 @@ function odocker(){
     red " 0. 返回上级菜单 "
 	green "=================================================================================="
     echo
-    read -p "请输入选项:" odockerNumberInput
+    read -e -p "请输入选项:" odockerNumberInput
     case "$odockerNumberInput" in
 		1)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/qiandao.sh)"
@@ -495,7 +495,7 @@ function compose(){
     red " 0. 返回上级菜单 "
 	green "=================================================================================="
     echo
-    read -p "请输入选项:" composeNumberInput
+    read -e -p "请输入选项:" composeNumberInput
     case "$composeNumberInput" in
 		1)
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/Easyimage/easyimage.sh)"
@@ -573,7 +573,7 @@ ipsec() {
 	blue "  6. 卸载IPsec"
     blue "  0. 退出脚本"
     green "================================================="
-    read -p "$(yellow '请输入数字 [0-3]:')" num
+    read -e -p "$(yellow '请输入数字 [0-3]:')" num
     case "$num" in
       1)
         curl -sSf https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/vpnsetup.sh -o vpnsetup.sh && sudo sh vpnsetup.sh && mkdir -p /opt/Software/IPsec && mv vpnclient.mobileconfig vpnclient.p12 vpnclient.sswan /opt/Software/IPsec && rm -rf vpnsetup.sh
@@ -684,7 +684,7 @@ function chatgpt(){
 	blue "如有需要增加的脚本，请联系：https://t.me/WenGe124_Bot"
 	yellow "今日运行次数：$TODAY 总共运行次数：$TOTAL"
 	green "=================================================================================="
-    read -p "请输入选项:" menuNumberInput
+    read -e -p "请输入选项:" menuNumberInput
     case "$menuNumberInput" in
         1 ) page1 ;;
         2 ) page2 ;;
@@ -713,7 +713,7 @@ function page1(){
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
-    read -p "请输入选项:" page1NumberInput
+    read -e -p "请输入选项:" page1NumberInput
     case "$page1NumberInput" in
         1 ) rootlogin ;;
 		2 ) dellogs ;;
@@ -742,7 +742,7 @@ function page2(){
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
-    read -p "请输入选项:" page2NumberInput
+    read -e -p "请输入选项:" page2NumberInput
     case "$page2NumberInput" in
         1 ) bench ;;
         2 ) server-test ;;
@@ -769,7 +769,7 @@ function page3(){
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
-    read -p "请输入选项:" page3NumberInput
+    read -e -p "请输入选项:" page3NumberInput
     case "$page3NumberInput" in
         1 ) baota ;;
         2 ) baota7 ;;
@@ -802,7 +802,7 @@ function page4(){
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
-    read -p "请输入选项:" page4NumberInput
+    read -e -p "请输入选项:" page4NumberInput
     case "$page4NumberInput" in
 		1 ) docker ;;
         2 ) nginxpm ;;
@@ -832,7 +832,7 @@ function page5(){
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
-    read -p "请输入选项:" page5NumberInput
+    read -e -p "请输入选项:" page5NumberInput
     case "$page5NumberInput" in
         1 ) xui ;;
         2 ) trojanui ;;
@@ -863,7 +863,7 @@ function page6(){
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
-    read -p "请输入选项:" page6NumberInput
+    read -e -p "请输入选项:" page6NumberInput
     case "$page6NumberInput" in
         1 ) node ;;
         2 ) frps ;;
