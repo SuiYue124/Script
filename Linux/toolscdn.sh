@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20230305"
+ver="20230310"
 blog="https://blog.gwen.ink/"
 github="https://github.com/GWen124"
 changeLog="随缘更新！"
@@ -531,6 +531,37 @@ function telegram(){
     bash <(wget -qO- https://git.io/mtg.sh)
 }
 
+ipsec() {
+    clear
+    green "================================================="
+    yellow " IPsec VPN Server一键脚本"
+    green "================================================="
+    blue "  1. 安装IPsec(使用脚本随机生成的 VPN 登录凭证)"
+    blue "  2. 安装IPsec(提供你自己的 VPN 登录凭证)"
+    blue "  3. 更新IPsec"
+	blue "  4. 卸载IPsec"
+    blue "  0. 退出脚本"
+    green "================================================="
+    read -p "$(yellow '请输入数字 [0-3]:')" num
+    case "$num" in
+      1)
+        curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/vpnsetup.sh -o vpnsetup.sh && sudo sh vpnsetup.sh && mkdir -p /opt/Software/IPsec && mv vpnclient.mobileconfig vpnclient.p12 vpnclient.sswan /opt/SoftwareIPsec && rm -rf vpnsetup.sh
+        ;;
+      2)
+        curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/GWen124/Script/master/Linux/ipsec.sh -o ipsec.sh && sudo sh ipsec.sh && mkdir -p /opt/Software/IPsec && mv vpnclient.mobileconfig vpnclient.p12 vpnclient.sswan /opt/SoftwareIPsec && rm -rf ipsec.sh
+        ;;
+      3)
+        curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/extras/vpnupgrade.sh -o vpnupgrade.sh && sudo sh vpnupgrade.sh && rm -rf vpnupgrade.sh
+        ;;
+      4)
+        curl -sSf https://cdn.wen124.ml/https://raw.githubusercontent.com/hwdsl2/setup-ipsec-vpn/master/extras/vpnuninstall.sh -o vpnuninstall.sh && sudo sh vpnuninstall.sh && rm -rf vpnuninstall.sh /opt/Software/IPsec
+        ;;
+      0)
+        page5
+        ;;
+    esac
+}
+
 #page6
 function node(){
   bash -c "$(curl -fsSL https://deb.nodesource.com/setup_16.x)" && $systemPackage install -y nodejs
@@ -753,6 +784,7 @@ function page5(){
 	yellow "4. V2Ray一键脚本"
 	yellow "5. SS、SSR一键脚本"
 	yellow "6. Telegram代理一键搭建 "
+	yellow "7. IPsec VPN Server一键脚本 "
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -764,6 +796,7 @@ function page5(){
 		4 ) v2ray ;;
 		5 ) shadowsocks ;;
 		6 ) telegram ;;
+		7 ) ipsec ;;
         0 ) menu
     esac
 }
