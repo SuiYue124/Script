@@ -343,13 +343,13 @@ function alist(){
     read -p "请输入选项:" alistNumberInput
     case "$alistNumberInput" in
 		1)
-		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s install /home/Software
+		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s install /opt/Software
 		;;
 		2)
-		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s update /home/Software
+		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s update /opt/Software
 		;;
 		3)
-		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s uninstall /home/Software
+		curl -fsSL "https://alist.nn.ci/v3.sh" | bash -s uninstall /opt/Software
 		;;
         0 ) page3
     esac
