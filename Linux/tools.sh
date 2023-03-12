@@ -380,6 +380,7 @@ function docker(){
 	yellow " 2. 设置开机自动启动Docker"
 	yellow " 3. 安装Docker Compose"
 	yellow " 4. 添加Docker Compose可执行权限"
+	yellow " 5. 开启容器的 IPv6 功能，以及限制日志文件大小"
 	echo "                            "
     red " 0. 返回上级菜单 "
 	green "=================================================================================="
@@ -398,6 +399,22 @@ function docker(){
 		4)
 		sudo chmod +x /usr/local/bin/docker-compose
 		;;
+		4)
+		cat > /etc/docker/daemon.json <<EOF
+{
+    "log-driver": "json-file",
+    "log-opts": {
+        "max-size": "20m",
+        "max-file": "3"
+    },
+    "ipv6": true,
+    "fixed-cidr-v6": "fd00:dead:beef:c0::/80",
+    "experimental":true,
+    "ip6tables":true
+}
+EOF
+systemctl restart docker
+		;; 
         0 ) page4
 		;;
 		*)
