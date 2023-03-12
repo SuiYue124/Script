@@ -503,7 +503,7 @@ function compose(){
 	yellow " 2. YOURLS短连接-Docker-Compose"
 	yellow " 3. Reader小说阅读站-Docker-Compose"
 	yellow " 4. Wiki.js-Docker-Compose"
-	yellow " 5. 待定"
+	yellow " 5. Calibre Web-Docker-Compose"
 	yellow " 6. 待定"
 	yellow " 7. 待定"
 	yellow " 8. 待定"
@@ -527,7 +527,7 @@ function compose(){
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/WikiJS/wikijs.sh)"
 		;;
 		5)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/calibre.sh)"
 		;;
 		6)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
@@ -708,8 +708,8 @@ function chatgpt(){
         3 ) page3 ;;
         4 ) page4 ;;
         5 ) page5 ;;
-		5 ) page6 ;;
-        0 ) exit 0;;
+		6 ) page6 ;;
+        0 ) exit 0 ;;
 		 *) echo "请输入正确数字。 "
     esac
 }
