@@ -399,7 +399,7 @@ function docker(){
 		4)
 		sudo chmod +x /usr/local/bin/docker-compose
 		;;
-		4)
+		5)
 		cat > /etc/docker/daemon.json <<EOF
 {
     "log-driver": "json-file",
