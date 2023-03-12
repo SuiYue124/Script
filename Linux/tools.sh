@@ -423,7 +423,7 @@ systemctl restart docker
 }
 
 function nginxpm(){
-bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/Nginx-Proxy-Manager/nginx-proxy-manager.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/nginx-proxy-manager.sh)"
 }
 
 function watchtower(){

@@ -1,11 +1,11 @@
 #!/bin/bash
-#青龙一键安装脚本
+#Nginx-Proxy-Manager一键安装脚本
 #我的仓库：https://github.com/GWen124
-image="whyour/qinglong:latest"
-name="QingLong"
-menuname="青龙"
-port="15700"
-path="/opt/Docker/QingLong"
+name="Nginx-Proxy-Manager"
+menuname="Nginx Proxy Manager"
+port="81"
+path="/opt/Docker/Nginx-Proxy-Manager"
+yml="docker-compose.yml"
 blue() {
     echo -e "\033[34m\033[01m$1\033[0m"
 }
@@ -23,6 +23,14 @@ install() {
         red "错误：Docker 未安装，请先安装 Docker。"
         echo "请按照以下指引安装 Docker:"
         echo "https://docs.docker.com/get-docker/"
+		echo "如需一键安装，请打开下面连接使用我的一键脚本集合:"
+        echo "https://wen124.ml/FSWKKD"
+        exit 1
+    fi
+    if ! command -v docker-compose &> /dev/null; then
+        red "错误：Docker Compose 未安装，请先安装 Docker Compose。"
+        echo "请按照以下指引安装 Docker Compose:"
+        echo "https://docs.docker.com/compose/install/"
 		echo "如需一键安装，请打开下面连接使用我的一键脚本集合:"
         echo "https://wen124.ml/FSWKKD"
         exit 1
@@ -59,25 +67,48 @@ while true; do
       * ) yellow "请输入 Y 或 N 或 R或者Ctrl+C。";;
   esac
 done
-    docker run -dit --name "$name" \
-        -v "$path":/ql/data \
-        -p "$port":5700 \
-        --hostname qinglong \
-        --restart unless-stopped \
-        "$image"
-    yellow "容器已启动，端口号为 $port，数据目录为 $path"
+  echo "127.0.0.1    proxy manager" | sudo tee -a /etc/hosts
+mkdir -p "$path"
+echo "
+version: '3'
+services:
+  app:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '$port:81'
+      - '443:443'
+    volumes:
+      - $path:/data
+      - $path:/etc/letsencrypt
+    container_name: "$name"
+" > "$path/$yml"
+cd "$path" && docker-compose up -d
+  if [ $? -eq 0 ]; then
+    yellow "容器启动成功！"
+  else
+    red "容器启动失败！"
+  fi
 }
 update() {
     if ! command -v docker &> /dev/null; then
         red "错误：Docker 未安装，请先安装 Docker。"
         echo "请按照以下指引安装 Docker:"
         echo "https://docs.docker.com/get-docker/"
-        echo "如需一键安装，请打开下面连接使用我的一键脚本集合:"
+		echo "如需一键安装，请打开下面连接使用我的一键脚本集合:"
         echo "https://wen124.ml/FSWKKD"
         exit 1
     fi
-    if true; then
-        green "================================================="
+    if ! command -v docker-compose &> /dev/null; then
+        red "错误：Docker Compose 未安装，请先安装 Docker Compose。"
+        echo "请按照以下指引安装 Docker Compose:"
+        echo "https://docs.docker.com/compose/install/"
+		echo "如需一键安装，请打开下面连接使用我的一键脚本集合:"
+        echo "https://wen124.ml/FSWKKD"
+        exit 1
+    fi
+    green "================================================="
     red "		注意！！！"
 	red "1.如果是自定义设置的路径："
     red "  更新前请牢记你映射的目录路径，并严格对应输入！"
@@ -85,53 +116,15 @@ update() {
     red "2.如果是使用此脚本默认安装："
     red "  则不做任何输入，以保持默认路径，"
     red "  如错误输入，届时与原路径不符，同样丢失数据！"
-        green "================================================="
-        while true; do
-            read -n 1 -rp "$(yellow '确定要更新吗 ?[y/n]：')" confiup
-            echo
-            if [[ "$confiup" =~ ^[Yy]$ ]]; then
-                break
-            elif [[ "$confiup" =~ ^[Nn]$ ]]; then
-                exit
-            else
-                echo "$(red '无效输入，请重新输入或者Ctrl+C。')"
-            fi
-        done
-        while true; do
-            read -rp "$(yellow '请输入你的端口号（默认为'"$port"'）：')" port_input
-            if [ -z "$port_input" ]; then
-                break
-            elif [[ "$port_input" =~ ^[0-9]+$ ]]; then
-                port="$port_input"
-                break
-            else
-                echo "$(red '无效输入，请重新输入或者Ctrl+C。')"
-            fi
-        done
-        while true; do
-            read -rp "$(yellow '请输入你的数据目录路径（默认为'"$path"'）：')" path_input
-            if [ -z "$path_input" ]; then
-                break
-            elif [ -d "$path_input" ]; then
-                path="$path_input"
-                break
-            else
-                echo "$(red '无效路径，请重新输入或者Ctrl+C。')"
-            fi
-        done
-        green "容器即将更新"
-        docker pull $image
-        docker stop $name && docker rm $name
-        green "容器更新中..."
-        docker run -dit --name $name \
-            -v "$path":/ql/data \
-            -p "$port":5700 \
-            --hostname qinglong \
-            --restart unless-stopped \
-            $image
-        green "容器已更新完成，端口号为 $port，数据目录为 $path"
+    green "================================================="
+	read -p "$(yellow '请输入原映射目录 (默认为 '"$path"'):')" temp_path
+	path=${temp_path:-$path}
+    cd "$path" && docker-compose down && docker-compose pull && docker-compose up -d
+    result=$?
+    if [ $result -eq 0 ]; then
+      yellow "容器已更新完成，端口号为 $port，数据目录为 $path"
     else
-        yellow "已取消更新"
+      red "容器更新失败失败。"
     fi
 }
 uninstall() {
@@ -139,42 +132,45 @@ uninstall() {
         red "错误：Docker 未安装，请先安装 Docker。"
         echo "请按照以下指引安装 Docker:"
         echo "https://docs.docker.com/get-docker/"
-        echo "如需一键安装，请打开下面连接使用我的一键脚本集合:"
+		echo "如需一键安装，请打开下面连接使用我的一键脚本集合:"
+        echo "https://wen124.ml/FSWKKD"
+        exit 1
+    fi
+    if ! command -v docker-compose &> /dev/null; then
+        red "错误：Docker Compose 未安装，请先安装 Docker Compose。"
+        echo "请按照以下指引安装 Docker Compose:"
+        echo "https://docs.docker.com/compose/install/"
+		echo "如需一键安装，请打开下面连接使用我的一键脚本集合:"
         echo "https://wen124.ml/FSWKKD"
         exit 1
     fi
     green "================================================="
     red "警告：该操作将会删除容器及其数据。"
     green "================================================="
-    while true; do
-        read -n 1 -rp "$(yellow '请再次确认是否删除容器 [y/n]：')" confirm
-        echo
-        if [[ "$confirm" =~ ^[Yy]$ ]]; then
-            break
-        elif [[ "$confirm" =~ ^[Nn]$ ]]; then
-            exit
-        else
-            echo "$(red '无效输入，请重新输入或者Ctrl+C。')"
-        fi
-    done
-    docker stop $name && docker rm $name
-    yellow "容器已卸载"
-    read -p "$(yellow '请输入你的数据目录路径（默认为'"$path"'）：')" custom_dir
-    dir_to_delete=${custom_dir:-$path}
-    while true; do
-        read -n 1 -rp "$(yellow '请再次确认是否删除你的数据目录 [y/n]：')" delete_dir
-        echo
-        if [[ "$delete_dir" =~ ^[Yy]$ ]]; then
-            rm -rf "$dir_to_delete"
-            yellow "数据目录已删除"
-            break
-        elif [[ "$delete_dir" =~ ^[Nn]$ ]]; then
-            yellow "数据目录未删除"
-            break
-        else
-            echo "$(red '无效输入，请重新输入或者Ctrl+C。')"
-        fi
-    done
+    read -p "$(yellow '请输入映射目录 (默认为 '"$path"'):')" temp_path
+    path=${temp_path:-$path}
+    read -p "$(yellow '确认要删除容器吗？[y/n] ')" choice
+    case "$choice" in
+        y|Y )
+            cd "$path" && docker-compose down && rm -rf $yml
+            yellow "容器删除成功。"
+            ;;
+        * )
+            exit 1
+			yellow "取消操作。"
+            ;;
+    esac
+    read -p "$(yellow '确认要删除目录 '$path' 吗？[y/n] ')" choice
+    case "$choice" in
+        y|Y )
+            rm -rf "$path"
+            yellow "目录删除成功。"
+            ;;
+        * )
+			exit 1
+            yellow "取消操作。"
+            ;;
+    esac
 }
 menu() {
   while true; do
