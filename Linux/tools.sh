@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20230310"
+ver="20230318"
 blog="https://blog.gwen.ink/"
 github="https://github.com/GWen124"
 changeLog="随缘更新！"
@@ -75,15 +75,6 @@ elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
 fi
 $systemPackage update -y
 $systemPackage upgrade -y
-$systemPackage -y install wget curl htop nano python3 python3-pip ca-certificates redboot-tools lsof
-
-sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-sudo timedatectl set-timezone Asia/Shanghai
-sudo timedatectl set-local-rtc 0
-sudo timedatectl set-ntp yes
-
-egrep -q "^\s*.*ClientAliveInterval\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveInterval\s\w+.*$/ClientAliveInterval 60/" /etc/ssh/sshd_config || echo "ClientAliveInterval 60" >> /etc/ssh/sshd_config
-egrep -q "^\s*.*ClientAliveCountMax\s\w+.*$" /etc/ssh/sshd_config && sed -ri "s/^\s*.*ClientAliveCountMax\s\w+.*$/ClientAliveCountMax 30/" /etc/ssh/sshd_config || echo "ClientAliveCountMax 30" >> /etc/ssh/sshd_config
 
 IP4=$(curl -s ipv4.ip.sb)
 IP6=$(curl -s ipv6.ip.sb)
@@ -105,13 +96,14 @@ COUNT=$(curl -sm2 "https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=http
 TODAY=$(expr "$COUNT" : '.*\s\([0-9]\{1,\}\)\s/.*') && TOTAL=$(expr "$COUNT" : '.*/\s\([0-9]\{1,\}\)\s.*')
 
 #page1
-function rootlogin(){
+function linuxopen(){
     echo "                            "
     green "请选择你接下来使用的脚本"
     echo "                            "
     yellow "1. 修改登录方式为 root + 密码 登录"
-    yellow "2. 增加系统用户"
-    yellow "3. 删除系统用户"
+    yellow "2. SSH一键保持活动连接"
+    yellow "3. 同步中国时间"
+	yellow "4. 常见依赖安装"
     echo "                            "
     red "0. 返回上级菜单"
 	green "=================================================================================="
@@ -121,10 +113,16 @@ function rootlogin(){
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/root.sh)"
 		;;
         2 ) 
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/useradd.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/sshh.sh)"
 		;;
         3 ) 
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/userdel.sh)"
+		sudo cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+		sudo timedatectl set-timezone Asia/Shanghai
+		sudo timedatectl set-local-rtc 0
+		sudo timedatectl set-ntp yes
+		;;
+		4 ) 
+		$systemPackage -y install wget curl htop nano python3 python3-pip ca-certificates redboot-tools lsof
 		;;
         0 ) page1
 		;;
@@ -134,22 +132,29 @@ function rootlogin(){
     esac
 }
 
-function dellogs(){
-if [ "$(id -u)" != "0" ]; then
-  echo "此脚本必须以root用户身份运行" 1>&2
-  exit 1
-fi
-if find /var/log/ -type f -delete; then
-  echo "所有日志文件已成功删除"
-  if rm -- "$0"; then
-    echo "脚本已成功删除"
-  else
-    echo "删除脚本时发生错误"
-  fi
-else
-  echo "删除日志文件时发生错误"
-fi
-
+function rootlogin(){
+    echo "                            "
+    green "请选择你接下来使用的脚本"
+    echo "                            "
+    yellow "1. 增加系统用户"
+    yellow "2. 删除系统用户"
+    echo "                            "
+    red "0. 返回上级菜单"
+	green "=================================================================================="
+    read -e -p "请输入选项:" rootNumberInput
+    case "$rootNumberInput" in
+        1 ) 
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/useradd.sh)"
+		;;
+        2 ) 
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/userdel.sh)"
+		;;
+        0 ) page1
+		;;
+		*)
+		echo "请输入正确数字。 "
+		;;
+    esac
 }
 
 function vpsfirewall(){
@@ -669,7 +674,7 @@ function chatgpt(){
     clear
     echo "                           "
     blue "当前脚本版本：$ver "
-	blue "我的Blog：$blog "
+#	blue "我的Blog：$blog "
 	blue "我的仓库：$github "
 	echo "                            "
     yellow "更新日志：$changeLog"
@@ -718,8 +723,8 @@ function page1(){
 	echo "                            "
     green "请选择你接下来的操作："
     echo "                            "
-    yellow "1. 系统账户相关"
-	yellow "2. 删除日志文件"
+    yellow "1. 开机脚本"
+	yellow "2. 系统账户相关"
 	yellow "3. 关闭原系统防火墙"
     yellow "4. 虚拟内存SWAP一键脚本 "
     yellow "5. 更改SSH端口"
@@ -732,8 +737,8 @@ function page1(){
 	green "=================================================================================="
     read -e -p "请输入选项:" page1NumberInput
     case "$page1NumberInput" in
-        1 ) rootlogin ;;
-		2 ) dellogs ;;
+        1 ) linuxopen ;;
+		2 ) rootlogin ;;
 		3) vpsfirewall ;;
         4 ) swap ;;
         5 ) ssh_port ;;
