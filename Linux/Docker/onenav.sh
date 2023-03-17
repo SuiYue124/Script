@@ -25,7 +25,7 @@ read -r -p "$(yellow '请输入你的数据目录(默认为'"$path"')：')" path
 if [ -n "$path_input" ]; then
     path="$path_input"
 fi
-		docker run -itd --name="$name" -p $port:80 \
+		docker run -itd --name="$name" --restart=always -p $port:80 \
 			-v $path:/data/wwwroot/default/data \
 			$image
     yellow "容器已启动，端口号为 $port，数据目录为 $path"
@@ -54,7 +54,7 @@ fi
         docker pull $image
         docker stop $name && docker rm $name
 		green "容器更新中..."
-		docker run -itd --name="$name" -p $port:80 \
+		docker run -itd --name="$name" --restart=always -p $port:80 \
 			-v $path:/data/wwwroot/default/data \
             $image
         green "容器已更新完成"
