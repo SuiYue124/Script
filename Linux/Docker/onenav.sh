@@ -1,8 +1,8 @@
 #!/bin/bash
-image=helloz/onenav
-name=OneNav
-menuname=OneNav导航
-port=8181
+image="helloz/onenav"
+name="OneNav"
+menuname="OneNav导航"
+port="8181"
 path="/opt/Docker/OneNav"
 blue() {
     echo -e "\033[34m\033[01m$1\033[0m"
