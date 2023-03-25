@@ -123,7 +123,7 @@ function linuxopen(){
 		sudo timedatectl set-ntp yes
 		;;
 		4 ) 
-		$systemPackage -y install wget curl htop nano python3 python3-pip ca-certificates redboot-tools lsof
+		$systemPackage -y install wget curl htop nano python3 python3-pip ca-certificates redboot-tools lsof fuse fuse3
 		;;
         0 ) page1
 		;;
