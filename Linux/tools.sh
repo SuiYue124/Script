@@ -429,27 +429,27 @@ systemctl restart docker
 }
 
 function nginxpm(){
-bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/nginx-proxy-manager.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Docker/Docker-Compose/nginx-proxy-manager.sh)"
 }
 
 function watchtower(){
-bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/watchtowersh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Docker/watchtowersh)"
 }
 
 function syncthing(){
-bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/syncthing.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Docker/syncthing.sh)"
 }
 
 function alistdocker(){
-bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/alist.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Docker/alist.sh)"
 }
 
 function qinglong(){
-bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/qinglong.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Docker/qinglong.sh)"
 }
 
 function easyimage(){
-bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/easyimage.sh)"
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Docker/easyimage.sh)"
 }
 
 function odocker(){
@@ -461,7 +461,7 @@ function odocker(){
 	yellow " 5. Reader小说阅读站-Docker"
 	yellow " 6. Calibre-Web电子书-Docker"
 	yellow " 7. OneNav导航-Docker"
-	yellow " 8. 待定"
+	yellow " 8. V2P面板-Docker"
 	yellow " 9. 待定"
 	echo "                            "
     red " 0. 返回上级菜单 "
@@ -470,28 +470,28 @@ function odocker(){
     read -e -p "请输入选项:" odockerNumberInput
     case "$odockerNumberInput" in
 		1)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/qiandao.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/qiandao.sh)"
 		;;
 		2)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/feiyangiptv.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/feiyangiptv.sh)"
 		;;
 		3)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/freenom.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/freenom.sh)"
 		;;
 		4)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/halo.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/halo.sh)"
 		;;
 		5)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/reader.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/reader.sh)"
 		;;
 		6)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/calibre-web.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/calibre-web.sh)"
 		;;
 		7)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/onenav.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/onenav.sh)"
 		;;
 		8)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/v2p.sh)"
 		;;
 		9)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
@@ -521,19 +521,19 @@ function compose(){
     read -e -p "请输入选项:" composeNumberInput
     case "$composeNumberInput" in
 		1)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/Easyimage/easyimage.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/Docker-Compose/Easyimage/easyimage.sh)"
 		;;
 		2)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/YOURLS/yourls.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/Docker-Compose/YOURLS/yourls.sh)"
 		;;
 		3)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/Reader/reader.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/Docker-Compose/Reader/reader.sh)"
 		;;
 		4)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/WikiJS/wikijs.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/Docker-Compose/WikiJS/wikijs.sh)"
 		;;
 		5)
-		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Linux/Docker/Docker-Compose/calibre.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/Docker-Compose/calibre.sh)"
 		;;
 		6)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
