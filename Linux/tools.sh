@@ -667,8 +667,27 @@ function zerotier(){
   curl -s https://install.zerotier.com | sudo bash
 }
 
-function chatgpt(){
-  bash <(curl -sSL https://gitlab.com/rwkgyg/chatgptbot/raw/main/chatgpt.sh)
+function qb(){
+  $systemPackage install software-properties-common -y
+  sudo add-apt-repository ppa:qbittorrent-team/qbittorrent-stable
+  $systemPackage install qbittorrent-nox -y
+  cat > /etc/systemd/system/qbittorrent-nox.service <<EOF  
+[Unit]
+Description=qBittorrent-nox
+After=network.target
+
+[Service]
+User=root
+Type=forking
+RemainAfterExit=yes
+ExecStart=/usr/bin/qbittorrent-nox -d
+
+[Install]
+WantedBy=multi-user.target
+EOF
+sudo systemctl start qbittorrent-nox
+sudo systemctl enable qbittorrent-nox
+sudo systemctl status qbittorrent-nox
 }
 
  function menu(){
@@ -882,7 +901,7 @@ function page6(){
 	yellow "7. QuickBox-Lite(仅支持 amd64)"
 	yellow "8. Aria2一键安装脚本"
 	yellow "9. ZeroTier内网穿透一键安装脚本"
-	yellow "10. Telegram ChatGPT Bot"
+	yellow "10. qBittorrent(账号:admin 密码:adminadmin 端口:8080)"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -897,7 +916,7 @@ function page6(){
 		7 ) QuickBox ;;
 		8 ) aria2 ;;
 		9 ) zerotier ;;
-		10 ) chatgpt ;;
+		10 ) qb ;;
         0 ) menu;;
 		 *) echo "请输入正确数字。 "
     esac
