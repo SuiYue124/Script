@@ -83,9 +83,6 @@ services:
       OPENAI_ACCESS_TOKEN: xxx
       # API接口地址，可选，设置 OPENAI_API_KEY 时可用
       OPENAI_API_BASE_URL: https://api.openai.com
-      # API模型，可选，设置 OPENAI_API_KEY 时可用，https://platform.openai.com/docs/models
-      # gpt-4, gpt-4-0314, gpt-4-32k, gpt-4-32k-0314, gpt-3.5-turbo, gpt-3.5-turbo-0301, text-davinci-003, text-davinci-002, code-davinci-002
-      OPENAI_API_MODEL: gpt-3.5-turbo-0301
       # 访问权限密钥，可选
       AUTH_SECRET_KEY: "$webkey"
       # 每小时最大请求次数，可选，默认无限
