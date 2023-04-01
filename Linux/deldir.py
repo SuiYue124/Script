@@ -1,13 +1,13 @@
 import os
 import time
 
-# 设定阈值为 122880MB
+# 设定阈值为 122880MB，如不需要设定阈值，修改值为0。
 threshold = 122880
 
 # 指定要删除的文件路径和名称
 filename = "/path/to/your/file"
 
-# 设定默认延迟时间为 30 分钟（单位：秒）
+# 设定默认延迟时间为 30 分钟，值为0时立即删除。
 default_delay_time_mins = 30
 default_delay_time_secs = default_delay_time_mins * 60
 
