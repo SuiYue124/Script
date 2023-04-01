@@ -16,9 +16,12 @@ statvfs = os.statvfs(os.path.dirname(filename))
 free_space = statvfs.f_frsize * statvfs.f_bavail / (1024 ** 2)
 
 if free_space < threshold:
-    # 如果当前目录可用空间不足，则等待指定的延迟时间后再删除指定的文件
+    # 如果当前目录可用空间不足，则等待指定的延迟时间后再检查容量是否达到删除阈值
     time.sleep(default_delay_time_secs)
-    os.remove(filename)
+    statvfs = os.statvfs(os.path.dirname(filename))
+    free_space = statvfs.f_frsize * statvfs.f_bavail / (1024 ** 2)
+    if free_space < threshold:
+        os.remove(filename)
 else:
-    # 否则立即删除指定文件
+    # 目录可用空间充足，直接删除指定文件
     os.remove(filename)
