@@ -1,8 +1,9 @@
 #!/bin/bash
-image=syncthing/syncthing:latest
-name=Syncthing
-port=8181
+image=“syncthing/syncthing:latest”
+name=“Syncthing”
+port=“8181”
 path="/opt/Docker/Syncthing"
+path1="/opt/Docker/Syncthing/Sync"
 blue() {
     echo -e "\033[34m\033[01m$1\033[0m"
 }
@@ -20,9 +21,13 @@ read -r -p "$(yellow '请输入映射端口号(默认为'"$port"')：')" port_in
 if [ -n "$port_input" ]; then
     port="$port_input"
 fi
-read -r -p "$(yellow '请输入数据目录(默认为'"$path"')：')" path_input
+read -r -p "$(yellow '请输入配置数据目录(默认为'"$path"')：')" path_input
 if [ -n "$path_input" ]; then
     path="$path_input"
+fi
+read -r -p "$(yellow '请输入你要同步的目录(默认为'"$path1"')：')" path1_input
+if [ -n "$path1_input" ]; then
+    path1="$path1_input"
 fi
         docker run -d \
             --name=$name \
@@ -35,7 +40,7 @@ fi
             -p 22000:22000/udp \
             -p 21027:21027/udp \
             -v $path/Config:/config \
-            -v $path/Sync:/Sync \
+            -v $path1:/Sync \
             --restart unless-stopped \
 			$image
     yellow "容器已启动，端口号为 $port，数据目录为 $path"
@@ -54,9 +59,13 @@ read -rp "$(yellow '请输入原映射端口号（默认为'"$port"'）：')" po
 if [ -n "$port_input" ]; then
     port="$port_input"
 fi
-read -rp "$(yellow '请输入原数据目录（默认为'"$path"'）：')" path_input
+read -r -p "$(yellow '请输入配置数据目录(默认为'"$path"')：')" path_input
 if [ -n "$path_input" ]; then
     path="$path_input"
+fi
+read -r -p "$(yellow '请输入你要同步的目录(默认为'"$path1"')：')" path1_input
+if [ -n "$path1_input" ]; then
+    path1="$path1_input"
 fi
         green "容器即将更新"
         docker pull $image
@@ -72,7 +81,7 @@ fi
             -p 22000:22000/udp \
             -p 21027:21027/udp \
             -v $path/Config:/config \
-            -v $path/Sync:/Sync \
+            -v $path1:/Sync \
             --restart unless-stopped \
             $image
         green "容器已更新完成"
