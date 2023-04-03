@@ -32,15 +32,15 @@ fi
         docker run -d \
             --name=$name \
             --hostname=syncthing \
-            -e PUID=1000 \
-            -e PGID=1000 \
+            -e PUID=0 \
+            -e PGID=0 \
             -e TZ=Asia/Shanghai \
             -p $port:8384 \
             -p 22000:22000/tcp \
             -p 22000:22000/udp \
             -p 21027:21027/udp \
             -v $path/Config:/config \
-            -v $path1:/Sync \
+            -v $path1:/sync \
             --restart unless-stopped \
 			$image
     yellow "容器已启动，端口号为 $port，数据目录为 $path，同步的目录$path1"
