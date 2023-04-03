@@ -1,7 +1,7 @@
 #!/bin/bash
-image=“syncthing/syncthing:latest”
-name=“Syncthing”
-port=“8181”
+image=syncthing/syncthing:latest
+name=Syncthing
+port=8181
 path="/opt/Docker/Syncthing"
 path1="/opt/Docker/Syncthing/Sync"
 blue() {
@@ -43,7 +43,7 @@ fi
             -v $path1:/Sync \
             --restart unless-stopped \
 			$image
-    yellow "容器已启动，端口号为 $port，数据目录为 $path"
+    yellow "容器已启动，端口号为 $port，数据目录为 $path，同步的目录$path1"
 }
 update() {
     green "================================================="
