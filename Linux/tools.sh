@@ -2,7 +2,7 @@
 # By GWen124
 # https://github.com/GWen124/Script/tree/master/Linux
 
-ver="20230318"
+ver="20230405"
 blog="https://blog.gwen.ink/"
 github="https://github.com/GWen124"
 changeLog="随缘更新！"
@@ -448,8 +448,8 @@ function qinglong(){
 bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Docker/qinglong.sh)"
 }
 
-function easyimage(){
-bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Docker/easyimage.sh)"
+function fastosdocker(){
+bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Docker/Fast-Os-Docker.sh)"
 }
 
 function odocker(){
@@ -462,7 +462,7 @@ function odocker(){
 	yellow " 6. Calibre-Web电子书-Docker"
 	yellow " 7. OneNav导航-Docker"
 	yellow " 8. V2P面板-Docker"
-	yellow " 9. 待定"
+	yellow " 9. Easyimage图床-Docker"
 	echo "                            "
     red " 0. 返回上级菜单 "
 	green "=================================================================================="
@@ -494,7 +494,7 @@ function odocker(){
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/v2p.sh)"
 		;;
 		9)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL  https://raw.githubusercontent.com/GWen124/Script/master/Docker/easyimage.sh)"
 		;;		
         0 ) page4
 		;;
@@ -505,12 +505,12 @@ function odocker(){
 
 function compose(){
     echo "                            "
-	yellow " 1. Easyimage图床-Docker-Compose"
-	yellow " 2. YOURLS短连接-Docker-Compose"
-	yellow " 3. Reader小说阅读站-Docker-Compose"
-	yellow " 4. Wiki.js-Docker-Compose"
-	yellow " 5. Calibre Web-Docker-Compose"
-	yellow " 6. 待定"
+	yellow " 1. Easyimage图床-Docker Compose"
+	yellow " 2. YOURLS短连接-Docker Compose"
+	yellow " 3. Reader小说阅读站-Docker Compose"
+	yellow " 4. Wiki.js-Docker Compose"
+	yellow " 5. Calibre Web-Docker Compose"
+	yellow " 6. ChatGPTWeb-Docker Compose"
 	yellow " 7. 待定"
 	yellow " 8. 待定"
 	yellow " 9. 待定"
@@ -536,7 +536,7 @@ function compose(){
 		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/Docker-Compose/calibre.sh)"
 		;;
 		6)
-		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
+		bash -c "$(curl -fsSL https://raw.githubusercontent.com/GWen124/Script/master/Docker/Docker-Compose/chatgpt.sh)"
 		;;
 		7)
 		bash -c "$(curl -fsSL https://gwen124.ml/tools.sh)"
@@ -838,7 +838,7 @@ function page4(){
     yellow "4. Syncthing-Docker"
 	yellow "5. Alist-Docker"
 	yellow "6. QingLong-Docker"
-    yellow "7. Easyimage-Docker"
+    yellow "7. Fast Os Docker-Docker"
     yellow "8. 其他Docker项目"
 	yellow "9. 其他Docker Compose项目"
     echo "                            "
@@ -852,7 +852,7 @@ function page4(){
         4 ) syncthing ;;
 		5 ) alistdocker ;;
 		6 ) qinglong ;;
-        7 ) easyimage ;;
+        7 ) fastosdocker ;;
         8 ) odocker ;;
 		9 ) compose ;;
         0 ) menu;;

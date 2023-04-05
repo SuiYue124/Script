@@ -89,6 +89,7 @@ services:
       MAX_REQUEST_PER_HOUR: 0
       # 超时，单位毫秒，可选
       TIMEOUT_MS: 60000
+	  container_name: "$name"
     " > "$path/$yml"
     cd "$path" && docker-compose up -d
     if [ $? -eq 0 ]; then
