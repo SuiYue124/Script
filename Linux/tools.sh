@@ -624,6 +624,10 @@ ipsec() {
     esac
 }
 
+function xray8(){
+    wget -P /root -N --no-check-certificate "https://raw.githubusercontent.com/mack-a/v2ray-agent/master/install.sh" && chmod 700 /root/install.sh && /root/install.sh  && rm -rf /root/install.sh
+}
+
 #page6
 function node(){
   bash -c "$(curl -fsSL https://deb.nodesource.com/setup_16.x)" && $systemPackage install -y nodejs
@@ -871,6 +875,7 @@ function page5(){
 	yellow "5. SS、SSR一键脚本"
 	yellow "6. Telegram代理一键搭建 "
 	yellow "7. IPsec VPN Server一键脚本"
+	yellow "8. XRay八合一一键脚本"
     echo "                            "
     red "0. 返回主菜单"
 	green "=================================================================================="
@@ -883,6 +888,7 @@ function page5(){
 		5 ) shadowsocks ;;
 		6 ) telegram ;;
 		7 ) ipsec ;;
+		8 ) xray8 ;;
         0 ) menu;;
 		 *) echo "请输入正确数字。 "
     esac
