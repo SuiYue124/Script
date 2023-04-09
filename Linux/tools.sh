@@ -556,7 +556,7 @@ function compose(){
 
 #page5
 function xui(){
-    bash <(curl -Ls https://raw.githubusercontent.com/vaxilu/x-ui/master/install.sh)
+    bash <(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)
 }
 
 function trojanui(){
