@@ -1,0 +1,149 @@
+#---------------------------------------------------#
+allow-lan: true  
+bind-address: "*"   
+ipv6: true
+mode: rule        
+log-level: warning   
+external-controller: 127.0.0.1:9090 
+enable-process: true  
+find-process-mode: strict 
+geox-url:
+  geoip: https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geoip.dat
+  geosite: https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat
+  mmdb: https://raw.githubusercontent.com/Loyalsoldier/geoip/release/Country-only-cn-private.mmdb
+
+dns: 
+  enable: true
+  prefer-h3: true
+  ipv6: true
+  listen: 0.0.0.0:53
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback: # concurrent request with nameserver, fallback used when GEOIP country isn't CN
+    - https://1.1.1.1/dns-query
+    - tls://dns.google
+    - tls://dot.tiar.app
+
+p: &p {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 43200}}
+pm: &pm {type: file, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 1800}}
+pr: &pr {type: select, proxies: [🇭🇰 香港, 🇭🇰 香港-CF, 🇺🇲 美国, 🇺🇲 美国-CF, 🇸🇬 新加坡, 🇸🇬 新加坡-CF, 🇹🇼 台湾, 🇹🇼 台湾-CF,🇰🇷 韩国, 🇰🇷 韩国-CF, 🇯🇵 日本, 🇮🇳 印度, 🛰️ 全球代理]}
+auto: &auto {type: url-test, lazy: false, url: https://www.gstatic.com/generate_204, tolerance: 30, interval: 300, use: [waynesg,iplc]}
+auto-cf: &auto-cf {type: url-test, lazy: false, url: https://www.gstatic.com/generate_204, tolerance: 30, interval: 300, use: [iplc]}
+balance: &balance {type: load-balance, lazy: false, url: https://www.gstatic.com/generate_204, tolerance: 30, interval: 300, strategy: consistent-hashing, use: [iplc]}
+fallback: &fallback {type: fallback, url: https://www.gstatic.com/generate_204, interval: 900, use: [iplc]}
+use: &use {type: select, use: [waynesg,iplc]}
+c: &c {type: http, behavior: classical, interval: 43200}
+d: &d {type: http, behavior: domain, interval: 43200}
+i: &i {type: http, behavior: ipcidr, interval: 43200}
+
+proxy-providers:
+ waynesg:
+   <<: *p
+   url: "http://127.0.0.1:25500/sub?target=clash&url="
+ iplc:
+   <<: *p
+   url: "http://127.0.0.1:25500/sub?target=clash&url="
+   path: ./proxy_provider/iplc.yaml
+    
+proxy-groups:
+- {name: 📺 YouTube, <<: *pr}
+
+- {name: 🧰 Github, <<: *pr}
+
+- {name: 📱 社交媒体, <<: *pr}
+
+- {name: 📟 人工智能, <<: *pr}
+
+- {name: 🎥 NetFlix, <<: *pr}
+
+- {name: 📽️ Disney+, <<: *pr}
+
+- {name: 🇬 Google, <<: *pr}
+
+- {name: Ⓜ️ Microsoft, type: select, proxies: [🎯 全球直连, 🛰️ 全球代理]}
+
+- {name:  Apple 中国, type: select, proxies: [🎯 全球直连, 🛰️ 全球代理]}
+
+- {name:  Apple 国际, <<: *pr}
+
+- {name: 📈 网络测试, type: select, proxies: [🎯 全球直连, 🛰️ 全球代理]}
+
+- {name: 🎮 游戏服务, type: select, proxies: [🎯 全球直连, 🛰️ 全球代理]}
+
+- {name: 🎵 Tiktok, <<: *pr}
+
+- {name: ✉️ Telegram, <<: *pr}
+
+- {name: 🇹🇼 台湾, <<: *auto, filter: "(?i)TW|🇹🇼"}
+
+- {name: 🇹🇼 台湾-CF, <<: *auto-cf, filter: "(?i)TW|🇹🇼"}
+
+- {name: 🇺🇲 美国, <<: *use, filter: "(?i)US|RackNerd|🇺🇲"}
+
+- {name: 🇺🇲 美国-CF, <<: *auto-cf, filter: "(?i)US|🇺🇲"}
+
+- {name: 🇭🇰 香港, <<: *auto, filter: "(?i)HK|🇭🇰"}
+
+- {name: 🇭🇰 香港-CF, <<: *auto-cf, filter: "(?i)HK|🇭🇰"}
+
+- {name: 🇸🇬 新加坡, <<: *auto, filter: "(?i)SG|🇸🇬"}
+
+- {name: 🇸🇬 新加坡-CF, <<: *auto-cf, filter: "(?i)SG|🇸🇬"}
+
+- {name: 🇰🇷 韩国, <<: *auto, filter: "(?i)Seoul|Kr|Chuncheon"}
+
+- {name: 🇰🇷 韩国-CF, <<: *auto-cf, filter: "(?i)Kr|🇰🇷"}
+
+- {name: 🇯🇵 日本, <<: *auto, filter: "(?i)JP|🇯🇵"}
+
+- {name: 🇮🇳 印度, <<: *auto, filter: "(?i)Hyderabad"}
+
+- {name: ♻️ 自动选择, <<: *auto}
+
+- {name: 🛰️ 全球代理, <<: *use}
+
+- {name: 🚫 广告拦截, type: select, proxies: [REJECT]}
+
+- {name: 🎯 全球直连, type: select, proxies: [DIRECT, 🛰️ 全球代理]}
+ 
+rule-providers:
+ ai: {<<: *d, pinterval: 86400, ath: ./rule_provider/ai.yaml, url: https://raw.githubusercontent.com/waynesg/scripts/main/rules/ai.yaml}
+ direct: {<<: *c, interval: 86400, path: ./rule_provider/direct.yaml, url: https://raw.githubusercontent.com/waynesg/scripts/main/rules/direct.yaml}
+ networktest: {<<: *c, interval: 86400, path: ./rule_provider/networktest.yaml, url: https://raw.githubusercontent.com/waynesg/scripts/main/rules/networktest.yaml}
+ syncnext-direct: {<<: *c, interval: 86400, path: ./rule_provider/unbreak-classical.yaml, url: https://raw.githubusercontent.com/waynesg/scripts/main/rules/unbreak-classical.yaml}
+ syncnext-proxy: {<<: *c, interval: 86400, path: ./rule_provider/proxy-classical.yaml, url: https://raw.githubusercontent.com/waynesg/scripts/main/rules/proxy-classical.yaml}
+
+rules:
+  - AND,((NETWORK,UDP),(OR,(DST-PORT,6881-6890)),(SRC-IP-CIDR,192.168.1.0/24)),🎯 全球直连
+  - GEOSITE,category-ads-all,🚫 广告拦截
+  - GEOSITE,private,🎯 全球直连
+  - GEOSITE,category-public-tracker,🎯 全球直连
+  - RULE-SET,direct,🎯 全球直连
+  - RULE-SET,networktest,📈 网络测试
+  - RULE-SET,ai,📟 人工智能
+  - RULE-SET,syncnext-direct,🎯 全球直连
+  - RULE-SET,syncnext-proxy,🇰🇷 韩国
+  - GEOSITE,microsoft@cn,Ⓜ️ Microsoft
+  - GEOSITE,category-games@cn,🎮 游戏服务
+  - GEOSITE,apple-cn, Apple 中国
+  - GEOSITE,apple, Apple 国际 
+  - GEOSITE,tiktok,🎵 Tiktok
+  - GEOSITE,netflix,🎥 NetFlix
+  - GEOSITE,disney,📽️ Disney+
+  - GEOSITE,youtube,📺 YouTube
+  - GEOSITE,github,🧰 Github
+  - GEOSITE,google,🇬 Google
+  - GEOSITE,mudvod,🇰🇷 韩国
+  - GEOSITE,category-social-media-!cn,📱 社交媒体
+  - GEOSITE,geolocation-!cn,🛰️ 全球代理
+  - GEOSITE,cn,🎯 全球直连
+  - IP-CIDR,1.0.0.1/32,DIRECT,no-resolve
+  - IP-CIDR6,2606:4700:4700::1111/128,DIRECT,no-resolve
+  - GEOIP,private,🎯 全球直连,no-resolve
+  - GEOIP,cn,🎯 全球直连,no-resolve
+  - GEOIP,telegram,✉️ Telegram,no-resolve
+  - GEOIP,netflix,🎥 NetFlix,no-resolve
+  - GEOIP,google,🇬 Google,no-resolve
+  - GEOIP,twitter,📱 社交媒体,no-resolve
+  - MATCH,♻️ 自动选择
