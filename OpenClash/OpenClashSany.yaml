@@ -40,10 +40,10 @@ i: &i {type: http, behavior: ipcidr, interval: 43200}
 proxy-providers:
  waynesg:
    <<: *p
-   url: "http://127.0.0.1:25500/sub?target=clash&url="
+   url: "http://10.10.10.2:25500/sub?target=clash&url="
  iplc:
    <<: *p
-   url: "http://127.0.0.1:25500/sub?target=clash&url="
+   url: "http://10.10.10.2:25500/sub?target=clash&url="
    path: ./proxy_provider/iplc.yaml
     
 proxy-groups:
