@@ -1,0 +1,5 @@
+#!name=Surge运行模式
+#!desc=根据当前网络自动切换模式 -By Wen
+[Script]
+
+event network-changed script-path=https://raw.githubusercontent.com/GWen124/Script/master/IOS/Surge/running-mode.js
