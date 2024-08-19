@@ -5,3 +5,5 @@
 # IP-CIDR6
 
 DOMAIN,nsfw.xrbzy.xyz
+DOMAIN-SUFFIX,themoviedb.org
+DOMAIN-SUFFIX,tmdb.org
