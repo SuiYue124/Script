@@ -123,13 +123,12 @@ proxies:
   udp: true
  
 # 锚点
-pr: &pr {type: select, proxies: [🚀 节点选择, ♻️ 自动选择, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🏳️‍🌈 VPS, 🏁 其它节点, 🌐 全部节点, 🎯 直连]}
+pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🏳️‍🌈 VPS, 🏁 其它节点, 🌐 全部节点, 🎯 直连]}
 # 策略组
 proxy-groups:
-  - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🏳️‍🌈 VPS, 🏁 其它节点, 🌐 全部节点, 🎯 直连]}
+  - {name: 🚀 节点选择, type: select, proxies: [🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🏳️‍🌈 VPS, 🏁 其它节点, 🌐 全部节点, 🎯 直连]}
   - {name: 🌗 WenDirect,!!merge <<: *pr}
   - {name: 🌓 WenGlobal,!!merge <<: *pr}
-  - {name: 🇬 Google,!!merge <<: *pr}
   - {name: 💬 ChatGPT,!!merge <<: *pr}
   - {name: 🧰 Github,!!merge <<: *pr}
   - {name: 🖥 OneDrive,!!merge <<: *pr}
@@ -139,6 +138,7 @@ proxy-groups:
   - {name: 🎞️ YouTube,!!merge <<: *pr}
   - {name: 🎞️ Netflix,!!merge <<: *pr}
   - {name: 🎞️ Disney+,!!merge <<: *pr}
+  - {name: 🇬 Google,!!merge <<: *pr}
   - {name: ✈️ Speedtest,!!merge <<: *pr}
   - {name: 💳 PayPal,!!merge <<: *pr}
   - {name: 🍎 Apple, type: select, proxies: [🎯 直连, 🚀 节点选择]}
@@ -150,7 +150,6 @@ proxy-groups:
   - {name: 🇺🇸 美国节点, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(美|US|(?i)States|America)"}
   - {name: 🏳️‍🌈 VPS, type: select, include-all: true, filter: "(?i)Oracle|RackNerd|TrojanCloudFlare"}
   - {name: 🏁 其它节点, type: select, include-all: true, filter: "^(?!(港|HK|(?i)Hong|香港|🇭🇰|新|SG|(?i)Singapore|新加坡|🇸🇬|日|JP|(?i)Japan|日本|🇯🇵|美|US|(?i)States|America|美国|🇺🇸)).*$"}
-  - {name: ♻️ 自动选择, type: select, proxies: [🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🏳️‍🌈 VPS, 🏁 其它节点, 🌐 全部节点, 🎯 直连]}
   - {name: 🌐 全部节点, type: select, include-all: true}
 rules:
   - RULE-SET,private_domain,🎯 直连
@@ -160,7 +159,6 @@ rules:
   - RULE-SET,proxylite,🚀 节点选择
   - RULE-SET,ai,💬 ChatGPT
   - RULE-SET,github_domain,🧰 Github
-  - RULE-SET,google_domain,🇬 Google
   - RULE-SET,onedrive_domain,🖥 OneDrive
   - RULE-SET,microsoft_domain,Ⓜ️ Microsoft
   - RULE-SET,tiktok_domain,🎵 TikTok
@@ -169,6 +167,7 @@ rules:
   - RULE-SET,youtube_domain,🎞️ YouTube
   - RULE-SET,netflix_domain,🎞️ Netflix
   - RULE-SET,disney_domain,🎞️ Disney+
+  - RULE-SET,google_domain,🇬 Google
   - RULE-SET,paypal_domain,💳 PayPal
   - RULE-SET,geolocation-!cn,🚀 节点选择
   - RULE-SET,cn_domain,🎯 全球直连
