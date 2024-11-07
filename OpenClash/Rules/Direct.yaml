@@ -196,6 +196,11 @@ payload:
   - DOMAIN-SUFFIX,weather-map.apple.com
   - DOMAIN-SUFFIX,wiley.com
   - DOMAIN-SUFFIX,xunlei.com
+  - DOMAIN-SUFFIX,gw124.top
+  - DOMAIN-SUFFIX,115.com
+  - DOMAIN-SUFFIX,tracker.keepfrds.com
+  - DOMAIN-SUFFIX,t.audiences.me
+  - DOMAIN-SUFFIX,tracker.cinefiles.info
   - DOMAIN-KEYWORD,anti-ad.net
   - DOMAIN-KEYWORD,api-adservices.apple.com
   - DOMAIN-KEYWORD,api.smoot.apple.cn
