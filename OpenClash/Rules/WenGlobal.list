@@ -4,7 +4,7 @@
 # IP-CIDR
 # IP-CIDR6
 
-DOMAIN,nsfw-sg.xrbzy.xyz
-DOMAIN-SUFFIX,themoviedb.org
-DOMAIN-SUFFIX,tmdb.org
-DOMAIN-SUFFIX,javbus.com
+  - DOMAIN,nsfw-sg.xrbzy.xyz
+  - DOMAIN-SUFFIX,themoviedb.org
+  - DOMAIN-SUFFIX,tmdb.org
+  - DOMAIN-SUFFIX,javbus.com
