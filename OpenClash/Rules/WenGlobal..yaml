@@ -3,7 +3,7 @@
 # DOMAIN-SUFFIX
 # IP-CIDR
 # IP-CIDR6
-
+payload:
   - DOMAIN,nsfw-sg.xrbzy.xyz
   - DOMAIN-SUFFIX,themoviedb.org
   - DOMAIN-SUFFIX,tmdb.org
