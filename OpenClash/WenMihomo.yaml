@@ -8,7 +8,7 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 🎯 直连
-    url: "http://127.0.0.1:38324/download/collection/AllServer?target=ClashMeta"
+    url: "http://10.10.10.15:3101/9708281/download/collection/AllServer?target=ClashMeta"
       
 # 用于下载订阅时指定UA
 global-ua: clash
