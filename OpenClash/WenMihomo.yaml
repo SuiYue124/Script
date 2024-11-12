@@ -7,7 +7,7 @@ proxy-providers:
       enable: true
       url: https://www.gstatic.com/generate_204
       interval: 300
-    proxy: 🎯 直连
+    proxy: 🎯 Direct
     url: "http://10.10.10.15:3101/9708281/download/collection/AllServer?target=ClashMeta"
       
 # 用于下载订阅时指定UA
@@ -118,15 +118,15 @@ dns:
  
    
 proxies:
-- name: "🎯 直连"
+- name: "🎯 Direct"
   type: direct
   udp: true
  
 # 锚点
-pr: &pr {type: select, proxies: [🚀 节点选择, 🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🏳️‍🌈 VPS, 🏁 其它节点, 🌐 全部节点, 🎯 直连]}
+pr: &pr {type: select, proxies: [🚀 Manual, 🇭🇰 Hong Kong, 🇸🇬 Singapore, 🇯🇵 Japan, 🇺🇸 United States, 🏴 Server, 🏁 Other, 🌐 All, 🎯 Direct]}
 # 策略组
 proxy-groups:
-  - {name: 🚀 节点选择, type: select, proxies: [🇭🇰 香港节点, 🇸🇬 新加坡节点, 🇯🇵 日本节点, 🇺🇸 美国节点, 🏳️‍🌈 VPS, 🏁 其它节点, 🌐 全部节点, 🎯 直连]}
+  - {name: 🚀 Manual, type: select, proxies: [🇭🇰 Hong Kong, 🇸🇬 Singapore, 🇯🇵 Japan, 🇺🇸 United States, 🏴 Server, 🏁 Other, 🌐 All, 🎯 Direct]}
   - {name: 🌗 WenDirect,!!merge <<: *pr}
   - {name: 🌓 WenGlobal,!!merge <<: *pr}
   - {name: 💬 ChatGPT,!!merge <<: *pr}
@@ -141,22 +141,22 @@ proxy-groups:
   - {name: 🇬 Google,!!merge <<: *pr}
   - {name: ✈️ Speedtest,!!merge <<: *pr}
   - {name: 💳 PayPal,!!merge <<: *pr}
-  - {name: 🍎 Apple, type: select, proxies: [🎯 直连, 🚀 节点选择]}
-  - {name: 🎯 全球直连, type: select, proxies: [🎯 直连, 🚀 节点选择]}
+  - {name: 🍎 Apple, type: select, proxies: [🎯 Direct, 🚀 Manual]}
+  - {name: 🎯 CNDirect, type: select, proxies: [🎯 Direct, 🚀 Manual]}
   - {name: 🐟 漏网之鱼,!!merge <<: *pr}
-  - {name: 🏳️‍🌈 VPS, type: select, include-all: true, filter: "(?i)Oracle|RackNerd|TrojanCloudFlare"}
-  - {name: 🇭🇰 香港节点, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(港|HK|(?i)Hong)"}
-  - {name: 🇸🇬 新加坡节点, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(新|SG|(?i)Singapore)"}
-  - {name: 🇯🇵 日本节点, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(日|JP|(?i)Japan)"}
-  - {name: 🇺🇸 美国节点, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(美|US|(?i)States|America)"}
-  - {name: 🏁 其它节点, type: select, include-all: true, filter: "^(?!(港|HK|(?i)Hong|香港|🇭🇰|新|SG|(?i)Singapore|新加坡|🇸🇬|日|JP|(?i)Japan|日本|🇯🇵|美|US|(?i)States|America|美国|🇺🇸)).*$"}
-  - {name: 🌐 全部节点, type: select, include-all: true}
+  - {name: 🏴 Server, type: select, include-all: true, filter: "(?i)Oracle|RackNerd|TrojanCloudFlare"}
+  - {name: 🇭🇰 Hong Kong, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(港|HK|(?i)Hong)"}
+  - {name: 🇸🇬 Singapore, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(新|SG|(?i)Singapore)"}
+  - {name: 🇯🇵 Japan, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(日|JP|(?i)Japan)"}
+  - {name: 🇺🇸 United States, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(美|US|(?i)States|America)"}
+  - {name: 🏁 Other, type: select, include-all: true, filter: "^(?!(港|HK|(?i)Hong|香港|🇭🇰|新|SG|(?i)Singapore|新加坡|🇸🇬|日|JP|(?i)Japan|日本|🇯🇵|美|US|(?i)States|America|美国|🇺🇸)).*$"}
+  - {name: 🌐 All, type: select, include-all: true}
 rules:
-  - RULE-SET,private_domain,🎯 直连
+  - RULE-SET,private_domain,🎯 Direct
   - RULE-SET,WenDirect,🌗 WenDirect
   - RULE-SET,WenGlobal,🌓 WenGlobal
   - RULE-SET,apple_domain,🍎 Apple
-  - RULE-SET,proxylite,🚀 节点选择
+  - RULE-SET,proxylite,🚀 Manual
   - RULE-SET,ai,💬 ChatGPT
   - RULE-SET,github_domain,🧰 Github
   - RULE-SET,onedrive_domain,🖥 OneDrive
@@ -169,12 +169,12 @@ rules:
   - RULE-SET,disney_domain,🎞️ Disney+
   - RULE-SET,google_domain,🇬 Google
   - RULE-SET,paypal_domain,💳 PayPal
-  - RULE-SET,geolocation-!cn,🚀 节点选择
-  - RULE-SET,cn_domain,🎯 全球直连
+  - RULE-SET,geolocation-!cn,🚀 Manual
+  - RULE-SET,cn_domain,🎯 CNDirect
   - RULE-SET,google_ip,🇬 Google,no-resolve
   - RULE-SET,netflix_ip,🎞️ Netflix,no-resolve
   - RULE-SET,telegram_ip,📲 Telegram,no-resolve
-  - RULE-SET,cn_ip,🎯 全球直连
+  - RULE-SET,cn_ip,🎯 CNDirect
   - MATCH,🐟 漏网之鱼
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
