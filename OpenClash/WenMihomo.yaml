@@ -123,10 +123,10 @@ proxies:
   udp: true
  
 # 锚点
-pr: &pr {type: select, proxies: [🚀 Manual, 🇭🇰 Hong Kong, 🇸🇬 Singapore, 🇯🇵 Japan, 🇺🇸 United States, 🏴 Server, 🏁 Other, 🌐 All, 🎯 Direct]}
+pr: &pr {type: select, proxies: [🚀 Manual, 🇭🇰 Hong Kong, 🇸🇬 Singapore, 🇰🇷 Korea, 🇯🇵 Japan, 🇺🇸 United States, 🏴 Server, 🏴 CloudFlare, 🏁 Other, 🌐 All, 🎯 Direct]}
 # 策略组
 proxy-groups:
-  - {name: 🚀 Manual, type: select, proxies: [🇭🇰 Hong Kong, 🇸🇬 Singapore, 🇯🇵 Japan, 🇺🇸 United States, 🏴 Server, 🏁 Other, 🌐 All, 🎯 Direct]}
+  - {name: 🚀 Manual, type: select, proxies: [🇭🇰 Hong Kong, 🇸🇬 Singapore, 🇰🇷 Korea, 🇯🇵 Japan, 🇺🇸 United States, 🏴 Server, 🏴 CloudFlare, 🏁 Other, 🌐 All, 🎯 Direct]}
   - {name: 🌗 WenDirect,!!merge <<: *pr}
   - {name: 🌓 WenGlobal,!!merge <<: *pr}
   - {name: 💬 ChatGPT,!!merge <<: *pr}
@@ -144,11 +144,13 @@ proxy-groups:
   - {name: 🍎 Apple, type: select, proxies: [🎯 Direct, 🚀 Manual]}
   - {name: 🎯 CNDirect, type: select, proxies: [🎯 Direct, 🚀 Manual]}
   - {name: 🐟 漏网之鱼,!!merge <<: *pr}
-  - {name: 🏴 Server, type: select, include-all: true, filter: "(?i)Oracle|RackNerd|TrojanCloudFlare"}
+  - {name: 🏴 Server, type: select, include-all: true, filter: "(?i)Oracle|RackNerd"}
+  - {name: 🏴 CloudFlare, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(CloudFlare|CF)"}
   - {name: 🇭🇰 Hong Kong, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(港|HK|(?i)Hong)"}
   - {name: 🇸🇬 Singapore, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(新|SG|(?i)Singapore)"}
-  - {name: 🇯🇵 Japan, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(日|JP|(?i)Japan)"}
-  - {name: 🇺🇸 United States, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(美|US|(?i)States|America)"}
+  - {name: 🇰🇷 Korea, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(Seoul|韓|韩|KR|(?i)Korea)"}
+  - {name: 🇯🇵 Japan, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(Tokyo|日|JP|(?i)Japan)"}
+  - {name: 🇺🇸 United States, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(SanJose|美|US|(?i)States|America)"}
   - {name: 🏁 Other, type: select, include-all: true, filter: "^(?!(港|HK|(?i)Hong|香港|🇭🇰|新|SG|(?i)Singapore|新加坡|🇸🇬|日|JP|(?i)Japan|日本|🇯🇵|美|US|(?i)States|America|美国|🇺🇸)).*$"}
   - {name: 🌐 All, type: select, include-all: true}
 rules:
