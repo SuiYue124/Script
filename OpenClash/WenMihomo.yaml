@@ -143,7 +143,7 @@ proxy-groups:
   - {name: 💳 PayPal,!!merge <<: *pr}
   - {name: 🍎 Apple, type: select, proxies: [🎯 Direct, 🚀 Manual]}
   - {name: 🎯 CNDirect, type: select, proxies: [🎯 Direct, 🚀 Manual]}
-  - {name: 🐟 漏网之鱼,!!merge <<: *pr}
+  - {name: 🌐 Proxy,!!merge <<: *pr}
   - {name: 🏴 Server, type: select, include-all: true, filter: "(?i)Oracle|RackNerd"}
   - {name: 🏴 CloudFlare, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(CloudFlare|CF)"}
   - {name: 🇭🇰 Hong Kong, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(港|HK|(?i)Hong)"}
@@ -177,7 +177,7 @@ rules:
   - RULE-SET,netflix_ip,🎞️ Netflix,no-resolve
   - RULE-SET,telegram_ip,📲 Telegram,no-resolve
   - RULE-SET,cn_ip,🎯 CNDirect
-  - MATCH,🐟 漏网之鱼
+  - MATCH,🌐 Proxy
 rule-anchor:
   ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
   domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
