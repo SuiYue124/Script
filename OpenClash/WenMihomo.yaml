@@ -1,6 +1,6 @@
 # 机场订阅，名称不能重复
 proxy-providers:
-  AllServer:
+  VPS:
     type: http
     interval: 1800
     health-check:
@@ -8,7 +8,16 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 🎯 Direct
-    url: "http://10.10.10.15:3101/9708281/download/collection/AllServer?target=ClashMeta"
+    url: "http://10.10.10.15"
+  VPN:
+    type: http
+    interval: 1800
+    health-check:
+      enable: true
+      url: https://www.gstatic.com/generate_204
+      interval: 300
+    proxy: 🎯 Direct
+    url: "http://10.10.10.15"
       
 # 用于下载订阅时指定UA
 global-ua: clash
@@ -151,7 +160,7 @@ proxy-groups:
   - {name: 🇰🇷 Korea, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(Seoul|韓|韩|KR|(?i)Korea)"}
   - {name: 🇯🇵 Japan, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(Tokyo|日|JP|(?i)Japan)"}
   - {name: 🇺🇸 United States, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(SanJose|美|US|(?i)States|America)"}
-  - {name: 🏁 Other, type: select, include-all: true, filter: "^(?!(港|HK|(?i)Hong|香港|🇭🇰|新|SG|(?i)Singapore|新加坡|🇸🇬|日|JP|(?i)Japan|日本|🇯🇵|美|US|(?i)States|America|美国|🇺🇸)).*$"}
+  - {name: 🏁 Other, type: select, include-all: true, filter: "^(?!(港|HK|(?i)Hong|香港|🇭🇰|新|SG|(?i)Singapore|新加坡|🇸🇬|日|JP|(?i)Japan|日本|🇯🇵|韓|韩|KR|(?i)Korea|🇰🇷|美|US|(?i)States|America|美国|🇺🇸)).*$"}
   - {name: 🌐 All, type: select, include-all: true}
 rules:
   - RULE-SET,private_domain,🎯 Direct
