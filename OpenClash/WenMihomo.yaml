@@ -132,10 +132,10 @@ proxies:
   udp: true
  
 # 锚点
-pr: &pr {type: select, proxies: [🚀 Manual, 🇭🇰 Hong Kong, 🇸🇬 Singapore, 🇰🇷 Korea, 🇯🇵 Japan, 🇺🇸 United States, 🏴 Server, 🏴 CloudFlare, 🏁 Other, 🌐 All, 🎯 Direct]}
+pr: &pr {type: select, proxies: [🚀 Manual, ♻️ Automatic, 🇭🇰 Hong Kong, 🇸🇬 Singapore, 🇰🇷 Korea, 🇯🇵 Japan, 🇺🇸 United States, 🏴 Server, 🏴 CloudFlare, 🏁 Other, 🌐 All, 🎯 Direct]}
 # 策略组
 proxy-groups:
-  - {name: 🚀 Manual, type: select, proxies: [🇭🇰 Hong Kong, 🇸🇬 Singapore, 🇰🇷 Korea, 🇯🇵 Japan, 🇺🇸 United States, 🏴 Server, 🏴 CloudFlare, 🏁 Other, 🌐 All, 🎯 Direct]}
+  - {name: 🚀 Manual, type: select, proxies: [♻️ Automatic, 🇭🇰 Hong Kong, 🇸🇬 Singapore, 🇰🇷 Korea, 🇯🇵 Japan, 🇺🇸 United States, 🏴 Server, 🏴 CloudFlare, 🏁 Other, 🌐 All, 🎯 Direct]}
   - {name: 🌗 WenDirect,!!merge <<: *pr}
   - {name: 🌓 WenGlobal,!!merge <<: *pr}
   - {name: 💬 ChatGPT,!!merge <<: *pr}
@@ -161,6 +161,7 @@ proxy-groups:
   - {name: 🇯🇵 Japan, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(Tokyo|日|JP|(?i)Japan)"}
   - {name: 🇺🇸 United States, type: url-test, include-all: true, tolerance: 20, interval: 300, filter: "(SanJose|美|US|(?i)States|America)"}
   - {name: 🏁 Other, type: select, include-all: true, filter: "^(?!.*(港|HK|Hong|香港|🇭🇰|新|SG|Singapore|新加坡|🇸🇬|日|JP|Japan|日本|🇯🇵|韓|韩|KR|Korea|🇰🇷|美|US|States|America|美国|🇺🇸|Oracle|RackNerd|CloudFlare|CF)).*$"}
+  - {name: ♻️ Automatic, type: url-test, include-all: true}
   - {name: 🌐 All, type: select, include-all: true}
 rules:
   - RULE-SET,private_domain,🎯 Direct
