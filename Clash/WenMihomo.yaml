@@ -377,11 +377,11 @@ proxy-groups:
   - name: 🇨🇳 GoHome
     type: select
     include-all: true
-    filter: (?i)Home
+    filter: (?i)GoHome
   - name: 🏴 Server
     type: select
     include-all: true
-    filter: (?i)Oracle|RackNerd
+    filter: (?i)Oracle|RackNerd|ClawCloud|Other
   - name: 🏴 CloudFlare
     type: url-test
     include-all: true
@@ -411,7 +411,7 @@ proxy-groups:
     include-all: true
     tolerance: 20
     interval: 300
-    filter: (Tokyo|日|JP|(?i)Japan)
+    filter: (Tokyo|日本|JP|(?i)Japan)
   - name: 🇺🇸 United States
     type: url-test
     include-all: true
@@ -498,7 +498,7 @@ rule-providers:
     interval: 86400
     behavior: classical
     format: text
-    url: https://raw.githubusercontent.com/GWen124/Script/refs/heads/master/OpenClash/Rules/Ai.list
+    url: https://raw.githubusercontent.com/GWen124/Script/refs/heads/master/Rules/Ai.list
   youtube_domain:
     type: http
     interval: 86400
