@@ -1,0 +1,17 @@
+# hysteria.yaml
+listen: :50443                  # 自定义监听端口，不填默认443
+
+acme:
+  domains:
+    - test.example.con          # 指向服务器的域名
+  email: test@qq.com
+
+auth:
+  type: password
+  password: 123456              # 注意改复杂密码
+
+masquerade:                     # 下面的可以不需要
+  type: proxy
+  proxy:
+    url: https://www.baidu.com  # 伪装网站
+    rewriteHost: true
