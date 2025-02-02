@@ -1,5 +1,5 @@
 proxy-providers:
-  VPS:
+  All:
     type: http
     interval: 1800
     health-check:
@@ -7,25 +7,7 @@ proxy-providers:
       url: https://www.gstatic.com/generate_204
       interval: 300
     proxy: 🎯 Direct
-    url: http://127.0.0.1:38324/download/collection/VPS?target=ClashMeta
-  VPN:
-    type: http
-    interval: 1800
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 🎯 Direct
-    url: http://127.0.0.1:38324/download/collection/VPN?target=ClashMeta
-  CF:
-    type: http
-    interval: 1800
-    health-check:
-      enable: true
-      url: https://www.gstatic.com/generate_204
-      interval: 300
-    proxy: 🎯 Direct
-    url: http://127.0.0.1:38324/download/collection/CloudFlare?target=ClashMeta
+    url: http://127.0.0.1:38324/download/collection/AllServer?target=ClashMeta
   GoHome:
     type: http
     interval: 1800
@@ -483,6 +465,12 @@ rule-providers:
     behavior: classical
     format: text
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/PrivateTracker/PrivateTracker.list
+  WenDirect:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/GWen124/Script/refs/heads/master/Rules/WenDirect.list
   private_domain:
     type: http
     interval: 86400
