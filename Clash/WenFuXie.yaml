@@ -134,6 +134,7 @@ proxy-groups:
   - {name: 🌐 All, type: select, include-all: true}
 rules:
   - RULE-SET,private_domain,🎯 Direct
+  - RULE-SET,wendirect,🎯 全球Direct
   - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,proxylite,🚀 节点选择
   - RULE-SET,ai,💬 ChatGPT
@@ -163,6 +164,7 @@ rule-anchor:
   class: &class {type: http, interval: 86400, behavior: classical, format: text}
 rule-providers: 
   gohome: {!!merge <<: *text, url: "https://raw.githubusercontent.com/GWen124/Script/refs/heads/master/Rules/GoHome.list"}
+  wendirect: {!!merge <<: *text, url: "https://raw.githubusercontent.com/GWen124/Script/refs/heads/master/Rules/WenDirect.list"}
   private_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   proxylite: {!!merge <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/master/ProxyLite.list"}
   ai: {!!merge <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/master/AI.list"}
