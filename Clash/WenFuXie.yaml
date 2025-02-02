@@ -107,6 +107,7 @@ pr: &pr {type: select, proxies: [🚀 节点选择, ♻️ 自动选择, 🇭�
 # 策略组
 proxy-groups:
   - {name: 🚀 节点选择, type: select, proxies: [♻️ 自动选择, 🇭🇰 Hong Kong, 🇸🇬 Singapore, 🇯🇵 Japan 🇺🇸 United States, 🏳️‍🌈 VPS, 🏁 Other, 🌐 All, 🎯 Direct]}
+  - {name: 🌐 WenProxy,!!merge <<: *pr}
   - {name: 🇬 Google,!!merge <<: *pr}
   - {name: 💬 ChatGPT,!!merge <<: *pr}
   - {name: 🧰 Github,!!merge <<: *pr}
@@ -135,6 +136,7 @@ proxy-groups:
 rules:
   - RULE-SET,private_domain,🎯 Direct
   - RULE-SET,wendirect,🎯 全球Direct
+  - RULE-SET,wenproxy,🌐 WenProxy
   - RULE-SET,apple_domain,🍎 Apple
   - RULE-SET,proxylite,🚀 节点选择
   - RULE-SET,ai,💬 ChatGPT
@@ -165,6 +167,7 @@ rule-anchor:
 rule-providers: 
   gohome: {!!merge <<: *text, url: "https://raw.githubusercontent.com/GWen124/Script/refs/heads/master/Rules/GoHome.list"}
   wendirect: {!!merge <<: *text, url: "https://raw.githubusercontent.com/GWen124/Script/refs/heads/master/Rules/WenDirect.list"}
+  wenproxy: {!!merge <<: *text, url: "https://raw.githubusercontent.com/GWen124/Script/refs/heads/master/Rules/WenProxy.list"}
   private_domain: {!!merge <<: *domain, url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs"}
   proxylite: {!!merge <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/master/ProxyLite.list"}
   ai: {!!merge <<: *class, url: "https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/master/AI.list"}

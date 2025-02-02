@@ -131,7 +131,7 @@ pr:
     - 🌐 All
     - 🎯 Direct
 proxy-groups:
-  - name: 🌐 WenProxy
+  - name: 🚀 Manual
     type: select
     proxies:
       - ♻️ Automatic
@@ -145,7 +145,7 @@ proxy-groups:
       - 🏁 Other
       - 🌐 All
       - 🎯 Direct
-  - name: 🚀 Manual
+  - name: 🌐 WenProxy
     type: select
     proxies:
       - ♻️ Automatic
