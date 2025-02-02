@@ -131,6 +131,20 @@ pr:
     - 🌐 All
     - 🎯 Direct
 proxy-groups:
+  - name: 🌐 WenProxy
+    type: select
+    proxies:
+      - ♻️ Automatic
+      - 🇭🇰 Hong Kong
+      - 🇸🇬 Singapore
+      - 🇰🇷 Korea
+      - 🇯🇵 Japan
+      - 🇺🇸 United States
+      - 🏴 Server
+      - 🏴 CloudFlare
+      - 🏁 Other
+      - 🌐 All
+      - 🎯 Direct
   - name: 🚀 Manual
     type: select
     proxies:
@@ -414,6 +428,7 @@ proxy-groups:
     filter: ^(?!.*(GoHome)).*$
 rules:
   - RULE-SET,private_domain,🎯 Direct
+  - RULE-SET,WenProxy,🌐 WenProxy
   - RULE-SET,WenDirect,🎯 Direct
   - RULE-SET,PrivateTracker,🎯 Direct
   - RULE-SET,apple_domain,🍎 Apple
@@ -472,6 +487,12 @@ rule-providers:
     behavior: classical
     format: text
     url: https://raw.githubusercontent.com/GWen124/Script/refs/heads/master/Rules/WenDirect.list
+  WenProxy:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/GWen124/Script/refs/heads/master/Rules/WenProxy.list
   private_domain:
     type: http
     interval: 86400
