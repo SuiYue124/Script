@@ -125,7 +125,9 @@ pr:
     - 🇰🇷 Korea
     - 🇯🇵 Japan
     - 🇺🇸 United States
-    - 🏴 Server
+    - 🏴 Server-A
+    - 🏴 Server-B
+    - 🏴 Server-C
     - 🏴 CloudFlare
     - 🏁 Other
     - 🌐 All
@@ -140,7 +142,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -154,7 +158,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -169,7 +175,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -184,7 +192,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -199,7 +209,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -214,7 +226,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -229,7 +243,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -244,7 +260,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -259,7 +277,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -274,7 +294,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -289,7 +311,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -304,7 +328,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -324,7 +350,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -339,7 +367,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -349,7 +379,6 @@ proxy-groups:
     proxies:
       - 🇨🇳 GoHome
       - 🎯 Direct
-      - 🚀 Manual
   - name: 🎯 CNDirect
     type: select
     proxies:
@@ -365,7 +394,9 @@ proxy-groups:
       - 🇰🇷 Korea
       - 🇯🇵 Japan
       - 🇺🇸 United States
-      - 🏴 Server
+      - 🏴 Server-A
+      - 🏴 Server-B
+      - 🏴 Server-C
       - 🏴 CloudFlare
       - 🏁 Other
       - 🌐 All
@@ -374,7 +405,15 @@ proxy-groups:
     type: select
     include-all: true
     filter: (?i)GoHome
-  - name: 🏴 Server
+  - name: 🏴 Server-A
+    type: select
+    include-all: true
+    filter: (?i)Oracle|RackNerd|ClawCloud|Other
+  - name: 🏴 Server-B
+    type: select
+    include-all: true
+    filter: (?i)Oracle|RackNerd|ClawCloud|Other
+  - name: 🏴 Server-C
     type: select
     include-all: true
     filter: (?i)Oracle|RackNerd|ClawCloud|Other
@@ -427,6 +466,7 @@ proxy-groups:
     include-all: true
     filter: ^(?!.*(GoHome)).*$
 rules:
+  - RULE-SET,GoHome,🏠 GoHome
   - RULE-SET,private_domain,🎯 Direct
   - RULE-SET,WenProxy,🌐 WenProxy
   - RULE-SET,WenDirect,🎯 Direct
@@ -450,7 +490,6 @@ rules:
   - RULE-SET,google_ip,🇬 Google,no-resolve
   - RULE-SET,netflix_ip,🎞️ Netflix,no-resolve
   - RULE-SET,telegram_ip,📲 Telegram,no-resolve
-  - IP-CIDR,10.10.10.0/24,🏠 GoHome
   - RULE-SET,cn_ip,🎯 CNDirect
   - MATCH,🌐 Proxy
 rule-anchor:
@@ -475,6 +514,12 @@ rule-anchor:
     behavior: classical
     format: text
 rule-providers:
+  GoHome:
+    type: http
+    interval: 86400
+    behavior: classical
+    format: text
+    url: https://raw.githubusercontent.com/GWen124/Script/refs/heads/master/Rules/GoHome.list
   PrivateTracker:
     type: http
     interval: 86400
