@@ -4,9 +4,12 @@
 # IP-CIDR
 # IP-CIDR6
 
+DST-PORT,34567
+DST-PORT,8081
 DOMAIN-SUFFIX,115.com
 DOMAIN-SUFFIX,t.audiences.me
 DOMAIN-SUFFIX,tracker.cinefiles.info
 DOMAIN-SUFFIX,tracker.keepfrds.com
 DOMAIN-SUFFIX,papergames.io
 DOMAIN-SUFFIX,api.siliconflow.cn
+PROCESS-NAME,qbittorrent
