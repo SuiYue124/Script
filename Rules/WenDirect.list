@@ -7,6 +7,10 @@
 DST-PORT,34567
 DST-PORT,8081
 DOMAIN-SUFFIX,115.com
+DOMAIN-SUFFIX,tracker.m-team.cc/announce
+DOMAIN-SUFFIX,tra1.m-team.cc/announce
+DOMAIN-SUFFIX,tra1.m-team.io/announce
+DOMAIN-SUFFIX,tracker.m-team.io/announce
 DOMAIN-SUFFIX,t.audiences.me
 DOMAIN-SUFFIX,tracker.cinefiles.info
 DOMAIN-SUFFIX,tracker.keepfrds.com
