@@ -4,13 +4,13 @@
 # IP-CIDR
 # IP-CIDR6
 
+DOMAIN,tracker.m-team.cc
+DOMAIN,tra1.m-team.cc
+DOMAIN,tra1.m-team.io
+DOMAIN,tracker.m-team.io
+DOMAIN,t.audiences.me
+DOMAIN,tracker.cinefiles.info
+DOMAIN,tracker.keepfrds.com
 DOMAIN-SUFFIX,115.com
-DOMAIN-SUFFIX,tracker.m-team.cc
-DOMAIN-SUFFIX,tra1.m-team.cc
-DOMAIN-SUFFIX,tra1.m-team.io
-DOMAIN-SUFFIX,tracker.m-team.io
-DOMAIN-SUFFIX,t.audiences.me
-DOMAIN-SUFFIX,tracker.cinefiles.info
-DOMAIN-SUFFIX,tracker.keepfrds.com
 DOMAIN-SUFFIX,papergames.io
 DOMAIN-SUFFIX,api.siliconflow.cn
