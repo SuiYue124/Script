@@ -5,10 +5,10 @@
 # IP-CIDR6
 
 DOMAIN-SUFFIX,115.com
-DOMAIN-SUFFIX,tracker.m-team.cc/announce
-DOMAIN-SUFFIX,tra1.m-team.cc/announce
-DOMAIN-SUFFIX,tra1.m-team.io/announce
-DOMAIN-SUFFIX,tracker.m-team.io/announce
+DOMAIN-SUFFIX,tracker.m-team.cc
+DOMAIN-SUFFIX,tra1.m-team.cc
+DOMAIN-SUFFIX,tra1.m-team.io
+DOMAIN-SUFFIX,tracker.m-team.io
 DOMAIN-SUFFIX,t.audiences.me
 DOMAIN-SUFFIX,tracker.cinefiles.info
 DOMAIN-SUFFIX,tracker.keepfrds.com
