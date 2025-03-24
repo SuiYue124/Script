@@ -63,43 +63,17 @@ function manager() {
       return;
     }
     ssid = $network.wifi.ssid;
-    // 检查当前WiFi是否在all_direct列表中
-    if (ssid && config.all_direct.includes(ssid)) {
-      mode = "DIRECT";
-    } else if (ssid && config.all_proxy.includes(ssid)) {
-      mode = "PROXY";
-    } else {
-      mode = ssid ? config.wifi : config.cellular;
-    }
-    
-    // 针对 macOS 环境的特殊处理
-    if (mode === "DIRECT" && $environment && $environment.system === "macOS") {
-      $surge.setOutboundMode("direct");
-      // 确保模式切换成功
-      setTimeout(() => {
-        if ($surge.getOutboundMode() !== "direct") {
-          $surge.setOutboundMode("direct");
-        }
-      }, 1000);
-    } else {
-      const target = {
-        RULE: "rule",
-        PROXY: "global-proxy",
-        DIRECT: "direct",
-      }[mode];
-      $surge.setOutboundMode(target);
-    }
+    mode = ssid ? lookupSSID(ssid) : config.cellular;
+    const target = {
+      RULE: "rule",
+      PROXY: "global-proxy",
+      DIRECT: "direct",
+    }[mode];
+    $surge.setOutboundMode(target);
   } else if (isLoon) {
     const conf = JSON.parse($config.getConfig());
     ssid = conf.ssid;
-    // 检查当前WiFi是否在all_direct列表中
-    if (ssid && config.all_direct.includes(ssid)) {
-      mode = "DIRECT";
-    } else if (ssid && config.all_proxy.includes(ssid)) {
-      mode = "PROXY";
-    } else {
-      mode = ssid ? config.wifi : config.cellular;
-    }
+    mode = ssid ? lookupSSID(ssid) : config.cellular;
     const target = {
       DIRECT: 0,
       RULE: 1,
@@ -107,7 +81,6 @@ function manager() {
     }[mode];
     $config.setRunningModel(target);
   }
-  
   if (!config.silence) {
     notify(
       `🤖 ${isSurge ? "Surge" : "Loon"} 运行模式`,
@@ -118,8 +91,12 @@ function manager() {
 }
 
 function lookupSSID(ssid) {
-  // 由于在manager中已经处理了SSID匹配，这个函数可以简化
-  return config.wifi;
+  const map = {};
+  config.all_direct.map((id) => (map[id] = "DIRECT"));
+  config.all_proxy.map((id) => (map[id] = "PROXY"));
+
+  const matched = map[ssid];
+  return matched ? matched : config.wifi;
 }
 
 function notify(title, subtitle, content) {
