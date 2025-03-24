@@ -63,7 +63,14 @@ function manager() {
       return;
     }
     ssid = $network.wifi.ssid;
-    mode = ssid ? lookupSSID(ssid) : config.cellular;
+    // 检查当前WiFi是否在all_direct列表中
+    if (ssid && config.all_direct.includes(ssid)) {
+      mode = "DIRECT";
+    } else if (ssid && config.all_proxy.includes(ssid)) {
+      mode = "PROXY";
+    } else {
+      mode = ssid ? config.wifi : config.cellular;
+    }
     
     // 针对 macOS 环境的特殊处理
     if (mode === "DIRECT" && $environment && $environment.system === "macOS") {
@@ -85,7 +92,14 @@ function manager() {
   } else if (isLoon) {
     const conf = JSON.parse($config.getConfig());
     ssid = conf.ssid;
-    mode = ssid ? lookupSSID(ssid) : config.cellular;
+    // 检查当前WiFi是否在all_direct列表中
+    if (ssid && config.all_direct.includes(ssid)) {
+      mode = "DIRECT";
+    } else if (ssid && config.all_proxy.includes(ssid)) {
+      mode = "PROXY";
+    } else {
+      mode = ssid ? config.wifi : config.cellular;
+    }
     const target = {
       DIRECT: 0,
       RULE: 1,
@@ -104,12 +118,8 @@ function manager() {
 }
 
 function lookupSSID(ssid) {
-  const map = {};
-  config.all_direct.map((id) => (map[id] = "DIRECT"));
-  config.all_proxy.map((id) => (map[id] = "PROXY"));
-
-  const matched = map[ssid];
-  return matched ? matched : config.wifi;
+  // 由于在manager中已经处理了SSID匹配，这个函数可以简化
+  return config.wifi;
 }
 
 function notify(title, subtitle, content) {
