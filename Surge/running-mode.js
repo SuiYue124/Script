@@ -23,7 +23,7 @@
  * (不推荐！)手动配置项为config, 请看注释
  */
 
-let config = {
+ let config = {
   silence: false, // 是否静默运行，默认false
   cellular: "RULE", // 蜂窝数据下的模式，RULE代表规则模式，PROXY代表全局代理，DIRECT代表全局直连
   wifi: "RULE", // wifi下默认的模式
@@ -64,12 +64,24 @@ function manager() {
     }
     ssid = $network.wifi.ssid;
     mode = ssid ? lookupSSID(ssid) : config.cellular;
-    const target = {
-      RULE: "rule",
-      PROXY: "global-proxy",
-      DIRECT: "direct",
-    }[mode];
-    $surge.setOutboundMode(target);
+    
+    // 针对 macOS 环境的特殊处理
+    if (mode === "DIRECT" && $environment && $environment.system === "macOS") {
+      $surge.setOutboundMode("direct");
+      // 确保模式切换成功
+      setTimeout(() => {
+        if ($surge.getOutboundMode() !== "direct") {
+          $surge.setOutboundMode("direct");
+        }
+      }, 1000);
+    } else {
+      const target = {
+        RULE: "rule",
+        PROXY: "global-proxy",
+        DIRECT: "direct",
+      }[mode];
+      $surge.setOutboundMode(target);
+    }
   } else if (isLoon) {
     const conf = JSON.parse($config.getConfig());
     ssid = conf.ssid;
@@ -81,6 +93,7 @@ function manager() {
     }[mode];
     $config.setRunningModel(target);
   }
+  
   if (!config.silence) {
     notify(
       `🤖 ${isSurge ? "Surge" : "Loon"} 运行模式`,
