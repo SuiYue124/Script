@@ -1,9 +1,11 @@
 # NAME: WenDirect
 # DOMAIN
 # DOMAIN-SUFFIX
+# DOMAIN-KEYWORD
 # IP-CIDR
 # IP-CIDR6
 
+DOMAIN-KEYWORD,tracker
 DOMAIN,tracker.m-team.cc
 DOMAIN,tra1.m-team.cc
 DOMAIN,tra1.m-team.io
